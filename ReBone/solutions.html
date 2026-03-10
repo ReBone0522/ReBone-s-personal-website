@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solutions | ReBone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-mono leading-relaxed">
+    <nav class="sticky top-0 z-50 bg-[length:113%_1000px] bg-center p-4 flex justify-between items-center" style="background-image: url('assets/nav-bg.PNG');">
+        <h1 class="text-xl font-bold text-white">ReBone</h1>
+        <div class="space-x-4 text-white text-sm">
+            <a href="index.html" class="hover:underline">ReBone</a>
+            <a href="solutions.html" class="underline font-semibold">Solutions</a>
+            <a href="reflections.html" class="hover:underline">Reflections</a>
+            <a href="expressions.html" class="hover:underline">Expressions</a>
+            <a href="readme.html" class="hover:underline">README.md</a>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto mt-10 p-4">
+        <h2 class="text-2xl font-semibold mb-4">Solutions</h2>
+        <p class="text-gray-700 leading-relaxed mb-8">
+            听见真实声音、迭代想法、解决问题的日志。
+        </p>
+
+        <!-- 分类导航 -->
+        <div class="flex space-x-2 mb-8 overflow-x-auto">
+            <button class="px-4 py-2 bg-gray-800 text-white text-sm rounded">全部</button>
+            <button class="px-4 py-2 bg-gray-200 text-gray-700 text-sm rounded hover:bg-gray-300">产品</button>
+            <button class="px-4 py-2 bg-gray-200 text-gray-700 text-sm rounded hover:bg-gray-300">志愿</button>
+            <button class="px-4 py-2 bg-gray-200 text-gray-700 text-sm rounded hover:bg-gray-300">生命</button>
+            <button class="px-4 py-2 bg-gray-200 text-gray-700 text-sm rounded hover:bg-gray-300">生活</button>
+        </div>
+
+        <!-- 项目网格 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 项目1：从约束到安抚 -->
+                <a href="solutions_restraint.html" class="block group"> <!-- 新增 group 和 block -->
+                    <article class="bg-white border border-gray-200 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer">
+                        <!-- 图片区 -->
+                        <div class="h-48 overflow-hidden">
+                            <img src="assets/glove_prototype.png" 
+                                alt="约束手套原型" 
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        </div>
+                        
+                        <div class="p-6">
+                            <!-- 其余所有文字内容与之前完全相同，保持不动 -->
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-semibold">从约束到安抚：临床约束手套系统</h3>
+                                <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">产品</span>
+                            </div>
+                            <p class="text-sm text-gray-500 mb-4">2024.01 - 进行中</p>
+                            <div class="prose prose-sm max-w-none">
+                                <p><strong>核心理念</strong>：在必要的约束中，提供舒适与主动权。</p>
+                                <div class="my-4 p-3 bg-gray-50 border-l-4 border-gray-400">
+                                    <p class="text-sm italic">当保护本身成为一种伤害；普遍 ≠ 本该如此。</p>
+                                </div>
+                                <p class="mt-3"><strong>平台化演进</strong>：基础保护型 → 康复理疗型 → 智能交互型。</p>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+            </div>
+    </main>
+
+    <footer class="text-center text-sm text-gray-500 mt-10 mb-4">
+        © 2025 Rebone. 保留所有权利.
+    </footer>
+</body>
+</html>
