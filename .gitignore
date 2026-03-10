@@ -1,0 +1,17 @@
+# OpenClaw workspace files (don't push to GitHub)
+.openclaw/
+AGENTS.md
+HEARTBEAT.md
+IDENTITY.md
+MEMORY.md
+SOUL.md
+TOOLS.md
+USER.md
+memory/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Don't commit extra solution pages
+solutions_restraint.html
