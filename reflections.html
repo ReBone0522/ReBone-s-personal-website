@@ -28,10 +28,23 @@
             background: rgba(55, 65, 81, 0.06);
         }
         
-        .circle-human { top: 20px; left: 100px; }
-        .circle-me { top: 160px; left: 30px; }
-        .circle-animal { top: 160px; right: 30px; }
+        /* 三个圆真正重叠 */
+        .circle-human {
+            top: 20px;
+            left: 100px;
+        }
         
+        .circle-me {
+            top: 160px;
+            left: 30px;
+        }
+        
+        .circle-animal {
+            top: 160px;
+            right: 30px;
+        }
+        
+        /* 圆心标签 */
         .circle-label {
             position: absolute;
             font-size: 14px;
@@ -43,13 +56,14 @@
         .label-me { top: 250px; left: 85px; }
         .label-animal { top: 250px; right: 85px; }
         
+        /* 交集区域 - 可点击 */
         .intersection {
             position: absolute;
             cursor: pointer;
             font-size: 11px;
             color: #6b7280;
             transition: all 0.2s ease;
-            padding: 4px 8px;
+            padding: 6px 10px;
             border-radius: 4px;
             z-index: 10;
         }
@@ -59,10 +73,32 @@
             background: rgba(55, 65, 81, 0.1);
         }
         
-        .int-human-me { top: 160px; left: 120px; }
-        .int-human-animal { top: 160px; right: 120px; }
-        .int-me-animal { bottom: 80px; left: 50%; transform: translateX(-50%); }
-        .int-all { top: 192px; left: 50%; transform: translateX(-50%); font-weight: 500; color: #374151; }
+        /* 我 × 人类 = 社交 */
+        .int-me-human {
+            top: 175px;
+            left: 130px;
+        }
+        
+        /* 我 × 动物 = 交互 */
+        .int-me-animal {
+            top: 270px;
+            left: 175px;
+        }
+        
+        /* 人类 × 动物 */
+        .int-human-animal {
+            top: 175px;
+            right: 130px;
+        }
+        
+        /* 生命 - 中心 */
+        .int-all {
+            top: 192px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 500;
+            color: #374151;
+        }
         
         .tooltip {
             position: absolute;
@@ -82,56 +118,50 @@
         .content-panel {
             display: none;
             margin-top: 32px;
-            padding: 24px;
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
+            padding: 20px;
+            border-top: 1px solid #e5e7eb;
         }
         
         .content-panel.show { display: block; }
         
         .content-panel h3 {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 20px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 16px;
             color: #111827;
         }
         
         .content-item {
-            margin-bottom: 24px;
-            padding-bottom: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
             border-bottom: 1px solid #f3f4f6;
         }
         
-        .content-item:last-child { border-bottom: none; margin-bottom: 0; }
+        .content-item:last-child { border-bottom: none; }
         
         .content-item h4 {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             color: #374151;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         
         .content-item p {
             color: #4b5563;
-            line-height: 1.8;
-            white-space: pre-line;
+            line-height: 1.7;
         }
         
         .date-tag {
             font-size: 11px;
             color: #9ca3af;
-            margin-top: 8px;
+            margin-top: 6px;
         }
         
         .close-btn {
             float: right;
             cursor: pointer;
             color: #9ca3af;
-            font-size: 20px;
-            line-height: 1;
+            font-size: 18px;
         }
         .close-btn:hover { color: #374151; }
         
@@ -145,6 +175,7 @@
 </head>
 <body class="bg-gray-50 text-gray-800 font-mono leading-relaxed">
 
+    <!-- 顶部导航 -->
     <nav class="sticky top-0 z-50 bg-[length:113%_1000px] bg-center p-4 flex justify-between items-center" style="background-image: url('assets/nav-bg.PNG');">
         <h1 class="text-xl font-bold text-white">ReBone</h1>
         <div class="space-x-4 text-white text-sm">
@@ -167,18 +198,22 @@
             <p class="text-gray-400 text-xs mt-4">* 关于分类：这里的「人类」「动物」是为了结构清晰而分开，并非认为人类高于其他动物。</p>
         </div>
 
+        <!-- Venn Diagram - 真正重叠的三个圆 -->
         <div class="venn-container" id="vennDiagram">
+            <!-- 三个圆 -->
             <div class="venn-circle circle-human" data-section="human"></div>
             <div class="venn-circle circle-me" data-section="me"></div>
             <div class="venn-circle circle-animal" data-section="animal"></div>
             
+            <!-- 圆心标签 -->
             <span class="circle-label label-human" data-section="human" style="cursor:pointer;pointer-events:auto;">人类</span>
             <span class="circle-label label-me" data-section="me" style="cursor:pointer;pointer-events:auto;">我</span>
             <span class="circle-label label-animal" data-section="animal" style="cursor:pointer;pointer-events:auto;">动物</span>
             
-            <div class="intersection int-human-me" data-section="social">社交</div>
-            <div class="intersection int-human-animal" data-section="human-animal">人类×动物</div>
+            <!-- 交集标签 - 在交集区域内 -->
+            <div class="intersection int-me-human" data-section="social">社交</div>
             <div class="intersection int-me-animal" data-section="interact">交互</div>
+            <div class="intersection int-human-animal" data-section="human-animal">人类×动物</div>
             <div class="intersection int-all" data-section="life">生命</div>
             
             <div class="tooltip" id="tooltip"></div>
@@ -205,65 +240,59 @@
                     { subtitle: "本能", text: "人的本性不是生存，而是远离痛苦。\n\n生存的原因只是因为生存带来的问题很痛苦。人们为了不痛苦（饥饿、疾病、极端天气、伤害）而选择挣扎求生。\n\n这也解释了人为什么会自杀。如果人的本能是生存则无论怎么样都不会自杀。正是因为活着的痛苦已经超出死亡带来的痛苦，人为不再承受这份痛苦则选择死亡。", date: "" },
                     { subtitle: "适应性", text: "人的本能就是趋利避害。而人同时具有适应性。欲望永远得不到满足，痛苦也会扭曲心性。", date: "2023" },
                     { subtitle: "", text: "欲望很多时候并非实现就满足。很多时候像罗生门的山药粥一样，欲望痴迷就在于欲望本身。\n\n在意识到这一点之后，人就不该再继续忠于欲望了。因为欲望有些时候会引向毁灭，对自己的践踏，对他者的践踏。", date: "2025.11.3" },
-                    { subtitle: "", text: "生活的意义在于过程，结果只是过程的一种表现形式。\n\n过度注重结果节点和以此寄托"幸福"是无望的。其原因在于这样的开心会因为人的适应能力而很快消逝。比如我还完了几年的贷款，以为会为此开心和如释重负很久，但往往只有那么一阵便很快适应。\n\n如果对结果带来快乐这件事抱有错误期望，就像在驴正前方吊个苹果一样。追求苹果困于其中迷茫，因为这不是正解。", date: "2023" },
-                    { subtitle: "", text: "汶川大地震时，从地底下救出来的人需要第一时间蒙住眼睛。因为他们的眼睛已经不再适应阳光。\n\n而人如果曾在扭曲的环境生长，那套防御机制在健康环境中就不再适用。那是不合群的人，令人觉得怪异的人。\n\n我总做出一些错误的认知判断，预设他者的敌意，状态进入失控。这是我的错，我完全承认。我愿意负担对应的代价。\n\n我没有办法怪自己，但我因为亲眼看见自己的失控和伤害而切实的痛苦着。我会慢慢地学。", date: "2023" }
+                    { subtitle: "", text: "生活的意义在于过程，结果只是过程的一种表现形式。\n\n过度注重结果节点和以此寄托'幸福'是无望的。如果对结果带来快乐这件事抱有错误期望，就像在驴正前方吊个苹果一样。", date: "2023" },
+                    { subtitle: "", text: "汶川大地震时，从地底下救出来的人需要第一时间蒙住眼睛。因为他们的眼睛已经不再适应阳光。\n\n而人如果曾在扭曲的环境生长，那套防御机制在健康环境中就不再适用。那是不合群的人，令人觉得怪异的人。", date: "2023" }
                 ]
             },
             me: {
                 title: "我",
                 keywords: ["选择", "感受与理智", "自洽", "建设性思维"],
                 items: [
-                    { subtitle: "我的选择", text: "四年前我还在仇视强奸犯和社会上一堆看了就窒息的人类，认为我决定自杀，就建一个假装诱拐未成年强奸的群，把前来赴邀的都xx了。每次死亡前都会进一步详细计划这一事项。\n\n但计划着计划着非常不爽，认为这只能炸死一批人，而无法像永动机一样刷新几个炸死几个。这样的规模丝毫无法平息我的不甘。\n\n于是就开始思考自己能不能构建出比这份痛苦更巨大的意义，于是我就没日没夜的想，只要痛苦或者崩溃就想。\n\n构思着构思着有两个发现：一是只有活着才能生生不息。二是我曾经有一个特性，就是讨好型人格并且对其他人的处境非常敏感，突然发现有很多痛苦的生命还没有选择放弃却处于无助状态。\n\n于是我开始不为我自己而活，而是为生命活着，并认为我的意义就是援助我能力范围内看见的正在经历无助的人类。\n\n这个意义本意是让其他生命幸福，却逐渐成为了属于我的自驱力，将我拔出了属于我的死局。", date: "" },
-                    { subtitle: "", text: "从今天起，我的意义在于今天和明天和未来，在于我想成为什么样的人，要做什么样的事。路途遇到障碍和困境，我再耐心的一点点解决他们。昨日与从前我不会再去思考，他们无法塑造我是一个什么样的人。\n\n从今天起，我的生命被赋予了远超感受的意义。我不会再因为痛苦而寻自毁，因为我这条命的意义不再局限于让自己趋利避害了。", date: "2022" },
-                    { subtitle: "", text: "某一天，我饶恕了自己。\n\n我曾报复了一个人，可我也不觉得开心。", date: "2023" },
+                    { subtitle: "我的选择", text: "四年前我还在仇视强奸犯和社会上一堆看了就窒息的人类，认为我决定自杀，就建一个假装诱拐未成年强奸的群，把前来赴邀的都xx了。\n\n但计划着计划着非常不爽，认为这只能炸死一批人。于是就开始思考自己能不能构建出比这份痛苦更巨大的意义。\n\n构思着构思着有两个发现：一是只有活着才能生生不息。二是有很多痛苦的生命还没有选择放弃却处于无助状态。\n\n于是我开始不为我自己而活，而是为生命活着。这个意义本意是让其他生命幸福，却逐渐成为了属于我的自驱力，将我拔出了属于我的死局。", date: "" },
+                    { subtitle: "", text: "从今天起，我的意义在于今天和明天和未来，在于我想成为什么样的人，要做什么样的事。昨日与从前我不会再去思考，他们无法塑造我是一个什么样的人。", date: "2022" },
+                    { subtitle: "", text: "某一天，我饶恕了自己。\n我曾报复了一个人，可我也不觉得开心。", date: "2023" },
                     { subtitle: "感受与理智", text: "感受是人的燃料，理智决定了燃料流向哪里。指责理智是冷漠是不恰当的，认为感性愚蠢的智力傲慢也是另一种形式的偏见。", date: "2023" },
-                    { subtitle: "", text: "有些时候我暂时放置自己的情绪感受、没有解决的问题，并不是因为我不在乎，而是当下的确没有能力解决这件事/缓解这份情绪。\n\n我会很重视它，但我想先从我能料理的事情开始做起。这样我自己也会感到有信心一些。我也会给自己一个交代——自己当下的困境会在一点点中学习怎么去处理好。", date: "" },
-                    { subtitle: "自洽", text: "我一直在尝试找到类似"人们一提到身体健康就知道：吃好睡好身体好"这样，可操作，大众化的自救方向。\n\n核心是能在这个世界自洽。这意味着在世界里有一个地方是呆的舒服的，有理想可以推进的，并且养的活自己的。\n\n不傲慢，不逃避，不践踏他人也不践踏自我。", date: "2024.7.24" },
-                    { subtitle: "", text: "为自己而活的时候，才真正有被讨厌的勇气。为满足别人的期待而活，永远都在焦虑和不完美之中。对我来说，为自己而活需要找到，对自己来说很重要的意义。\n\n我不知我有没有找到，但我知道了我必须做什么事。", date: "2022" },
-                    { subtitle: "建设性的思维", text: "如果我看见一个圆，实际上坑坑洼洼，那我会很失望。但是我知道这个世界上没有一个真正的圆，只有不规则的、粗糙的形状。\n\n那我能做的事情可多了：这样一个形状里我可以敲敲打打，在转角处布置一张椅子，在斜坡旁放一块滑板。\n\n只要有真实的人用得上它，那我就非常开心和满足。", date: "2024.7.14" },
+                    { subtitle: "自洽", text: "核心是能在这个世界自洽。这意味着在世界里有一个地方是呆的舒服的，有理想可以推进的，并且养的活自己的。\n\n不傲慢，不逃避，不践踏他人也不践踏自我。", date: "2024.7.24" },
+                    { subtitle: "建设性的思维", text: "如果我看见一个圆，实际上坑坑洼洼，那我会很失望。但是我知道这个世界上没有一个真正的圆，只有不规则的、粗糙的形状。\n\n那我能做的事情可多了：在转角处布置一张椅子，在斜坡旁放一块滑板。\n\n只要有真实的人用得上它，那我就非常开心和满足。", date: "2024.7.14" },
                     { subtitle: "", text: "找一道缝隙，做一点小事。—— 一席", date: "2024.7.19" },
-                    { subtitle: "", text: "如果足够勇敢，应该继续扛起问题往前走。直到因果成熟自动脱落。人对问题的解决方式，不是试图找到答案，而是背负到可以解决的那一天。", date: "2024.10.21" },
                     { subtitle: "", text: "如果有一天我意外死亡，我希望我遗留下来的思考与产物是带给其他生命意义的。", date: "2024" }
                 ]
             },
             animal: {
                 title: "动物",
-                keywords: ["Five Freedoms", "动物福利"],
+                keywords: ["Five Freedoms"],
                 items: [
                     { subtitle: "Five Freedoms", text: "现代动物福利的最基本原则：被人照料中的动物应该有——\n\n• 不受饥渴的自由\n• 生活舒适的自由\n• 不受病痛与伤害的自由\n• 无恐惧与悲伤的自由\n• 表达天性的自由", date: "" }
                 ]
             },
             social: {
                 title: "社交（我 × 人类）",
-                keywords: ["看待他人", "不自以为是", "爱与恨"],
+                keywords: ["看待他人", "不自以为是"],
                 items: [
                     { subtitle: "我怎么看待其他人", text: "不会鄙视和看不起任何人，我觉得大家只是在走不同的路。", date: "2025.4.29" },
-                    { subtitle: "", text: "Racheli看着人们说，总是很有趣。看到这么多人们，想象他们的背后都有各种各样的故事。", date: "2025.11" },
                     { subtitle: "", text: "一个人爱我，或是一个人恨我，都是欲望。爱是理解还是欲望，恨的片面还是全面，看的是人品。\n\n一份理解的爱或是全面的恨，我都会尊重和感谢；一份欲望的爱或是片面的恨，我会过滤。", date: "2025.6" },
                     { subtitle: "", text: "我不再恨任何人。我可能会认可/不认可行为，但我不会把这种认可/不认可上升到一整个个体上。", date: "2024" },
                     { subtitle: "不要自以为是", text: "有一位同学被蚊子咬，我看到感到担忧一直帮忙驱赶。对方两次拒绝和描述了其实不会痒，可在拒绝后我还是有一段时间驱赶蚊子。\n\n我认为我应该学会读懂别人的拒绝，不要一味的做看似好的事情，而不听别人的声音。不要自以为是。", date: "2024.10" },
-                    { subtitle: "", text: "照料的时候不能自以为是，不能太心慈手软，也不能莫名其妙的强硬。要真正的理解生命的需求，再做出对应的事情。这本质上也是一种理智和客观。", date: "2024.10.27" },
-                    { subtitle: "", text: "社会有很多团队凝聚力的活动。如果有人不参加就会被指责"你离群，不听指挥"，可是活动初期设计就没有为这样的人做考虑。\n\n这并不意味着一个活动要涵盖所有人（这不可能），但至少要意识到，理解到有哪些不同的人群，而不是一个理想模型。以及，要听见真实的声音，而不是自以为是。\n\n例如，内向者或许没有人群以为的合群的需求。", date: "2024.10" },
-                    { subtitle: "", text: "意愿 / 能力，这两者要分开来看。可以理解意愿，但不能等同理解为能力。", date: "2025.11.9" }
+                    { subtitle: "", text: "照料的时候不能自以为是，不能太心慈手软，也不能莫名其妙的强硬。要真正的理解生命的需求，再做出对应的事情。", date: "2024.10.27" }
                 ]
             },
             interact: {
                 title: "交互（我 × 动物）",
                 keywords: ["待补充"],
                 items: [
-                    { subtitle: "待补充", text: "• 最小化痛苦的食用方法\n• 救助方法\n• 养蛇收获\n\n（内容待完善）", date: "" }
+                    { subtitle: "待补充", text: "• 最小化痛苦的食用方法\n• 救助方法\n• 养蛇收获", date: "" }
                 ]
             },
             "human-animal": {
                 title: "人类 × 动物",
                 keywords: ["待补充"],
                 items: [
-                    { subtitle: "待补充", text: "人类与其他动物之间的关系...\n\n（内容待完善）", date: "" }
+                    { subtitle: "待补充", text: "人类与动物之间的关系...", date: "" }
                 ]
             },
             life: {
                 title: "生命",
-                keywords: ["定义", "意义", "热爱"],
+                keywords: ["定义", "意义"],
                 items: [
                     { subtitle: "", text: "生命：有意识、主观能动性的产物。我会对看得到的任何生命负责。", date: "" },
                     { subtitle: "", text: "生命的意义不需要宏大，生命在拥有主观能动性的那一刻就有了意义。我热爱一切生命。", date: "2024.10" },
@@ -272,14 +301,13 @@
             }
         };
 
-        // 点击和悬停事件
         document.querySelectorAll('[data-section]').forEach(el => {
             el.addEventListener('mouseenter', (e) => {
                 const section = e.target.dataset.section;
                 const data = content[section];
                 if (data) {
                     const tooltip = document.getElementById('tooltip');
-                    tooltip.innerHTML = '<strong>' + data.title + '</strong><br><span style="color:#9ca3af">' + data.keywords.join(' · ') + '</span>';
+                    tooltip.innerHTML = `<strong>${data.title}</strong><br><span style="color:#9ca3af">${data.keywords.join(' · ')}</span>`;
                     tooltip.classList.add('show');
                     const rect = e.target.getBoundingClientRect();
                     const container = document.getElementById('vennDiagram').getBoundingClientRect();
@@ -307,15 +335,15 @@
             let html = '';
             data.items.forEach(item => {
                 html += '<div class="content-item">';
-                if (item.subtitle) html += '<h4>' + item.subtitle + '</h4>';
-                html += '<p>' + item.text + '</p>';
-                if (item.date) html += '<p class="date-tag">' + item.date + '</p>';
+                if (item.subtitle) html += `<h4>${item.subtitle}</h4>`;
+                html += `<p class="whitespace-pre-line">${item.text}</p>`;
+                if (item.date) html += `<p class="date-tag">${item.date}</p>`;
                 html += '</div>';
             });
             
             document.getElementById('panelContent').innerHTML = html;
             document.getElementById('contentPanel').classList.add('show');
-            document.getElementById('contentPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            document.getElementById('contentPanel').scrollIntoView({ behavior: 'smooth' });
         }
 
         function closePanel() {
