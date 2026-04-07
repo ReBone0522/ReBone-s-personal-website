@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>杀戮天使 | 同人衍生 | ReBone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .side-link.active { background:#f9fafb; border-color:#111827; color:#111827; font-weight:600; }
+        .thumb.active { border-color:#111827; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-mono leading-relaxed">
+    <nav class="sticky top-0 z-50 bg-[length:113%_1000px] bg-center p-4 flex justify-between items-center" style="background-image: url('assets/nav-bg.PNG');">
+        <h1 class="text-xl font-bold text-white">ReBone</h1>
+        <div class="space-x-4 text-white text-sm">
+            <a href="index.html" class="hover:underline">ReBone</a>
+            <a href="solutions.html" class="hover:underline">Solutions</a>
+            <a href="reflections.html" class="hover:underline">Reflections</a>
+            <a href="expressions.html" class="underline font-semibold">Expressions</a>
+            <a href="readme.html" class="hover:underline">README.md</a>
+        </div>
+    </nav>
+
+    <main class="max-w-[90rem] mx-auto mt-10 px-4 pb-16">
+        <div class="flex items-center gap-3 text-sm text-gray-500 mb-6">
+            <a href="expressions.html" class="hover:text-gray-700">Expressions</a>
+            <span>/</span>
+            <a href="expressions_fandom.html" class="hover:text-gray-700">为爱发电</a>
+            <span>/</span>
+            <span class="text-gray-700">杀戮天使</span>
+        </div>
+
+        <div class="max-w-3xl mb-8">
+            <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-2">Fan Derivatives</p>
+            <h2 class="text-3xl font-semibold mb-3">杀戮天使</h2>
+            <p class="text-gray-700">同人衍生作品整理页：宅舞、Cosplay、绘画。</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-8 items-start">
+            <aside class="bg-white border border-gray-200 rounded-2xl p-4 lg:sticky lg:top-24">
+                <p class="text-xs uppercase tracking-[0.2em] text-gray-400 mb-3">Sections</p>
+                <nav class="space-y-2 text-sm">
+                    <a href="#dance" data-side-link="dance" class="side-link block rounded-lg border border-gray-200 px-3 py-2 hover:bg-gray-50">宅舞</a>
+                    <a href="#cosplay" data-side-link="cosplay" class="side-link block rounded-lg border border-gray-200 px-3 py-2 hover:bg-gray-50">Cosplay</a>
+                    <a href="#drawing" data-side-link="drawing" class="side-link block rounded-lg border border-gray-200 px-3 py-2 hover:bg-gray-50">绘画</a>
+                </nav>
+            </aside>
+
+            <div class="space-y-12">
+                <section id="dance" class="scroll-mt-24">
+                    <div class="grid grid-cols-1 xl:grid-cols-[1.65fr_0.8fr] gap-6 items-start">
+                        <article class="bg-white border border-gray-200 rounded-2xl p-5">
+                            <div class="aspect-video bg-black rounded-xl overflow-hidden border border-gray-300">
+                                <iframe
+                                    class="w-full h-full"
+                                    src="https://player.bilibili.com/player.html?bvid=BV1e1LnzTEvn&autoplay=0&danmaku=0"
+                                    scrolling="no"
+                                    border="0"
+                                    frameborder="no"
+                                    framespacing="0"
+                                    allowfullscreen="true"
+                                    title="【Rachel X Eddie】《妄想感傷代償連盟》"
+                                ></iframe>
+                            </div>
+                        </article>
+
+                        <aside class="bg-white border border-gray-200 rounded-2xl p-5">
+                            <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-2">Dance</p>
+                            <h3 class="text-xl font-semibold mb-3">【Rachel X Eddie】《妄想感傷代償連盟》｜振幅【みーたろぉ】</h3>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <p>拍摄：字体</p>
+                                <p>Rachel：再生骨头</p>
+                                <p>Eddie：阿罗拉</p>
+                                <p class="pt-2 text-xs text-gray-500">B站：BV1e1LnzTEvn</p>
+                            </div>
+                        </aside>
+                    </div>
+                </section>
+
+                <section id="cosplay" class="scroll-mt-24 bg-white border border-gray-200 rounded-2xl p-5">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-2xl font-semibold">Cosplay</h3>
+                        <div class="flex gap-2">
+                            <button id="cosPrev" class="px-3 py-1 border border-gray-300 rounded-lg text-sm hover:bg-gray-50">←</button>
+                            <button id="cosNext" class="px-3 py-1 border border-gray-300 rounded-lg text-sm hover:bg-gray-50">→</button>
+                        </div>
+                    </div>
+                    <div class="text-sm text-gray-700 space-y-1 mb-4">
+                        <p>出镜：再生骨头、阿罗拉</p>
+                        <p>摄影：卡西、以及几位摄影师先前未能被我记录下来；如果有知道是谁请务必联络我加上。</p>
+                    </div>
+
+                    <div class="w-full h-[70vh] bg-black rounded-xl overflow-hidden border border-gray-300 flex items-center justify-center">
+                        <img id="cosMain" src="assets/images/fandom/satsuriku/06-extra-8371.jpg" alt="cosplay main" class="max-w-full max-h-full object-contain" />
+                    </div>
+
+                    <div id="cosThumbs" class="mt-4 grid grid-cols-4 md:grid-cols-7 gap-2"></div>
+                </section>
+
+                <section id="drawing" class="scroll-mt-24 bg-white border border-gray-200 rounded-2xl p-5">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-2xl font-semibold">绘画</h3>
+                        <div class="flex gap-2">
+                            <button id="drawPrev" class="px-3 py-1 border border-gray-300 rounded-lg text-sm hover:bg-gray-50">←</button>
+                            <button id="drawNext" class="px-3 py-1 border border-gray-300 rounded-lg text-sm hover:bg-gray-50">→</button>
+                        </div>
+                    </div>
+
+                    <div class="w-full h-[68vh] bg-gray-100 rounded-xl overflow-hidden border border-gray-300 flex items-center justify-center">
+                        <img id="drawMain" src="assets/images/fandom/satsuriku/drawing-main.jpg" alt="drawing main" class="max-w-full max-h-full object-contain" />
+                    </div>
+
+                    <div id="drawThumbs" class="mt-4 grid grid-cols-4 md:grid-cols-6 gap-2"></div>
+
+                    <div class="text-sm text-gray-700 mt-4">
+                        <p>绘画作品：115965.PNG</p>
+                        <p class="text-gray-600">日期：2021年8月10日</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center text-sm text-gray-500 mt-10 mb-4">© 2025 Rebone. 保留所有权利.</footer>
+
+    <script>
+        const sideLinks = Array.from(document.querySelectorAll('[data-side-link]'));
+        const sections = ['dance', 'cosplay', 'drawing'].map(id => document.getElementById(id));
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const id = entry.target.id;
+                sideLinks.forEach(link => link.classList.toggle('active', link.dataset.sideLink === id));
+            });
+        }, { rootMargin: '-35% 0px -55% 0px', threshold: 0.01 });
+        sections.forEach(sec => sec && observer.observe(sec));
+
+        const cosImages = [
+            'assets/images/fandom/satsuriku/06-extra-8371.jpg',
+            'assets/images/fandom/satsuriku/07-extra-8368.jpg',
+            'assets/images/fandom/satsuriku/01-8371.jpg',
+            'assets/images/fandom/satsuriku/02-8368.jpg',
+            'assets/images/fandom/satsuriku/03-8378.jpg',
+            'assets/images/fandom/satsuriku/04.jpg',
+            'assets/images/fandom/satsuriku/05.jpg'
+        ];
+        let cosIndex = 0;
+        const cosMain = document.getElementById('cosMain');
+        const cosThumbs = document.getElementById('cosThumbs');
+
+        function renderCos() {
+            cosMain.src = cosImages[cosIndex];
+            cosThumbs.innerHTML = cosImages.map((src, i) => `
+                <button class="thumb border ${i===cosIndex?'border-gray-900':'border-gray-300'} rounded-md overflow-hidden" data-i="${i}">
+                    <img src="${src}" class="w-full h-16 object-cover" alt="cos ${i+1}" />
+                </button>
+            `).join('');
+            cosThumbs.querySelectorAll('button').forEach(btn => btn.addEventListener('click', () => {
+                cosIndex = Number(btn.dataset.i);
+                renderCos();
+            }));
+        }
+        document.getElementById('cosPrev').addEventListener('click', () => { cosIndex = (cosIndex - 1 + cosImages.length) % cosImages.length; renderCos(); });
+        document.getElementById('cosNext').addEventListener('click', () => { cosIndex = (cosIndex + 1) % cosImages.length; renderCos(); });
+
+        const drawImages = [
+            'assets/images/fandom/satsuriku/drawing-main.jpg',
+            'assets/images/fandom/satsuriku/115965.png'
+        ];
+        let drawIndex = 0;
+        const drawMain = document.getElementById('drawMain');
+        const drawThumbs = document.getElementById('drawThumbs');
+
+        function renderDraw() {
+            drawMain.src = drawImages[drawIndex];
+            drawThumbs.innerHTML = drawImages.map((src, i) => `
+                <button class="thumb border ${i===drawIndex?'border-gray-900':'border-gray-300'} rounded-md overflow-hidden" data-i="${i}">
+                    <img src="${src}" class="w-full h-16 object-cover" alt="drawing ${i+1}" />
+                </button>
+            `).join('');
+            drawThumbs.querySelectorAll('button').forEach(btn => btn.addEventListener('click', () => {
+                drawIndex = Number(btn.dataset.i);
+                renderDraw();
+            }));
+        }
+        document.getElementById('drawPrev').addEventListener('click', () => { drawIndex = (drawIndex - 1 + drawImages.length) % drawImages.length; renderDraw(); });
+        document.getElementById('drawNext').addEventListener('click', () => { drawIndex = (drawIndex + 1) % drawImages.length; renderDraw(); });
+
+        renderCos();
+        renderDraw();
+    </script>
+</body>
+</html>
