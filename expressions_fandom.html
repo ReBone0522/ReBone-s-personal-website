@@ -6,14 +6,8 @@
     <title>For Love | Expressions | ReBone</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .entry-hover {
-            transition: all .2s ease;
-        }
-        .entry-hover:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 28px rgba(17,24,39,.08);
-            border-color: #9ca3af;
-        }
+        .entry-hover { transition: all .2s ease; }
+        .entry-hover:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(17,24,39,.08); border-color:#9ca3af; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-mono leading-relaxed">
@@ -28,7 +22,7 @@
         </div>
     </nav>
 
-    <main class="max-w-6xl mx-auto mt-10 px-4 pb-16">
+    <main class="max-w-7xl mx-auto mt-10 px-4 pb-16">
         <div class="flex items-center gap-3 text-sm text-gray-500 mb-6">
             <a href="expressions.html" class="hover:text-gray-700">Expressions</a>
             <span>/</span>
@@ -38,7 +32,7 @@
         <div class="max-w-3xl mb-10">
             <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-3">For Love</p>
             <h2 class="text-3xl font-semibold mb-4">为爱发电</h2>
-            <p class="text-gray-700">这里把游戏实况、宅舞、同人视频放在一起。共同点不是媒介，而是动机：不是任务，不是交差，而是因为真的喜欢才做出来。</p>
+            <p class="text-gray-700">这里放游戏实况与同人衍生创作。不是任务，不是交差，而是因为喜欢才会继续做。</p>
         </div>
 
         <div class="space-y-12">
@@ -66,10 +60,10 @@
                                 <h4 class="text-xl font-semibold">实况系列入口</h4>
                                 <span class="text-xs text-gray-500">4P slot</span>
                             </div>
-                            <p class="text-sm text-gray-600 mb-4">系列页里预置了 4 个分集卡位，已接入一个可播放示例。你把自己的 BVID 填进去就能直接上线使用。</p>
+                            <p class="text-sm text-gray-600 mb-4">系列页预置 4 个分集卡位。把自己的 BVID 填进去就能直接上线。</p>
                             <div class="space-y-2 text-sm text-gray-600 mb-5">
-                                <p>· 已实现：外链播放器、分集切换、失败回退到 B站原链接</p>
-                                <p>· 待你补充：封面、系列简介、4 个分集对应 BVID</p>
+                                <p>· 已实现：外链播放器、分集切换、失败回退 B站原链接</p>
+                                <p>· 待补充：封面、系列简介、分集 BVID</p>
                                 <p>· 当前示例：BV1Ra1KB9EPd（可替换）</p>
                             </div>
                             <div class="grid grid-cols-2 gap-3 text-sm">
@@ -87,13 +81,20 @@
                 <div class="flex items-end justify-between gap-4 mb-4">
                     <div>
                         <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-2">Section 02</p>
-                        <h3 class="text-2xl font-semibold">宅舞</h3>
+                        <h3 class="text-2xl font-semibold">同人衍生</h3>
                     </div>
-                    <span class="text-sm text-gray-400">Bilibili embed</span>
+                    <span class="text-sm text-gray-400">按作品分类</span>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <article class="bg-white rounded-2xl border border-gray-200 overflow-hidden entry-hover">
-                        <div class="aspect-video bg-black">
+
+                <article class="bg-white rounded-2xl border border-gray-200 p-6 space-y-8">
+                    <div>
+                        <p class="text-xs uppercase tracking-[0.2em] text-gray-400 mb-2">Work</p>
+                        <h4 class="text-2xl font-semibold">杀戮天使</h4>
+                    </div>
+
+                    <section class="space-y-4">
+                        <h5 class="text-lg font-semibold">宅舞</h5>
+                        <div class="aspect-[16/8.6] bg-black rounded-xl overflow-hidden border border-gray-300">
                             <iframe
                                 class="w-full h-full"
                                 src="https://player.bilibili.com/player.html?bvid=BV1e1LnzTEvn&autoplay=0&danmaku=0"
@@ -102,20 +103,47 @@
                                 frameborder="no"
                                 framespacing="0"
                                 allowfullscreen="true"
-                                title="宅舞视频"
+                                title="【Rachel X Eddie】《妄想感傷代償連盟》"
                             ></iframe>
                         </div>
-                        <div class="p-6">
-                            <h4 class="text-lg font-semibold mb-2">宅舞作品 #01</h4>
-                            <p class="text-sm text-gray-600 mb-3">已接入 B 站内嵌播放：BV1e1LnzTEvn。</p>
-                            <a href="https://www.bilibili.com/video/BV1e1LnzTEvn" target="_blank" rel="noopener noreferrer" class="text-xs text-gray-500 underline underline-offset-4">在 B 站打开 ↗</a>
+                        <div class="text-sm text-gray-700 space-y-1">
+                            <p class="font-semibold">【Rachel X Eddie】《妄想感傷代償連盟》｜振幅【みーたろぉ】</p>
+                            <p>拍摄：字体</p>
+                            <p>Rachel：再生骨头</p>
+                            <p>Eddie：阿罗拉</p>
                         </div>
-                    </article>
-                    <article class="bg-white rounded-2xl border border-dashed border-gray-300 p-6 entry-hover">
-                        <h4 class="text-lg font-semibold mb-2">预留：更多为爱发电内容</h4>
-                        <p class="text-sm text-gray-600">以后如果有剪辑、MAD、混剪或别的 fan response，继续挂在这里就行。</p>
-                    </article>
-                </div>
+                    </section>
+
+                    <section class="space-y-4">
+                        <h5 class="text-lg font-semibold">Cosplay</h5>
+                        <div class="text-sm text-gray-700 space-y-1">
+                            <p>出镜：再生骨头、阿罗拉</p>
+                            <p>摄影：卡西、以及几位摄影师先前未能被我记录下来；如果有知道是谁请务必联络我加上。</p>
+                        </div>
+
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                            <img src="assets/images/fandom/satsuriku/01-8371.jpg" alt="杀戮天使 cosplay 8371" class="w-full h-48 object-cover rounded-lg border border-gray-200" />
+                            <img src="assets/images/fandom/satsuriku/02-8368.jpg" alt="杀戮天使 cosplay 8368" class="w-full h-48 object-cover rounded-lg border border-gray-200" />
+                            <img src="assets/images/fandom/satsuriku/03.jpg" alt="杀戮天使 cosplay 03" class="w-full h-48 object-cover rounded-lg border border-gray-200" />
+                            <img src="assets/images/fandom/satsuriku/04.jpg" alt="杀戮天使 cosplay 04" class="w-full h-48 object-cover rounded-lg border border-gray-200" />
+                            <img src="assets/images/fandom/satsuriku/05.jpg" alt="杀戮天使 cosplay 05" class="w-full h-48 object-cover rounded-lg border border-gray-200" />
+                            <img src="assets/images/fandom/satsuriku/06.jpg" alt="杀戮天使 cosplay 06" class="w-full h-48 object-cover rounded-lg border border-gray-200" />
+                            <img src="assets/images/fandom/satsuriku/07.jpg" alt="杀戮天使 cosplay 07" class="w-full h-48 object-cover rounded-lg border border-gray-200" />
+                            <img src="assets/images/fandom/satsuriku/08.jpg" alt="杀戮天使 cosplay 08" class="w-full h-48 object-cover rounded-lg border border-gray-200" />
+                            <img src="assets/images/fandom/satsuriku/09.jpg" alt="杀戮天使 cosplay 09" class="w-full h-48 object-cover rounded-lg border border-gray-200" />
+                            <img src="assets/images/fandom/satsuriku/10.jpg" alt="杀戮天使 cosplay 10" class="w-full h-48 object-cover rounded-lg border border-gray-200" />
+                        </div>
+                    </section>
+
+                    <section class="space-y-4">
+                        <h5 class="text-lg font-semibold">绘画</h5>
+                        <div class="bg-gray-50 border border-dashed border-gray-300 rounded-xl p-4">
+                            <p class="text-sm text-gray-700 mb-2">绘画作品：115965.PNG</p>
+                            <p class="text-sm text-gray-600">日期：2021年8月10日</p>
+                            <p class="text-xs text-gray-500 mt-2">（文件待上传后可直接替换成图片展示）</p>
+                        </div>
+                    </section>
+                </article>
             </section>
         </div>
     </main>
