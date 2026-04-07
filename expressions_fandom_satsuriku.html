@@ -8,7 +8,6 @@
     <style>
         html { scroll-behavior: smooth; }
         .side-link.active { background:#f9fafb; border-color:#111827; color:#111827; font-weight:600; }
-        .thumb.active { border-color:#111827; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-mono leading-relaxed">
@@ -80,39 +79,23 @@
                 <section id="cosplay" class="scroll-mt-24 bg-white border border-gray-200 rounded-2xl p-5">
                     <div class="flex items-center justify-between mb-3">
                         <h3 class="text-2xl font-semibold">Cosplay</h3>
-                        <div class="flex gap-2">
-                            <button id="cosPrev" class="px-3 py-1 border border-gray-300 rounded-lg text-sm hover:bg-gray-50">←</button>
-                            <button id="cosNext" class="px-3 py-1 border border-gray-300 rounded-lg text-sm hover:bg-gray-50">→</button>
-                        </div>
                     </div>
                     <div class="text-sm text-gray-700 space-y-1 mb-4">
                         <p>出镜：再生骨头、阿罗拉</p>
                         <p>摄影：卡西、还有几位摄影师先前未能被我记录下来；如果有知道是谁请务必联络我加上。</p>
                     </div>
-
                     <div class="w-full bg-black rounded-xl border border-gray-300 p-2 flex items-center justify-center min-h-[320px]">
-                        <div id="cosEmpty" class="text-gray-400 text-sm">Cos 图库已清空，等待你下一批图片。</div>
-                        <img id="cosMain" src="" alt="cosplay main" class="mx-auto w-auto h-auto max-w-full max-h-[82vh] object-contain hidden" />
+                        <div class="text-gray-400 text-sm">Cos 图库已清空，等待你下一批图片（3张一组）。</div>
                     </div>
-
-                    <div id="cosThumbs" class="mt-4 flex gap-2 overflow-x-auto pb-1"></div>
                 </section>
 
                 <section id="drawing" class="scroll-mt-24 bg-white border border-gray-200 rounded-2xl p-5">
                     <div class="flex items-center justify-between mb-3">
                         <h3 class="text-2xl font-semibold">绘画</h3>
-                        <div class="flex gap-2">
-                            <button id="drawPrev" class="px-3 py-1 border border-gray-300 rounded-lg text-sm hover:bg-gray-50">←</button>
-                            <button id="drawNext" class="px-3 py-1 border border-gray-300 rounded-lg text-sm hover:bg-gray-50">→</button>
-                        </div>
                     </div>
-
                     <div class="w-full bg-gray-100 rounded-xl border border-gray-300 p-2 flex items-center justify-center min-h-[320px]">
-                        <img id="drawMain" src="assets/images/fandom/satsuriku/115965.png" alt="drawing main" class="mx-auto w-auto h-auto max-w-full max-h-[82vh] object-contain" />
+                        <div class="text-gray-500 text-sm">绘画图库已清空，等待你下一批图片。</div>
                     </div>
-
-                    <div id="drawThumbs" class="mt-4 flex gap-2 overflow-x-auto pb-1"></div>
-
                     <div class="text-sm text-gray-700 mt-4">
                         <p>绘画作品：115965.PNG</p>
                         <p class="text-gray-600">日期：2021年8月10日</p>
@@ -135,68 +118,6 @@
             });
         }, { rootMargin: '-35% 0px -55% 0px', threshold: 0.01 });
         sections.forEach(sec => sec && observer.observe(sec));
-
-        const cosImages = [];
-        let cosIndex = 0;
-        const cosMain = document.getElementById('cosMain');
-        const cosThumbs = document.getElementById('cosThumbs');
-
-        const cosEmpty = document.getElementById('cosEmpty');
-        function renderCos() {
-            if (!cosImages.length) {
-                cosMain.classList.add('hidden');
-                cosEmpty.classList.remove('hidden');
-                cosThumbs.innerHTML = '';
-                return;
-            }
-            cosMain.classList.remove('hidden');
-            cosEmpty.classList.add('hidden');
-            cosMain.src = cosImages[cosIndex];
-            cosThumbs.innerHTML = cosImages.map((src, i) => `
-                <button class="thumb shrink-0 w-24 border ${i===cosIndex?'border-gray-900':'border-gray-300'} rounded-md overflow-hidden" data-i="${i}">
-                    <img src="${src}" class="w-full h-16 object-cover" alt="cos ${i+1}" />
-                </button>
-            `).join('');
-            cosThumbs.querySelectorAll('button').forEach(btn => btn.addEventListener('click', () => {
-                cosIndex = Number(btn.dataset.i);
-                renderCos();
-            }));
-        }
-        document.getElementById('cosPrev').addEventListener('click', () => {
-            if (!cosImages.length) return;
-            cosIndex = (cosIndex - 1 + cosImages.length) % cosImages.length;
-            renderCos();
-        });
-        document.getElementById('cosNext').addEventListener('click', () => {
-            if (!cosImages.length) return;
-            cosIndex = (cosIndex + 1) % cosImages.length;
-            renderCos();
-        });
-
-        const drawImages = [
-            'assets/images/fandom/satsuriku/115965.png'
-        ];
-        let drawIndex = 0;
-        const drawMain = document.getElementById('drawMain');
-        const drawThumbs = document.getElementById('drawThumbs');
-
-        function renderDraw() {
-            drawMain.src = drawImages[drawIndex];
-            drawThumbs.innerHTML = drawImages.map((src, i) => `
-                <button class="thumb shrink-0 w-24 border ${i===drawIndex?'border-gray-900':'border-gray-300'} rounded-md overflow-hidden" data-i="${i}">
-                    <img src="${src}" class="w-full h-16 object-cover" alt="drawing ${i+1}" />
-                </button>
-            `).join('');
-            drawThumbs.querySelectorAll('button').forEach(btn => btn.addEventListener('click', () => {
-                drawIndex = Number(btn.dataset.i);
-                renderDraw();
-            }));
-        }
-        document.getElementById('drawPrev').addEventListener('click', () => { drawIndex = (drawIndex - 1 + drawImages.length) % drawImages.length; renderDraw(); });
-        document.getElementById('drawNext').addEventListener('click', () => { drawIndex = (drawIndex + 1) % drawImages.length; renderDraw(); });
-
-        renderCos();
-        renderDraw();
     </script>
 </body>
 </html>
