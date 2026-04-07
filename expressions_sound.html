@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sound | Expressions | ReBone</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .side-link.active {
+            background: #f9fafb;
+            border-color: #111827;
+            color: #111827;
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-mono leading-relaxed">
     <nav class="sticky top-0 z-50 bg-[length:113%_1000px] bg-center p-4 flex justify-between items-center" style="background-image: url('assets/nav-bg.PNG');">
@@ -19,7 +28,11 @@
     </nav>
 
     <main class="max-w-6xl mx-auto mt-10 px-4 pb-16">
-        <a href="expressions.html" class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 mb-6">← 返回 Expressions</a>
+        <div class="flex items-center gap-3 text-sm text-gray-500 mb-6">
+            <a href="expressions.html" class="hover:text-gray-700">Expressions</a>
+            <span>/</span>
+            <span class="text-gray-700">音乐</span>
+        </div>
 
         <div class="max-w-4xl mb-8">
             <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-3">Sound</p>
@@ -27,199 +40,221 @@
             <p class="text-gray-700">八音盒 cover、自创曲目。支持订购。</p>
         </div>
 
-        <section class="mb-12">
-            <div class="flex items-end justify-between gap-4 mb-4">
-                <div>
-                    <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-2">Section 01</p>
-                    <h3 class="text-2xl font-semibold">Music Box Tracks</h3>
-                </div>
+        <div class="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-8 items-start">
+            <aside class="bg-white border border-gray-200 rounded-2xl p-4 lg:sticky lg:top-24">
+                <p class="text-xs uppercase tracking-[0.2em] text-gray-400 mb-3">Sections</p>
+                <nav class="space-y-2 text-sm">
+                    <a href="#music-box" data-side-link="music-box" class="side-link block rounded-lg border border-gray-200 px-3 py-2 hover:bg-gray-50">八音盒曲目</a>
+                    <a href="#original" data-side-link="original" class="side-link block rounded-lg border border-gray-200 px-3 py-2 hover:bg-gray-50">原创曲目</a>
+                    <a href="#wish-order" data-side-link="wish-order" class="side-link block rounded-lg border border-gray-200 px-3 py-2 hover:bg-gray-50">许愿 / 订购</a>
+                </nav>
+            </aside>
+
+            <div class="space-y-12">
+                <section id="music-box" class="scroll-mt-24">
+                    <div class="flex items-end justify-between gap-4 mb-4">
+                        <div>
+                            <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-2">Section 01</p>
+                            <h3 class="text-2xl font-semibold">Music Box Tracks</h3>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <article class="bg-white rounded-2xl border border-gray-200 p-5">
+                            <div class="flex gap-4 items-start">
+                                <div class="w-20 h-20 rounded-lg border border-dashed border-gray-300 bg-gray-100 text-gray-500 flex items-center justify-center text-[10px] shrink-0">封面位</div>
+                                <div class="min-w-0 w-full">
+                                    <h4 class="text-lg font-semibold mb-1">Remember Me</h4>
+                                    <p class="text-sm text-gray-600 mb-1">“死亡不是终点，遗忘才是。”</p>
+                                    <p class="text-xs text-gray-500 mb-1">原曲：Remember Me（《Coco》）</p>
+                                    <p class="text-xs text-gray-500 mb-2">作者：Robert Lopez、Kristen Anderson-Lopez</p>
+                                    <p class="text-xs text-gray-400 mb-2">日期：2025年</p>
+                                </div>
+                            </div>
+                            <audio controls preload="metadata" class="w-full mt-3"><source src="assets/audio/remember_me.mp3" type="audio/mpeg"></audio>
+                        </article>
+
+                        <article class="bg-white rounded-2xl border border-gray-200 p-5">
+                            <div class="flex gap-4 items-start">
+                                <div class="w-20 h-20 rounded-lg border border-dashed border-gray-300 bg-gray-100 text-gray-500 flex items-center justify-center text-[10px] shrink-0">封面位</div>
+                                <div class="min-w-0 w-full">
+                                    <h4 class="text-lg font-semibold mb-1">Saria's Theme</h4>
+                                    <p class="text-sm text-gray-600 mb-1">“某一天，这个地方对我们来说都会变得很重要吧。”</p>
+                                    <p class="text-xs text-gray-500 mb-1">原曲：Saria's Song / Lost Woods（《The Legend of Zelda: Ocarina of Time》）</p>
+                                    <p class="text-xs text-gray-500 mb-2">作者：近藤浩治（Koji Kondo）</p>
+                                    <p class="text-xs text-gray-400 mb-2">日期：2025年</p>
+                                </div>
+                            </div>
+                            <audio controls preload="metadata" class="w-full mt-3"><source src="assets/audio/sarias_theme.mp3" type="audio/mpeg"></audio>
+                        </article>
+
+                        <article class="bg-white rounded-2xl border border-gray-200 p-5">
+                            <div class="flex gap-4 items-start">
+                                <div class="w-20 h-20 rounded-lg border border-dashed border-gray-300 bg-gray-100 text-gray-500 flex items-center justify-center text-[10px] shrink-0">封面位</div>
+                                <div class="min-w-0 w-full">
+                                    <h4 class="text-lg font-semibold mb-1">you are my curse</h4>
+                                    <p class="text-sm text-gray-600 mb-1">晚安</p>
+                                    <p class="text-xs text-gray-500 mb-1">原曲：you are my curse</p>
+                                    <p class="text-xs text-gray-500 mb-2">作者：nyamura（如需更正可再改）</p>
+                                    <p class="text-xs text-gray-400 mb-2">日期：2025年</p>
+                                </div>
+                            </div>
+                            <audio controls preload="metadata" class="w-full mt-3"><source src="assets/audio/you_are_my_curse.mp3" type="audio/mpeg"></audio>
+                        </article>
+
+                        <article class="bg-white rounded-2xl border border-gray-200 p-5">
+                            <div class="flex gap-4 items-start">
+                                <div class="w-20 h-20 rounded-lg border border-dashed border-gray-300 bg-gray-100 text-gray-500 flex items-center justify-center text-[10px] shrink-0">封面位</div>
+                                <div class="min-w-0 w-full">
+                                    <h4 class="text-lg font-semibold mb-1">Army Dreamers</h4>
+                                    <p class="text-sm text-gray-600 mb-1">生命一睁眼，生命一闭眼</p>
+                                    <p class="text-xs text-gray-500 mb-1">原曲：Army Dreamers</p>
+                                    <p class="text-xs text-gray-500 mb-2">作者：Kate Bush</p>
+                                    <p class="text-xs text-gray-400 mb-2">日期：2025年</p>
+                                </div>
+                            </div>
+                            <audio controls preload="metadata" class="w-full mt-3"><source src="assets/audio/army_dreamers.mp3" type="audio/mpeg"></audio>
+                        </article>
+
+                        <article class="bg-white rounded-2xl border border-gray-200 p-5">
+                            <div class="flex gap-4 items-start">
+                                <div class="w-20 h-20 rounded-lg border border-dashed border-gray-300 bg-gray-100 text-gray-500 flex items-center justify-center text-[10px] shrink-0">封面位</div>
+                                <div class="min-w-0 w-full">
+                                    <h4 class="text-lg font-semibold mb-1">City of Stars</h4>
+                                    <p class="text-sm text-gray-600 mb-1">送给我的爱人</p>
+                                    <p class="text-xs text-gray-500 mb-1">原曲：City of Stars（《La La Land》）</p>
+                                    <p class="text-xs text-gray-500 mb-2">作者：Justin Hurwitz、Benj Pasek、Justin Paul</p>
+                                    <p class="text-xs text-gray-400 mb-2">日期：2025年</p>
+                                </div>
+                            </div>
+                            <audio controls preload="metadata" class="w-full mt-3"><source src="assets/audio/city_of_stars.mp3" type="audio/mpeg"></audio>
+                        </article>
+
+                        <article class="bg-white rounded-2xl border border-gray-200 p-5">
+                            <div class="flex gap-4 items-start">
+                                <div class="w-20 h-20 rounded-lg border border-dashed border-gray-300 bg-gray-100 text-gray-500 flex items-center justify-center text-[10px] shrink-0">封面位</div>
+                                <div class="min-w-0 w-full">
+                                    <h4 class="text-lg font-semibold mb-1">古い人形 (Old Doll)</h4>
+                                    <p class="text-sm text-gray-600 mb-1">纪念 Ib 恐怖美术馆、Mad Father</p>
+                                    <p class="text-xs text-gray-500 mb-1">原曲：古い人形（Old Doll）</p>
+                                    <p class="text-xs text-gray-500 mb-2">作者：甘茶の音楽工房（Amacha's Music Studio，若你有指定版本可再改）</p>
+                                    <p class="text-xs text-gray-400 mb-2">日期：2025年</p>
+                                </div>
+                            </div>
+                            <audio controls preload="metadata" class="w-full mt-3"><source src="assets/audio/old_doll.mp3" type="audio/mpeg"></audio>
+                        </article>
+                    </div>
+
+                    <p class="text-xs text-gray-500 mt-5">展示说明：翻奏/复刻内容仅用于作品展示。原曲著作权归原权利人所有；如需商用，请先取得原曲权利方授权。若权利方提出下架要求，将配合处理。</p>
+                </section>
+
+                <section id="original" class="scroll-mt-24">
+                    <div class="flex items-end justify-between gap-4 mb-4">
+                        <div>
+                            <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-2">Section 02</p>
+                            <h3 class="text-2xl font-semibold">Original Compositions</h3>
+                        </div>
+                        <span class="text-sm text-gray-400">Now playing</span>
+                    </div>
+
+                    <p class="text-sm text-gray-600 mb-5">备注：未来可能用作自己的游戏创作 BGM。</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <article class="bg-white rounded-2xl border border-gray-200 p-5">
+                            <div class="flex gap-4 items-start">
+                                <div class="w-20 h-20 rounded-lg border border-dashed border-gray-300 bg-gray-100 text-gray-500 flex items-center justify-center text-[10px] shrink-0">封面位</div>
+                                <div class="min-w-0 w-full">
+                                    <h4 class="text-lg font-semibold mb-2">温度</h4>
+                                    <p class="text-xs text-gray-400 mb-2">日期：2025.12.21</p>
+                                </div>
+                            </div>
+                            <audio controls preload="metadata" class="w-full mt-3"><source src="assets/audio/nuanyi.m4a" type="audio/mp4"></audio>
+                        </article>
+
+                        <article class="bg-white rounded-2xl border border-gray-200 p-5">
+                            <div class="flex gap-4 items-start">
+                                <div class="w-20 h-20 rounded-lg border border-dashed border-gray-300 bg-gray-100 text-gray-500 flex items-center justify-center text-[10px] shrink-0">封面位</div>
+                                <div class="min-w-0 w-full">
+                                    <h4 class="text-lg font-semibold mb-2">自我证明</h4>
+                                    <p class="text-xs text-gray-400 mb-2">日期：2025.12.21</p>
+                                </div>
+                            </div>
+                            <audio controls preload="metadata" class="w-full mt-3"><source src="assets/audio/zizheng.m4a" type="audio/mp4"></audio>
+                        </article>
+                    </div>
+                </section>
+
+                <section id="wish-order" class="scroll-mt-24">
+                    <div class="flex items-end justify-between gap-4 mb-4">
+                        <div>
+                            <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-2">Section 03</p>
+                            <h3 class="text-2xl font-semibold">许愿 / 订购</h3>
+                        </div>
+                        <span class="text-sm text-gray-400">轻量委托</span>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-gray-200 p-6 space-y-6 text-sm text-gray-700">
+                        <div>
+                            <p class="font-semibold mb-3">许愿交互</p>
+                            <p class="text-gray-600 mb-3">想听某种曲目的复刻，可以在这里许愿：输入曲目名称 + 作者。我后续可能会创作对应曲子。</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <input id="wishTrack" type="text" placeholder="曲目名称（例如：Undertale - Once Upon a Time）" class="rounded-lg border border-gray-300 px-3 py-2" />
+                                <input id="wishArtist" type="text" placeholder="作者 / 作曲" class="rounded-lg border border-gray-300 px-3 py-2" />
+                            </div>
+                            <textarea id="wishNote" placeholder="补充想法（可选）" class="mt-3 w-full rounded-lg border border-gray-300 px-3 py-2 min-h-24"></textarea>
+                            <div class="mt-3 flex flex-wrap gap-3">
+                                <button id="sendWish" type="button" class="rounded-lg bg-black text-white px-4 py-2 hover:bg-gray-800">提交许愿（邮件）</button>
+                                <span class="text-xs text-gray-500 self-center">会自动生成邮件草稿给我</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <p class="font-semibold mb-3">订购规则</p>
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full text-sm border border-gray-200 rounded-xl overflow-hidden">
+                                    <thead class="bg-gray-50 text-gray-700">
+                                        <tr>
+                                            <th class="text-left px-4 py-3 border-b border-gray-200">项目</th>
+                                            <th class="text-left px-4 py-3 border-b border-gray-200">价格</th>
+                                            <th class="text-left px-4 py-3 border-b border-gray-200">计时规则</th>
+                                            <th class="text-left px-4 py-3 border-b border-gray-200">备注</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="px-4 py-3 border-b border-gray-100">原创曲目使用权</td>
+                                            <td class="px-4 py-3 border-b border-gray-100">半分钟 5 元</td>
+                                            <td class="px-4 py-3 border-b border-gray-100">超过半分钟 15 秒算半分钟</td>
+                                            <td class="px-4 py-3 border-b border-gray-100">-</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-3 border-b border-gray-100">八音盒纸带成品</td>
+                                            <td class="px-4 py-3 border-b border-gray-100">半分钟 10～20 元 + 转译费 20 元</td>
+                                            <td class="px-4 py-3 border-b border-gray-100">超过半分钟 15 秒算半分钟</td>
+                                            <td class="px-4 py-3 border-b border-gray-100">转译费按单首收取</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-3">买断权（原创）</td>
+                                            <td class="px-4 py-3">在对应价格基础上 ×1.5</td>
+                                            <td class="px-4 py-3">-</td>
+                                            <td class="px-4 py-3">可商用；可要求不展示该曲目</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="rounded-xl bg-gray-50 border border-gray-200 p-4 text-xs text-gray-600 mt-4">
+                                工期：根据当前学习/项目安排浮动，需联系后确认。
+                            </div>
+
+                            <div class="rounded-xl bg-black text-white px-4 py-3 text-sm inline-block mt-4">
+                                联系方式：<a class="underline underline-offset-4" href="mailto:wuruohan0522@gmail.com">wuruohan0522@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <article class="bg-white rounded-2xl border border-gray-200 p-5">
-                    <div class="flex gap-4 items-start">
-                        <div class="w-20 h-20 rounded-lg border border-dashed border-gray-300 bg-gray-100 text-gray-500 flex items-center justify-center text-[10px] shrink-0">封面位</div>
-                        <div class="min-w-0 w-full">
-                            <h4 class="text-lg font-semibold mb-1">Remember Me</h4>
-                            <p class="text-sm text-gray-600 mb-1">“死亡不是终点，遗忘才是。”</p>
-                            <p class="text-xs text-gray-500 mb-1">原曲：Remember Me（《Coco》）</p>
-                            <p class="text-xs text-gray-500 mb-2">作者：Robert Lopez、Kristen Anderson-Lopez</p>
-                            <p class="text-xs text-gray-400 mb-2">日期：2025年</p>
-                        </div>
-                    </div>
-                    <audio controls preload="metadata" class="w-full mt-3"><source src="assets/audio/remember_me.mp3" type="audio/mpeg"></audio>
-                </article>
-
-                <article class="bg-white rounded-2xl border border-gray-200 p-5">
-                    <div class="flex gap-4 items-start">
-                        <div class="w-20 h-20 rounded-lg border border-dashed border-gray-300 bg-gray-100 text-gray-500 flex items-center justify-center text-[10px] shrink-0">封面位</div>
-                        <div class="min-w-0 w-full">
-                            <h4 class="text-lg font-semibold mb-1">Saria's Theme</h4>
-                            <p class="text-sm text-gray-600 mb-1">“某一天，这个地方对我们来说都会变得很重要吧。”</p>
-                            <p class="text-xs text-gray-500 mb-1">原曲：Saria's Song / Lost Woods（《The Legend of Zelda: Ocarina of Time》）</p>
-                            <p class="text-xs text-gray-500 mb-2">作者：近藤浩治（Koji Kondo）</p>
-                            <p class="text-xs text-gray-400 mb-2">日期：2025年</p>
-                        </div>
-                    </div>
-                    <audio controls preload="metadata" class="w-full mt-3"><source src="assets/audio/sarias_theme.mp3" type="audio/mpeg"></audio>
-                </article>
-
-                <article class="bg-white rounded-2xl border border-gray-200 p-5">
-                    <div class="flex gap-4 items-start">
-                        <div class="w-20 h-20 rounded-lg border border-dashed border-gray-300 bg-gray-100 text-gray-500 flex items-center justify-center text-[10px] shrink-0">封面位</div>
-                        <div class="min-w-0 w-full">
-                            <h4 class="text-lg font-semibold mb-1">you are my curse</h4>
-                            <p class="text-sm text-gray-600 mb-1">晚安</p>
-                            <p class="text-xs text-gray-500 mb-1">原曲：you are my curse</p>
-                            <p class="text-xs text-gray-500 mb-2">作者：nyamura（如需更正可再改）</p>
-                            <p class="text-xs text-gray-400 mb-2">日期：2025年</p>
-                        </div>
-                    </div>
-                    <audio controls preload="metadata" class="w-full mt-3"><source src="assets/audio/you_are_my_curse.mp3" type="audio/mpeg"></audio>
-                </article>
-
-                <article class="bg-white rounded-2xl border border-gray-200 p-5">
-                    <div class="flex gap-4 items-start">
-                        <div class="w-20 h-20 rounded-lg border border-dashed border-gray-300 bg-gray-100 text-gray-500 flex items-center justify-center text-[10px] shrink-0">封面位</div>
-                        <div class="min-w-0 w-full">
-                            <h4 class="text-lg font-semibold mb-1">Army Dreamers</h4>
-                            <p class="text-sm text-gray-600 mb-1">生命一睁眼，生命一闭眼</p>
-                            <p class="text-xs text-gray-500 mb-1">原曲：Army Dreamers</p>
-                            <p class="text-xs text-gray-500 mb-2">作者：Kate Bush</p>
-                            <p class="text-xs text-gray-400 mb-2">日期：2025年</p>
-                        </div>
-                    </div>
-                    <audio controls preload="metadata" class="w-full mt-3"><source src="assets/audio/army_dreamers.mp3" type="audio/mpeg"></audio>
-                </article>
-
-                <article class="bg-white rounded-2xl border border-gray-200 p-5">
-                    <div class="flex gap-4 items-start">
-                        <div class="w-20 h-20 rounded-lg border border-dashed border-gray-300 bg-gray-100 text-gray-500 flex items-center justify-center text-[10px] shrink-0">封面位</div>
-                        <div class="min-w-0 w-full">
-                            <h4 class="text-lg font-semibold mb-1">City of Stars</h4>
-                            <p class="text-sm text-gray-600 mb-1">送给我的爱人</p>
-                            <p class="text-xs text-gray-500 mb-1">原曲：City of Stars（《La La Land》）</p>
-                            <p class="text-xs text-gray-500 mb-2">作者：Justin Hurwitz、Benj Pasek、Justin Paul</p>
-                            <p class="text-xs text-gray-400 mb-2">日期：2025年</p>
-                        </div>
-                    </div>
-                    <audio controls preload="metadata" class="w-full mt-3"><source src="assets/audio/city_of_stars.mp3" type="audio/mpeg"></audio>
-                </article>
-
-                <article class="bg-white rounded-2xl border border-gray-200 p-5">
-                    <div class="flex gap-4 items-start">
-                        <div class="w-20 h-20 rounded-lg border border-dashed border-gray-300 bg-gray-100 text-gray-500 flex items-center justify-center text-[10px] shrink-0">封面位</div>
-                        <div class="min-w-0 w-full">
-                            <h4 class="text-lg font-semibold mb-1">古い人形 (Old Doll)</h4>
-                            <p class="text-sm text-gray-600 mb-1">纪念 Ib 恐怖美术馆、Mad Father</p>
-                            <p class="text-xs text-gray-500 mb-1">原曲：古い人形（Old Doll）</p>
-                            <p class="text-xs text-gray-500 mb-2">作者：甘茶の音楽工房（Amacha's Music Studio，若你有指定版本可再改）</p>
-                            <p class="text-xs text-gray-400 mb-2">日期：2025年</p>
-                        </div>
-                    </div>
-                    <audio controls preload="metadata" class="w-full mt-3"><source src="assets/audio/old_doll.mp3" type="audio/mpeg"></audio>
-                </article>
-            </div>
-
-            <p class="text-xs text-gray-500 mt-5">展示说明：翻奏/复刻内容仅用于作品展示。原曲著作权归原权利人所有；如需商用，请先取得原曲权利方授权。若权利方提出下架要求，将配合处理。</p>
-        </section>
-
-        <section class="mb-12">
-            <div class="flex items-end justify-between gap-4 mb-4">
-                <div>
-                    <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-2">Section 02</p>
-                    <h3 class="text-2xl font-semibold">Original Compositions</h3>
-                </div>
-                <span class="text-sm text-gray-400">Now playing</span>
-            </div>
-
-            <p class="text-sm text-gray-600 mb-5">备注：未来可能用作自己的游戏创作 BGM。</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <article class="bg-white rounded-2xl border border-gray-200 p-5">
-                    <div class="flex gap-4 items-start">
-                        <div class="w-20 h-20 rounded-lg border border-dashed border-gray-300 bg-gray-100 text-gray-500 flex items-center justify-center text-[10px] shrink-0">封面位</div>
-                        <div class="min-w-0 w-full">
-                            <h4 class="text-lg font-semibold mb-2">温度</h4>
-                            <p class="text-xs text-gray-400 mb-2">日期：2025.12.21</p>
-                        </div>
-                    </div>
-                    <audio controls preload="metadata" class="w-full mt-3"><source src="assets/audio/nuanyi.m4a" type="audio/mp4"></audio>
-                </article>
-
-                <article class="bg-white rounded-2xl border border-gray-200 p-5">
-                    <div class="flex gap-4 items-start">
-                        <div class="w-20 h-20 rounded-lg border border-dashed border-gray-300 bg-gray-100 text-gray-500 flex items-center justify-center text-[10px] shrink-0">封面位</div>
-                        <div class="min-w-0 w-full">
-                            <h4 class="text-lg font-semibold mb-2">自我证明</h4>
-                            <p class="text-xs text-gray-400 mb-2">日期：2025.12.21</p>
-                        </div>
-                    </div>
-                    <audio controls preload="metadata" class="w-full mt-3"><source src="assets/audio/zizheng.m4a" type="audio/mp4"></audio>
-                </article>
-            </div>
-        </section>
-
-        <section>
-            <div class="flex items-end justify-between gap-4 mb-4">
-                <div>
-                    <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-2">Section 03</p>
-                    <h3 class="text-2xl font-semibold">订购 / Commission</h3>
-                </div>
-                <span class="text-sm text-gray-400">非商业小规模委托</span>
-            </div>
-
-            <div class="bg-white rounded-2xl border border-gray-200 p-6 space-y-4 text-sm text-gray-700">
-                <p>如有曲目八音盒 cover / 原创曲目定制需求，可参考：</p>
-
-                <div class="overflow-x-auto">
-                    <table class="min-w-full text-sm border border-gray-200 rounded-xl overflow-hidden">
-                        <thead class="bg-gray-50 text-gray-700">
-                            <tr>
-                                <th class="text-left px-4 py-3 border-b border-gray-200">项目</th>
-                                <th class="text-left px-4 py-3 border-b border-gray-200">价格</th>
-                                <th class="text-left px-4 py-3 border-b border-gray-200">计时规则</th>
-                                <th class="text-left px-4 py-3 border-b border-gray-200">备注</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="px-4 py-3 border-b border-gray-100">电子版本（复刻）</td>
-                                <td class="px-4 py-3 border-b border-gray-100">半分钟 4～6 元</td>
-                                <td class="px-4 py-3 border-b border-gray-100">超过半分钟 15 秒算半分钟</td>
-                                <td class="px-4 py-3 border-b border-gray-100">-</td>
-                            </tr>
-                            <tr>
-                                <td class="px-4 py-3 border-b border-gray-100">八音盒纸带成品（复刻）</td>
-                                <td class="px-4 py-3 border-b border-gray-100">半分钟 10～20 元</td>
-                                <td class="px-4 py-3 border-b border-gray-100">超过半分钟 15 秒算半分钟</td>
-                                <td class="px-4 py-3 border-b border-gray-100">-</td>
-                            </tr>
-                            <tr>
-                                <td class="px-4 py-3 border-b border-gray-100">原创曲目使用权</td>
-                                <td class="px-4 py-3 border-b border-gray-100">半分钟 5 元</td>
-                                <td class="px-4 py-3 border-b border-gray-100">超过半分钟 15 秒算半分钟</td>
-                                <td class="px-4 py-3 border-b border-gray-100">-</td>
-                            </tr>
-                            <tr>
-                                <td class="px-4 py-3">买断权</td>
-                                <td class="px-4 py-3">在对应价格基础上 ×1.5</td>
-                                <td class="px-4 py-3">-</td>
-                                <td class="px-4 py-3">可商用；可要求不展示该曲目</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="rounded-xl bg-gray-50 border border-gray-200 p-4 text-xs text-gray-600">
-                    工期：根据当前学习/项目安排浮动，需联系后确认。
-                </div>
-
-                <div class="rounded-xl bg-black text-white px-4 py-3 text-sm inline-block">
-                    联系方式：<a class="underline underline-offset-4" href="mailto:wuruohan0522@gmail.com">wuruohan0522@gmail.com</a>
-                </div>
-            </div>
-        </section>
+        </div>
     </main>
 
     <footer class="text-center text-sm text-gray-500 mt-10 mb-4">© 2025 Rebone. 保留所有权利.</footer>
@@ -232,6 +267,33 @@
                     if (other !== current && !other.paused) other.pause();
                 });
             });
+        });
+
+        const sideLinks = Array.from(document.querySelectorAll('[data-side-link]'));
+        const sections = ['music-box', 'original', 'wish-order'].map(id => document.getElementById(id));
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const id = entry.target.id;
+                sideLinks.forEach(link => {
+                    link.classList.toggle('active', link.dataset.sideLink === id);
+                });
+            });
+        }, { rootMargin: '-35% 0px -55% 0px', threshold: 0.01 });
+        sections.forEach(sec => sec && observer.observe(sec));
+
+        const wishTrack = document.getElementById('wishTrack');
+        const wishArtist = document.getElementById('wishArtist');
+        const wishNote = document.getElementById('wishNote');
+        document.getElementById('sendWish').addEventListener('click', () => {
+            const track = (wishTrack.value || '').trim();
+            const artist = (wishArtist.value || '').trim();
+            const note = (wishNote.value || '').trim();
+            const subject = encodeURIComponent('曲目许愿');
+            const body = encodeURIComponent(
+`曲目名称：${track || '（未填）'}\n作者/作曲：${artist || '（未填）'}\n\n补充：${note || '（无）'}`
+            );
+            window.location.href = `mailto:wuruohan0522@gmail.com?subject=${subject}&body=${body}`;
         });
     </script>
 </body>

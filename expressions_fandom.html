@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>For Love | Expressions | ReBone</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .entry-hover {
+            transition: all .2s ease;
+        }
+        .entry-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(17,24,39,.08);
+            border-color: #9ca3af;
+        }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-mono leading-relaxed">
     <nav class="sticky top-0 z-50 bg-[length:113%_1000px] bg-center p-4 flex justify-between items-center" style="background-image: url('assets/nav-bg.PNG');">
@@ -19,7 +29,12 @@
     </nav>
 
     <main class="max-w-6xl mx-auto mt-10 px-4 pb-16">
-        <a href="expressions.html" class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 mb-6">← 返回 Expressions</a>
+        <div class="flex items-center gap-3 text-sm text-gray-500 mb-6">
+            <a href="expressions.html" class="hover:text-gray-700">Expressions</a>
+            <span>/</span>
+            <span class="text-gray-700">为爱发电</span>
+        </div>
+
         <div class="max-w-3xl mb-10">
             <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-3">For Love</p>
             <h2 class="text-3xl font-semibold mb-4">为爱发电</h2>
@@ -36,16 +51,16 @@
                     <span class="text-sm text-gray-400">Series archive</span>
                 </div>
 
-                <article class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                <article class="bg-white rounded-2xl border border-gray-200 overflow-hidden entry-hover">
                     <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr]">
-                        <div class="bg-gray-900 text-white p-6 flex flex-col justify-between min-h-64">
+                        <a href="expressions_fandom_series.html" class="bg-gray-900 text-white p-6 flex flex-col justify-between min-h-64 hover:bg-gray-800 transition">
                             <p class="text-xs tracking-[0.2em] text-gray-300 uppercase">Series Page Ready</p>
                             <div>
                                 <h4 class="text-2xl font-semibold mb-2">游戏实况系列页</h4>
-                                <p class="text-sm text-gray-200">已经做成独立页面，支持 B站外链播放器 iframe 内嵌、分集切换和原站跳转。</p>
+                                <p class="text-sm text-gray-200">整块可点击进入。支持 B 站外链播放器 iframe 内嵌、分集切换和原站跳转。</p>
                             </div>
-                            <a href="expressions_fandom_series.html" class="inline-flex items-center gap-2 text-sm underline underline-offset-4">进入系列页 <span>↗</span></a>
-                        </div>
+                            <span class="inline-flex items-center gap-2 text-sm underline underline-offset-4">进入系列页 <span>↗</span></span>
+                        </a>
                         <div class="p-6">
                             <div class="flex items-center justify-between gap-4 mb-3">
                                 <h4 class="text-xl font-semibold">实况系列入口</h4>
@@ -74,18 +89,29 @@
                         <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-2">Section 02</p>
                         <h3 class="text-2xl font-semibold">宅舞</h3>
                     </div>
-                    <span class="text-sm text-gray-400">Single work / series</span>
+                    <span class="text-sm text-gray-400">Bilibili embed</span>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <article class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
-                        <div class="h-56 bg-gray-100 text-gray-400 flex items-center justify-center text-sm tracking-[0.2em]">VIDEO PLACEHOLDER</div>
+                    <article class="bg-white rounded-2xl border border-gray-200 overflow-hidden entry-hover">
+                        <div class="aspect-video bg-black">
+                            <iframe
+                                class="w-full h-full"
+                                src="https://player.bilibili.com/player.html?bvid=BV1e1LnzTEvn&autoplay=0&danmaku=0"
+                                scrolling="no"
+                                border="0"
+                                frameborder="no"
+                                framespacing="0"
+                                allowfullscreen="true"
+                                title="宅舞视频"
+                            ></iframe>
+                        </div>
                         <div class="p-6">
-                            <h4 class="text-lg font-semibold mb-2">预留：宅舞作品 #01</h4>
-                            <p class="text-sm text-gray-600 mb-3">后面可以放曲目、编舞来源、拍摄场景和一句想留给当时自己的话。</p>
-                            <p class="text-xs text-gray-400">status: material pending</p>
+                            <h4 class="text-lg font-semibold mb-2">宅舞作品 #01</h4>
+                            <p class="text-sm text-gray-600 mb-3">已接入 B 站内嵌播放：BV1e1LnzTEvn。</p>
+                            <a href="https://www.bilibili.com/video/BV1e1LnzTEvn" target="_blank" rel="noopener noreferrer" class="text-xs text-gray-500 underline underline-offset-4">在 B 站打开 ↗</a>
                         </div>
                     </article>
-                    <article class="bg-white rounded-2xl border border-dashed border-gray-300 p-6">
+                    <article class="bg-white rounded-2xl border border-dashed border-gray-300 p-6 entry-hover">
                         <h4 class="text-lg font-semibold mb-2">预留：更多为爱发电内容</h4>
                         <p class="text-sm text-gray-600">以后如果有剪辑、MAD、混剪或别的 fan response，继续挂在这里就行。</p>
                     </article>
