@@ -20,33 +20,58 @@
 
     <main class="max-w-6xl mx-auto mt-10 px-4 pb-16">
         <a href="expressions.html" class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 mb-6">← 返回 Expressions</a>
-        <div class="max-w-3xl mb-10">
+
+        <div class="max-w-4xl mb-10">
             <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-3">Sound</p>
             <h2 class="text-3xl font-semibold mb-4">音乐 / 声音</h2>
-            <p class="text-gray-700">先按两条线分开：八音盒 cover 和自创曲目。原创区现在先放两首：<span class="font-semibold">暖意</span>、<span class="font-semibold">自证</span>。</p>
+            <p class="text-gray-700">这里分成两条线：八音盒曲目与原创曲目。已支持同页单曲播放（播放 B 时会自动暂停 A）。</p>
         </div>
 
-        <div class="space-y-10">
+        <div class="space-y-12">
             <section>
                 <div class="flex items-end justify-between gap-4 mb-4">
                     <div>
                         <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-2">Section 01</p>
-                        <h3 class="text-2xl font-semibold">Music Box Covers</h3>
+                        <h3 class="text-2xl font-semibold">Music Box Tracks</h3>
                     </div>
-                    <span class="text-sm text-gray-400">Preview-first</span>
+                    <span class="text-sm text-gray-400">你的八音盒曲目</span>
                 </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <article class="bg-white rounded-2xl border border-gray-200 p-6">
-                        <div class="h-28 rounded-xl bg-gray-100 flex items-center justify-center text-gray-400 text-sm mb-4">AUDIO PREVIEW PLACEHOLDER</div>
-                        <h4 class="text-lg font-semibold mb-2">预留：八音盒 cover #01</h4>
-                        <p class="text-sm text-gray-600 mb-3">曲名、时长、改编说明、你想保留的听感重点都可以放这里。</p>
-                        <p class="text-xs text-gray-400">status: material pending</p>
+                        <div class="rounded-xl bg-gray-900 text-white px-4 py-3 text-sm mb-4">MUSIC BOX TRACK</div>
+                        <h4 class="text-lg font-semibold mb-2">Remember Me</h4>
+                        <p class="text-sm text-gray-600 mb-3">“死亡不是终点，遗忘才是。”</p>
+                        <p class="text-xs text-gray-400 mb-4">日期：2025.12.21</p>
+                        <audio controls preload="metadata" class="w-full">
+                            <source src="assets/audio/remember_me.mp3" type="audio/mpeg">
+                            你的浏览器不支持 audio 播放。
+                        </audio>
                     </article>
+
                     <article class="bg-white rounded-2xl border border-gray-200 p-6">
-                        <div class="h-28 rounded-xl bg-gray-100 flex items-center justify-center text-gray-400 text-sm mb-4">AUDIO PREVIEW PLACEHOLDER</div>
-                        <h4 class="text-lg font-semibold mb-2">预留：八音盒 cover #02</h4>
-                        <p class="text-sm text-gray-600 mb-3">也可以以后加一行“原曲来源 / 为什么想做这首”。</p>
-                        <p class="text-xs text-gray-400">status: material pending</p>
+                        <div class="rounded-xl bg-gray-100 text-gray-500 px-4 py-3 text-sm mb-4">MUSIC BOX TRACK</div>
+                        <h4 class="text-lg font-semibold mb-2">Saria's Theme</h4>
+                        <p class="text-sm text-gray-600 mb-3">“某一天，这个地方对我们来说都会变得很重要吧。”</p>
+                        <p class="text-xs text-gray-400">日期：2025.12.21</p>
+                    </article>
+
+                    <article class="bg-white rounded-2xl border border-gray-200 p-6">
+                        <div class="rounded-xl bg-gray-100 text-gray-500 px-4 py-3 text-sm mb-4">MUSIC BOX TRACK</div>
+                        <h4 class="text-lg font-semibold mb-2">you are my curse</h4>
+                        <p class="text-xs text-gray-400">日期：2025.12.21</p>
+                    </article>
+
+                    <article class="bg-white rounded-2xl border border-gray-200 p-6">
+                        <div class="rounded-xl bg-gray-100 text-gray-500 px-4 py-3 text-sm mb-4">MUSIC BOX TRACK</div>
+                        <h4 class="text-lg font-semibold mb-2">晚安</h4>
+                        <p class="text-xs text-gray-400">日期：2025.12.21</p>
+                    </article>
+
+                    <article class="bg-white rounded-2xl border border-gray-200 p-6 md:col-span-2">
+                        <div class="rounded-xl bg-gray-100 text-gray-500 px-4 py-3 text-sm mb-4">MUSIC BOX TRACK</div>
+                        <h4 class="text-lg font-semibold mb-2">Army</h4>
+                        <p class="text-xs text-gray-400">日期：2025.12.21</p>
                     </article>
                 </div>
             </section>
@@ -59,11 +84,14 @@
                     </div>
                     <span class="text-sm text-gray-400">Now playing</span>
                 </div>
+
+                <p class="text-sm text-gray-600 mb-5">备注：未来可能用作自己的游戏创作 BGM。</p>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <article class="bg-white rounded-2xl border border-gray-200 p-6">
                         <div class="rounded-xl bg-gray-900 text-white px-4 py-3 text-sm mb-4">ORIGINAL TRACK #01</div>
-                        <h4 class="text-lg font-semibold mb-2">暖意</h4>
-                        <p class="text-sm text-gray-600 mb-4">原文件名：初见</p>
+                        <h4 class="text-lg font-semibold mb-2">温度</h4>
+                        <p class="text-xs text-gray-400 mb-4">日期：2025.12.21</p>
                         <audio controls preload="metadata" class="w-full">
                             <source src="assets/audio/nuanyi.m4a" type="audio/mp4">
                             你的浏览器不支持 audio 播放。
@@ -72,8 +100,8 @@
 
                     <article class="bg-white rounded-2xl border border-gray-200 p-6">
                         <div class="rounded-xl bg-gray-900 text-white px-4 py-3 text-sm mb-4">ORIGINAL TRACK #02</div>
-                        <h4 class="text-lg font-semibold mb-2">自证</h4>
-                        <p class="text-sm text-gray-600 mb-4">原文件名：描绘</p>
+                        <h4 class="text-lg font-semibold mb-2">自我证明</h4>
+                        <p class="text-xs text-gray-400 mb-4">日期：2025.12.21</p>
                         <audio controls preload="metadata" class="w-full">
                             <source src="assets/audio/zizheng.m4a" type="audio/mp4">
                             你的浏览器不支持 audio 播放。
@@ -85,5 +113,18 @@
     </main>
 
     <footer class="text-center text-sm text-gray-500 mt-10 mb-4">© 2025 Rebone. 保留所有权利.</footer>
+
+    <script>
+        const allAudios = Array.from(document.querySelectorAll('audio'));
+        allAudios.forEach(current => {
+            current.addEventListener('play', () => {
+                allAudios.forEach(other => {
+                    if (other !== current && !other.paused) {
+                        other.pause();
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
