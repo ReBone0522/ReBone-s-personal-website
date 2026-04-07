@@ -52,18 +52,11 @@
                 <section id="dance" class="scroll-mt-24">
                     <div class="grid grid-cols-1 xl:grid-cols-[1.65fr_0.8fr] gap-6 items-start">
                         <article class="bg-white border border-gray-200 rounded-2xl p-5">
-                            <div class="aspect-video bg-black rounded-xl overflow-hidden border border-gray-300">
-                                <iframe
-                                    class="w-full h-full"
-                                    src="https://player.bilibili.com/player.html?bvid=BV1e1LnzTEvn&autoplay=0&danmaku=0"
-                                    scrolling="no"
-                                    border="0"
-                                    frameborder="no"
-                                    framespacing="0"
-                                    allowfullscreen="true"
-                                    title="【Rachel X Eddie】《妄想感傷代償連盟》"
-                                ></iframe>
-                            </div>
+                            <a href="https://www.bilibili.com/video/BV1e1LnzTEvn" target="_blank" rel="noopener noreferrer" class="group block relative aspect-video rounded-xl overflow-hidden border border-gray-300 hover:border-gray-500 transition">
+                                <img src="assets/images/fandom/satsuriku/dance-cover-1A6A0666.jpg" alt="宅舞封面 1A6A0666" class="w-full h-full object-cover" />
+                                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition"></div>
+                                <div class="absolute left-3 bottom-3 text-xs px-2 py-1 bg-black/70 text-white rounded">点击将打开 B站视频</div>
+                            </a>
                         </article>
 
                         <aside class="bg-white border border-gray-200 rounded-2xl p-5">
@@ -109,7 +102,7 @@
                     </div>
 
                     <div class="w-full h-[68vh] bg-gray-100 rounded-xl overflow-hidden border border-gray-300 flex items-center justify-center">
-                        <img id="drawMain" src="assets/images/fandom/satsuriku/drawing-main.jpg" alt="drawing main" class="max-w-full max-h-full object-contain" />
+                        <img id="drawMain" src="assets/images/fandom/satsuriku/115965.png" alt="drawing main" class="max-w-full max-h-full object-contain" />
                     </div>
 
                     <div id="drawThumbs" class="mt-4 grid grid-cols-4 md:grid-cols-6 gap-2"></div>
@@ -141,10 +134,10 @@
             'assets/images/fandom/satsuriku/06-extra-8371.jpg',
             'assets/images/fandom/satsuriku/07-extra-8368.jpg',
             'assets/images/fandom/satsuriku/01-8371.jpg',
-            'assets/images/fandom/satsuriku/02-8368.jpg',
-            'assets/images/fandom/satsuriku/03-8378.jpg',
-            'assets/images/fandom/satsuriku/04.jpg',
-            'assets/images/fandom/satsuriku/05.jpg'
+            'assets/images/fandom/satsuriku/07.jpg',
+            'assets/images/fandom/satsuriku/08.jpg',
+            'assets/images/fandom/satsuriku/09.jpg',
+            'assets/images/fandom/satsuriku/10.jpg'
         ];
         let cosIndex = 0;
         const cosMain = document.getElementById('cosMain');
@@ -166,7 +159,6 @@
         document.getElementById('cosNext').addEventListener('click', () => { cosIndex = (cosIndex + 1) % cosImages.length; renderCos(); });
 
         const drawImages = [
-            'assets/images/fandom/satsuriku/drawing-main.jpg',
             'assets/images/fandom/satsuriku/115965.png'
         ];
         let drawIndex = 0;

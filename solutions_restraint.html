@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>从约束到安抚：临床约束手套系统 | ReBone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2F3A46',      // 主要图标颜色
+                        mistblue: '#9EA4A1',      // 雾灰蓝
+                        waterblue: '#A6AAA3',     // 水面灰蓝
+                        darkmist: '#8F9694'       // 暗雾蓝灰
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .nav-item.active {
+            background-color: #f5f7fa;
+            font-weight: 600;
+            color: #2F3A46;
+        }
+        .nav-item.active i {
+            color: #2F3A46;
+        }
+        .content-section {
+            scroll-margin-top: 2rem;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-mono leading-relaxed">
+    <!-- 顶部导航 -->
+    <nav class="sticky top-0 z-50 bg-[length:113%_1000px] bg-center p-4 flex justify-between items-center" style="background-image: url('assets/nav-bg.PNG');">
+        <a href="solutions.html" class="text-xl font-bold text-white flex items-center gap-2">
+            <i class="fas fa-arrow-left"></i>
+            <span>Solutions</span>
+        </a>
+        <div class="space-x-4 text-white text-sm">
+            <a href="index.html" class="hover:underline">ReBone</a>
+            <a href="solutions.html" class="underline font-semibold">Solutions</a>
+            <a href="reflections.html" class="hover:underline">Reflections</a>
+            <a href="expressions.html" class="hover:underline">Expressions</a>
+            <a href="readme.html" class="hover:underline">README.md</a>
+        </div>
+    </nav>
+
+    <div class="flex flex-col md:flex-row max-w-7xl mx-auto">
+        <!-- 左侧目录导航 -->
+        <aside class="w-full md:w-64 p-6 bg-white sticky top-20 self-start shadow-sm">
+            <div class="mb-8">
+                <h2 class="text-xl font-bold text-gray-800 mb-2 flex items-center gap-2">
+                    <i class="fas fa-hand-holding-medical text-primary"></i>
+                    从约束到安抚
+                </h2>
+                <p class="text-sm text-mistblue">临床约束手套系统</p>
+                <p class="text-xs text-waterblue mt-1">2024.01 - 进行中</p>
+            </div>
+            
+            <nav class="space-y-1">
+                <a href="#voice" class="block py-2 px-3 text-gray-700 hover:bg-gray-100 rounded-lg nav-item active flex items-center gap-2">
+                    <i class="fas fa-pencil-alt text-sm text-primary"></i>
+                    <span>ReBone 视角</span>
+                </a>
+                <a href="#platform" class="block py-2 px-3 text-gray-700 hover:bg-gray-100 rounded-lg nav-item flex items-center gap-2">
+                    <i class="fas fa-layer-group text-sm text-primary"></i>
+                    <span>平台化演进路径</span>
+                </a>
+                <a href="#progress" class="block py-2 px-3 text-gray-700 hover:bg-gray-100 rounded-lg nav-item flex items-center gap-2">
+                    <i class="fas fa-chart-line text-sm text-primary"></i>
+                    <span>关键进展</span>
+                </a>
+                <a href="#research" class="block py-2 px-3 pl-10 text-sm text-gray-600 hover:bg-gray-100 rounded-lg nav-item flex items-center gap-2">
+                    <i class="fas fa-search text-xs text-primary"></i>
+                    <span>背景调查</span>
+                </a>
+                <a href="#insight" class="block py-2 px-3 pl-10 text-sm text-gray-600 hover:bg-gray-100 rounded-lg nav-item flex items-center gap-2">
+                    <i class="fas fa-eye text-xs text-primary"></i>
+                    <span>临床洞察</span>
+                </a>
+                <a href="#prototype" class="block py-2 px-3 pl-10 text-sm text-gray-600 hover:bg-gray-100 rounded-lg nav-item flex items-center gap-2">
+                    <i class="fas fa-cogs text-xs text-primary"></i>
+                    <span>原型迭代</span>
+                </a>
+                <a href="#patent" class="block py-2 px-3 pl-10 text-sm text-gray-600 hover:bg-gray-100 rounded-lg nav-item flex items-center gap-2">
+                    <i class="fas fa-file-alt text-xs text-primary"></i>
+                    <span>专利布局</span>
+                </a>
+                <a href="#expert" class="block py-2 px-3 pl-10 text-sm text-gray-600 hover:bg-gray-100 rounded-lg nav-item flex items-center gap-2">
+                    <i class="fas fa-users text-xs text-primary"></i>
+                    <span>请教专家</span>
+                </a>
+                <a href="#funding" class="block py-2 px-3 pl-10 text-sm text-gray-600 hover:bg-gray-100 rounded-lg nav-item flex items-center gap-2">
+                    <i class="fas fa-handshake text-xs text-primary"></i>
+                    <span>路演融资</span>
+                </a>
+                <a href="#milestone" class="block py-2 px-3 text-gray-700 hover:bg-gray-100 rounded-lg nav-item flex items-center gap-2">
+                    <i class="fas fa-flag-checkered text-sm text-primary"></i>
+                    <span>关键里程碑</span>
+                </a>
+                <a href="#statement" class="block py-2 px-3 text-gray-700 hover:bg-gray-100 rounded-lg nav-item flex items-center gap-2">
+                    <i class="fas fa-shield-alt text-sm text-primary"></i>
+                    <span>知识产权声明</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="flex-1 p-8">
+            <div class="flex items-center gap-3 text-sm text-gray-500 mb-6">
+                <a href="solutions.html" class="hover:text-gray-700">Solutions</a>
+                <span>/</span>
+                <span class="text-gray-700">从约束到安抚</span>
+            </div>
+
+            <!-- 项目概要 -->
+            <div class="mb-12">
+                <div class="bg-white border border-gray-200 p-8 rounded-xl mb-8">
+                    <p class="text-lg font-medium text-gray-800 leading-relaxed">
+                        <i class="fas fa-lightbulb text-primary mr-2"></i>
+                        <span class="font-bold">核心理念：</span>在临床必需的约束中，提供主动的安抚与尊严。重新定义约束护理——从对抗性限制转向支持性保护。
+                    </p>
+                </div>
+                
+                <div class="pl-6 py-3 bg-white rounded-lg shadow-sm border-l-4 border-primary">
+                    <p class="italic text-gray-700 flex items-center">
+                        <i class="fas fa-quote-left text-primary mr-3"></i>
+                        当保护本身成为一种伤害；普遍 ≠ 本该如此。
+                    </p>
+                </div>
+            </div>
+
+
+            <section id="voice" class="content-section mb-12">
+                <h2 class="text-2xl font-bold mb-6 text-gray-800 flex items-center gap-2">
+                    <i class="fas fa-pencil-alt text-primary"></i>
+                    ReBone 视角
+                </h2>
+
+                <div class="bg-white p-6 rounded-xl border border-gray-200 space-y-4">
+                    <p class="text-gray-700">我做这个，不是为了做一个“更好看的约束工具”。我想做的是：在不得不约束的时候，怎么把主动权和尊严还给被护理的人。</p>
+                    <p class="text-gray-700">这个项目一开始就带着真实现场的问题：家属焦虑、护理负担、老人难受、又怕风险。很多矛盾不是理论上的，是每天都在发生的。</p>
+                    <div class="rounded-lg border-l-4 border-primary bg-gray-50 px-4 py-3 text-sm text-gray-700">
+                        方向很明确：从“限制”转向“支持”，从“管住”转向“安抚 + 可参与”。
+                    </div>
+                </div>
+            </section>
+
+            <!-- 平台化演进路径 -->
+            <section id="platform" class="content-section mb-12">
+                <h2 class="text-2xl font-bold mb-6 text-gray-800 flex items-center gap-2">
+                    <i class="fas fa-layer-group text-primary"></i>
+                    平台化演进路径
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                        <div class="text-center mb-4">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-3">
+                                <i class="fas fa-shield-alt text-2xl text-primary"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">基础保护型</h3>
+                        </div>
+                        <ul class="text-sm text-gray-700 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary mt-0.5 mr-2"></i>
+                                <span>刚性骨架 + 基础安抚模块</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary mt-0.5 mr-2"></i>
+                                <span>解决安全与基本舒适矛盾</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary mt-0.5 mr-2"></i>
+                                <span>当前聚焦：完成MVP验证</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                        <div class="text-center mb-4">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-3">
+                                <i class="fas fa-heartbeat text-2xl text-primary"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">康复理疗型</h3>
+                        </div>
+                        <ul class="text-sm text-gray-700 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-plus-circle text-primary mt-0.5 mr-2"></i>
+                                <span>集成前臂气囊按摩模块</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-plus-circle text-primary mt-0.5 mr-2"></i>
+                                <span>促进长期卧床者血液循环</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-plus-circle text-primary mt-0.5 mr-2"></i>
+                                <span>2-3年规划：基于基础版验证</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                        <div class="text-center mb-4">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-3">
+                                <i class="fas fa-brain text-2xl text-primary"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">智能交互型</h3>
+                        </div>
+                        <ul class="text-sm text-gray-700 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-star text-primary mt-0.5 mr-2"></i>
+                                <span>意图识别按钮 + 蓝牙连接</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-star text-primary mt-0.5 mr-2"></i>
+                                <span>患者主动沟通与娱乐控制</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-star text-primary mt-0.5 mr-2"></i>
+                                <span>3-5年愿景：建立护理生态</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 关键进展 -->
+            <section id="progress" class="content-section mb-12">
+                <h2 class="text-2xl font-bold mb-6 text-gray-800 flex items-center gap-2">
+                    <i class="fas fa-chart-line text-primary"></i>
+                    关键进展
+                </h2>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm mb-8">
+                    <!-- 进度状态说明 -->
+                    <div class="flex flex-wrap gap-4 mb-6">
+                        <div class="text-sm font-medium text-mistblue">
+                            <i class="fas fa-check-circle text-primary mr-1"></i>
+                            已完成
+                        </div>
+                        <div class="text-sm font-medium text-waterblue">
+                            <i class="fas fa-spinner text-primary mr-1"></i>
+                            进行中
+                        </div>
+                        <div class="text-sm font-medium text-primary/60">
+                            <i class="fas fa-clock text-primary mr-1"></i>
+                            规划中
+                        </div>
+                        <div class="text-sm font-medium text-darkmist">
+                            <i class="fas fa-arrow-right text-primary mr-1"></i>
+                            后续阶段
+                        </div>
+                    </div>
+                    
+                    <!-- 优化的可左右滑动进度条 -->
+                    <div class="relative">
+                        <!-- 滑动提示（仅在小屏幕显示） -->
+                        <div class="absolute -left-3 top-1/2 transform -translate-y-1/2 z-10 md:hidden bg-white rounded-full p-1 shadow">
+                            <i class="fas fa-chevron-left text-primary text-sm"></i>
+                        </div>
+                        <div class="absolute -right-3 top-1/2 transform -translate-y-1/2 z-10 md:hidden bg-white rounded-full p-1 shadow">
+                            <i class="fas fa-chevron-right text-primary text-sm"></i>
+                        </div>
+                        
+                        <!-- 滑动容器 - 关键修改在这里 -->
+                        <div class="overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+                            <div class="flex gap-4 min-w-min py-2">
+                                <!-- 阶段1-9的代码保持原样，只是去掉w-24限制 -->
+                                <!-- 阶段1：背景调查 -->
+                                <div class="flex flex-col items-center flex-shrink-0">
+                                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-primary flex items-center justify-center mb-2">
+                                        <i class="fas fa-search text-white md:text-lg"></i>
+                                    </div>
+                                    <p class="text-xs md:text-sm font-medium text-center leading-tight">背景调查</p>
+                                    <p class="text-xs text-mistblue mt-1">
+                                        <i class="fas fa-check text-primary"></i>
+                                        完成
+                                    </p>
+                                </div>
+                                
+                                <!-- 阶段2：临床洞察 -->
+                                <div class="flex flex-col items-center flex-shrink-0">
+                                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-primary flex items-center justify-center mb-2">
+                                        <i class="fas fa-eye text-white md:text-lg"></i>
+                                    </div>
+                                    <p class="text-xs md:text-sm font-medium text-center leading-tight">临床洞察</p>
+                                    <p class="text-xs text-mistblue mt-1">
+                                        <i class="fas fa-check text-primary"></i>
+                                        完成
+                                    </p>
+                                </div>
+                                
+                                <!-- 阶段3：专利布局 -->
+                                <div class="flex flex-col items-center flex-shrink-0">
+                                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-primary/90 flex items-center justify-center mb-2">
+                                        <i class="fas fa-file-alt text-white md:text-lg"></i>
+                                    </div>
+                                    <p class="text-xs md:text-sm font-medium text-center leading-tight">专利布局</p>
+                                    <p class="text-xs text-waterblue mt-1">
+                                        <i class="fas fa-spinner text-primary/90"></i>
+                                        进行中
+                                    </p>
+                                </div>
+                                
+                                <!-- 阶段4：原型迭代 -->
+                                <div class="flex flex-col items-center flex-shrink-0">
+                                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-primary/80 flex items-center justify-center mb-2">
+                                        <i class="fas fa-cogs text-white md:text-lg"></i>
+                                    </div>
+                                    <p class="text-xs md:text-sm font-medium text-center leading-tight">原型迭代</p>
+                                    <p class="text-xs text-waterblue mt-1">
+                                        <i class="fas fa-spinner text-primary/80"></i>
+                                        进行中
+                                    </p>
+                                </div>
+                                
+                                <!-- 阶段5：请教专家 -->
+                                <div class="flex flex-col items-center flex-shrink-0">
+                                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-primary/60 flex items-center justify-center mb-2">
+                                        <i class="fas fa-users text-white md:text-lg"></i>
+                                    </div>
+                                    <p class="text-xs md:text-sm font-medium text-center leading-tight">请教专家</p>
+                                    <p class="text-xs text-primary/60 mt-1">
+                                        <i class="fas fa-clock text-primary/60"></i>
+                                        2026.03
+                                    </p>
+                                </div>
+                                
+                                <!-- 阶段6：路演融资 -->
+                                <div class="flex flex-col items-center flex-shrink-0">
+                                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-primary/40 flex items-center justify-center mb-2">
+                                        <i class="fas fa-handshake text-white md:text-lg"></i>
+                                    </div>
+                                    <p class="text-xs md:text-sm font-medium text-center leading-tight">路演融资</p>
+                                    <p class="text-xs text-primary/40 mt-1">
+                                        <i class="fas fa-clock text-primary/40"></i>
+                                        2026.03
+                                    </p>
+                                </div>
+                                
+                                <!-- 阶段7：医疗备案 -->
+                                <div class="flex flex-col items-center flex-shrink-0">
+                                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-darkmist/30 flex items-center justify-center mb-2">
+                                        <i class="fas fa-file-medical-alt text-gray-500 md:text-lg"></i>
+                                    </div>
+                                    <p class="text-xs md:text-sm font-medium text-center leading-tight">医疗备案</p>
+                                    <p class="text-xs text-darkmist mt-1">
+                                        <i class="fas fa-arrow-right text-darkmist"></i>
+                                        2026-27
+                                    </p>
+                                </div>
+                                
+                                <!-- 阶段8：产品上市 -->
+                                <div class="flex flex-col items-center flex-shrink-0">
+                                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-darkmist/20 flex items-center justify-center mb-2">
+                                        <i class="fas fa-hospital text-gray-400 md:text-lg"></i>
+                                    </div>
+                                    <p class="text-xs md:text-sm font-medium text-center leading-tight">产品上市</p>
+                                    <p class="text-xs text-darkmist mt-1">
+                                        <i class="fas fa-arrow-right text-darkmist"></i>
+                                        2027-28
+                                    </p>
+                                </div>
+                                
+                                <!-- 阶段9：产品线扩展 -->
+                                <div class="flex flex-col items-center flex-shrink-0">
+                                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-darkmist/10 flex items-center justify-center mb-2">
+                                        <i class="fas fa-expand-alt text-gray-400 md:text-lg"></i>
+                                    </div>
+                                    <p class="text-xs md:text-sm font-medium text-center leading-tight">产品线扩展</p>
+                                    <p class="text-xs text-darkmist mt-1">
+                                        <i class="fas fa-arrow-right text-darkmist"></i>
+                                        2028+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 当前聚焦说明 -->
+                    <div class="mt-8 p-4 bg-primary/5 rounded-lg">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-bullseye text-primary"></i>
+                            <p class="font-medium text-gray-800">当前聚焦阶段：原型迭代</p>
+                        </div>
+                        <p class="text-sm text-gray-700 ml-7">
+                            正在完善功能完整原型，整合按摩模块与完整约束功能，为2025年6月的里程碑做准备。
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 各子章节 -->
+            <div class="space-y-8">
+                <!-- 背景调查 -->
+                <section id="research" class="content-section bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800 flex items-center gap-2">
+                        <i class="fas fa-search text-primary"></i>
+                        背景调查
+                    </h3>
+                    <div class="text-gray-700">
+                        <p class="mb-4">
+                            通过文献研究与市场分析发现：传统约束手套在临床使用中造成高达22%的皮肤损伤率，且现有市场产品呈现两极分化。
+                        </p>
+                        <div class="space-y-2 text-sm">
+                            <p class="flex items-start">
+                                <i class="fas fa-circle text-xs text-primary mt-1 mr-2"></i>
+                                全球65岁以上人口中，长期卧床比例持续上升
+                            </p>
+                            <p class="flex items-start">
+                                <i class="fas fa-circle text-xs text-primary mt-1 mr-2"></i>
+                                中国康复医疗器械市场年增长率超过15%
+                            </p>
+                            <p class="flex items-start">
+                                <i class="fas fa-circle text-xs text-primary mt-1 mr-2"></i>
+                                "人性化护理"成为医疗产品重要差异化方向
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 临床洞察 -->
+                <section id="insight" class="content-section bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800 flex items-center gap-2">
+                        <i class="fas fa-eye text-primary"></i>
+                        临床洞察
+                    </h3>
+                    <div class="text-gray-700">
+                        <p class="mb-4">
+                            在新城养老院的实地调研显示，超过60%的卧床老人需要使用约束措施。通过用户旅程图分析，约束行为本身加剧了患者的无助感与护理人员的道德困境。
+                        </p>
+                        <div class="pl-4 border-l-3 border-primary my-4">
+                            <p class="italic text-gray-700 text-sm">
+                                <i class="fas fa-quote-left text-primary mr-2"></i>
+                                "家属偷偷松绑，护士反复检查，老人默默忍受——这是一个三输的循环。"
+                            </p>
+                        </div>
+                        <div class="space-y-2 text-sm">
+                            <p class="flex items-start">
+                                <i class="fas fa-user-injured text-primary mt-0.5 mr-2"></i>
+                                患者：身体压迫 + 心理创伤（恐惧、羞辱）
+                            </p>
+                            <p class="flex items-start">
+                                <i class="fas fa-user-nurse text-primary mt-0.5 mr-2"></i>
+                                护理人员：伦理压力 + 操作负担
+                            </p>
+                            <p class="flex items-start">
+                                <i class="fas fa-users text-primary mt-0.5 mr-2"></i>
+                                家属：情感痛苦 + 信任危机
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 原型迭代 -->
+                <section id="prototype" class="content-section bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800 flex items-center gap-2">
+                        <i class="fas fa-cogs text-primary"></i>
+                        原型迭代
+                    </h3>
+                    <div class="text-gray-700">
+                        <p class="mb-4">
+                            已完成两轮原型测试：第一代验证了基础结构的可行性；第二代加入了可拆卸安抚模块，获得患者与护理人员的积极反馈。
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                            <div class="p-4 bg-primary/5 rounded-lg">
+                                <p class="font-medium mb-2 flex items-center">
+                                    <i class="fas fa-list-check text-primary mr-2"></i>
+                                    当前版本功能
+                                </p>
+                                <div class="text-sm text-gray-700 space-y-1">
+                                    <p class="flex items-start">
+                                        <i class="fas fa-cube text-xs text-primary mt-0.5 mr-2"></i>
+                                        预成型骨架结构
+                                    </p>
+                                    <p class="flex items-start">
+                                        <i class="fas fa-exchange-alt text-xs text-primary mt-0.5 mr-2"></i>
+                                        可更换安抚模块
+                                    </p>
+                                    <p class="flex items-start">
+                                        <i class="fas fa-link text-xs text-primary mt-0.5 mr-2"></i>
+                                        隐藏式床栏连接
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="p-4 bg-primary/5 rounded-lg">
+                                <p class="font-medium mb-2 flex items-center">
+                                    <i class="fas fa-comments text-primary mr-2"></i>
+                                    测试反馈
+                                </p>
+                                <div class="text-sm text-gray-700 space-y-1">
+                                    <p class="flex items-start">
+                                        <i class="fas fa-smile text-xs text-primary mt-0.5 mr-2"></i>
+                                        患者自发使用安抚模块
+                                    </p>
+                                    <p class="flex items-start">
+                                        <i class="fas fa-hand-paper text-xs text-primary mt-0.5 mr-2"></i>
+                                        护士建议加入按摩功能
+                                    </p>
+                                    <p class="flex items-start">
+                                        <i class="fas fa-heart text-xs text-primary mt-0.5 mr-2"></i>
+                                        家属期待产品尽快上市
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 专利布局 -->
+                <section id="patent" class="content-section bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800 flex items-center gap-2">
+                        <i class="fas fa-file-alt text-primary"></i>
+                        专利布局
+                    </h3>
+                    <div class="text-gray-700">
+                        <p class="mb-4">
+                            已完成技术交底书与全套CAD图纸，委托代理机构申请中国实用新型专利，保护核心的"可拆卸人体工学异形安抚模块结构"。
+                        </p>
+                        <div class="space-y-2 text-sm">
+                            <p class="flex items-start">
+                                <i class="fas fa-file-signature text-primary mt-0.5 mr-2"></i>
+                                专利申请已提交，受理号：XXXXXXXXXX
+                            </p>
+                            <p class="flex items-start">
+                                <i class="fas fa-shield-alt text-primary mt-0.5 mr-2"></i>
+                                核心保护点：模块化安抚系统 + 预成型支撑骨架
+                            </p>
+                            <p class="flex items-start">
+                                <i class="fas fa-chess-board text-primary mt-0.5 mr-2"></i>
+                                策略：以此高质量母案为基础，构建专利组合
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 请教专家 -->
+                <section id="expert" class="content-section bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800 flex items-center gap-2">
+                        <i class="fas fa-users text-primary"></i>
+                        请教专家
+                    </h3>
+                    <div class="text-gray-700">
+                        <p class="mb-4">
+                            项目已获得NYU上海交互实验室Rodolfo Cossovich教授与MustardTek创新总监Minki Chang的认可，计划于2025年3月赴上海进行深入交流。
+                        </p>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex items-start">
+                                <i class="fas fa-user-graduate text-primary mt-0.5 mr-2"></i>
+                                <div>
+                                    <p class="font-medium">Rodolfo Cossovich (NYU Shanghai)</p>
+                                    <p class="text-gray-600">评价项目具有"25%认真学术论文"的潜力</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-briefcase text-primary mt-0.5 mr-2"></i>
+                                <div>
+                                    <p class="font-medium">Minki Chang (MustardTek)</p>
+                                    <p class="text-gray-600">表示可连接相关领域专家资源</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-calendar-alt text-primary mt-0.5 mr-2"></i>
+                                <div>
+                                    <p class="font-medium">上海之行</p>
+                                    <p class="text-gray-600">计划3月会面，探讨学术合作与产业落地可能</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 路演融资 -->
+                <section id="funding" class="content-section bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800 flex items-center gap-2">
+                        <i class="fas fa-handshake text-primary"></i>
+                        路演融资
+                    </h3>
+                    <div class="text-gray-700">
+                        <p class="mb-4">
+                            计划通过Kuncheng Spark等活动进行项目路演，目标在2025年9月前完成天使轮/种子轮融资，用于推进医疗器械备案。
+                        </p>
+                        <div class="space-y-2 text-sm">
+                            <p class="flex items-start">
+                                <i class="fas fa-bullseye text-primary mt-0.5 mr-2"></i>
+                                融资目标：XX-XX万元人民币
+                            </p>
+                            <p class="flex items-start">
+                                <i class="fas fa-money-bill-wave text-primary mt-0.5 mr-2"></i>
+                                资金用途：医疗器械备案费用、小批量试产、团队建设
+                            </p>
+                            <p class="flex items-start">
+                                <i class="fas fa-tasks text-primary mt-0.5 mr-2"></i>
+                                路演准备：完善原型 + 商业计划书 + 临床数据收集
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 关键里程碑 -->
+            <section id="milestone" class="content-section mt-12 bg-white p-6 rounded-xl shadow-sm">
+                <h2 class="text-2xl font-bold mb-6 text-gray-800 flex items-center gap-2">
+                    <i class="fas fa-flag-checkered text-primary"></i>
+                    关键里程碑与后续计划
+                </h2>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="bg-primary/5">
+                                <th class="p-4 text-left font-medium">
+                                    <i class="fas fa-calendar-alt text-primary mr-2"></i>
+                                    时间节点
+                                </th>
+                                <th class="p-4 text-left font-medium">
+                                    <i class="fas fa-bullseye text-primary mr-2"></i>
+                                    里程碑目标
+                                </th>
+                                <th class="p-4 text-left font-medium">
+                                    <i class="fas fa-clipboard-check text-primary mr-2"></i>
+                                    关键交付物
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="hover:bg-gray-50 border-b border-gray-100">
+                                <td class="p-4 font-medium">2025.06前</td>
+                                <td class="p-4">功能完整原型</td>
+                                <td class="p-4 text-sm text-gray-700">
+                                    <i class="fas fa-check-circle text-primary mr-1"></i>
+                                    整合按摩模块与完整约束功能，完成3轮用户测试报告
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 border-b border-gray-100">
+                                <td class="p-4 font-medium">2025.09前</td>
+                                <td class="p-4">首轮融资完成</td>
+                                <td class="p-4 text-sm text-gray-700">
+                                    <i class="fas fa-handshake text-primary mr-1"></i>
+                                    通过Kuncheng Spark等活动完成天使轮融资，建立公司实体
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 border-b border-gray-100 bg-primary/5">
+                                <td class="p-4 font-medium">2026全年</td>
+                                <td class="p-4">医疗器械备案</td>
+                                <td class="p-4 text-sm text-gray-700">
+                                    <i class="fas fa-file-medical-alt text-primary mr-1"></i>
+                                    与CRO合作完成中国一类医疗器械备案，获取上市资格
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 border-b border-gray-100">
+                                <td class="p-4 font-medium">2027年初</td>
+                                <td class="p-4">试点医院合作</td>
+                                <td class="p-4 text-sm text-gray-700">
+                                    <i class="fas fa-hospital text-primary mr-1"></i>
+                                    与2-3家医院/养老机构建立临床试点，收集6个月使用数据
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="p-4 font-medium">2028+</td>
+                                <td class="p-4">产品线扩展</td>
+                                <td class="p-4 text-sm text-gray-700">
+                                    <i class="fas fa-expand-alt text-primary mr-1"></i>
+                                    基于平台推出康复理疗型与智能交互型产品，建立完整产品矩阵
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 知识产权声明 -->
+            <section id="statement" class="content-section mt-12 pt-8">
+                <h2 class="text-2xl font-bold mb-6 text-gray-800 flex items-center gap-2">
+                    <i class="fas fa-shield-alt text-primary"></i>
+                    知识产权声明
+                </h2>
+                <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-primary">
+                    <p class="text-gray-700 mb-4">
+                        <i class="fas fa-info-circle text-primary mr-2"></i>
+                        本页展示的"从约束到安抚：临床约束手套系统"项目（简称AEGIS系统）包含已申请保护的知识产权内容。
+                    </p>
+                    <div class="text-sm text-gray-700 space-y-3">
+                        <p class="flex items-start">
+                            <i class="fas fa-gavel text-primary mt-0.5 mr-2"></i>
+                            项目核心创新点，包括但不限于"预成型支撑骨架与可拆卸安抚模块的组合系统"、"隐藏式床栏连接机构"等设计，已提交专利申请。
+                        </p>
+                        <p class="flex items-start">
+                            <i class="fas fa-draw-polygon text-primary mt-0.5 mr-2"></i>
+                            相关设计图纸、技术方案、用户研究数据等均受知识产权法保护。
+                        </p>
+                        <p class="flex items-start">
+                            <i class="fas fa-ban text-primary mt-0.5 mr-2"></i>
+                            未经授权，任何个人或组织不得复制、使用或商业化本项目展示的技术方案与设计细节。
+                        </p>
+                        <p class="flex items-start">
+                            <i class="fas fa-calendar text-primary mt-0.5 mr-2"></i>
+                            本声明最后更新日期：2025年2月2日
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-200">
+                        <p class="text-xs text-primary">
+                            <i class="fas fa-envelope text-primary mr-1"></i>
+                            如需了解合作或授权可能性，请联系项目负责人。
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 返回按钮 -->
+            <div class="mt-12 text-center">
+                <a href="solutions.html" class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">
+                    <i class="fas fa-arrow-left"></i>
+                    返回项目列表
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <footer class="text-center text-sm text-mistblue mt-12 mb-6">
+        <i class="fas fa-copyright text-primary mr-1"></i>
+        2025 Rebone. 保留所有权利.
+    </footer>
+
+    <script>
+        // 目录导航高亮
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.content-section');
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            function updateActiveNav() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href') === `#${current}`) {
+                        item.classList.add('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', updateActiveNav);
+            updateActiveNav();
+        });
+    </script>
+</body>
+</html>
