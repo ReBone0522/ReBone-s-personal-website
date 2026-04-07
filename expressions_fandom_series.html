@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gameplay Series | For Love | ReBone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-mono leading-relaxed">
+    <nav class="sticky top-0 z-50 bg-[length:113%_1000px] bg-center p-4 flex justify-between items-center" style="background-image: url('assets/nav-bg.PNG');">
+        <h1 class="text-xl font-bold text-white">ReBone</h1>
+        <div class="space-x-4 text-white text-sm">
+            <a href="index.html" class="hover:underline">ReBone</a>
+            <a href="solutions.html" class="hover:underline">Solutions</a>
+            <a href="reflections.html" class="hover:underline">Reflections</a>
+            <a href="expressions.html" class="underline font-semibold">Expressions</a>
+            <a href="readme.html" class="hover:underline">README.md</a>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto mt-10 px-4 pb-16">
+        <div class="flex items-center gap-3 text-sm text-gray-500 mb-6">
+            <a href="expressions.html" class="hover:text-gray-700">Expressions</a>
+            <span>/</span>
+            <a href="expressions_fandom.html" class="hover:text-gray-700">为爱发电</a>
+            <span>/</span>
+            <span class="text-gray-700">游戏实况系列</span>
+        </div>
+
+        <section class="bg-white border border-gray-200 rounded-2xl p-6 mb-8">
+            <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-2">Gameplay Series</p>
+            <h2 class="text-3xl font-semibold mb-3">游戏实况系列（可运行版）</h2>
+            <p class="text-gray-700 mb-5">这页已经接好 B站外链播放器。现在放了 1 个可播放示例位（BV1Ra1KB9EPd），另外 3 个分集是待填位。后面把 BVID 换成你的正式视频就能直接用。</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <div class="rounded-xl border border-gray-200 bg-gray-50 px-4 py-3">平台：Bilibili</div>
+                <div class="rounded-xl border border-gray-200 bg-gray-50 px-4 py-3">系列结构：4P</div>
+                <a href="https://www.bilibili.com/video/BV1Ra1KB9EPd" target="_blank" rel="noopener noreferrer" class="rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 hover:border-gray-400">打开示例原链接 ↗</a>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-6 items-start">
+            <article class="bg-white border border-gray-200 rounded-2xl p-4">
+                <div class="aspect-video w-full bg-black rounded-xl overflow-hidden border border-gray-300">
+                    <iframe
+                        id="biliPlayer"
+                        class="w-full h-full"
+                        src="about:blank"
+                        frameborder="0"
+                        allowfullscreen
+                        scrolling="no"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        title="Bilibili 外链播放器"
+                    ></iframe>
+                </div>
+                <div class="mt-4">
+                    <h3 id="episodeTitle" class="text-lg font-semibold mb-1">播放器待加载</h3>
+                    <p id="episodeDesc" class="text-sm text-gray-600">点击右侧分集开始播放。</p>
+                    <p id="playerStatus" class="text-xs text-gray-500 mt-2">状态：等待选择分集</p>
+                </div>
+            </article>
+
+            <aside class="bg-white border border-gray-200 rounded-2xl p-4">
+                <h3 class="text-lg font-semibold mb-3">分集列表</h3>
+                <div id="episodeList" class="space-y-2"></div>
+                <div class="mt-5 pt-4 border-t border-gray-200 text-xs text-gray-500 space-y-2">
+                    <p>说明：外链播放器通过 BVID 自动查询 CID，再拼接 `player.bilibili.com` 链接。</p>
+                    <p>如果播放器加载失败，会保留 B站原链接作为回退。</p>
+                </div>
+            </aside>
+        </section>
+    </main>
+
+    <footer class="text-center text-sm text-gray-500 mt-10 mb-4">© 2025 Rebone. 保留所有权利.</footer>
+
+    <script>
+        const episodes = [
+            {
+                id: 'p1',
+                title: 'P1 · 实况示例位',
+                desc: '当前可播放示例。后续替换成你的正式视频 BVID 即可。',
+                bvid: 'BV1Ra1KB9EPd',
+                p: 1,
+                fallbackUrl: 'https://www.bilibili.com/video/BV1Ra1KB9EPd'
+            },
+            {
+                id: 'p2',
+                title: 'P2 · 待填',
+                desc: '这里填第二集 BVID',
+                bvid: '',
+                p: 1,
+                fallbackUrl: ''
+            },
+            {
+                id: 'p3',
+                title: 'P3 · 待填',
+                desc: '这里填第三集 BVID',
+                bvid: '',
+                p: 1,
+                fallbackUrl: ''
+            },
+            {
+                id: 'p4',
+                title: 'P4 · 待填',
+                desc: '这里填第四集 BVID',
+                bvid: '',
+                p: 1,
+                fallbackUrl: ''
+            }
+        ];
+
+        const player = document.getElementById('biliPlayer');
+        const episodeTitle = document.getElementById('episodeTitle');
+        const episodeDesc = document.getElementById('episodeDesc');
+        const playerStatus = document.getElementById('playerStatus');
+        const episodeList = document.getElementById('episodeList');
+
+        function setStatus(text, isError = false) {
+            playerStatus.textContent = `状态：${text}`;
+            playerStatus.className = isError
+                ? 'text-xs text-red-500 mt-2'
+                : 'text-xs text-gray-500 mt-2';
+        }
+
+        async function fetchCid(bvid, p = 1) {
+            const url = `https://api.bilibili.com/x/player/pagelist?bvid=${encodeURIComponent(bvid)}`;
+            const res = await fetch(url);
+            if (!res.ok) {
+                throw new Error(`API 请求失败 (${res.status})`);
+            }
+
+            const data = await res.json();
+            if (data.code !== 0 || !Array.isArray(data.data) || data.data.length === 0) {
+                throw new Error('无法从 B站接口获取分P信息');
+            }
+
+            const index = Math.max(0, Math.min((p || 1) - 1, data.data.length - 1));
+            const target = data.data[index];
+            if (!target || !target.cid) {
+                throw new Error('CID 缺失');
+            }
+            return { cid: target.cid, realP: index + 1 };
+        }
+
+        function buildPlayerUrl({ bvid, cid, p }) {
+            const params = new URLSearchParams({
+                isOutside: 'true',
+                high_quality: '1',
+                danmaku: '0',
+                bvid,
+                cid: String(cid),
+                p: String(p || 1)
+            });
+            return `https://player.bilibili.com/player.html?${params.toString()}`;
+        }
+
+        function renderEpisodeButtons() {
+            episodeList.innerHTML = episodes.map((ep, index) => {
+                const playable = ep.bvid ? '' : 'opacity-60';
+                const disabled = ep.bvid ? '' : 'disabled';
+                return `
+                    <button
+                        id="btn-${ep.id}"
+                        class="w-full text-left rounded-xl border border-gray-200 px-4 py-3 hover:border-gray-400 ${playable}"
+                        data-index="${index}"
+                        ${disabled}
+                    >
+                        <p class="text-sm font-semibold">${ep.title}</p>
+                        <p class="text-xs text-gray-500 mt-1">${ep.bvid ? `BVID: ${ep.bvid}` : '待填 BVID'}</p>
+                    </button>
+                `;
+            }).join('');
+
+            episodeList.querySelectorAll('button[data-index]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const idx = Number(btn.dataset.index);
+                    loadEpisode(idx);
+                });
+            });
+        }
+
+        async function loadEpisode(index) {
+            const ep = episodes[index];
+            if (!ep) return;
+
+            episodeTitle.textContent = ep.title;
+            episodeDesc.textContent = ep.desc;
+
+            if (!ep.bvid) {
+                player.src = 'about:blank';
+                setStatus('当前分集还没填 BVID', true);
+                return;
+            }
+
+            try {
+                setStatus('正在请求 B站分P信息...');
+                const { cid, realP } = await fetchCid(ep.bvid, ep.p);
+                const url = buildPlayerUrl({ bvid: ep.bvid, cid, p: realP });
+                player.src = url;
+                setStatus(`已加载 ${ep.bvid} (P${realP})`);
+            } catch (error) {
+                console.error(error);
+                player.src = 'about:blank';
+                const fallbackText = ep.fallbackUrl
+                    ? `；可改用原链接：${ep.fallbackUrl}`
+                    : '';
+                setStatus(`播放器加载失败${fallbackText}`, true);
+            }
+        }
+
+        renderEpisodeButtons();
+        loadEpisode(0);
+    </script>
+</body>
+</html>
