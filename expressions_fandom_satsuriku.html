@@ -51,21 +51,26 @@
             <div class="space-y-12">
                 <section id="dance" class="scroll-mt-24">
                     <div class="grid grid-cols-1 xl:grid-cols-[1.65fr_0.8fr] gap-6 items-start">
-                        <article class="bg-white border border-gray-200 rounded-2xl p-5">
-                            <a href="https://www.bilibili.com/video/BV1e1LnzTEvn" target="_blank" rel="noopener noreferrer" class="group block relative aspect-video rounded-xl overflow-hidden border border-gray-300 hover:border-gray-500 transition">
-                                <img src="assets/images/fandom/satsuriku/dance-cover-1A6A0666.jpg" alt="宅舞封面 1A6A0666" class="w-full h-full object-cover" />
-                                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition"></div>
-                                <div class="absolute left-3 bottom-3 text-xs px-2 py-1 bg-black/70 text-white rounded">点击将打开 B站视频</div>
-                            </a>
-                        </article>
+                        <a href="https://www.bilibili.com/video/BV1e1LnzTEvn" target="_blank" rel="noopener noreferrer" class="block group">
+                            <article class="bg-white border border-gray-200 rounded-2xl p-5 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer">
+                                <div class="relative aspect-video rounded-xl overflow-hidden border border-gray-300">
+                                    <img src="assets/images/fandom/satsuriku/dance-cover-1A6A0666.jpg" alt="宅舞封面 1A6A0666" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                                    <div class="absolute left-3 bottom-3 text-xs px-2 py-1 bg-black/70 text-white rounded">点击将打开 B站视频</div>
+                                </div>
+                            </article>
+                        </a>
 
                         <aside class="bg-white border border-gray-200 rounded-2xl p-5">
                             <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-2">Dance</p>
-                            <h3 class="text-xl font-semibold mb-3">【Rachel X Eddie】《妄想感傷代償連盟》｜振幅【みーたろぉ】</h3>
+                            <h3 class="text-xl font-semibold mb-3 leading-relaxed">
+                                <span class="block">【Rachel X Eddie】</span>
+                                <span class="block">《妄想感傷代償連盟》</span>
+                            </h3>
                             <div class="text-sm text-gray-700 space-y-1">
                                 <p>拍摄：字体</p>
                                 <p>Rachel：再生骨头</p>
                                 <p>Eddie：阿罗拉</p>
+                                <p>振幅：みーたろぉ</p>
                                 <p class="pt-2 text-xs text-gray-500">B站：BV1e1LnzTEvn</p>
                             </div>
                         </aside>
@@ -82,14 +87,14 @@
                     </div>
                     <div class="text-sm text-gray-700 space-y-1 mb-4">
                         <p>出镜：再生骨头、阿罗拉</p>
-                        <p>摄影：卡西、以及几位摄影师先前未能被我记录下来；如果有知道是谁请务必联络我加上。</p>
+                        <p>摄影：卡西、还有几位摄影师先前未能被我记录下来；如果有知道是谁请务必联络我加上。</p>
                     </div>
 
-                    <div class="w-full h-[70vh] bg-black rounded-xl overflow-hidden border border-gray-300 flex items-center justify-center">
-                        <img id="cosMain" src="assets/images/fandom/satsuriku/06-extra-8371.jpg" alt="cosplay main" class="max-w-full max-h-full object-contain" />
+                    <div class="w-full bg-black rounded-xl border border-gray-300 p-2 flex items-center justify-center min-h-[320px]">
+                        <img id="cosMain" src="assets/images/fandom/satsuriku/cos-0.jpg" alt="cosplay main" class="mx-auto w-auto h-auto max-w-full max-h-[82vh] object-contain" />
                     </div>
 
-                    <div id="cosThumbs" class="mt-4 grid grid-cols-4 md:grid-cols-7 gap-2"></div>
+                    <div id="cosThumbs" class="mt-4 flex gap-2 overflow-x-auto pb-1"></div>
                 </section>
 
                 <section id="drawing" class="scroll-mt-24 bg-white border border-gray-200 rounded-2xl p-5">
@@ -101,11 +106,11 @@
                         </div>
                     </div>
 
-                    <div class="w-full h-[68vh] bg-gray-100 rounded-xl overflow-hidden border border-gray-300 flex items-center justify-center">
-                        <img id="drawMain" src="assets/images/fandom/satsuriku/115965.png" alt="drawing main" class="max-w-full max-h-full object-contain" />
+                    <div class="w-full bg-gray-100 rounded-xl border border-gray-300 p-2 flex items-center justify-center min-h-[320px]">
+                        <img id="drawMain" src="assets/images/fandom/satsuriku/115965.png" alt="drawing main" class="mx-auto w-auto h-auto max-w-full max-h-[82vh] object-contain" />
                     </div>
 
-                    <div id="drawThumbs" class="mt-4 grid grid-cols-4 md:grid-cols-6 gap-2"></div>
+                    <div id="drawThumbs" class="mt-4 flex gap-2 overflow-x-auto pb-1"></div>
 
                     <div class="text-sm text-gray-700 mt-4">
                         <p>绘画作品：115965.PNG</p>
@@ -131,13 +136,13 @@
         sections.forEach(sec => sec && observer.observe(sec));
 
         const cosImages = [
-            'assets/images/fandom/satsuriku/06-extra-8371.jpg',
-            'assets/images/fandom/satsuriku/07-extra-8368.jpg',
-            'assets/images/fandom/satsuriku/01-8371.jpg',
-            'assets/images/fandom/satsuriku/07.jpg',
-            'assets/images/fandom/satsuriku/08.jpg',
-            'assets/images/fandom/satsuriku/09.jpg',
-            'assets/images/fandom/satsuriku/10.jpg'
+            'assets/images/fandom/satsuriku/cos-0.jpg',
+            'assets/images/fandom/satsuriku/cos-1.jpg',
+            'assets/images/fandom/satsuriku/cos-4.jpg',
+            'assets/images/fandom/satsuriku/cos-7.jpg',
+            'assets/images/fandom/satsuriku/cos-8.jpg',
+            'assets/images/fandom/satsuriku/cos-10.jpg',
+            'assets/images/fandom/satsuriku/cos-11.jpg'
         ];
         let cosIndex = 0;
         const cosMain = document.getElementById('cosMain');
@@ -146,7 +151,7 @@
         function renderCos() {
             cosMain.src = cosImages[cosIndex];
             cosThumbs.innerHTML = cosImages.map((src, i) => `
-                <button class="thumb border ${i===cosIndex?'border-gray-900':'border-gray-300'} rounded-md overflow-hidden" data-i="${i}">
+                <button class="thumb shrink-0 w-24 border ${i===cosIndex?'border-gray-900':'border-gray-300'} rounded-md overflow-hidden" data-i="${i}">
                     <img src="${src}" class="w-full h-16 object-cover" alt="cos ${i+1}" />
                 </button>
             `).join('');
@@ -168,7 +173,7 @@
         function renderDraw() {
             drawMain.src = drawImages[drawIndex];
             drawThumbs.innerHTML = drawImages.map((src, i) => `
-                <button class="thumb border ${i===drawIndex?'border-gray-900':'border-gray-300'} rounded-md overflow-hidden" data-i="${i}">
+                <button class="thumb shrink-0 w-24 border ${i===drawIndex?'border-gray-900':'border-gray-300'} rounded-md overflow-hidden" data-i="${i}">
                     <img src="${src}" class="w-full h-16 object-cover" alt="drawing ${i+1}" />
                 </button>
             `).join('');
