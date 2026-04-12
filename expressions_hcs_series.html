@@ -100,53 +100,28 @@
         const descEl = document.getElementById('episodeDesc');
         const linkEl = document.getElementById('biliLink');
 
-        async function fetchCid(bvid, p = 1) {
-            const url = `https://api.bilibili.com/x/player/pagelist?bvid=${encodeURIComponent(bvid)}`;
-            const res = await fetch(url);
-            if (!res.ok) throw new Error(`API 请求失败 (${res.status})`);
-            const data = await res.json();
-            if (data.code !== 0 || !Array.isArray(data.data) || data.data.length === 0) {
-                throw new Error('无法获取分P信息');
-            }
-            const index = Math.max(0, Math.min((p || 1) - 1, data.data.length - 1));
-            const target = data.data[index];
-            if (!target || !target.cid) throw new Error('CID 缺失');
-            return { cid: target.cid, realP: index + 1 };
-        }
-
-        function buildPlayerUrl({ bvid, cid, p }) {
+        function buildPlayerUrl({ bvid, p }) {
             const params = new URLSearchParams({
                 isOutside: 'true',
                 high_quality: '1',
                 danmaku: '0',
                 bvid,
-                cid: String(cid),
                 p: String(p || 1)
             });
             return `https://player.bilibili.com/player.html?${params.toString()}`;
         }
 
-        async function selectEpisode(ep) {
+        function selectEpisode(ep) {
             titleEl.textContent = ep.title;
             descEl.textContent = ep.desc;
 
             const hasBvid = Boolean(ep.bvid && ep.bvid.trim());
             if (hasBvid) {
-                try {
-                    const { cid, realP } = await fetchCid(ep.bvid.trim(), ep.p || 1);
-                    player.src = buildPlayerUrl({ bvid: ep.bvid.trim(), cid, p: realP });
-                    player.classList.remove('hidden');
-                    emptyState.classList.add('hidden');
-                    linkEl.href = `https://www.bilibili.com/video/${ep.bvid.trim()}?p=${realP}`;
-                    linkEl.classList.remove('hidden');
-                } catch (error) {
-                    console.error(error);
-                    player.src = '';
-                    player.classList.add('hidden');
-                    emptyState.classList.remove('hidden');
-                    linkEl.href = `https://www.bilibili.com/video/${ep.bvid.trim()}?p=${ep.p || 1}`;
-                    linkEl.classList.remove('hidden');
-                }
+                player.src = buildPlayerUrl({ bvid: ep.bvid.trim(), p: ep.p || 1 });
+                player.classList.remove('hidden');
+                emptyState.classList.add('hidden');
+                linkEl.href = `https://www.bilibili.com/video/${ep.bvid.trim()}?p=${ep.p || 1}`;
+                linkEl.classList.remove('hidden');
             } else {
                 player.src = '';
                 player.classList.add('hidden');
