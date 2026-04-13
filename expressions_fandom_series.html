@@ -18,7 +18,7 @@
         </div>
     </nav>
 
-    <main class="max-w-6xl mx-auto mt-10 px-4 pb-16">
+    <main class="max-w-[90rem] mx-auto mt-10 px-4 pb-16">
         <div class="flex items-center gap-3 text-sm text-gray-500 mb-6">
             <a href="expressions.html" class="hover:text-gray-700">Expressions</a>
             <span>/</span>
@@ -27,78 +27,78 @@
             <span class="text-gray-700">游戏实况系列</span>
         </div>
 
-        <section class="max-w-4xl mb-8">
+        <section class="bg-white border border-gray-200 rounded-2xl p-6 mb-8">
             <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-2">Gameplay Series</p>
             <h2 class="text-3xl font-semibold mb-3">Human Construction Site（人体构造厂）</h2>
-            <p class="text-gray-700 mb-2">这页现在已经接上你的 B 站实况。页面内直接内嵌播放器，观众可以在站内顺着分P往下看，不用先跳出网站。</p>
-            <p class="text-sm text-gray-500">内容提醒：包含人体变异、密集恐惧相关视觉、暗黑题材。</p>
+            <p class="text-gray-700 mb-5">这页换回了之前那版更简洁的实况 UI。现在接的是你的 B 站视频 <span class="font-semibold">BV1qpD2BDEXr</span>，右侧 11 个分P都可以直接切换。</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <div class="rounded-xl border border-gray-200 bg-gray-50 px-4 py-3">平台：Bilibili</div>
+                <div class="rounded-xl border border-gray-200 bg-gray-50 px-4 py-3">系列结构：11P</div>
+                <a href="https://www.bilibili.com/video/BV1qpD2BDEXr" target="_blank" rel="noopener noreferrer" class="rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 hover:border-gray-400">在 B 站打开 ↗</a>
+            </div>
         </section>
 
-        <section class="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-8 items-start">
-            <aside class="bg-white rounded-2xl border border-gray-200 p-5 lg:sticky lg:top-24">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-lg font-semibold">播放列表</h3>
-                    <span class="text-xs text-gray-500">按你的顺序</span>
+        <section class="grid grid-cols-1 lg:grid-cols-[1.62fr_0.48fr] gap-6 items-start">
+            <article class="bg-white border border-gray-200 rounded-2xl p-5">
+                <div class="aspect-video w-full bg-black rounded-xl overflow-hidden border border-gray-300">
+                    <iframe
+                        id="biliPlayer"
+                        class="w-full h-full"
+                        src="about:blank"
+                        frameborder="0"
+                        allowfullscreen
+                        scrolling="no"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        title="Bilibili 外链播放器"
+                    ></iframe>
                 </div>
-                <div id="episodeList" class="space-y-2"></div>
-                <div class="mt-5 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
-                    现在已经按分P接好。每一条都会调用同一个 BVID，再按对应的分P播放。
-                </div>
-            </aside>
-
-            <article class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
-                <div class="aspect-video bg-black" id="playerWrap">
-                    <iframe id="biliPlayer"
-                            class="w-full h-full"
-                            src=""
-                            scrolling="no"
-                            border="0"
-                            frameborder="no"
-                            framespacing="0"
-                            allowfullscreen="true"></iframe>
-                    <div id="emptyState" class="w-full h-full flex items-center justify-center text-center px-6 text-gray-300 text-sm tracking-wide hidden">
-                        这一集还没填 BVID<br/>填上后就会在这里播放
-                    </div>
-                </div>
-
-                <div class="p-5 border-t border-gray-200">
-                    <div class="flex items-start justify-between gap-4 mb-3">
-                        <h3 id="episodeTitle" class="text-xl font-semibold">请选择一集</h3>
-                        <a id="biliLink" href="#" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-600 underline underline-offset-4 hidden">在 B 站打开 ↗</a>
-                    </div>
-                    <p id="episodeDesc" class="text-sm text-gray-600">点击左侧条目切换。这里默认是站内嵌播放器，不强制跳转到 B 站页面。</p>
-                    <div class="mt-4 text-xs text-gray-500">
-                        倍速说明：B 站外链播放器的控件会随平台策略变化；若你在某设备看不到倍速，可优先用桌面端浏览器测试。
-                    </div>
+                <div class="mt-4">
+                    <h3 id="episodeTitle" class="text-lg font-semibold mb-1">播放器待加载</h3>
+                    <p id="episodeDesc" class="text-sm text-gray-600">点击右侧分集开始播放。</p>
+                    <p id="playerStatus" class="text-xs text-gray-500 mt-2">状态：等待选择分集</p>
                 </div>
             </article>
+
+            <aside class="bg-white border border-gray-200 rounded-2xl p-4">
+                <h3 class="text-lg font-semibold mb-3">分集列表</h3>
+                <div id="episodeList" class="space-y-2 max-h-[34rem] overflow-auto pr-1"></div>
+                <div class="mt-5 pt-4 border-t border-gray-200 text-xs text-gray-500 space-y-2">
+                    <p>当前用的是 B 站外链播放器，按 <span class="font-semibold">BVID + p</span> 切换分P。</p>
+                    <p>如果内嵌播放器在某些设备上表现不稳定，可以直接点右侧链接回到 B 站原页。</p>
+                </div>
+            </aside>
         </section>
     </main>
 
     <footer class="text-center text-sm text-gray-500 mt-10 mb-4">© 2025 Rebone. 保留所有权利.</footer>
 
     <script>
-        
         const episodes = [
-            { id: 'p1', title: 'P1 眼睛、脑子、病患', desc: '系列开场。', bvid: 'BV1qpD2BDEXr', p: 1 },
-            { id: 'p2', title: 'P2 是兄弟就来捅我', desc: '主线推进。', bvid: 'BV1qpD2BDEXr', p: 2 },
-            { id: 'p3', title: 'P3 食物逃跑了', desc: '主线推进。', bvid: 'BV1qpD2BDEXr', p: 3 },
-            { id: 'p4', title: 'P4 眼睛好吃吗', desc: '主线推进。', bvid: 'BV1qpD2BDEXr', p: 4 },
-            { id: 'p5', title: 'P5 救命之恩当____', desc: '主线推进。', bvid: 'BV1qpD2BDEXr', p: 5 },
-            { id: 'p6', title: 'P6 当活下去变成一种罪', desc: '主线段落收束。', bvid: 'BV1qpD2BDEXr', p: 6 },
-            { id: 'e4', title: 'Ending 4 - 和？永生', desc: '结局分支。', bvid: 'BV1qpD2BDEXr', p: 7 },
-            { id: 'e2', title: 'Ending 2 - 笼中鸟', desc: '结局分支。', bvid: 'BV1qpD2BDEXr', p: 8 },
-            { id: 'e3', title: 'Ending 3 - 自我麻痹', desc: '结局分支。', bvid: 'BV1qpD2BDEXr', p: 9 },
-            { id: 'e5', title: 'Ending 5 - 没有被利用的价值', desc: '结局分支。', bvid: 'BV1qpD2BDEXr', p: 10 },
-            { id: 'te1', title: 'True Ending - 另一种可能', desc: '真结局。', bvid: 'BV1qpD2BDEXr', p: 11 }
+            { id: 'p1', title: 'P1 · 眼睛、脑子、病患', desc: '系列开场。', bvid: 'BV1qpD2BDEXr', p: 1 },
+            { id: 'p2', title: 'P2 · 是兄弟就来捅我', desc: '主线推进。', bvid: 'BV1qpD2BDEXr', p: 2 },
+            { id: 'p3', title: 'P3 · 食物逃跑了', desc: '主线推进。', bvid: 'BV1qpD2BDEXr', p: 3 },
+            { id: 'p4', title: 'P4 · 眼睛好吃吗', desc: '主线推进。', bvid: 'BV1qpD2BDEXr', p: 4 },
+            { id: 'p5', title: 'P5 · 救命之恩当____', desc: '主线推进。', bvid: 'BV1qpD2BDEXr', p: 5 },
+            { id: 'p6', title: 'P6 · 当活下去变成一种罪', desc: '主线段落收束。', bvid: 'BV1qpD2BDEXr', p: 6 },
+            { id: 'e4', title: 'Ending 4 · 和？永生', desc: '结局分支。', bvid: 'BV1qpD2BDEXr', p: 7 },
+            { id: 'e2', title: 'Ending 2 · 笼中鸟', desc: '结局分支。', bvid: 'BV1qpD2BDEXr', p: 8 },
+            { id: 'e3', title: 'Ending 3 · 自我麻痹', desc: '结局分支。', bvid: 'BV1qpD2BDEXr', p: 9 },
+            { id: 'e5', title: 'Ending 5 · 没有被利用的价值', desc: '结局分支。', bvid: 'BV1qpD2BDEXr', p: 10 },
+            { id: 'te1', title: 'True Ending · 另一种可能', desc: '真结局。', bvid: 'BV1qpD2BDEXr', p: 11 }
         ];
 
-        const listEl = document.getElementById('episodeList');
         const player = document.getElementById('biliPlayer');
-        const emptyState = document.getElementById('emptyState');
-        const titleEl = document.getElementById('episodeTitle');
-        const descEl = document.getElementById('episodeDesc');
-        const linkEl = document.getElementById('biliLink');
+        const episodeTitle = document.getElementById('episodeTitle');
+        const episodeDesc = document.getElementById('episodeDesc');
+        const playerStatus = document.getElementById('playerStatus');
+        const episodeList = document.getElementById('episodeList');
+
+        function setStatus(text, isError = false) {
+            playerStatus.textContent = `状态：${text}`;
+            playerStatus.className = isError
+                ? 'text-xs text-red-500 mt-2'
+                : 'text-xs text-gray-500 mt-2';
+        }
 
         function buildPlayerUrl({ bvid, p }) {
             const params = new URLSearchParams({
@@ -111,46 +111,48 @@
             return `https://player.bilibili.com/player.html?${params.toString()}`;
         }
 
-        function selectEpisode(ep) {
-            titleEl.textContent = ep.title;
-            descEl.textContent = ep.desc;
+        function renderEpisodeButtons() {
+            episodeList.innerHTML = episodes.map((ep, index) => `
+                <button
+                    id="btn-${ep.id}"
+                    class="w-full text-left rounded-xl border border-gray-200 px-4 py-3 hover:border-gray-400"
+                    data-index="${index}"
+                >
+                    <p class="text-sm font-semibold">${ep.title}</p>
+                    <p class="text-xs text-gray-500 mt-1">P${ep.p} · ${ep.bvid}</p>
+                </button>
+            `).join('');
 
-            const hasBvid = Boolean(ep.bvid && ep.bvid.trim());
-            if (hasBvid) {
-                player.src = buildPlayerUrl({ bvid: ep.bvid.trim(), p: ep.p || 1 });
-                player.classList.remove('hidden');
-                emptyState.classList.add('hidden');
-                linkEl.href = `https://www.bilibili.com/video/${ep.bvid.trim()}?p=${ep.p || 1}`;
-                linkEl.classList.remove('hidden');
-            } else {
-                player.src = '';
-                player.classList.add('hidden');
-                emptyState.classList.remove('hidden');
-                linkEl.classList.add('hidden');
-            }
-
-            document.querySelectorAll('[data-ep-id]').forEach(btn => {
-                btn.classList.remove('border-gray-900', 'bg-white', 'text-gray-900');
-                btn.classList.add('border-gray-200', 'bg-gray-50', 'text-gray-700');
+            episodeList.querySelectorAll('button[data-index]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const idx = Number(btn.dataset.index);
+                    loadEpisode(idx);
+                });
             });
-            const active = document.querySelector(`[data-ep-id="${ep.id}"]`);
+        }
+
+        function loadEpisode(index) {
+            const ep = episodes[index];
+            if (!ep) return;
+
+            episodeTitle.textContent = ep.title;
+            episodeDesc.textContent = ep.desc;
+            player.src = buildPlayerUrl({ bvid: ep.bvid, p: ep.p });
+            setStatus(`已加载 ${ep.bvid} (P${ep.p})`);
+
+            episodeList.querySelectorAll('button[data-index]').forEach(btn => {
+                btn.classList.remove('border-gray-900', 'bg-white');
+                btn.classList.add('border-gray-200');
+            });
+            const active = document.getElementById(`btn-${ep.id}`);
             if (active) {
-                active.classList.remove('border-gray-200', 'bg-gray-50', 'text-gray-700');
-                active.classList.add('border-gray-900', 'bg-white', 'text-gray-900');
+                active.classList.remove('border-gray-200');
+                active.classList.add('border-gray-900', 'bg-white');
             }
         }
 
-        episodes.forEach((ep, idx) => {
-            const btn = document.createElement('button');
-            btn.type = 'button';
-            btn.dataset.epId = ep.id;
-            btn.className = 'w-full text-left rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 transition hover:border-gray-400';
-            btn.innerHTML = `<div class="text-sm font-semibold">${idx + 1}. ${ep.title}</div><div class="text-xs mt-1 ${ep.bvid ? 'text-emerald-600' : 'text-gray-400'}">${ep.bvid ? `已配置 P${ep.p}` : '待填 BVID'}</div>`;
-            btn.addEventListener('click', () => selectEpisode(ep));
-            listEl.appendChild(btn);
-        });
-
-        selectEpisode(episodes[0]);
+        renderEpisodeButtons();
+        loadEpisode(0);
     </script>
 </body>
 </html>
