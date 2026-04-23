@@ -17,9 +17,9 @@
     <meta name="twitter:description" content="听见真实声音、迭代想法、解决问题的日志。" />
     <meta name="theme-color" content="#f9fafb" />
     <link rel="stylesheet" href="assets/tailwind.css" />
+    <script src="assets/js/site-content.js" defer></script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-mono leading-relaxed">
-
     <nav class="sticky top-0 z-50 bg-[length:113%_1000px] bg-center p-4 flex justify-between items-center" style="background-image: url('assets/nav-bg.webp');">
         <a href="index.html" class="text-xl font-bold text-white">ReBone</a>
         <div class="space-x-4 text-white text-sm">
@@ -30,48 +30,11 @@
         </div>
     </nav>
 
-    <main class="max-w-6xl mx-auto mt-10 p-4">
-        <h2 class="text-2xl font-semibold mb-4">Solutions</h2>
-        <p class="text-gray-700 leading-relaxed mb-8">
-            听见真实声音、迭代想法、解决问题的日志。
-        </p>
-
-        <div class="flex space-x-2 mb-8 overflow-x-auto">
-            <button class="px-4 py-2 bg-gray-800 text-white text-sm rounded">全部</button>
-            <button class="px-4 py-2 bg-gray-200 text-gray-700 text-sm rounded hover:bg-gray-300">产品</button>
-            <button class="px-4 py-2 bg-gray-200 text-gray-700 text-sm rounded hover:bg-gray-300">志愿</button>
-            <button class="px-4 py-2 bg-gray-200 text-gray-700 text-sm rounded hover:bg-gray-300">生命</button>
-            <button class="px-4 py-2 bg-gray-200 text-gray-700 text-sm rounded hover:bg-gray-300">生活</button>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <a href="solutions_restraint.html" class="block group">
-                <article class="bg-white border border-gray-200 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer">
-                    <div class="h-48 overflow-hidden">
-                        <img src="assets/glove_prototype.png"
-                            alt="失能老人约束手套"
-                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                    </div>
-
-                    <div class="p-6">
-                        <div class="flex justify-between items-start gap-3 mb-2">
-                            <h3 class="text-xl font-semibold">失能老人约束手套</h3>
-                            <div class="flex flex-wrap gap-2 justify-end">
-                                <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">产品</span>
-                                <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">生命</span>
-                            </div>
-                        </div>
-                        <p class="text-sm text-gray-500 mb-4">2023.10 - 进行中</p>
-                        <div class="space-y-3 text-sm text-gray-700 leading-relaxed">
-                            <p>在必要的约束中，提供舒适、安抚与自主权。</p>
-                            <div class="p-3 bg-gray-50 border-l-4 border-gray-400 italic text-gray-600">
-                                多少痛苦，需要一个人以另种痛苦来寻求解脱呢？
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            </a>
-        </div>
+    <main id="solutions-page-root" class="max-w-6xl mx-auto mt-10 p-4">
+        <h2 id="solutions-title" class="text-2xl font-semibold mb-4">Solutions</h2>
+        <p id="solutions-intro" class="text-gray-700 leading-relaxed mb-8">听见真实声音、迭代想法、解决问题的日志。</p>
+        <div id="solutions-filters" class="flex space-x-2 mb-8 overflow-x-auto"></div>
+        <div id="solutions-cards" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
     </main>
 
     <footer class="text-center text-sm text-gray-500 mt-10 mb-4">

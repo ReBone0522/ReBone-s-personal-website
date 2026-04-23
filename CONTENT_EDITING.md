@@ -19,22 +19,41 @@
   - README 页正文
   - 这里只放正文，不放导航、页脚、meta
 
+- `content/solutions.json`
+  - Solutions 页标题与简介
+  - 分类按钮文字
+  - 项目卡片的标题、tag、日期、摘要、引用
+
+- `content/solutions_restraint.json`
+  - 约束手套详情页的目录、项目概要、背景调查、陪伴日志、原型迭代、生产计划、致谢
+  - 这是结构化 JSON，不需要改整页 HTML
+
 ## 现在页面怎么更新
 
-- `index.html` 会直接读取 `content/home.json` 和 `content/updates.json`
-- `readme.html` 会直接读取 `content/readme.article.html`
-- 所以你以后改的是 content 文件本身，不是整页 HTML
+- `index.html` 会读取 `content/home.json` 和 `content/updates.json`
+- `readme.html` 会读取 `content/readme.article.html`
+- `solutions.html` 会读取 `content/solutions.json`
+- `solutions_restraint.html` 会读取 `content/solutions_restraint.json`
 
-## 目前要注意的一点
+所以你以后改的是 content 文件本身，不是整页 HTML。
 
-现在 live 站点仍然从 `master` 分支发。
-所以如果你要在 GitHub 网页里直接改、并且想立刻反映到网站上，先切到 `master` 分支再编辑这些文件。
+## 现在 live 站点的发布分支
+
+现在 GitHub Pages 已经确认从 `main` 分支发布。
+所以如果你要在 GitHub 网页里直接改、并且想让网站更新，编辑 `main` 分支里的这些 content 文件就可以。
 
 优先编辑：
 - `content/home.json`
 - `content/updates.json`
 - `content/readme.article.html`
+- `content/solutions.json`
+- `content/solutions_restraint.json`
 
 ## 以后还能继续升级
 
-如果你希望 README 以后也变成更好写的 Markdown，我可以下一步把 `content/readme.article.html` 再升级成 `content/readme.md`。
+如果你希望：
+- README 以后也变成更好写的 Markdown
+- Reflections / Expressions 也接入 content 文件
+- 项目详情页再加更多图片、折叠块、引用来源结构
+
+我可以继续往这套内容层里扩。
