@@ -1,0 +1,37 @@
+{
+  "heading": "欢迎:3",
+  "intro_label": "这个网站的意义是：",
+  "intro_points": [
+    "系统性地整理并存档有关「我」的所有事",
+    "给不受限的观者潜在的启发与意义"
+  ],
+  "sections": [
+    {
+      "title": "Solutions",
+      "href": "solutions.html",
+      "description": "听见真实声音，改善客观困境。"
+    },
+    {
+      "title": "Expressions",
+      "href": "expressions.html",
+      "description": "“为爱发电”的作品表达，包括视觉与听觉。"
+    },
+    {
+      "title": "Reflections",
+      "href": "reflections.html",
+      "description": "输入、输出间，在大脑进行的迭代过程。"
+    },
+    {
+      "title": "README.md",
+      "href": "readme.html",
+      "description": "如果社交有说明会让你更自在。"
+    }
+  ],
+  "updates_intro": "这里记录网站正式分享后的每一次公开更新。现在的整理、讨论和内部修改，不计入这里。",
+  "credits": [
+    "文字：我",
+    "排版、交互灵感来自：我",
+    "网站制作：ChatGPT、DeepSeek、Open Claw：Little Blue Man（Claude 4.5 Opus）、Open Claw：Little Blue Man（ChatGPT 5.4）",
+    "感谢大家的帮助！"
+  ]
+}
