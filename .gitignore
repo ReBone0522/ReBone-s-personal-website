@@ -14,3 +14,24 @@ memory/
 Thumbs.db
 
 # Don't commit extra solution pages
+
+
+# Workspace temp / abandoned build-layer leftovers
+.github/workflows/build-content.yml
+scripts/build_site.py
+templates/index.template.html
+templates/readme.template.html
+content/site.json
+sticky-context.json
+website-content-map-*.md
+config/
+tmp/
+projects/
+research/
+
+# Backup files
+*.bak
+*.backup
+*.bak-*
+*.pre-series.bak
+*.old-ui
