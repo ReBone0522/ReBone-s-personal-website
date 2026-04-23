@@ -34,6 +34,15 @@
 - `content/reflections.json`
   - Reflections 页标题、说明文字、提示语，以及各个区域（人类 / 我 / 动物 / 社交 / 交互 / 人类×动物 / 生命）的内容
 
+- `content/expressions_visual.json`
+  - Expressions → 视觉艺术 子页的标题、说明、作品卡片、预留位
+
+- `content/expressions_sound.json`
+  - Expressions → 音乐 子页的标题、授权说明、八音盒曲目、原创曲目、许愿 / 订购规则
+
+- `content/expressions_fandom.json`
+  - Expressions → 为爱发电 子页的标题、游戏实况入口、同人分类卡片
+
 ## 现在页面怎么更新
 
 - `index.html` 会读取 `content/home.json` 和 `content/updates.json`
@@ -41,6 +50,9 @@
 - `solutions.html` 会读取 `content/solutions.json`
 - `solutions_restraint.html` 会读取 `content/solutions_restraint.json`
 - `expressions.html` 会读取 `content/expressions.json`
+- `expressions_visual.html` 会读取 `content/expressions_visual.json`
+- `expressions_sound.html` 会读取 `content/expressions_sound.json`
+- `expressions_fandom.html` 会读取 `content/expressions_fandom.json`
 - `reflections.html` 会读取 `content/reflections.json`
 
 所以你以后改的是 content 文件本身，不是整页 HTML。
@@ -57,6 +69,9 @@
 - `content/solutions.json`
 - `content/solutions_restraint.json`
 - `content/expressions.json`
+- `content/expressions_visual.json`
+- `content/expressions_sound.json`
+- `content/expressions_fandom.json`
 - `content/reflections.json`
 
 ## 以后还能继续升级

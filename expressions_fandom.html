@@ -17,6 +17,7 @@
     <meta name="twitter:description" content="游戏实况、宅舞、同人视频等为爱发电的记录。" />
     <meta name="theme-color" content="#f9fafb" />
     <link rel="stylesheet" href="assets/tailwind.css" />
+    <script src="assets/js/site-content.js" defer></script>
     <style>
         .entry-hover { transition: all .2s ease; }
         .entry-hover:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(17,24,39,.08); border-color:#9ca3af; }
@@ -34,85 +35,20 @@
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto mt-10 px-4 pb-16">
+    <main id="fandom-page-root" class="max-w-7xl mx-auto mt-10 px-4 pb-16">
         <div class="flex items-center gap-3 text-sm text-gray-500 mb-6">
-            <a href="expressions.html" class="hover:text-gray-700">Expressions</a>
+            <a href="expressions.html" id="fandom-breadcrumb-parent" class="hover:text-gray-700">Expressions</a>
             <span>/</span>
-            <span class="text-gray-700">为爱发电</span>
+            <span id="fandom-breadcrumb-current" class="text-gray-700">为爱发电</span>
         </div>
 
         <div class="max-w-3xl mb-10">
-            <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-3">For Love</p>
-            <h2 class="text-3xl font-semibold mb-4">为爱发电</h2>
-            <p class="text-gray-700">这里放游戏实况与同人衍生创作。不是任务，不是交差，而是因为喜欢才会继续做。</p>
+            <p id="fandom-eyebrow" class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-3">For Love</p>
+            <h2 id="fandom-title" class="text-3xl font-semibold mb-4">为爱发电</h2>
+            <div id="fandom-intro" class="space-y-4 text-gray-700"></div>
         </div>
 
-        <div class="space-y-12">
-            <section>
-                <div class="flex items-end justify-between gap-4 mb-4">
-                    <div>
-                        <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-2">Section 01</p>
-                        <h3 class="text-2xl font-semibold">游戏实况</h3>
-                    </div>
-                    <span class="text-sm text-gray-400">Series archive</span>
-                </div>
-
-                <article class="bg-white rounded-2xl border border-gray-200 overflow-hidden entry-hover">
-                    <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr]">
-                        <a href="expressions_hcs_series.html" class="bg-gray-900 text-white p-6 flex flex-col justify-between min-h-64 hover:bg-gray-800 transition">
-                            <p class="text-xs tracking-[0.2em] text-gray-300 uppercase">Now Live</p>
-                            <div>
-                                <h4 class="text-2xl font-semibold mb-2">Human Construction Site</h4>
-                                <p class="text-sm text-gray-200">已经接好你的实况视频与分P播放。观众可以直接在网站里看完整个系列。</p>
-                            </div>
-                            <span class="inline-flex items-center gap-2 text-sm underline underline-offset-4">进入系列页 <span>↗</span></span>
-                        </a>
-                        <div class="p-6">
-                            <div class="flex items-center justify-between gap-4 mb-3">
-                                <h4 class="text-xl font-semibold">当前实况入口</h4>
-                                <span class="text-xs text-gray-500">4P slot</span>
-                            </div>
-                            <p class="text-sm text-gray-600 mb-4">这条已经换成你刚发来的 B 站视频，并按分P做成站内播放入口。</p>
-                            <div class="space-y-2 text-sm text-gray-600 mb-5">
-                                <p>· 已实现：站内播放器、分P切换、原链接回退</p>
-                                <p>· 当前内容：Human Construction Site 全结局收录</p>
-                                <p>· 当前视频：BV1qpD2BDEXr</p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            </section>
-
-            <section>
-                <div class="flex items-end justify-between gap-4 mb-4">
-                    <div>
-                        <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-2">Section 02</p>
-                        <h3 class="text-2xl font-semibold">同人衍生</h3>
-                    </div>
-                    <span class="text-sm text-gray-400">按作品分类</span>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <a href="expressions_fandom_satsuriku.html" class="bg-white rounded-2xl border border-gray-200 p-6 entry-hover block">
-                        <p class="text-xs uppercase tracking-[0.2em] text-gray-400 mb-2">Work 01</p>
-                        <h4 class="text-2xl font-semibold mb-2">杀戮天使</h4>
-                        <p class="text-sm text-gray-600 mb-4">包含：宅舞 / Cosplay / 绘画</p>
-                        <div class="flex flex-wrap gap-2 text-xs text-gray-500 mb-4">
-                            <span class="px-2 py-1 border border-gray-200 rounded-full">Dance</span>
-                            <span class="px-2 py-1 border border-gray-200 rounded-full">Cosplay</span>
-                            <span class="px-2 py-1 border border-gray-200 rounded-full">Drawing</span>
-                        </div>
-                        <span class="text-sm underline underline-offset-4">进入作品详情 ↗</span>
-                    </a>
-
-                    <article class="bg-white rounded-2xl border border-dashed border-gray-300 p-6">
-                        <p class="text-xs uppercase tracking-[0.2em] text-gray-400 mb-2">Work 02+</p>
-                        <h4 class="text-2xl font-semibold mb-2">预留更多同人作品</h4>
-                        <p class="text-sm text-gray-600">后续可以按作品继续加：每个作品都有独立详情页、左侧导航和自己的素材结构。</p>
-                    </article>
-                </div>
-            </section>
-        </div>
+        <div id="fandom-sections" class="space-y-12"></div>
     </main>
 
     <footer class="text-center text-sm text-gray-500 mt-10 mb-4">© 2025 Rebone. 保留所有权利.</footer>

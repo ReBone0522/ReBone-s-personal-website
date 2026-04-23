@@ -525,6 +525,355 @@ function renderReflections(data) {
   });
 }
 
+function renderVisualArchive(data) {
+  const parent = document.getElementById('visual-breadcrumb-parent');
+  const current = document.getElementById('visual-breadcrumb-current');
+  const eyebrow = document.getElementById('visual-eyebrow');
+  const title = document.getElementById('visual-title');
+  const intro = document.getElementById('visual-intro');
+  const works = document.getElementById('visual-works');
+  if (!parent || !current || !eyebrow || !title || !intro || !works) return;
+
+  parent.textContent = data.breadcrumb?.parent || 'Expressions';
+  current.textContent = data.breadcrumb?.current || '';
+  eyebrow.textContent = data.eyebrow || '';
+  title.textContent = data.title || '';
+  intro.innerHTML = '';
+  appendParagraphs(intro, data.intro, 'text-gray-700');
+
+  works.innerHTML = '';
+  for (const item of data.works || []) {
+    const article = createElement('article', 'bg-white rounded-2xl border border-gray-200 overflow-hidden');
+    if (item.image?.src) {
+      const img = document.createElement('img');
+      img.src = item.image.src;
+      img.alt = item.image.alt || item.title || '';
+      img.className = 'h-72 w-full object-cover';
+      article.appendChild(img);
+    } else {
+      const dark = item.image?.theme === 'dark';
+      article.appendChild(createElement(
+        'div',
+        `h-72 flex items-center justify-center text-sm tracking-[0.2em] ${dark ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-500'}`,
+        item.image?.label || 'IMAGE PLACEHOLDER'
+      ));
+    }
+
+    const body = createElement('div', 'p-6');
+    const header = createElement('div', 'flex items-center justify-between gap-4 mb-3');
+    header.appendChild(createElement('h3', 'text-xl font-semibold', item.title || ''));
+    header.appendChild(createElement('span', 'text-xs text-gray-500', item.date || ''));
+    body.appendChild(header);
+    body.appendChild(createElement('p', 'text-sm text-gray-600 mb-4', item.summary || ''));
+    if (item.quote) body.appendChild(createElement('blockquote', 'border-l-4 border-gray-300 pl-4 text-sm text-gray-600 italic', item.quote));
+    article.appendChild(body);
+    works.appendChild(article);
+  }
+
+  if (data.reserved) {
+    const reserved = createElement('article', 'bg-white rounded-2xl border border-dashed border-gray-300 p-6 lg:col-span-2');
+    const row = createElement('div', 'flex flex-col md:flex-row md:items-center md:justify-between gap-4');
+    const left = document.createElement('div');
+    left.appendChild(createElement('p', 'text-xs uppercase tracking-[0.25em] text-gray-400 mb-2', data.reserved.eyebrow || 'Reserved'));
+    left.appendChild(createElement('h3', 'text-xl font-semibold mb-2', data.reserved.title || ''));
+    left.appendChild(createElement('p', 'text-sm text-gray-600', data.reserved.text || ''));
+    row.appendChild(left);
+    row.appendChild(createElement('span', 'text-sm text-gray-400', data.reserved.tag || ''));
+    reserved.appendChild(row);
+    works.appendChild(reserved);
+  }
+}
+
+function renderSoundArchive(data) {
+  const parent = document.getElementById('sound-breadcrumb-parent');
+  const current = document.getElementById('sound-breadcrumb-current');
+  const eyebrow = document.getElementById('sound-eyebrow');
+  const title = document.getElementById('sound-title');
+  const intro = document.getElementById('sound-intro');
+  const noticeTitle = document.getElementById('sound-notice-title');
+  const noticeBody = document.getElementById('sound-notice-body');
+  const noticeFootnote = document.getElementById('sound-notice-footnote');
+  const sideNav = document.getElementById('sound-side-nav');
+  const sectionsRoot = document.getElementById('sound-sections');
+  if (!parent || !current || !eyebrow || !title || !intro || !noticeTitle || !noticeBody || !noticeFootnote || !sideNav || !sectionsRoot) return;
+
+  parent.textContent = data.breadcrumb?.parent || 'Expressions';
+  current.textContent = data.breadcrumb?.current || '';
+  eyebrow.textContent = data.eyebrow || '';
+  title.textContent = data.title || '';
+  intro.innerHTML = '';
+  appendParagraphs(intro, data.intro, 'text-gray-700');
+
+  noticeTitle.textContent = data.notice?.title || '';
+  noticeBody.innerHTML = '';
+  (data.notice?.paragraphs || []).forEach((paragraph, index) => {
+    const p = createElement('p', '', paragraph);
+    if (index === (data.notice?.paragraphs || []).length - 1 && data.notice?.contact) {
+      const link = createElement('a', 'underline underline-offset-4', data.notice.contact.label || '');
+      link.href = data.notice.contact.href;
+      p.appendChild(link);
+    }
+    noticeBody.appendChild(p);
+  });
+  noticeFootnote.textContent = data.notice?.footnote || '';
+
+  sideNav.innerHTML = '';
+  sectionsRoot.innerHTML = '';
+
+  const createAudioCard = (item) => {
+    const article = createElement('article', 'bg-white rounded-2xl border border-gray-200 p-5');
+    const row = createElement('div', 'flex gap-4 items-start');
+    row.appendChild(createElement('div', 'w-20 h-20 rounded-lg border border-dashed border-gray-300 bg-gray-100 text-gray-500 flex items-center justify-center text-[10px] shrink-0', item.cover_label || '封面位'));
+    const content = createElement('div', 'min-w-0 w-full');
+    content.appendChild(createElement('h4', 'text-lg font-semibold mb-1', item.title || ''));
+    if (item.quote) content.appendChild(createElement('p', 'text-sm text-gray-600 mb-1', item.quote));
+    if (item.origin) content.appendChild(createElement('p', 'text-xs text-gray-500 mb-1', item.origin));
+    if (item.credit) content.appendChild(createElement('p', 'text-xs text-gray-500 mb-2', item.credit));
+    if (item.date) content.appendChild(createElement('p', 'text-xs text-gray-400 mb-2', item.date));
+    row.appendChild(content);
+    article.appendChild(row);
+    if (item.audio?.src) {
+      const audio = document.createElement('audio');
+      audio.controls = true;
+      audio.preload = 'metadata';
+      audio.className = 'w-full mt-3';
+      const source = document.createElement('source');
+      source.src = item.audio.src;
+      if (item.audio.type) source.type = item.audio.type;
+      audio.appendChild(source);
+      article.appendChild(audio);
+    }
+    return article;
+  };
+
+  for (const section of data.sections || []) {
+    const navLink = createElement('a', 'side-link block rounded-lg border border-gray-200 px-3 py-2 hover:bg-gray-50', section.side_label || section.title || '');
+    navLink.href = `#${section.id}`;
+    navLink.dataset.sideLink = section.id;
+    sideNav.appendChild(navLink);
+
+    const sectionEl = createElement('section', 'scroll-mt-24');
+    sectionEl.id = section.id;
+    const header = createElement('div', 'flex items-end justify-between gap-4 mb-4');
+    const left = document.createElement('div');
+    left.appendChild(createElement('p', 'text-xs uppercase tracking-[0.25em] text-gray-400 mb-2', section.section_label || ''));
+    left.appendChild(createElement('h3', 'text-2xl font-semibold', section.title || ''));
+    header.appendChild(left);
+    if (section.tag) header.appendChild(createElement('span', 'text-sm text-gray-400', section.tag));
+    sectionEl.appendChild(header);
+
+    if (section.note) sectionEl.appendChild(createElement('p', 'text-sm text-gray-600 mb-5', section.note));
+
+    if (section.items?.length) {
+      const grid = createElement('div', 'grid grid-cols-1 md:grid-cols-2 gap-6');
+      section.items.forEach(item => grid.appendChild(createAudioCard(item)));
+      sectionEl.appendChild(grid);
+    }
+
+    if (section.footnote) sectionEl.appendChild(createElement('p', 'text-xs text-gray-500 mt-5', section.footnote));
+
+    if (section.wish || section.pricing) {
+      const wrapper = createElement('div', 'bg-white rounded-2xl border border-gray-200 p-6 space-y-6 text-sm text-gray-700');
+      if (section.wish) {
+        const wish = createElement('div');
+        wish.appendChild(createElement('p', 'font-semibold mb-3', section.wish.title || ''));
+        wish.appendChild(createElement('p', 'text-gray-600 mb-3', section.wish.description || ''));
+        const inputGrid = createElement('div', 'grid grid-cols-1 md:grid-cols-2 gap-3');
+        const track = document.createElement('input');
+        track.id = 'wishTrack';
+        track.type = 'text';
+        track.placeholder = section.wish.track_placeholder || '';
+        track.className = 'rounded-lg border border-gray-300 px-3 py-2';
+        inputGrid.appendChild(track);
+        const artist = document.createElement('input');
+        artist.id = 'wishArtist';
+        artist.type = 'text';
+        artist.placeholder = section.wish.artist_placeholder || '';
+        artist.className = 'rounded-lg border border-gray-300 px-3 py-2';
+        inputGrid.appendChild(artist);
+        wish.appendChild(inputGrid);
+        const note = document.createElement('textarea');
+        note.id = 'wishNote';
+        note.placeholder = section.wish.note_placeholder || '';
+        note.className = 'mt-3 w-full rounded-lg border border-gray-300 px-3 py-2 min-h-24';
+        wish.appendChild(note);
+        const actions = createElement('div', 'mt-3 flex flex-wrap gap-3');
+        const button = createElement('button', 'rounded-lg bg-black text-white px-4 py-2 hover:bg-gray-800', section.wish.button_label || '提交许愿（邮件）');
+        button.id = 'sendWish';
+        button.type = 'button';
+        actions.appendChild(button);
+        actions.appendChild(createElement('span', 'text-xs text-gray-500 self-center', section.wish.hint || ''));
+        wish.appendChild(actions);
+        wrapper.appendChild(wish);
+      }
+
+      if (section.pricing) {
+        const pricing = createElement('div');
+        pricing.appendChild(createElement('p', 'font-semibold mb-3', section.pricing.title || ''));
+        const overflow = createElement('div', 'overflow-x-auto');
+        const table = createElement('table', 'min-w-full text-sm border border-gray-200 rounded-xl overflow-hidden');
+        const thead = createElement('thead', 'bg-gray-50 text-gray-700');
+        const headRow = document.createElement('tr');
+        (section.pricing.columns || []).forEach(label => {
+          headRow.appendChild(createElement('th', 'text-left px-4 py-3 border-b border-gray-200', label));
+        });
+        thead.appendChild(headRow);
+        table.appendChild(thead);
+        const tbody = document.createElement('tbody');
+        (section.pricing.rows || []).forEach((row, rowIndex, rows) => {
+          const tr = document.createElement('tr');
+          row.forEach(cell => {
+            tr.appendChild(createElement('td', `px-4 py-3${rowIndex < rows.length - 1 ? ' border-b border-gray-100' : ''}`, cell));
+          });
+          tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+        overflow.appendChild(table);
+        pricing.appendChild(overflow);
+        if (section.pricing.timeline) {
+          pricing.appendChild(createElement('div', 'rounded-xl bg-gray-50 border border-gray-200 p-4 text-xs text-gray-600 mt-4', section.pricing.timeline));
+        }
+        if (section.pricing.contact) {
+          const contact = createElement('div', 'rounded-xl bg-black text-white px-4 py-3 text-sm inline-block mt-4');
+          const prefix = document.createTextNode(section.pricing.contact_label || '联系方式：');
+          contact.appendChild(prefix);
+          const link = createElement('a', 'underline underline-offset-4', section.pricing.contact.label || '');
+          link.href = section.pricing.contact.href;
+          contact.appendChild(link);
+          pricing.appendChild(contact);
+        }
+        wrapper.appendChild(pricing);
+      }
+      sectionEl.appendChild(wrapper);
+    }
+
+    sectionsRoot.appendChild(sectionEl);
+  }
+
+  const allAudios = Array.from(document.querySelectorAll('#sound-sections audio'));
+  allAudios.forEach(currentAudio => {
+    currentAudio.addEventListener('play', () => {
+      allAudios.forEach(other => {
+        if (other !== currentAudio && !other.paused) other.pause();
+      });
+    });
+  });
+
+  const sideLinks = Array.from(document.querySelectorAll('#sound-side-nav [data-side-link]'));
+  const sectionEls = (data.sections || []).map(section => document.getElementById(section.id)).filter(Boolean);
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const id = entry.target.id;
+      sideLinks.forEach(link => {
+        link.classList.toggle('active', link.dataset.sideLink === id);
+      });
+    });
+  }, { rootMargin: '-35% 0px -55% 0px', threshold: 0.01 });
+  sectionEls.forEach(sec => observer.observe(sec));
+  if (!sideLinks.some(link => link.classList.contains('active')) && sideLinks[0]) {
+    sideLinks[0].classList.add('active');
+  }
+
+  const sendWish = document.getElementById('sendWish');
+  if (sendWish) {
+    sendWish.addEventListener('click', () => {
+      const track = (document.getElementById('wishTrack')?.value || '').trim();
+      const artist = (document.getElementById('wishArtist')?.value || '').trim();
+      const note = (document.getElementById('wishNote')?.value || '').trim();
+      const subject = encodeURIComponent(data.sections?.find(section => section.id === 'wish-order')?.wish?.mail_subject || '曲目许愿');
+      const mailTo = data.sections?.find(section => section.id === 'wish-order')?.wish?.mail_to || 'wuruohan0522@gmail.com';
+      const body = encodeURIComponent(`曲目名称：${track || '（未填）'}\n作者/作曲：${artist || '（未填）'}\n\n补充：${note || '（无）'}`);
+      window.location.href = `mailto:${mailTo}?subject=${subject}&body=${body}`;
+    });
+  }
+}
+
+function renderFandomArchive(data) {
+  const parent = document.getElementById('fandom-breadcrumb-parent');
+  const current = document.getElementById('fandom-breadcrumb-current');
+  const eyebrow = document.getElementById('fandom-eyebrow');
+  const title = document.getElementById('fandom-title');
+  const intro = document.getElementById('fandom-intro');
+  const sectionsRoot = document.getElementById('fandom-sections');
+  if (!parent || !current || !eyebrow || !title || !intro || !sectionsRoot) return;
+
+  parent.textContent = data.breadcrumb?.parent || 'Expressions';
+  current.textContent = data.breadcrumb?.current || '';
+  eyebrow.textContent = data.eyebrow || '';
+  title.textContent = data.title || '';
+  intro.innerHTML = '';
+  appendParagraphs(intro, data.intro, 'text-gray-700');
+
+  sectionsRoot.innerHTML = '';
+  for (const section of data.sections || []) {
+    const sectionEl = document.createElement('section');
+    const header = createElement('div', 'flex items-end justify-between gap-4 mb-4');
+    const left = document.createElement('div');
+    left.appendChild(createElement('p', 'text-xs uppercase tracking-[0.25em] text-gray-400 mb-2', section.section_label || ''));
+    left.appendChild(createElement('h3', 'text-2xl font-semibold', section.title || ''));
+    header.appendChild(left);
+    if (section.tag) header.appendChild(createElement('span', 'text-sm text-gray-400', section.tag));
+    sectionEl.appendChild(header);
+
+    if (section.featured && section.summary_card) {
+      const article = createElement('article', 'bg-white rounded-2xl border border-gray-200 overflow-hidden entry-hover');
+      const grid = createElement('div', 'grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr]');
+      const featured = createElement('a', 'bg-gray-900 text-white p-6 flex flex-col justify-between min-h-64 hover:bg-gray-800 transition');
+      featured.href = section.featured.href;
+      featured.appendChild(createElement('p', 'text-xs tracking-[0.2em] text-gray-300 uppercase', section.featured.status || ''));
+      const featuredBody = document.createElement('div');
+      featuredBody.appendChild(createElement('h4', 'text-2xl font-semibold mb-2', section.featured.title || ''));
+      featuredBody.appendChild(createElement('p', 'text-sm text-gray-200', section.featured.description || ''));
+      featured.appendChild(featuredBody);
+      const cta = createElement('span', 'inline-flex items-center gap-2 text-sm underline underline-offset-4', section.featured.cta || '进入系列页');
+      cta.appendChild(createElement('span', '', '↗'));
+      featured.appendChild(cta);
+      grid.appendChild(featured);
+
+      const summary = createElement('div', 'p-6');
+      const summaryHeader = createElement('div', 'flex items-center justify-between gap-4 mb-3');
+      summaryHeader.appendChild(createElement('h4', 'text-xl font-semibold', section.summary_card.title || ''));
+      summaryHeader.appendChild(createElement('span', 'text-xs text-gray-500', section.summary_card.tag || ''));
+      summary.appendChild(summaryHeader);
+      summary.appendChild(createElement('p', 'text-sm text-gray-600 mb-4', section.summary_card.text || ''));
+      const bullets = createElement('div', 'space-y-2 text-sm text-gray-600 mb-5');
+      (section.summary_card.bullets || []).forEach(item => bullets.appendChild(createElement('p', '', `· ${item}`)));
+      summary.appendChild(bullets);
+      grid.appendChild(summary);
+      article.appendChild(grid);
+      sectionEl.appendChild(article);
+    }
+
+    if (section.cards?.length) {
+      const grid = createElement('div', 'grid grid-cols-1 md:grid-cols-2 gap-6');
+      for (const card of section.cards) {
+        if (card.type === 'link') {
+          const anchor = createElement('a', 'bg-white rounded-2xl border border-gray-200 p-6 entry-hover block');
+          anchor.href = card.href;
+          anchor.appendChild(createElement('p', 'text-xs uppercase tracking-[0.2em] text-gray-400 mb-2', card.eyebrow || ''));
+          anchor.appendChild(createElement('h4', 'text-2xl font-semibold mb-2', card.title || ''));
+          anchor.appendChild(createElement('p', 'text-sm text-gray-600 mb-4', card.description || ''));
+          const tags = createElement('div', 'flex flex-wrap gap-2 text-xs text-gray-500 mb-4');
+          (card.tags || []).forEach(tag => tags.appendChild(createElement('span', 'px-2 py-1 border border-gray-200 rounded-full', tag)));
+          anchor.appendChild(tags);
+          anchor.appendChild(createElement('span', 'text-sm underline underline-offset-4', `${card.cta || '进入作品详情'} ↗`));
+          grid.appendChild(anchor);
+        } else {
+          const article = createElement('article', 'bg-white rounded-2xl border border-dashed border-gray-300 p-6');
+          article.appendChild(createElement('p', 'text-xs uppercase tracking-[0.2em] text-gray-400 mb-2', card.eyebrow || ''));
+          article.appendChild(createElement('h4', 'text-2xl font-semibold mb-2', card.title || ''));
+          article.appendChild(createElement('p', 'text-sm text-gray-600', card.description || ''));
+          grid.appendChild(article);
+        }
+      }
+      sectionEl.appendChild(grid);
+    }
+
+    sectionsRoot.appendChild(sectionEl);
+  }
+}
+
 async function initHome() {
   if (!document.getElementById('home-content-root')) return;
   try {
@@ -578,6 +927,36 @@ async function initExpressions() {
   }
 }
 
+async function initVisualArchive() {
+  if (!document.getElementById('visual-page-root')) return;
+  try {
+    const data = await loadJson('content/expressions_visual.json');
+    renderVisualArchive(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function initSoundArchive() {
+  if (!document.getElementById('sound-page-root')) return;
+  try {
+    const data = await loadJson('content/expressions_sound.json');
+    renderSoundArchive(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function initFandomArchive() {
+  if (!document.getElementById('fandom-page-root')) return;
+  try {
+    const data = await loadJson('content/expressions_fandom.json');
+    renderFandomArchive(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 async function initReflections() {
   if (!document.getElementById('reflections-page-root')) return;
   try {
@@ -595,6 +974,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     initSolutions(),
     initRestraint(),
     initExpressions(),
+    initVisualArchive(),
+    initSoundArchive(),
+    initFandomArchive(),
     initReflections(),
   ]);
 });
