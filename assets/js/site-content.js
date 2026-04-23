@@ -396,9 +396,133 @@ function renderRestraint(data) {
       item.classList.toggle('active', item.getAttribute('href') === `#${current}`);
     });
   }
-  window.removeEventListener('scroll', updateActiveNav);
   window.addEventListener('scroll', updateActiveNav);
   updateActiveNav();
+}
+
+function renderExpressions(data) {
+  const title = document.getElementById('expressions-title');
+  const intro = document.getElementById('expressions-intro');
+  const categories = document.getElementById('expressions-categories');
+  const previewLabel = document.getElementById('expressions-preview-label');
+  const previewLinkLabel = document.getElementById('expressions-preview-link-label');
+  const previewTitle = document.getElementById('previewTitle');
+  const previewText = document.getElementById('previewText');
+  const previewItems = document.getElementById('previewItems');
+  const previewTags = document.getElementById('previewTags');
+  const previewLink = document.getElementById('previewLink');
+  if (!title || !intro || !categories) return;
+
+  title.textContent = data.title || 'Expressions';
+  intro.innerHTML = '';
+  (data.intro || []).forEach((paragraph, index) => {
+    intro.appendChild(createElement('p', index === data.intro.length - 1 ? 'text-sm text-gray-500' : 'text-gray-700', paragraph));
+  });
+  if (previewLabel) previewLabel.textContent = data.preview_label || 'Preview';
+  if (previewLinkLabel) previewLinkLabel.textContent = data.preview_link_label || '进入这个分类';
+
+  categories.innerHTML = '';
+  for (const item of data.categories || []) {
+    const card = createElement('a', `category-card block rounded-2xl border border-gray-200 bg-gray-50 p-6${item.active ? ' active' : ''}`);
+    card.href = item.href;
+    card.dataset.section = item.id;
+
+    const row = createElement('div', 'flex items-start justify-between gap-4');
+    const left = document.createElement('div');
+    left.appendChild(createElement('p', 'text-xs uppercase tracking-[0.25em] text-gray-400 mb-2', item.eyebrow));
+    left.appendChild(createElement('h3', 'text-xl font-semibold mb-2', item.title));
+    left.appendChild(createElement('p', 'text-sm text-gray-600', item.card_description));
+    row.appendChild(left);
+    row.appendChild(createElement('span', 'text-gray-400 text-lg', '↗'));
+    card.appendChild(row);
+    categories.appendChild(card);
+  }
+
+  const cardEls = () => document.querySelectorAll('#expressions-categories [data-section]');
+
+  function renderPreview(sectionId) {
+    const item = (data.categories || []).find(x => x.id === sectionId);
+    if (!item) return;
+    previewTitle.textContent = item.title;
+    previewText.textContent = item.preview_text;
+    previewItems.innerHTML = '';
+    for (const entry of item.items || []) {
+      previewItems.appendChild(createElement('div', 'rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700', entry));
+    }
+    previewTags.innerHTML = '';
+    for (const tag of item.tags || []) {
+      previewTags.appendChild(createElement('span', 'preview-pill', tag));
+    }
+    previewLink.href = item.href;
+    cardEls().forEach(el => el.classList.remove('active'));
+    const active = document.querySelector(`#expressions-categories [data-section="${sectionId}"]`);
+    if (active) active.classList.add('active');
+  }
+
+  cardEls().forEach(card => {
+    const section = card.dataset.section;
+    card.addEventListener('mouseenter', () => renderPreview(section));
+    card.addEventListener('focus', () => renderPreview(section));
+    card.addEventListener('click', () => renderPreview(section));
+  });
+
+  renderPreview((data.categories || []).find(x => x.active)?.id || data.categories?.[0]?.id);
+}
+
+function renderReflections(data) {
+  const title = document.getElementById('reflections-title');
+  const subtitle = document.getElementById('reflections-subtitle');
+  const intro = document.getElementById('reflections-intro');
+  const footnote = document.getElementById('reflections-footnote');
+  const hint = document.getElementById('reflections-hint');
+  const tooltip = document.getElementById('tooltip');
+  const panel = document.getElementById('contentPanel');
+  const panelTitle = document.getElementById('panelTitle');
+  const panelContent = document.getElementById('panelContent');
+  const closeBtn = document.getElementById('closePanelBtn');
+  const venn = document.getElementById('vennDiagram');
+  if (!title || !subtitle || !intro || !footnote || !hint || !tooltip || !panel || !panelTitle || !panelContent || !venn) return;
+
+  title.textContent = data.title || 'Reflections';
+  subtitle.textContent = data.subtitle || '';
+  intro.innerHTML = '';
+  (data.intro || []).forEach(text => intro.appendChild(createElement('p', 'mb-2', text)));
+  footnote.textContent = data.footnote || '';
+  hint.textContent = data.hint || '';
+
+  function showContent(sectionId) {
+    const section = data.regions?.[sectionId];
+    if (!section) return;
+    panelTitle.textContent = section.title;
+    panelContent.innerHTML = '';
+    for (const item of section.items || []) {
+      const wrap = createElement('div', 'content-item');
+      if (item.subtitle) wrap.appendChild(createElement('h4', '', item.subtitle));
+      const p = createElement('p', 'whitespace-pre-line', item.text || '');
+      wrap.appendChild(p);
+      if (item.date) wrap.appendChild(createElement('p', 'date-tag', item.date));
+      panelContent.appendChild(wrap);
+    }
+    panel.classList.add('show');
+    panel.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  closeBtn?.addEventListener('click', () => panel.classList.remove('show'));
+
+  document.querySelectorAll('#vennDiagram [data-section]').forEach(el => {
+    el.addEventListener('mouseenter', e => {
+      const section = data.regions?.[e.currentTarget.dataset.section];
+      if (!section) return;
+      tooltip.innerHTML = `<strong>${section.title}</strong><br><span style="color:#9ca3af">${(section.keywords || []).join(' · ')}</span>`;
+      tooltip.classList.add('show');
+      const rect = e.currentTarget.getBoundingClientRect();
+      const container = venn.getBoundingClientRect();
+      tooltip.style.left = `${rect.left - container.left + rect.width / 2 - 80}px`;
+      tooltip.style.top = `${rect.top - container.top - 50}px`;
+    });
+    el.addEventListener('mouseleave', () => tooltip.classList.remove('show'));
+    el.addEventListener('click', e => showContent(e.currentTarget.dataset.section));
+  });
 }
 
 async function initHome() {
@@ -444,6 +568,33 @@ async function initRestraint() {
   }
 }
 
+async function initExpressions() {
+  if (!document.getElementById('expressions-page-root')) return;
+  try {
+    const data = await loadJson('content/expressions.json');
+    renderExpressions(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function initReflections() {
+  if (!document.getElementById('reflections-page-root')) return;
+  try {
+    const data = await loadJson('content/reflections.json');
+    renderReflections(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
-  await Promise.all([initHome(), initReadme(), initSolutions(), initRestraint()]);
+  await Promise.all([
+    initHome(),
+    initReadme(),
+    initSolutions(),
+    initRestraint(),
+    initExpressions(),
+    initReflections(),
+  ]);
 });

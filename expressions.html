@@ -17,6 +17,7 @@
     <meta name="twitter:description" content="视觉、声音、为爱发电与交叉表达的作品入口。" />
     <meta name="theme-color" content="#f9fafb" />
     <link rel="stylesheet" href="assets/tailwind.css" />
+    <script src="assets/js/site-content.js" defer></script>
     <style>
         .category-card {
             transition: all 0.2s ease;
@@ -41,7 +42,6 @@
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-mono leading-relaxed">
-
     <nav class="sticky top-0 z-50 bg-[length:113%_1000px] bg-center p-4 flex justify-between items-center" style="background-image: url('assets/nav-bg.webp');">
         <a href="index.html" class="text-xl font-bold text-white">ReBone</a>
         <div class="space-x-4 text-white text-sm">
@@ -52,58 +52,22 @@
         </div>
     </nav>
 
-    <main class="max-w-6xl mx-auto mt-10 px-4 pb-16">
+    <main id="expressions-page-root" class="max-w-6xl mx-auto mt-10 px-4 pb-16">
         <div class="mb-10 max-w-3xl">
-            <h2 class="text-2xl font-semibold mb-3">Expressions</h2>
-            <p class="text-gray-700 mb-3">这里不是单一媒介的作品页，而是一个作品入口。视觉、声音、为爱发电的影像记录，以及暂时不想被单独归类的交叉表达，都从这里进入。</p>
-            <p class="text-sm text-gray-500">鼠标悬浮可以先看分类预览，点击进入对应页面。</p>
+            <h2 id="expressions-title" class="text-2xl font-semibold mb-3">Expressions</h2>
+            <div id="expressions-intro" class="space-y-3"></div>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-8 items-start">
-            <section class="space-y-4">
-                <a href="expressions_visual.html" class="category-card active block rounded-2xl border border-gray-200 bg-gray-50 p-6" data-section="visual">
-                    <div class="flex items-start justify-between gap-4">
-                        <div>
-                            <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-2">Visual</p>
-                            <h3 class="text-xl font-semibold mb-2">视觉艺术</h3>
-                            <p class="text-sm text-gray-600">实体作品、图像、材料实验、视觉叙事。</p>
-                        </div>
-                        <span class="text-gray-400 text-lg">↗</span>
-                    </div>
-                </a>
-
-                <a href="expressions_sound.html" class="category-card block rounded-2xl border border-gray-200 bg-gray-50 p-6" data-section="sound">
-                    <div class="flex items-start justify-between gap-4">
-                        <div>
-                            <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-2">Sound</p>
-                            <h3 class="text-xl font-semibold mb-2">音乐</h3>
-                            <p class="text-sm text-gray-600">八音盒 cover、自创曲目。支持订购。</p>
-                        </div>
-                        <span class="text-gray-400 text-lg">↗</span>
-                    </div>
-                </a>
-
-                <a href="expressions_fandom.html" class="category-card block rounded-2xl border border-gray-200 bg-gray-50 p-6" data-section="fandom">
-                    <div class="flex items-start justify-between gap-4">
-                        <div>
-                            <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-2">For Love</p>
-                            <h3 class="text-xl font-semibold mb-2">为爱发电</h3>
-                            <p class="text-sm text-gray-600">游戏实况、宅舞、同人视频。不是商业任务，是被某些作品点亮之后留下来的回应。</p>
-                        </div>
-                        <span class="text-gray-400 text-lg">↗</span>
-                    </div>
-                </a>
-
-                
-            </section>
+            <section id="expressions-categories" class="space-y-4"></section>
 
             <aside class="rounded-2xl border border-gray-200 bg-white p-6 lg:sticky lg:top-24">
-                <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-3">Preview</p>
-                <h3 class="text-2xl font-semibold mb-2" id="previewTitle">视觉艺术</h3>
-                <p class="text-gray-600 mb-6" id="previewText">实体作品、图像、材料实验、视觉叙事。</p>
+                <p id="expressions-preview-label" class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-3">Preview</p>
+                <h3 class="text-2xl font-semibold mb-2" id="previewTitle"></h3>
+                <p class="text-gray-600 mb-6" id="previewText"></p>
                 <div class="space-y-3 mb-6" id="previewItems"></div>
                 <div class="flex flex-wrap gap-2 mb-6" id="previewTags"></div>
-                <a id="previewLink" href="expressions_visual.html" class="inline-flex items-center gap-2 text-sm text-black underline underline-offset-4">进入这个分类 <span>↗</span></a>
+                <a id="previewLink" href="#" class="inline-flex items-center gap-2 text-sm text-black underline underline-offset-4"><span id="expressions-preview-link-label">进入这个分类</span> <span>↗</span></a>
             </aside>
         </div>
     </main>
@@ -111,61 +75,5 @@
     <footer class="text-center text-sm text-gray-500 mt-10 mb-4">
        © 2025 Rebone. 保留所有权利.
     </footer>
-
-    <script>
-        const previewData = {
-            visual: {
-                title: '视觉艺术',
-                text: '实体作品、图像、材料实验、视觉叙事。现在先保留你原来那份站位稿，并把它变成一个正式分类页。',
-                tags: ['实体作品', '图像', '材料', '视觉叙事'],
-                items: ['《破碎与重构》', '《异步对话》', '预留：新的视觉作品'],
-                href: 'expressions_visual.html'
-            },
-            sound: {
-                title: '音乐',
-                text: '八音盒 cover、自创曲目。支持订购。',
-                tags: ['Music Box Cover', 'Original', 'Audio Sketch'],
-                items: ['预留：八音盒 cover 曲目', '预留：原创曲目', '预留：声音实验'],
-                href: 'expressions_sound.html'
-            },
-            fandom: {
-                title: '为爱发电',
-                text: '游戏实况、宅舞、同人视频。比“二次元”更宽，也比“同人”更能装下你现在想放的内容。',
-                tags: ['Gameplay', 'Dance', 'Fan Video'],
-                items: ['Human Construction Site（11集）', '宅舞视频', '预留：更多同人影像'],
-                href: 'expressions_fandom.html'
-            },
-
-        };
-
-        const cards = document.querySelectorAll('[data-section]');
-        const titleEl = document.getElementById('previewTitle');
-        const textEl = document.getElementById('previewText');
-        const itemsEl = document.getElementById('previewItems');
-        const tagsEl = document.getElementById('previewTags');
-        const linkEl = document.getElementById('previewLink');
-
-        function renderPreview(section) {
-            const data = previewData[section];
-            if (!data) return;
-            titleEl.textContent = data.title;
-            textEl.textContent = data.text;
-            linkEl.href = data.href;
-            itemsEl.innerHTML = data.items.map(item => `<div class="rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700">${item}</div>`).join('');
-            tagsEl.innerHTML = data.tags.map(tag => `<span class="preview-pill">${tag}</span>`).join('');
-            cards.forEach(card => card.classList.remove('active'));
-            const active = document.querySelector(`[data-section="${section}"]`);
-            if (active) active.classList.add('active');
-        }
-
-        cards.forEach(card => {
-            const section = card.dataset.section;
-            card.addEventListener('mouseenter', () => renderPreview(section));
-            card.addEventListener('focus', () => renderPreview(section));
-            card.addEventListener('click', () => renderPreview(section));
-        });
-
-        renderPreview('visual');
-    </script>
 </body>
 </html>

@@ -1,0 +1,42 @@
+{
+  "title": "Expressions",
+  "intro": [
+    "这里不是单一媒介的作品页，而是一个作品入口。视觉、声音、为爱发电的影像记录，以及暂时不想被单独归类的交叉表达，都从这里进入。",
+    "鼠标悬浮可以先看分类预览，点击进入对应页面。"
+  ],
+  "preview_label": "Preview",
+  "preview_link_label": "进入这个分类",
+  "categories": [
+    {
+      "id": "visual",
+      "eyebrow": "Visual",
+      "title": "视觉艺术",
+      "card_description": "实体作品、图像、材料实验、视觉叙事。",
+      "preview_text": "实体作品、图像、材料实验、视觉叙事。现在先保留你原来那份站位稿，并把它变成一个正式分类页。",
+      "tags": ["实体作品", "图像", "材料", "视觉叙事"],
+      "items": ["《破碎与重构》", "《异步对话》", "预留：新的视觉作品"],
+      "href": "expressions_visual.html",
+      "active": true
+    },
+    {
+      "id": "sound",
+      "eyebrow": "Sound",
+      "title": "音乐",
+      "card_description": "八音盒 cover、自创曲目。支持订购。",
+      "preview_text": "八音盒 cover、自创曲目。支持订购。",
+      "tags": ["Music Box Cover", "Original", "Audio Sketch"],
+      "items": ["预留：八音盒 cover 曲目", "预留：原创曲目", "预留：声音实验"],
+      "href": "expressions_sound.html"
+    },
+    {
+      "id": "fandom",
+      "eyebrow": "For Love",
+      "title": "为爱发电",
+      "card_description": "游戏实况、宅舞、同人视频。不是商业任务，是被某些作品点亮之后留下来的回应。",
+      "preview_text": "游戏实况、宅舞、同人视频。比“二次元”更宽，也比“同人”更能装下你现在想放的内容。",
+      "tags": ["Gameplay", "Dance", "Fan Video"],
+      "items": ["Human Construction Site（11集）", "宅舞视频", "预留：更多同人影像"],
+      "href": "expressions_fandom.html"
+    }
+  ]
+}

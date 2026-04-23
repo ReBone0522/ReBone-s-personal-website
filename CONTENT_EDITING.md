@@ -28,12 +28,20 @@
   - 约束手套详情页的目录、项目概要、背景调查、陪伴日志、原型迭代、生产计划、致谢
   - 这是结构化 JSON，不需要改整页 HTML
 
+- `content/expressions.json`
+  - Expressions 页标题、引言、分类卡片、右侧 preview 内容
+
+- `content/reflections.json`
+  - Reflections 页标题、说明文字、提示语，以及各个区域（人类 / 我 / 动物 / 社交 / 交互 / 人类×动物 / 生命）的内容
+
 ## 现在页面怎么更新
 
 - `index.html` 会读取 `content/home.json` 和 `content/updates.json`
 - `readme.html` 会读取 `content/readme.article.html`
 - `solutions.html` 会读取 `content/solutions.json`
 - `solutions_restraint.html` 会读取 `content/solutions_restraint.json`
+- `expressions.html` 会读取 `content/expressions.json`
+- `reflections.html` 会读取 `content/reflections.json`
 
 所以你以后改的是 content 文件本身，不是整页 HTML。
 
@@ -48,12 +56,14 @@
 - `content/readme.article.html`
 - `content/solutions.json`
 - `content/solutions_restraint.json`
+- `content/expressions.json`
+- `content/reflections.json`
 
 ## 以后还能继续升级
 
 如果你希望：
 - README 以后也变成更好写的 Markdown
-- Reflections / Expressions 也接入 content 文件
+- Expressions / Reflections 的子页面也继续接入 content 文件
 - 项目详情页再加更多图片、折叠块、引用来源结构
 
 我可以继续往这套内容层里扩。
