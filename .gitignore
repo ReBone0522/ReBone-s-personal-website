@@ -35,3 +35,6 @@ research/
 *.bak-*
 *.pre-series.bak
 *.old-ui
+
+# Node build artifacts
+node_modules/
