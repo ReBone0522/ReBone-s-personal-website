@@ -16,14 +16,10 @@
     <meta name="twitter:title" content="ReBone" />
     <meta name="twitter:description" content="ReBone 的个人网站，整理收获、作品、思考与 README，也希望这些内容能给读者一些潜在的启发或意义。" />
     <meta name="theme-color" content="#f9fafb" />
-    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/site-content.js" defer></script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-mono leading-relaxed">
-
-
-    <!-- 顶部导航：背景图 + 文字白色 -->
-
     <nav class="sticky top-0 z-50 bg-[length:113%_1000px] bg-center p-4 flex justify-between items-center" style="background-image: url('assets/nav-bg.PNG');">
         <a href="index.html" class="text-xl font-bold text-white">ReBone</a>
         <div class="space-x-4 text-white text-sm">
@@ -34,75 +30,30 @@
         </div>
     </nav>
 
+    <main id="home-content-root" class="max-w-4xl mx-auto mt-10 p-4">
+        <h2 id="home-heading" class="text-2xl font-semibold mb-4">加载中...</h2>
 
-    <!-- 主体内容 -->
-    <main class="max-w-4xl mx-auto mt-10 p-4">
-        <h2 class="text-2xl font-semibold mb-4">我是ReBone。</h2>
-        <div class="space-y-3 text-gray-700 leading-relaxed max-w-3xl">
-            <p>这个网站首先是为了整理清楚我自己从始至终的一些收获，更有框架地看见自己。</p>
-            <p>同时，我也希望这些内容能给读者一些潜在的启发或意义。无论我活着还是死了，都希望它还能留下值得继续想的 insight。</p>
-        </div>
+        <section class="space-y-4 text-gray-700 leading-relaxed max-w-3xl">
+            <p id="home-intro-label" class="text-base"></p>
+            <ol id="home-intro-points" class="list-decimal list-inside space-y-2 text-gray-700"></ol>
+        </section>
 
+        <div id="home-links" class="mt-10 space-y-6"></div>
 
-    <!-- 页面访问按钮区域 -->
-    <div class="mt-10 space-y-6">
-
-        <!-- Solutions -->
-        <a href="solutions.html" class="group block">
-        <div class="flex items-center space-x-2">
-            <span class="text-lg text-black underline group-hover:text-gray-800 transition">Solutions</span>
-            <span class="text-black text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
-        </div>
-        <p class="text-sm text-gray-500 mt-1">听见真实声音、迭代想法、解决问题的日志。</p>
-        </a>
-    
-        <!-- Expressions -->
-        <a href="expressions.html" class="group block">
-        <div class="flex items-center space-x-2">
-            <span class="text-lg text-black underline group-hover:text-gray-800 transition">Expressions</span>
-            <span class="text-black text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
-        </div>
-        <p class="text-sm text-gray-500 mt-1">手工制品与作者的故事。</p>
-        </a>
-    
-        <!-- Reflections -->
-        <a href="reflections.html" class="group block">
-        <div class="flex items-center space-x-2">
-            <span class="text-lg text-black underline group-hover:text-gray-800 transition">Reflections</span>
-            <span class="text-black text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
-        </div>
-        <p class="text-sm text-gray-500 mt-1">输入、输出间的思考产物。</p>
-        </a>
-
-        <!-- README.md -->
-        <a href="readme.html" class="group block">
-            <div class="flex items-center space-x-2">
-                <span class="text-lg text-black underline group-hover:text-gray-800 transition">README.md</span>
-                <span class="text-black text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
+        <section class="mt-14 rounded-2xl border border-gray-300 bg-white shadow-sm overflow-hidden">
+            <div class="px-5 py-3 border-b border-gray-200 bg-gray-100">
+                <p class="text-xs uppercase tracking-[0.25em] text-gray-500">Updates</p>
+                <h3 class="text-lg text-black">小告示栏</h3>
             </div>
-            <p class="text-sm text-gray-500 mt-1">如果社交有说明会让你更自在。</p>
-            </a>
-    </div>
+            <div class="px-5 py-5">
+                <p id="updates-intro" class="text-sm text-gray-600 leading-relaxed"></p>
+                <ul id="updates-list" class="mt-6 space-y-4"></ul>
+            </div>
+        </section>
 
-    <section class="mt-14 border-t border-gray-200 pt-8">
-        <h3 class="text-lg text-black underline mb-2">Updates</h3>
-        <p class="text-sm text-gray-500 leading-relaxed">这里记录网站正式分享后的每一次公开更新。现在的整理、讨论和内部修改，不计入这里。</p>
-    </section>
-
-    <section class="mt-10 text-sm text-gray-500 leading-relaxed space-y-1">
-        <p>文字：我</p>
-        <p>排版、交互灵感来自：我</p>
-        <p>网站制作：ChatGPT、DeepSeek、Open Claw：Little Blue Man（Claude 4.5 Opus）、Open Claw：Little Blue Man（ChatGPT 5.4）</p>
-        <p>感谢大家的帮助！</p>
-    </section>
+        <section id="home-credits" class="mt-10 text-sm text-gray-500 leading-relaxed space-y-1"></section>
     </main>
 
-
-
-  
-     
-
-    <!-- 底部 -->
     <footer class="text-center text-sm text-gray-500 mt-10 mb-4">
        © 2025 Rebone. 保留所有权利.
     </footer>
