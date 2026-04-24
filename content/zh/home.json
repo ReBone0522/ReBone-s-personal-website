@@ -27,6 +27,8 @@
       "description": "如果社交有说明会让你更自在。"
     }
   ],
+  "updates_label": "Updates",
+  "updates_title": "小告示栏",
   "updates_intro": "这里记录网站正式分享后的每一次公开更新。现在的整理、讨论和内部修改，不计入这里。",
   "credits": [
     "文字：我",
