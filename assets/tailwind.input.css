@@ -4,58 +4,60 @@
 
 @layer components {
   [data-lang="en"] .english-reading-article {
-    max-width: 66ch;
+    max-width: 62ch;
     margin-left: auto;
     margin-right: auto;
   }
 
-  [data-lang="en"] .english-reading-body {
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 1rem;
-    line-height: 1.85;
-    letter-spacing: -0.01em;
-    color: rgb(55 65 81);
-  }
-
-  [data-lang="en"] .english-reading-list,
-  [data-lang="en"] .english-reading-quote {
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    line-height: 1.85;
-    letter-spacing: -0.01em;
-    color: rgb(55 65 81);
-  }
-
   [data-lang="en"] .english-reading-body,
-  [data-lang="en"] .english-reading-quote {
-    max-width: 65ch;
-  }
-
-  [data-lang="en"] .english-reading-list {
-    max-width: 62ch;
-  }
-
+  [data-lang="en"] .english-reading-list,
+  [data-lang="en"] .english-reading-quote,
   [data-lang="en"] .english-reading-code,
   [data-lang="en"] .english-reading-heading {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
+  [data-lang="en"] .english-reading-body {
+    font-size: 0.96875rem;
+    line-height: 1.92;
+    letter-spacing: -0.01em;
+    color: rgb(75 85 99);
+    text-wrap: pretty;
+  }
+
+  [data-lang="en"] .english-reading-list,
+  [data-lang="en"] .english-reading-quote {
+    line-height: 1.92;
+    letter-spacing: -0.01em;
+    color: rgb(75 85 99);
+  }
+
+  [data-lang="en"] .english-reading-body,
+  [data-lang="en"] .english-reading-quote {
+    max-width: 60ch;
+  }
+
+  [data-lang="en"] .english-reading-list {
+    max-width: 58ch;
+  }
+
   [data-lang="en"] .english-reading-display {
-    line-height: 1.15;
+    line-height: 1.16;
     letter-spacing: -0.02em;
-    margin-bottom: 1.75rem;
+    margin-bottom: 1.85rem;
   }
 
   [data-lang="en"] .english-reading-section-title {
-    line-height: 1.2;
+    line-height: 1.22;
     letter-spacing: -0.015em;
-    margin-top: 2.75rem;
-    margin-bottom: 1rem;
+    margin-top: 2.95rem;
+    margin-bottom: 1.1rem;
   }
 
   [data-lang="en"] .english-reading-subtitle {
-    line-height: 1.35;
-    margin-top: 1.75rem;
-    margin-bottom: 0.75rem;
+    line-height: 1.38;
+    margin-top: 1.9rem;
+    margin-bottom: 0.85rem;
   }
 
   [data-lang="en"] #readme-article ul,
@@ -64,31 +66,33 @@
   }
 
   [data-lang="en"] #readme-article li + li {
-    margin-top: 0.55rem;
+    margin-top: 0.7rem;
+  }
+
+  [data-lang="en"] #readme-article .english-reading-body + .english-reading-body,
+  [data-lang="en"] #readme-article .english-reading-quote + .english-reading-body,
+  [data-lang="en"] #restraint-content .english-reading-body + .english-reading-body,
+  [data-lang="en"] #restraint-content .english-reading-quote + .english-reading-body {
+    margin-top: 1.15rem;
   }
 
   [data-lang="en"] #restraint-content .content-section {
-    margin-bottom: 3.5rem;
-  }
-
-  [data-lang="en"] #restraint-content .english-reading-body + .english-reading-body,
-  [data-lang="en"] #restraint-content .english-reading-quote + .english-reading-body {
-    margin-top: 1rem;
+    margin-bottom: 3.75rem;
   }
 
   @media (max-width: 768px) {
     [data-lang="en"] .english-reading-body {
-      font-size: 0.96875rem;
-      line-height: 1.8;
+      font-size: 0.9375rem;
+      line-height: 1.9;
     }
 
     [data-lang="en"] .english-reading-list,
     [data-lang="en"] .english-reading-quote {
-      line-height: 1.8;
+      line-height: 1.9;
     }
 
     [data-lang="en"] .english-reading-display {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.55rem;
     }
   }
 }
