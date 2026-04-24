@@ -1,0 +1,44 @@
+{
+  "base_url": "https://rebone0522.com",
+  "pages": [
+    "",
+    "solutions.html",
+    "solutions_restraint.html",
+    "expressions.html",
+    "expressions_visual.html",
+    "expressions_sound.html",
+    "expressions_fandom.html",
+    "expressions_fandom_satsuriku.html",
+    "expressions_fandom_series.html",
+    "expressions_hcs_series.html",
+    "expressions_intersections.html",
+    "reflections.html",
+    "readme.html",
+    "404.html"
+  ],
+  "nav": {
+    "brand": "ReBone",
+    "solutions": "Solutions",
+    "expressions": "Expressions",
+    "reflections": "Reflections",
+    "readme": "README.md"
+  },
+  "footer": "© 2025 ReBone. 保留所有权利。",
+  "language_switch": {
+    "zh": "中文",
+    "en": "EN"
+  },
+  "available_content": [
+    "site.json",
+    "home.json",
+    "updates.json",
+    "readme.article.html",
+    "solutions.json",
+    "solutions_restraint.json",
+    "expressions.json",
+    "expressions_visual.json",
+    "expressions_sound.json",
+    "expressions_fandom.json",
+    "reflections.json"
+  ]
+}

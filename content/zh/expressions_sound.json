@@ -1,0 +1,168 @@
+{
+  "eyebrow": "Sound",
+  "title": "音乐",
+  "description": "八音盒 cover、自创曲目。支持订购。",
+  "breadcrumb": {
+    "parent": "Expressions",
+    "current": "音乐"
+  },
+  "intro": [
+    "八音盒 cover、自创曲目。支持订购。"
+  ],
+  "notice": {
+    "title": "下载与使用说明",
+    "paragraphs": [
+      "本页面音频仅授权个人非公开收听与学习使用。未经作者书面授权，禁止上传至任何社交媒体/视频平台、二次分发、改编后发布及任何商业用途。",
+      "如需公开发布或商用，请先联系授权："
+    ],
+    "contact": {
+      "label": "wuruohan0522@gmail.com",
+      "href": "mailto:wuruohan0522@gmail.com"
+    },
+    "footnote": "© ReBone。著作权归作者所有，创作日期与首次发布日期以页面标注及源文件记录为准。"
+  },
+  "sections": [
+    {
+      "id": "music-box",
+      "section_label": "Section 01",
+      "title": "Music Box Tracks",
+      "side_label": "八音盒曲目",
+      "items": [
+        {
+          "title": "Remember Me",
+          "quote": "“死亡不是终点，遗忘才是。”",
+          "origin": "原曲：Remember Me（《Coco》）",
+          "credit": "作者：Robert Lopez、Kristen Anderson-Lopez",
+          "date": "日期：2025年",
+          "cover_label": "封面位",
+          "audio": {
+            "src": "assets/audio/remember_me.mp3",
+            "type": "audio/mpeg"
+          }
+        },
+        {
+          "title": "Saria's Theme",
+          "quote": "“某一天，这个地方对我们来说都会变得很重要吧。”",
+          "origin": "原曲：Saria's Song / Lost Woods（《The Legend of Zelda: Ocarina of Time》）",
+          "credit": "作者：近藤浩治（Koji Kondo）",
+          "date": "日期：2025年",
+          "cover_label": "封面位",
+          "audio": {
+            "src": "assets/audio/sarias_theme.mp3",
+            "type": "audio/mpeg"
+          }
+        },
+        {
+          "title": "you are my curse",
+          "quote": "晚安",
+          "origin": "原曲：you are my curse",
+          "credit": "作者：nyamura（如需更正可再改）",
+          "date": "日期：2025年",
+          "cover_label": "封面位",
+          "audio": {
+            "src": "assets/audio/you_are_my_curse.mp3",
+            "type": "audio/mpeg"
+          }
+        },
+        {
+          "title": "Army Dreamers",
+          "quote": "生命一睁眼，生命一闭眼",
+          "origin": "原曲：Army Dreamers",
+          "credit": "作者：Kate Bush",
+          "date": "日期：2025年",
+          "cover_label": "封面位",
+          "audio": {
+            "src": "assets/audio/army_dreamers.mp3",
+            "type": "audio/mpeg"
+          }
+        },
+        {
+          "title": "City of Stars",
+          "quote": "送给我的爱人",
+          "origin": "原曲：City of Stars（《La La Land》）",
+          "credit": "作者：Justin Hurwitz、Benj Pasek、Justin Paul",
+          "date": "日期：2025年",
+          "cover_label": "封面位",
+          "audio": {
+            "src": "assets/audio/city_of_stars.mp3",
+            "type": "audio/mpeg"
+          }
+        },
+        {
+          "title": "古い人形 (Old Doll)",
+          "quote": "纪念 Ib 恐怖美术馆、Mad Father",
+          "origin": "原曲：古い人形（Old Doll）",
+          "credit": "作者：甘茶の音楽工房（Amacha's Music Studio，若你有指定版本可再改）",
+          "date": "日期：2025年",
+          "cover_label": "封面位",
+          "audio": {
+            "src": "assets/audio/old_doll.mp3",
+            "type": "audio/mpeg"
+          }
+        }
+      ],
+      "footnote": "展示说明：翻奏/复刻内容仅用于作品展示。原曲著作权归原权利人所有；如需商用，请先取得原曲权利方授权。若权利方提出下架要求，将配合处理。"
+    },
+    {
+      "id": "original",
+      "section_label": "Section 02",
+      "title": "Original Compositions",
+      "side_label": "原创曲目",
+      "tag": "Now playing",
+      "note": "备注：未来可能用作自己的游戏创作 BGM。",
+      "items": [
+        {
+          "title": "温度",
+          "date": "日期：2025.12.21",
+          "cover_label": "封面位",
+          "audio": {
+            "src": "assets/audio/nuanyi.m4a",
+            "type": "audio/mp4"
+          }
+        },
+        {
+          "title": "自我证明",
+          "date": "日期：2025.12.21",
+          "cover_label": "封面位",
+          "audio": {
+            "src": "assets/audio/zizheng.m4a",
+            "type": "audio/mp4"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wish-order",
+      "section_label": "Section 03",
+      "title": "许愿 / 订购",
+      "side_label": "许愿 / 订购",
+      "tag": "轻量委托",
+      "wish": {
+        "title": "许愿交互",
+        "description": "想听某种曲目的复刻，可以在这里许愿：输入曲目名称 + 作者。我后续可能会创作对应曲子。",
+        "track_placeholder": "曲目名称（例如：Undertale - Once Upon a Time）",
+        "artist_placeholder": "作者 / 作曲",
+        "note_placeholder": "补充想法（可选）",
+        "button_label": "提交许愿（邮件）",
+        "hint": "会自动生成邮件草稿给我",
+        "mail_subject": "曲目许愿",
+        "mail_to": "wuruohan0522@gmail.com"
+      },
+      "pricing": {
+        "title": "订购规则",
+        "columns": ["项目", "价格", "计时规则", "备注"],
+        "rows": [
+          ["原创曲目使用权", "半分钟 5 元", "超过半分钟 15 秒算半分钟", "-"],
+          ["八音盒纸带成品", "半分钟 10～20 元 + 转译费 20 元", "超过半分钟 15 秒算半分钟", "转译费按单首收取"],
+          ["买断权（原创）", "在对应价格基础上 ×1.5", "-", "可商用；可要求不展示该曲目"]
+        ],
+        "timeline": "工期：根据当前学习/项目安排浮动，需联系后确认。",
+        "contact_label": "联系方式：",
+        "contact": {
+          "label": "wuruohan0522@gmail.com",
+          "href": "mailto:wuruohan0522@gmail.com"
+        }
+      }
+    }
+  ]
+}

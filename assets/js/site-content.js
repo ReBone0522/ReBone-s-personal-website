@@ -10,6 +10,16 @@ async function loadText(path) {
   return response.text();
 }
 
+async function loadLocalizedJson(fileName) {
+  if (window.ReBoneI18n?.loadJson) return window.ReBoneI18n.loadJson(fileName);
+  return loadJson(`content/zh/${fileName}`);
+}
+
+async function loadLocalizedText(fileName) {
+  if (window.ReBoneI18n?.loadText) return window.ReBoneI18n.loadText(fileName);
+  return loadText(`content/zh/${fileName}`);
+}
+
 function createElement(tag, className, text) {
   const el = document.createElement(tag);
   if (className) el.className = className;
@@ -490,6 +500,22 @@ function renderReflections(data) {
   footnote.textContent = data.footnote || '';
   hint.textContent = data.hint || '';
 
+  const regionTextMap = {
+    human: data.regions?.human?.title || '人类',
+    me: data.regions?.me?.title || '我',
+    animal: data.regions?.animal?.title || '动物',
+    social: data.regions?.social?.title || '社交',
+    interact: data.regions?.interact?.title || '交互',
+    'human-animal': data.regions?.['human-animal']?.title || '人类×动物',
+    life: data.regions?.life?.title || '生命',
+  };
+  document.querySelectorAll('#vennDiagram [data-section]').forEach(el => {
+    const sectionId = el.dataset.section;
+    if (el.classList.contains('circle-label') || el.classList.contains('intersection')) {
+      el.textContent = regionTextMap[sectionId] || el.textContent;
+    }
+  });
+
   function showContent(sectionId) {
     const section = data.regions?.[sectionId];
     if (!section) return;
@@ -878,8 +904,8 @@ async function initHome() {
   if (!document.getElementById('home-content-root')) return;
   try {
     const [home, updates] = await Promise.all([
-      loadJson('content/home.json'),
-      loadJson('content/updates.json'),
+      loadLocalizedJson('home.json'),
+      loadLocalizedJson('updates.json'),
     ]);
     renderHome(home, updates);
   } catch (error) {
@@ -891,7 +917,7 @@ async function initReadme() {
   const article = document.getElementById('readme-article');
   if (!article) return;
   try {
-    article.innerHTML = await loadText('content/readme.article.html');
+    article.innerHTML = await loadLocalizedText('readme.article.html');
   } catch (error) {
     console.error(error);
   }
@@ -900,7 +926,7 @@ async function initReadme() {
 async function initSolutions() {
   if (!document.getElementById('solutions-page-root')) return;
   try {
-    const data = await loadJson('content/solutions.json');
+    const data = await loadLocalizedJson('solutions.json');
     renderSolutions(data);
   } catch (error) {
     console.error(error);
@@ -910,7 +936,7 @@ async function initSolutions() {
 async function initRestraint() {
   if (!document.getElementById('restraint-page-root')) return;
   try {
-    const data = await loadJson('content/solutions_restraint.json');
+    const data = await loadLocalizedJson('solutions_restraint.json');
     renderRestraint(data);
   } catch (error) {
     console.error(error);
@@ -920,7 +946,7 @@ async function initRestraint() {
 async function initExpressions() {
   if (!document.getElementById('expressions-page-root')) return;
   try {
-    const data = await loadJson('content/expressions.json');
+    const data = await loadLocalizedJson('expressions.json');
     renderExpressions(data);
   } catch (error) {
     console.error(error);
@@ -930,7 +956,7 @@ async function initExpressions() {
 async function initVisualArchive() {
   if (!document.getElementById('visual-page-root')) return;
   try {
-    const data = await loadJson('content/expressions_visual.json');
+    const data = await loadLocalizedJson('expressions_visual.json');
     renderVisualArchive(data);
   } catch (error) {
     console.error(error);
@@ -940,7 +966,7 @@ async function initVisualArchive() {
 async function initSoundArchive() {
   if (!document.getElementById('sound-page-root')) return;
   try {
-    const data = await loadJson('content/expressions_sound.json');
+    const data = await loadLocalizedJson('expressions_sound.json');
     renderSoundArchive(data);
   } catch (error) {
     console.error(error);
@@ -950,7 +976,7 @@ async function initSoundArchive() {
 async function initFandomArchive() {
   if (!document.getElementById('fandom-page-root')) return;
   try {
-    const data = await loadJson('content/expressions_fandom.json');
+    const data = await loadLocalizedJson('expressions_fandom.json');
     renderFandomArchive(data);
   } catch (error) {
     console.error(error);
@@ -960,7 +986,7 @@ async function initFandomArchive() {
 async function initReflections() {
   if (!document.getElementById('reflections-page-root')) return;
   try {
-    const data = await loadJson('content/reflections.json');
+    const data = await loadLocalizedJson('reflections.json');
     renderReflections(data);
   } catch (error) {
     console.error(error);
@@ -968,6 +994,10 @@ async function initReflections() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+  if (window.ReBoneI18n?.initSiteChrome) {
+    await window.ReBoneI18n.initSiteChrome();
+  }
+
   await Promise.all([
     initHome(),
     initReadme(),

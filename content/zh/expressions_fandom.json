@@ -1,0 +1,58 @@
+{
+  "eyebrow": "For Love",
+  "title": "为爱发电",
+  "description": "游戏实况、宅舞、同人视频等为爱发电的记录。",
+  "breadcrumb": {
+    "parent": "Expressions",
+    "current": "为爱发电"
+  },
+  "intro": [
+    "这里放游戏实况与同人衍生创作。不是任务，不是交差，而是因为喜欢才会继续做。"
+  ],
+  "sections": [
+    {
+      "section_label": "Section 01",
+      "title": "游戏实况",
+      "tag": "Series archive",
+      "featured": {
+        "status": "Now Live",
+        "title": "Human Construction Site",
+        "description": "已经接好你的实况视频与分P播放。观众可以直接在网站里看完整个系列。",
+        "href": "expressions_hcs_series.html",
+        "cta": "进入系列页"
+      },
+      "summary_card": {
+        "title": "当前实况入口",
+        "tag": "4P slot",
+        "text": "这条已经换成你刚发来的 B 站视频，并按分P做成站内播放入口。",
+        "bullets": [
+          "已实现：站内播放器、分P切换、原链接回退",
+          "当前内容：Human Construction Site 全结局收录",
+          "当前视频：BV1qpD2BDEXr"
+        ]
+      }
+    },
+    {
+      "section_label": "Section 02",
+      "title": "同人衍生",
+      "tag": "按作品分类",
+      "cards": [
+        {
+          "type": "link",
+          "eyebrow": "Work 01",
+          "title": "杀戮天使",
+          "description": "包含：宅舞 / Cosplay / 绘画",
+          "tags": ["Dance", "Cosplay", "Drawing"],
+          "href": "expressions_fandom_satsuriku.html",
+          "cta": "进入作品详情"
+        },
+        {
+          "type": "reserved",
+          "eyebrow": "Work 02+",
+          "title": "预留更多同人作品",
+          "description": "后续可以按作品继续加：每个作品都有独立详情页、左侧导航和自己的素材结构。"
+        }
+      ]
+    }
+  ]
+}

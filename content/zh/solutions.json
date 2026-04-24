@@ -1,0 +1,17 @@
+{
+  "title": "Solutions",
+  "intro": "听见真实声音、迭代想法、解决问题的日志。",
+  "filters": ["全部", "产品", "志愿", "生命", "生活"],
+  "cards": [
+    {
+      "title": "失能老人约束手套",
+      "href": "solutions_restraint.html",
+      "image": "assets/glove_prototype.png",
+      "image_alt": "失能老人约束手套",
+      "tags": ["产品", "生命"],
+      "date": "2023.10 - 进行中",
+      "summary": "在必要的约束中，提供舒适、安抚与自主权。",
+      "quote": "多少痛苦，需要一个人以另种痛苦来寻求解脱呢？"
+    }
+  ]
+}
