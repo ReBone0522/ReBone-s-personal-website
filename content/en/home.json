@@ -1,0 +1,39 @@
+{
+  "heading": "Welcome :3",
+  "intro_label": "The purpose of this site is:",
+  "intro_points": [
+    "To systematically organize and archive everything related to ‘me’",
+    "To offer any viewer the possibility of inspiration and meaning"
+  ],
+  "sections": [
+    {
+      "title": "Solutions",
+      "href": "solutions.html",
+      "description": "Hear real voices, improve real-world difficulties."
+    },
+    {
+      "title": "Expressions",
+      "href": "expressions.html",
+      "description": "Works made for love, including visual and auditory expression."
+    },
+    {
+      "title": "Reflections",
+      "href": "reflections.html",
+      "description": "The mind’s iterative process between input and output."
+    },
+    {
+      "title": "README.md",
+      "href": "readme.html",
+      "description": "If social instructions would make you feel more at ease."
+    }
+  ],
+  "updates_label": "Updates",
+  "updates_title": "Notice Board",
+  "updates_intro": "This is where each public update is recorded after the site is formally shared. Ongoing organization, discussion, and internal revisions are not counted here.",
+  "credits": [
+    "Writing: me",
+    "Layout and interaction inspiration: me",
+    "Site production: ChatGPT, DeepSeek, Open Claw: Little Blue Man (Claude 4.5 Opus), Open Claw: Little Blue Man (ChatGPT 5.4)",
+    "Thank you all for the help!"
+  ]
+}

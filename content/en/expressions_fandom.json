@@ -1,0 +1,58 @@
+{
+  "eyebrow": "For Love",
+  "title": "Made for Love",
+  "description": "A record of gameplay videos, dance covers, fan videos, and other works made for love.",
+  "breadcrumb": {
+    "parent": "Expressions",
+    "current": "Made for Love"
+  },
+  "intro": [
+    "Gameplay videos and derivative fan creations go here. Not assignments, not something made to turn in, but work that continues only because I genuinely like it."
+  ],
+  "sections": [
+    {
+      "section_label": "Section 01",
+      "title": "Gameplay",
+      "tag": "Series archive",
+      "featured": {
+        "status": "Now Live",
+        "title": "Human Construction Site",
+        "description": "The gameplay video and segmented playback are already connected here. Visitors can watch the full series directly on the site.",
+        "href": "expressions_hcs_series.html",
+        "cta": "Enter the series page"
+      },
+      "summary_card": {
+        "title": "Current gameplay entry",
+        "tag": "4P slot",
+        "text": "This has been updated to the Bilibili video you shared, with on-site segmented playback.",
+        "bullets": [
+          "Implemented: on-site player, segmented switching, original-link fallback",
+          "Current content: full ending archive of Human Construction Site",
+          "Current video: BV1qpD2BDEXr"
+        ]
+      }
+    },
+    {
+      "section_label": "Section 02",
+      "title": "Fan Works",
+      "tag": "By work",
+      "cards": [
+        {
+          "type": "link",
+          "eyebrow": "Work 01",
+          "title": "Angels of Death",
+          "description": "Includes: dance cover / cosplay / drawing",
+          "tags": ["Dance", "Cosplay", "Drawing"],
+          "href": "expressions_fandom_satsuriku.html",
+          "cta": "Enter work details"
+        },
+        {
+          "type": "reserved",
+          "eyebrow": "Work 02+",
+          "title": "Reserved for more fan works",
+          "description": "Later, more works can be added by title: each can have its own detail page, left-side navigation, and material structure."
+        }
+      ]
+    }
+  ]
+}

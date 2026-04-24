@@ -1,0 +1,168 @@
+{
+  "eyebrow": "Sound",
+  "title": "Music",
+  "description": "Music box covers and original compositions. Commissions are open.",
+  "breadcrumb": {
+    "parent": "Expressions",
+    "current": "Music"
+  },
+  "intro": [
+    "Music box covers and original compositions. Commissions are open."
+  ],
+  "notice": {
+    "title": "Download and usage notes",
+    "paragraphs": [
+      "The audio on this page is authorized only for personal, private listening and study. Without the author’s written permission, uploading to any social media/video platform, redistribution, adapted republication, and any commercial use are prohibited.",
+      "If you need permission for public release or commercial use, please contact first:"
+    ],
+    "contact": {
+      "label": "wuruohan0522@gmail.com",
+      "href": "mailto:wuruohan0522@gmail.com"
+    },
+    "footnote": "© ReBone. Copyright belongs to the author. Creation dates and first publication dates are based on the page labels and source file records."
+  },
+  "sections": [
+    {
+      "id": "music-box",
+      "section_label": "Section 01",
+      "title": "Music Box Tracks",
+      "side_label": "Music Box Tracks",
+      "items": [
+        {
+          "title": "Remember Me",
+          "quote": "“Death is not the end; forgetting is.”",
+          "origin": "Original: Remember Me (Coco)",
+          "credit": "By: Robert Lopez, Kristen Anderson-Lopez",
+          "date": "Date: 2025",
+          "cover_label": "Cover",
+          "audio": {
+            "src": "assets/audio/remember_me.mp3",
+            "type": "audio/mpeg"
+          }
+        },
+        {
+          "title": "Saria's Theme",
+          "quote": "“One day, this place is going to be very important to both of us.”",
+          "origin": "Original: Saria's Song / Lost Woods (The Legend of Zelda: Ocarina of Time)",
+          "credit": "By: Koji Kondo",
+          "date": "Date: 2025",
+          "cover_label": "Cover",
+          "audio": {
+            "src": "assets/audio/sarias_theme.mp3",
+            "type": "audio/mpeg"
+          }
+        },
+        {
+          "title": "you are my curse",
+          "quote": "Good night",
+          "origin": "Original: you are my curse",
+          "credit": "By: nyamura (can revise if needed)",
+          "date": "Date: 2025",
+          "cover_label": "Cover",
+          "audio": {
+            "src": "assets/audio/you_are_my_curse.mp3",
+            "type": "audio/mpeg"
+          }
+        },
+        {
+          "title": "Army Dreamers",
+          "quote": "Life opens its eyes, life closes its eyes",
+          "origin": "Original: Army Dreamers",
+          "credit": "By: Kate Bush",
+          "date": "Date: 2025",
+          "cover_label": "Cover",
+          "audio": {
+            "src": "assets/audio/army_dreamers.mp3",
+            "type": "audio/mpeg"
+          }
+        },
+        {
+          "title": "City of Stars",
+          "quote": "For my lover",
+          "origin": "Original: City of Stars (La La Land)",
+          "credit": "By: Justin Hurwitz, Benj Pasek, Justin Paul",
+          "date": "Date: 2025",
+          "cover_label": "Cover",
+          "audio": {
+            "src": "assets/audio/city_of_stars.mp3",
+            "type": "audio/mpeg"
+          }
+        },
+        {
+          "title": "古い人形 (Old Doll)",
+          "quote": "In memory of Ib and Mad Father",
+          "origin": "Original: 古い人形 (Old Doll)",
+          "credit": "By: 甘茶の音楽工房 (Amacha's Music Studio; can revise if you have a preferred version)",
+          "date": "Date: 2025",
+          "cover_label": "Cover",
+          "audio": {
+            "src": "assets/audio/old_doll.mp3",
+            "type": "audio/mpeg"
+          }
+        }
+      ],
+      "footnote": "Display note: arrangement and recreation content is shown for portfolio purposes only. Copyright of the original compositions belongs to the original rights holders; if commercial use is needed, please obtain authorization from the original rights holder first. If any rights holder requests removal, it will be handled accordingly."
+    },
+    {
+      "id": "original",
+      "section_label": "Section 02",
+      "title": "Original Compositions",
+      "side_label": "Original Compositions",
+      "tag": "Now playing",
+      "note": "Note: these may be used in the future as BGM for my own game projects.",
+      "items": [
+        {
+          "title": "Temperature",
+          "date": "Date: 2025.12.21",
+          "cover_label": "Cover",
+          "audio": {
+            "src": "assets/audio/nuanyi.m4a",
+            "type": "audio/mp4"
+          }
+        },
+        {
+          "title": "Self-Proof",
+          "date": "Date: 2025.12.21",
+          "cover_label": "Cover",
+          "audio": {
+            "src": "assets/audio/zizheng.m4a",
+            "type": "audio/mp4"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wish-order",
+      "section_label": "Section 03",
+      "title": "Wish / Order",
+      "side_label": "Wish / Order",
+      "tag": "Light commission",
+      "wish": {
+        "title": "Wish form",
+        "description": "If there is a track you would like to hear recreated, you can make a wish here: enter the track name + author. I may create a corresponding piece later.",
+        "track_placeholder": "Track name (for example: Undertale - Once Upon a Time)",
+        "artist_placeholder": "Author / composer",
+        "note_placeholder": "Additional notes (optional)",
+        "button_label": "Submit wish (email)",
+        "hint": "An email draft to me will be generated automatically",
+        "mail_subject": "Track wish",
+        "mail_to": "wuruohan0522@gmail.com"
+      },
+      "pricing": {
+        "title": "Ordering rules",
+        "columns": ["Item", "Price", "Timing rule", "Notes"],
+        "rows": [
+          ["Usage rights for original compositions", "¥5 per half minute", "More than 15 extra seconds counts as another half minute", "-"],
+          ["Finished music box paper strip", "¥10–20 per half minute + ¥20 transcription fee", "More than 15 extra seconds counts as another half minute", "Transcription fee charged per track"],
+          ["Buyout rights (original)", "×1.5 based on the corresponding price", "-", "Commercial use allowed; display of the track can be withheld on request"]
+        ],
+        "timeline": "Timeline: varies with current study/project schedule; please confirm after getting in touch.",
+        "contact_label": "Contact:",
+        "contact": {
+          "label": "wuruohan0522@gmail.com",
+          "href": "mailto:wuruohan0522@gmail.com"
+        }
+      }
+    }
+  ]
+}

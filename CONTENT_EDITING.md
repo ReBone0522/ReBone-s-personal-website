@@ -95,3 +95,24 @@
 - 项目详情页再加更多图片、折叠块、引用来源结构
 
 我可以继续往这套双语内容层里扩。
+
+## 英文草稿怎么自动生成
+
+当前已经有翻译脚本：
+- `scripts/translate_content.py`
+
+翻译工作流说明：
+- `CONTENT_TRANSLATION.md`
+
+最常用命令：
+
+```bash
+python3 scripts/translate_content.py --dry-run
+python3 scripts/translate_content.py
+python3 scripts/translate_content.py home.json solutions.json readme.article.html
+```
+
+默认行为：
+- 从 `content/zh/` 读
+- 向 `content/en/` 写
+- 已存在的英文文件默认不覆盖

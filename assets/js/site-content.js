@@ -47,6 +47,8 @@ function renderHome(home, updates) {
   const introLabel = document.getElementById('home-intro-label');
   const introPoints = document.getElementById('home-intro-points');
   const links = document.getElementById('home-links');
+  const updatesLabel = document.getElementById('updates-label');
+  const updatesTitle = document.getElementById('updates-title');
   const updatesIntro = document.getElementById('updates-intro');
   const updatesList = document.getElementById('updates-list');
   const credits = document.getElementById('home-credits');
@@ -74,6 +76,8 @@ function renderHome(home, updates) {
     links.appendChild(anchor);
   }
 
+  if (updatesLabel) updatesLabel.textContent = home.updates_label || 'Updates';
+  if (updatesTitle) updatesTitle.textContent = home.updates_title || '';
   updatesIntro.textContent = home.updates_intro || '';
   updatesList.innerHTML = '';
   for (const item of updates.items || []) {
