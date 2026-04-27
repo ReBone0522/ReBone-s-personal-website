@@ -1,17 +1,37 @@
 {
   "title": "Solutions",
   "intro": "A log of hearing real voices, iterating ideas, and solving problems.",
-  "filters": ["All", "Product", "Volunteer", "Daily Life"],
+  "filters": [
+    "All",
+    "Product",
+    "Workshop",
+    "Volunteer",
+    "Daily Life"
+  ],
   "cards": [
     {
       "title": "Restraint Glove for Disabled Elderly People",
       "href": "solutions_restraint.html",
       "image": "assets/glove_prototype.png",
       "image_alt": "Restraint glove for disabled elderly people",
-      "tags": ["Product"],
+      "tags": [
+        "Product"
+      ],
       "date": "2023.10 - Ongoing",
       "summary": "Within necessary restraint, provide comfort, reassurance, and autonomy.",
       "quote": "How much pain must a person seek relief from through another kind of pain?"
+    },
+    {
+      "title": "ElectroMap: Stories of the World",
+      "href": "solutions_electromap.html",
+      "image": "assets/images/solutions/electromap-overview.png",
+      "image_alt": "ElectroMap interactive installation",
+      "tags": [
+        "Workshop"
+      ],
+      "date": "2025.09",
+      "summary": "An interactive map created for the UWC Day workshop “Share Peace Story,” inviting people to begin with curiosity toward faraway places and their stories.",
+      "quote": "“Every story happening in the world has something to do with you and me.” — Liangzi"
     }
   ]
 }

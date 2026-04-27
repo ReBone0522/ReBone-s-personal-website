@@ -4,6 +4,7 @@
     "",
     "solutions.html",
     "solutions_restraint.html",
+    "solutions_electromap.html",
     "expressions.html",
     "expressions_visual.html",
     "expressions_sound.html",
@@ -39,6 +40,7 @@
     "site.json",
     "solutions.json",
     "solutions_restraint.json",
+    "solutions_electromap.json",
     "updates.json"
   ]
 }

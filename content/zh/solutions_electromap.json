@@ -1,0 +1,235 @@
+{
+  "meta": {
+    "title": "ElectroMap：世界的故事",
+    "description": "为 UWC Day「Share Peace Story」主题工作坊制作的互动地图装置，让人从遥远地区的故事出发，练习主动的好奇与关注。",
+    "eyebrow": "Solutions / 工作坊",
+    "date": "2025.09",
+    "summary": "为 UWC Day「Share Peace Story」主题工作坊制作的互动地图装置。",
+    "breadcrumb": "ElectroMap：世界的故事"
+  },
+  "nav": [
+    {
+      "id": "overview",
+      "label": "项目概要"
+    },
+    {
+      "id": "origin",
+      "label": "灵感来源"
+    },
+    {
+      "id": "system-detail",
+      "label": "装置细节"
+    },
+    {
+      "id": "method",
+      "label": "词条来源与方法"
+    },
+    {
+      "id": "archive",
+      "label": "词条档案"
+    },
+    {
+      "id": "feedback",
+      "label": "现场反馈"
+    },
+    {
+      "id": "lessons",
+      "label": "我学到了什么"
+    },
+    {
+      "id": "thanks",
+      "label": "致谢"
+    }
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "title": "项目概要",
+      "layout": "overview",
+      "eyebrow": "项目概要",
+      "headline": "ElectroMap：世界的故事",
+      "paragraphs": [
+        "这是我和 Jun 为 UWC Day「Share Peace Story」主题工作坊共同制作的互动地图装置。它想做的不是替人解释世界，而是让人先对遥远地区产生一点主动的好奇。",
+        "地图上的每个地区都对应一个按钮。参与者按下按钮，右侧屏幕会跳出那个地区的一则词条故事，地图上的红点也会增加，LED 颜色会逐渐变暖。关注不再只是抽象态度，而会在装置上留下一个可见的痕迹。"
+      ],
+      "quote": "“每一个世界正在发生的事情都与你我有关”——梁子",
+      "image": {
+        "src": "assets/images/solutions/electromap-overview.png",
+        "alt": "ElectroMap 互动地图装置全景"
+      },
+      "stats": [
+        {
+          "title": "活动信息",
+          "items": [
+            "2025.09",
+            "UWC Day：Share Peace Story 主题工作坊"
+          ]
+        },
+        {
+          "title": "合作方式",
+          "items": [
+            "Jun：箱体与地图结构设计",
+            "我：Micro:bit 编程与拼装"
+          ]
+        },
+        {
+          "title": "关键词",
+          "items": [
+            "互动地图",
+            "世界故事",
+            "主动好奇",
+            "和平主题"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "origin",
+      "title": "灵感来源",
+      "layout": "two-column-note",
+      "paragraphs": [
+        "启发来源于友人梁玥推荐的一席演讲。演讲中，艺术家梁子提到报刊《COLORS: A Magazine About the Rest of the World》，也提到：这个世界发生的每一个故事都与你我有关。",
+        "当时正值 UWC Day，主题是「分享和平的声音」。于是，我和 Jun 一起把这个念头做成了一张可以被触发、被观看、也被参与的地图。"
+      ],
+      "note_image": {
+        "src": "assets/images/solutions/electromap-inspiration.jpg",
+        "alt": "梁子在一席演讲中提到 COLORS 杂志",
+        "caption": "启发来源于梁子的演讲，以及《COLORS: A Magazine About the Rest of the World》。"
+      }
+    },
+    {
+      "id": "system-detail",
+      "title": "装置细节",
+      "layout": "two-column-note",
+      "paragraphs": [
+        "我希望地图成为一个载体，吸引五湖四海的人们对离自己很遥远的地方产生一点好奇，愿意主动去了解。每次有人点击某个地区对应的按钮，地图上就会增加一个小红点，也让那个地区的 LED 颜色更暖。",
+        "右侧显示屏会跳出那个地区对应的词条故事。和被动接受媒体渲染不同，这更像一种主动的搜索与探索：先因为好奇停下来，再去自己查找、更进一步地理解那些真实的人与故事。"
+      ],
+      "note_image": {
+        "src": "assets/images/solutions/electromap-detail.jpg",
+        "alt": "ElectroMap 的按钮、点阵屏与显示模块细节",
+        "caption": "按钮、点阵屏与 LCD 的局部细节。"
+      }
+    },
+    {
+      "id": "method",
+      "title": "词条来源与方法",
+      "layout": "notes",
+      "paragraphs": [
+        "我原本期待不同家乡的人们主动分享自己的故事，但真正收到的并没有很多。于是，除了我自己已经了解的一些故事，以及少数参与者想分享的词条，我也使用 ChatGPT 去补充符合这次主题的世界故事。",
+        "这部分对我来说不是为了追求“信息完整”，而是为了让更多被忽略的地方至少先被看见。只要有人因为一个词条停下来、多查一点点，它就已经开始起作用了。"
+      ],
+      "quote": "区别于媒体对世界有不同意图地渲染，这是一种主动的好奇与探索。"
+    },
+    {
+      "id": "archive",
+      "title": "词条档案",
+      "layout": "production",
+      "blocks": [
+        {
+          "title": "词条来源",
+          "items": [
+            "我自己原本已经了解、并想放进地图里的故事",
+            "少数参与者主动想分享的词条",
+            "使用 ChatGPT 补充检索到的、符合这次主题的世界故事"
+          ]
+        },
+        {
+          "title": "全部词条",
+          "items": [
+            "Leisure World Seal Beach",
+            "Standing Rock Protest",
+            "Reggae Girlz Jamaica",
+            "Hurricane Maria Puerto Rico",
+            "Mothers of Ayotzinapa",
+            "Garifuna Language Revival",
+            "Tejo Sport Colombia",
+            "Casa do Albergado Brazil",
+            "Ghanaian Coffin Design",
+            "Kente Cloth Traditions",
+            "Rumble in the Jungle",
+            "Congo River Taxi Boats",
+            "Lesedi Cultural Village",
+            "Cape Town Water Crisis",
+            "Dadaab Refugee Camp",
+            "Kenya Tech Hubs",
+            "Algerian Independence Toys",
+            "Tunisian Jasmine Revolution",
+            "Eagle Hunters of Mongolia",
+            "Kyrgyz Yurt Revival",
+            "Dead Sea Swim Club",
+            "Persian Carpet Making",
+            "Mumbai Dabbawala System",
+            "Diwali Light Festival",
+            "Balut Egg Philippines",
+            "Angkor Wat Sunrise",
+            "Blind Artist Rieko Arai",
+            "Yellow School Boats",
+            "Polish Milk Bars",
+            "Roma Brass Bands",
+            "Finnish School Breaks",
+            "Elf Believers",
+            "One Euro Houses",
+            "Barbados Welcome Stamp",
+            "Yellow Vest Protests",
+            "Dutch Bike Cities",
+            "Birdsong Alarm New Zealand",
+            "Uluru Sacred Rock",
+            "Solomon Islands Shell Money",
+            "PNG Highlands Sing-Sing",
+            "Yap Stone Currency",
+            "Micronesian Navigators",
+            "Samoan Tatto Traditions",
+            "Haka Dance"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "feedback",
+      "title": "现场反馈",
+      "layout": "two-column-note",
+      "paragraphs": [
+        "这场活动在正式展示阶段的参与度比我原先想象的要高。有人会停下来一个个按按钮，也有人会因为某个自己熟悉的词条，忽然和地图建立起很具体的连接。",
+        "这里分享一条让我很开心的留言：Magdalena 在地图里看见 Eastern European 区域出现了 “Polish milk bars”，说这让她很开心，因为那是她成长时常去的地方。到这里，这场活动对我来说已经很满足了。"
+      ],
+      "note_image": {
+        "src": "assets/images/solutions/electromap-feedback.png",
+        "alt": "来自 Magdalena 的留言截图",
+        "caption": "来自 Magdalena 的留言截图。"
+      }
+    },
+    {
+      "id": "lessons",
+      "title": "我学到了什么",
+      "layout": "care-log",
+      "intro_paragraphs": [
+        "题外话——这次活动也让我更明确地看见：工作坊体验本身是需要被认真设计的。"
+      ],
+      "cards": [
+        {
+          "title": "Workshop 期间",
+          "paragraphs": [
+            "给大家的任务当时有些太繁重了，结果只留下了编程 Micro:bit 的体验，却没能一起把东西真正拼装到地图上。下次再办 workshop，我一定会更认真地控制实际落地的复杂度，让参与者真的能享受到手作本身。"
+          ]
+        },
+        {
+          "title": "关于参与感",
+          "paragraphs": [
+            "有些成员的参与度不高，当时我考虑到有人也许只是想放松一下，所以没有干预。之后我会更有意识地区分：对方是不想参与，还是想参与但没能跟上。如果是后者，我不想忽略，而是希望在活动设计上更用心一点，让不同性格、不同节奏的人都能有一处舒服的位置。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "thanks",
+      "title": "致谢",
+      "layout": "thanks",
+      "items": [
+        "感谢 Jun 和我一起合作。他落地了整个箱体与地图的设计，我负责 Micro:bit 相关的编程与拼装。",
+        "感谢 workshop 举办时 Jun、Pranjal、Shruti 的协助，也感谢每一位参与者。",
+        "感谢成品地图展示期间与它互动的每一个人。"
+      ]
+    }
+  ]
+}

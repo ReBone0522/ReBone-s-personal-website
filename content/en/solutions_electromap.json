@@ -1,0 +1,235 @@
+{
+  "meta": {
+    "title": "ElectroMap: Stories of the World",
+    "description": "An interactive map created for the UWC Day workshop “Share Peace Story,” inviting people to begin with curiosity toward faraway places and their stories.",
+    "eyebrow": "Solutions / Workshop",
+    "date": "2025.09",
+    "summary": "An interactive map created for the UWC Day workshop “Share Peace Story.”",
+    "breadcrumb": "ElectroMap: Stories of the World"
+  },
+  "nav": [
+    {
+      "id": "overview",
+      "label": "Project Overview"
+    },
+    {
+      "id": "origin",
+      "label": "What Prompted It"
+    },
+    {
+      "id": "system-detail",
+      "label": "System Details"
+    },
+    {
+      "id": "method",
+      "label": "Story Sources and Method"
+    },
+    {
+      "id": "archive",
+      "label": "Story Archive"
+    },
+    {
+      "id": "feedback",
+      "label": "Audience Feedback"
+    },
+    {
+      "id": "lessons",
+      "label": "What I Learned"
+    },
+    {
+      "id": "thanks",
+      "label": "Acknowledgments"
+    }
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "title": "Project Overview",
+      "layout": "overview",
+      "eyebrow": "Project Overview",
+      "headline": "ElectroMap: Stories of the World",
+      "paragraphs": [
+        "This was an interactive map installation that Jun and I created for the UWC Day workshop “Share Peace Story.” It was not meant to explain the world for people, but to let a small, active curiosity begin toward places far away from them.",
+        "Each region on the map was paired with a button. When someone pressed one, a story entry from that region appeared on the screen to the right, a new red point was added to the map, and the LED color gradually became warmer. Attention stopped being an abstract attitude and became a visible trace left on the object itself."
+      ],
+      "quote": "“Every story happening in the world has something to do with you and me.” — Liangzi",
+      "image": {
+        "src": "assets/images/solutions/electromap-overview.png",
+        "alt": "Full view of the ElectroMap interactive installation"
+      },
+      "stats": [
+        {
+          "title": "Event Context",
+          "items": [
+            "2025.09",
+            "UWC Day: Share Peace Story workshop"
+          ]
+        },
+        {
+          "title": "Collaboration",
+          "items": [
+            "Jun: box structure and map design",
+            "Me: Micro:bit programming and assembly"
+          ]
+        },
+        {
+          "title": "Keywords",
+          "items": [
+            "interactive map",
+            "world stories",
+            "active curiosity",
+            "peace theme"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "origin",
+      "title": "What Prompted It",
+      "layout": "two-column-note",
+      "paragraphs": [
+        "The project was sparked by a YiXi talk recommended to me by my friend Liang Yue. In it, artist Liangzi mentioned the publication COLORS: A Magazine About the Rest of the World, and said that every story happening in the world has something to do with all of us.",
+        "UWC Day that year was themed “Share Peace Story.” So Jun and I turned that thought into a map that could be triggered, viewed, and participated in."
+      ],
+      "note_image": {
+        "src": "assets/images/solutions/electromap-inspiration.jpg",
+        "alt": "Liangzi mentioning COLORS magazine in a YiXi talk",
+        "caption": "The initial spark came from Liangzi’s talk and COLORS: A Magazine About the Rest of the World."
+      }
+    },
+    {
+      "id": "system-detail",
+      "title": "System Details",
+      "layout": "two-column-note",
+      "paragraphs": [
+        "I wanted the map to act as a carrier that could make people curious about places far from their own lives. Each time someone pressed a regional button, one more red point appeared on the map and the LED color for that area became warmer.",
+        "The screen to the right then showed a short story entry from that region. Rather than passively absorbing mediated narratives, people could start from curiosity, stop for a moment, and search further on their own to learn about real people and real stories."
+      ],
+      "note_image": {
+        "src": "assets/images/solutions/electromap-detail.jpg",
+        "alt": "Close-up of ElectroMap buttons, LED display, and LCD module",
+        "caption": "A close-up of the buttons, dot-matrix display, and LCD module."
+      }
+    },
+    {
+      "id": "method",
+      "title": "Story Sources and Method",
+      "layout": "notes",
+      "paragraphs": [
+        "I originally expected people from different home regions to share their own stories, but in practice not many came in. So beyond the stories I already knew and the small number of entries suggested by participants, I also used ChatGPT to help gather stories that fit the theme.",
+        "For me, this was not about completeness. It was about making sure more overlooked places could at least be seen once. If someone paused because of a single entry and searched a little further, it was already doing something."
+      ],
+      "quote": "Instead of media framing the world with a particular agenda, this invited a more active form of curiosity and exploration."
+    },
+    {
+      "id": "archive",
+      "title": "Story Archive",
+      "layout": "production",
+      "blocks": [
+        {
+          "title": "Story Sources",
+          "items": [
+            "Stories I already knew and wanted to place on the map",
+            "Entries that a small number of participants wanted to share",
+            "Additional stories gathered with ChatGPT that fit the theme"
+          ]
+        },
+        {
+          "title": "Full List of Entries",
+          "items": [
+            "Leisure World Seal Beach",
+            "Standing Rock Protest",
+            "Reggae Girlz Jamaica",
+            "Hurricane Maria Puerto Rico",
+            "Mothers of Ayotzinapa",
+            "Garifuna Language Revival",
+            "Tejo Sport Colombia",
+            "Casa do Albergado Brazil",
+            "Ghanaian Coffin Design",
+            "Kente Cloth Traditions",
+            "Rumble in the Jungle",
+            "Congo River Taxi Boats",
+            "Lesedi Cultural Village",
+            "Cape Town Water Crisis",
+            "Dadaab Refugee Camp",
+            "Kenya Tech Hubs",
+            "Algerian Independence Toys",
+            "Tunisian Jasmine Revolution",
+            "Eagle Hunters of Mongolia",
+            "Kyrgyz Yurt Revival",
+            "Dead Sea Swim Club",
+            "Persian Carpet Making",
+            "Mumbai Dabbawala System",
+            "Diwali Light Festival",
+            "Balut Egg Philippines",
+            "Angkor Wat Sunrise",
+            "Blind Artist Rieko Arai",
+            "Yellow School Boats",
+            "Polish Milk Bars",
+            "Roma Brass Bands",
+            "Finnish School Breaks",
+            "Elf Believers",
+            "One Euro Houses",
+            "Barbados Welcome Stamp",
+            "Yellow Vest Protests",
+            "Dutch Bike Cities",
+            "Birdsong Alarm New Zealand",
+            "Uluru Sacred Rock",
+            "Solomon Islands Shell Money",
+            "PNG Highlands Sing-Sing",
+            "Yap Stone Currency",
+            "Micronesian Navigators",
+            "Samoan Tatto Traditions",
+            "Haka Dance"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "feedback",
+      "title": "Audience Feedback",
+      "layout": "two-column-note",
+      "paragraphs": [
+        "The level of engagement during the display period ended up being higher than I expected. Some people stayed to press the buttons one by one; others suddenly found a very concrete connection to the map through an entry they personally recognized.",
+        "One comment especially stayed with me: Magdalena saw “Polish milk bars” appear under Eastern Europe and said it made her very happy, because she used to go to one often while growing up. At that point, the project already felt worthwhile to me."
+      ],
+      "note_image": {
+        "src": "assets/images/solutions/electromap-feedback.png",
+        "alt": "Screenshot of a message from Magdalena",
+        "caption": "A message from Magdalena."
+      }
+    },
+    {
+      "id": "lessons",
+      "title": "What I Learned",
+      "layout": "care-log",
+      "intro_paragraphs": [
+        "A side note: this project also made one thing much clearer to me—workshop experience itself needs to be designed with care."
+      ],
+      "cards": [
+        {
+          "title": "During the Workshop",
+          "paragraphs": [
+            "I gave participants too much to do. In the end, what remained was mostly the experience of programming the Micro:bit, while we never really got to assemble everything together onto the map. Next time, I want to keep the real-world execution simpler so people can genuinely enjoy the making process itself."
+          ]
+        },
+        {
+          "title": "About Participation",
+          "paragraphs": [
+            "Some members participated less. At the time I assumed some might simply have wanted to relax, so I did not intervene. In the future I want to distinguish more clearly between people choosing not to join in and people wanting to join but not being able to keep up. If it is the latter, I do not want to overlook it. I want to design the activity more carefully so that people with different temperaments and rhythms can all find one comfortable place inside it."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "thanks",
+      "title": "Acknowledgments",
+      "layout": "thanks",
+      "items": [
+        "Thank you to Jun for building this with me. He realized the box and map design, while I handled the Micro:bit programming and assembly.",
+        "Thank you to Jun, Pranjal, and Shruti for their help during the workshop, and to every participant.",
+        "Thank you to everyone who interacted with the finished map during its display period."
+      ]
+    }
+  ]
+}

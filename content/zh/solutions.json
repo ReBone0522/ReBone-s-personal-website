@@ -1,17 +1,37 @@
 {
   "title": "Solutions",
   "intro": "听见真实声音、迭代想法、解决问题的日志。",
-  "filters": ["全部", "产品", "志愿", "生活"],
+  "filters": [
+    "全部",
+    "产品",
+    "工作坊",
+    "志愿",
+    "生活"
+  ],
   "cards": [
     {
       "title": "失能老人约束手套",
       "href": "solutions_restraint.html",
       "image": "assets/glove_prototype.png",
       "image_alt": "失能老人约束手套",
-      "tags": ["产品"],
+      "tags": [
+        "产品"
+      ],
       "date": "2023.10 - 进行中",
       "summary": "在必要的约束中，提供舒适、安抚与自主权。",
       "quote": "多少痛苦，需要一个人以另种痛苦来寻求解脱呢？"
+    },
+    {
+      "title": "ElectroMap：世界的故事",
+      "href": "solutions_electromap.html",
+      "image": "assets/images/solutions/electromap-overview.png",
+      "image_alt": "ElectroMap 互动地图装置",
+      "tags": [
+        "工作坊"
+      ],
+      "date": "2025.09",
+      "summary": "为 UWC Day「Share Peace Story」主题工作坊制作的互动地图装置，让人从遥远地区的故事出发，练习主动的好奇与关注。",
+      "quote": "“每一个世界正在发生的事情都与你我有关”——梁子"
     }
   ]
 }

@@ -984,9 +984,11 @@ async function initSolutions() {
 }
 
 async function initRestraint() {
-  if (!document.getElementById('restraint-page-root')) return;
+  const root = document.getElementById('restraint-page-root');
+  if (!root) return;
   try {
-    const data = await loadLocalizedJson('solutions_restraint.json');
+    const contentFile = root.dataset.contentFile || 'solutions_restraint.json';
+    const data = await loadLocalizedJson(contentFile);
     renderRestraint(data);
   } catch (error) {
     console.error(error);

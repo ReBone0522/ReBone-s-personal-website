@@ -34,6 +34,10 @@
   - 约束手套详情页的目录、项目概要、背景调查、陪伴日志、原型迭代、生产计划、致谢
   - 这是结构化 JSON，不需要改整页 HTML
 
+- `content/zh/solutions_electromap.json`
+  - ElectroMap 详情页的目录、项目概要、灵感来源、装置细节、词条档案、现场反馈、复盘与致谢
+  - 这也是结构化 JSON，不需要改整页 HTML
+
 - `content/zh/expressions.json`
   - Expressions 页标题、引言、分类卡片、右侧 preview 内容
 
@@ -61,6 +65,7 @@
 - `readme.html` 会按语言读取 `content/{lang}/readme.article.html`
 - `solutions.html` 会按语言读取 `content/{lang}/solutions.json`
 - `solutions_restraint.html` 会按语言读取 `content/{lang}/solutions_restraint.json`
+- `solutions_electromap.html` 会按语言读取 `content/{lang}/solutions_electromap.json`
 - `expressions.html` 会按语言读取 `content/{lang}/expressions.json`
 - `expressions_visual.html` 会按语言读取 `content/{lang}/expressions_visual.json`
 - `expressions_sound.html` 会按语言读取 `content/{lang}/expressions_sound.json`
@@ -80,6 +85,7 @@
 - `content/zh/readme.article.html`
 - `content/zh/solutions.json`
 - `content/zh/solutions_restraint.json`
+- `content/zh/solutions_electromap.json`
 - `content/zh/expressions.json`
 - `content/zh/expressions_visual.json`
 - `content/zh/expressions_sound.json`
