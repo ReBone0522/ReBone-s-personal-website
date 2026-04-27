@@ -1,14 +1,14 @@
 {
   "title": "Solutions",
   "intro": "A log of hearing real voices, iterating ideas, and solving problems.",
-  "filters": ["All", "Product", "Volunteer", "Life", "Daily Life"],
+  "filters": ["All", "Product", "Volunteer", "Daily Life"],
   "cards": [
     {
       "title": "Restraint Glove for Disabled Elderly People",
       "href": "solutions_restraint.html",
       "image": "assets/glove_prototype.png",
       "image_alt": "Restraint glove for disabled elderly people",
-      "tags": ["Product", "Life"],
+      "tags": ["Product"],
       "date": "2023.10 - Ongoing",
       "summary": "Within necessary restraint, provide comfort, reassurance, and autonomy.",
       "quote": "How much pain must a person seek relief from through another kind of pain?"
