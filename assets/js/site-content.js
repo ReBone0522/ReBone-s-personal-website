@@ -94,8 +94,11 @@ function renderHome(home, updates) {
   const updatesTitle = document.getElementById('updates-title');
   const updatesIntro = document.getElementById('updates-intro');
   const updatesList = document.getElementById('updates-list');
-  const updatesMore = document.getElementById('updates-more');
   const credits = document.getElementById('home-credits');
+  const inboxTitle = document.getElementById('inbox-title');
+  const inboxIntro = document.getElementById('inbox-intro');
+  const inboxDraft = document.getElementById('inbox-draft');
+  const inboxButton = document.getElementById('inbox-button');
 
   if (!heading || !introLabel || !introPoints || !links || !updatesList || !credits) return;
 
@@ -120,36 +123,43 @@ function renderHome(home, updates) {
     links.appendChild(anchor);
   }
 
-  if (updatesLabel) updatesLabel.textContent = home.updates_label || 'Notice Board';
+  if (updatesLabel) updatesLabel.textContent = home.updates_label || (isEnglishLang() ? 'Updates' : '更新');
   if (updatesTitle) updatesTitle.textContent = home.updates_title || '';
   if (updatesIntro) updatesIntro.textContent = home.updates_intro || '';
   updatesList.innerHTML = '';
   for (const item of updates.items || []) {
-    const article = createElement('article', 'paper-note');
+    const deck = createElement('div', 'note-deck');
+    deck.appendChild(createElement('article', 'paper-note is-back'));
+
+    const article = createElement('article', 'paper-note is-front');
     const time = createElement('time', 'note-date', item.date || '');
     if (item.datetime) time.dateTime = item.datetime;
     article.appendChild(time);
 
-    if (Array.isArray(item.points) && item.points.length) {
-      const list = createElement('ul', 'update-points');
-      for (const point of item.points) {
-        list.appendChild(createElement('li', '', point));
-      }
-      article.appendChild(list);
-    } else {
-      const list = createElement('ul', 'update-points');
-      const fallback = [item.title, item.summary].filter(Boolean).join(' — ');
-      if (fallback) list.appendChild(createElement('li', '', fallback));
-      article.appendChild(list);
+    const lines = Array.isArray(item.lines) && item.lines.length
+      ? item.lines
+      : Array.isArray(item.points) && item.points.length
+        ? item.points
+        : [item.title, item.summary].filter(Boolean);
+    const lineWrap = createElement('div', 'update-lines');
+    for (const line of lines) {
+      lineWrap.appendChild(createElement('p', '', line));
     }
+    article.appendChild(lineWrap);
 
-    updatesList.appendChild(article);
+    const peek = createElement('div', 'more-peek');
+    peek.setAttribute('aria-hidden', 'true');
+    peek.appendChild(createElement('span', '', updates.more_label || (isEnglishLang() ? 'View all.' : '查看更多。')));
+    article.appendChild(peek);
+
+    deck.appendChild(article);
+    updatesList.appendChild(deck);
   }
 
-  if (updatesMore) {
-    updatesMore.textContent = updates.more_label || (isEnglishLang() ? 'View all ↗' : '查看更多 ↗');
-    updatesMore.href = updates.more_href || '#';
-  }
+  if (inboxTitle) inboxTitle.textContent = home.inbox_title || (isEnglishLang() ? 'Anonymous letterbox' : '匿名投信箱');
+  if (inboxIntro) inboxIntro.textContent = home.inbox_intro || '';
+  if (inboxDraft) inboxDraft.placeholder = home.inbox_placeholder || '';
+  if (inboxButton) inboxButton.textContent = home.inbox_button || (isEnglishLang() ? 'Send (not connected yet)' : '投递（施工中）');
 
   credits.innerHTML = '';
   for (const line of home.credits || []) {

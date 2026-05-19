@@ -24,44 +24,53 @@
         .home-shell {
             max-width: 64rem;
             margin: 2.5rem auto 0;
-            padding: 0 1rem 5rem;
+            padding: 0 1rem 3.5rem;
             display: grid;
-            grid-template-columns: minmax(0, 32rem) 17.875rem;
-            column-gap: clamp(3.625rem, 7vw, 6.5rem);
+            grid-template-columns: minmax(0, 32rem) 18rem;
+            column-gap: clamp(3.5rem, 7vw, 6.5rem);
             align-items: start;
         }
 
+        .home-side {
+            font-family: inherit;
+            color: #171717;
+        }
+
         .notice-board {
-            margin-top: 6.5rem;
-            padding-left: 1.5rem;
-            border-left: 1px solid rgba(0, 0, 0, 0.10);
             font-family: inherit;
             color: #171717;
         }
 
         .notice-title {
-            margin: 0 0 1.0625rem;
-            color: rgba(23, 23, 23, 0.68);
-            font-size: 0.6875rem;
-            line-height: 1.4;
-            font-weight: 700;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
+            margin: 0 0 1.1rem;
+            color: rgba(23, 23, 23, 0.72);
+            font-family: inherit;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            font-weight: 600;
+            letter-spacing: 0;
+            text-transform: none;
         }
 
-        .notice-stack {
-            display: grid;
-            gap: 1.0625rem;
+        .note-deck {
+            position: relative;
+            min-height: 8.7rem;
+            margin-bottom: 1.6rem;
+            font-family: inherit;
         }
 
         .paper-note {
-            position: relative;
+            position: absolute;
+            inset: 0 auto auto 0;
             width: 100%;
-            padding: 1.1875rem 1.125rem 1.0625rem;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.58), transparent 58%), #fffdf6;
+            min-height: 8.2rem;
+            padding: 1.15rem 1.15rem 1.05rem;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.62), transparent 58%), #fffdf6;
             border: 1px solid rgba(95, 82, 59, 0.10);
-            box-shadow: 0 7px 14px rgba(45, 38, 28, 0.12), 0 1px 0 rgba(255, 255, 255, 0.76) inset;
-            color: #333;
+            box-shadow: 0 7px 14px rgba(45, 38, 28, 0.11), 0 1px 0 rgba(255, 255, 255, 0.76) inset;
+            color: #222;
+            font-family: inherit;
+            overflow: hidden;
         }
 
         .paper-note::before {
@@ -77,41 +86,146 @@
             box-shadow: 0 2px 4px rgba(65, 51, 30, 0.055);
         }
 
+        .paper-note.is-back {
+            transform: translate(0.48rem, 0.48rem) rotate(1.4deg);
+            background: #fbf7ea;
+            box-shadow: 0 5px 10px rgba(45, 38, 28, 0.07);
+            z-index: 0;
+        }
+
+        .paper-note.is-front {
+            z-index: 1;
+            transition: transform 180ms ease, box-shadow 180ms ease;
+        }
+
+        .note-deck:hover .paper-note.is-front {
+            transform: translateY(-0.12rem) rotate(-0.25deg);
+            box-shadow: 0 10px 18px rgba(45, 38, 28, 0.13), 0 1px 0 rgba(255, 255, 255, 0.76) inset;
+        }
+
         .note-date {
             display: block;
-            margin-bottom: 0.625rem;
-            color: rgba(23, 23, 23, 0.76);
-            font-size: 0.75rem;
+            margin-bottom: 0.62rem;
+            color: rgba(23, 23, 23, 0.78);
+            font-family: inherit;
+            font-size: 0.8rem;
             line-height: 1.45;
-            font-weight: 700;
-            letter-spacing: 0.02em;
+            font-weight: 600;
+            letter-spacing: 0;
         }
 
-        .update-points {
+        .update-lines {
+            display: grid;
+            gap: 0.22rem;
+            color: #222;
+            font-family: inherit;
+            font-size: 0.875rem;
+            line-height: 1.65;
+        }
+
+        .update-lines p {
             margin: 0;
-            padding-left: 1.0625rem;
-            color: #333;
-            font-size: 0.8125rem;
-            line-height: 1.72;
-            list-style: disc outside;
+            font: inherit;
         }
 
-        .update-points li {
-            display: list-item;
+        .more-peek {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 3.4rem;
+            height: 3.4rem;
+            background: #f1e6bd;
+            clip-path: polygon(100% 0, 0 100%, 100% 100%);
+            color: rgba(23, 23, 23, 0);
+            font-size: 0.68rem;
+            line-height: 1.25;
+            transition: width 180ms ease, height 180ms ease, color 180ms ease, background 180ms ease;
         }
 
-        .update-points li + li {
-            margin-top: 0.25rem;
+        .more-peek span {
+            position: absolute;
+            right: 0.28rem;
+            bottom: 0.32rem;
+            width: 3.8rem;
+            text-align: right;
+            transform: rotate(-45deg);
+            transform-origin: right bottom;
         }
 
-        .notice-link {
-            display: inline-block;
-            margin-top: 0.9375rem;
-            color: rgba(23, 23, 23, 0.64);
-            font-size: 0.75rem;
-            line-height: 1.5;
+        .note-deck:hover .more-peek {
+            width: 5.25rem;
+            height: 5.25rem;
+            background: #eee0ad;
+            color: rgba(23, 23, 23, 0.72);
+        }
+
+        .letterbox-card {
+            margin-top: 1.9rem;
+            padding: 1rem 1rem 1.05rem;
+            border: 1px dashed rgba(0, 0, 0, 0.18);
+            background: rgba(255, 255, 255, 0.48);
+            font-family: inherit;
+        }
+
+        .letterbox-card h3 {
+            margin: 0 0 0.55rem;
+            color: #111;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .letterbox-card p {
+            margin: 0 0 0.8rem;
+            color: #666;
+            font-family: inherit;
+            font-size: 0.78rem;
+            line-height: 1.7;
+        }
+
+        .letterbox-card textarea {
+            width: 100%;
+            min-height: 5.8rem;
+            resize: vertical;
+            padding: 0.75rem;
+            border: 1px solid rgba(0, 0, 0, 0.16);
+            background: #fffdf8;
+            color: #222;
+            font: inherit;
+            font-size: 0.8rem;
+            line-height: 1.6;
+            outline: none;
+        }
+
+        .letterbox-card textarea:focus {
+            border-color: rgba(0, 0, 0, 0.34);
+        }
+
+        .letterbox-card button {
+            margin-top: 0.65rem;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: rgba(23, 23, 23, 0.62);
+            font: inherit;
+            font-size: 0.78rem;
             text-decoration: underline;
             text-underline-offset: 2px;
+            cursor: not-allowed;
+        }
+
+        .site-credits {
+            max-width: 64rem;
+            margin: 0 auto 1.4rem;
+            padding: 0 1rem;
+            color: #6b7280;
+            font-family: inherit;
+            font-size: 0.875rem;
+            line-height: 1.75;
+        }
+
+        .site-credits p {
+            margin: 0.1rem 0;
         }
 
         @media (max-width: 860px) {
@@ -122,10 +236,21 @@
                 padding-inline: 1.5rem;
             }
 
-            .notice-board {
+            .home-side {
                 margin-top: 2.875rem;
-                padding-left: 0;
-                border-left: 0;
+            }
+
+            .paper-note {
+                position: relative;
+            }
+
+            .paper-note.is-back {
+                position: absolute;
+            }
+
+            .site-credits {
+                max-width: 35rem;
+                padding-inline: 1.5rem;
             }
         }
     </style>
@@ -183,32 +308,43 @@
                 <p class="text-sm text-gray-500 mt-1">如果社交有说明会让你更自在。</p>
             </a>
             </div>
-
-            <section id="home-credits" class="mt-10 text-sm text-gray-500 leading-relaxed space-y-1">
-                <p>文字：我</p>
-                <p>排版、交互灵感来自：我</p>
-                <p>网站制作：ChatGPT、DeepSeek、Open Claw：Little Blue Man（Claude 4.5 Opus）、Open Claw：Little Blue Man（ChatGPT 5.4）</p>
-                <p>感谢大家的帮助！</p>
-            </section>
         </section>
 
-        <aside class="notice-board" aria-label="Notice board">
-            <h3 id="updates-label" class="notice-title">Notice Board</h3>
-            <h4 id="updates-title" class="sr-only">小告示栏</h4>
-            <p id="updates-intro" class="sr-only">这里记录网站正式分享后的每一次公开更新。现在的整理、讨论和内部修改，不计入这里。</p>
-            <div id="updates-list" class="notice-stack">
-                <article class="paper-note">
-                    <time class="note-date" datetime="2026-05-22">05.22</time>
-                    <ul class="update-points">
-                        <li>网站正式开放。</li>
-                        <li>首页、README.md、主要入口已可阅读。</li>
-                        <li>后续公开更新会继续记录在这里。</li>
-                    </ul>
-                </article>
-            </div>
-            <a id="updates-more" class="notice-link" href="#">查看更多 ↗</a>
+        <aside class="home-side" aria-label="Updates and anonymous letterbox">
+            <section class="notice-board" aria-label="Updates">
+                <h3 id="updates-label" class="notice-title">更新</h3>
+                <h4 id="updates-title" class="sr-only">小告示栏</h4>
+                <p id="updates-intro" class="sr-only">这里记录网站正式分享后的每一次公开更新。现在的整理、讨论和内部修改，不计入这里。</p>
+                <div id="updates-list" class="notice-stack">
+                    <div class="note-deck">
+                        <article class="paper-note is-back" aria-hidden="true"></article>
+                        <article class="paper-note is-front">
+                            <time class="note-date" datetime="2026-05-22">2026.05.22</time>
+                            <div class="update-lines">
+                                <p>我的生日！</p>
+                                <p>网站正式开放</p>
+                            </div>
+                            <div class="more-peek" aria-hidden="true"><span>查看更多。</span></div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="letterbox-card" aria-label="匿名投信箱">
+                <h3 id="inbox-title">匿名投信箱</h3>
+                <p id="inbox-intro">如果你想留下些什么，可以先写在这里。正式提交入口之后再接上。</p>
+                <textarea id="inbox-draft" placeholder="写给 ReBone 的匿名信……"></textarea>
+                <button id="inbox-button" type="button" disabled>投递（施工中）</button>
+            </section>
         </aside>
     </main>
+
+    <section id="home-credits" class="site-credits">
+        <p>文字：我</p>
+        <p>排版、交互灵感来自：我</p>
+        <p>网站制作：ChatGPT、DeepSeek、OpenClaw：Little Blue Man（Claude 4.5 Opus）、OpenClaw：Little Blue Man（ChatGPT 5.4）、Hermes Agent：Little Blue Man (ChatGPT 5.4)</p>
+        <p>感谢大家的帮助！</p>
+    </section>
 
     <footer class="text-center text-sm text-gray-500 mt-10 mb-4">
        © 2025–2026 ReBone. 保留所有权利。

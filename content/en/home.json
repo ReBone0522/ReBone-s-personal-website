@@ -27,13 +27,17 @@
       "description": "If social instructions would make you feel more at ease."
     }
   ],
-  "updates_label": "Notice Board",
-  "updates_title": "Notice Board",
+  "updates_label": "Updates",
+  "updates_title": "Updates",
   "updates_intro": "This is where each public update is recorded after the site is formally shared. Ongoing organization, discussion, and internal revisions are not counted here.",
   "credits": [
     "Writing: me",
     "Layout and interaction inspiration: me",
-    "Site production: ChatGPT, DeepSeek, Open Claw: Little Blue Man (Claude 4.5 Opus), Open Claw: Little Blue Man (ChatGPT 5.4)",
+    "Site production: ChatGPT, DeepSeek, OpenClaw: Little Blue Man (Claude 4.5 Opus), OpenClaw: Little Blue Man (ChatGPT 5.4), Hermes Agent: Little Blue Man (ChatGPT 5.4)",
     "Thank you all for the help!"
-  ]
+  ],
+  "inbox_title": "Anonymous letterbox",
+  "inbox_intro": "If there is something you want to leave here, you can draft it first. A real submission entry can be connected later.",
+  "inbox_placeholder": "Write an anonymous letter to ReBone…",
+  "inbox_button": "Send (not connected yet)"
 }
