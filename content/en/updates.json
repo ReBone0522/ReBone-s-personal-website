@@ -1,3 +1,15 @@
 {
-  "items": []
+  "more_label": "View all ↗",
+  "more_href": "#",
+  "items": [
+    {
+      "date": "05.22",
+      "datetime": "2026-05-22",
+      "points": [
+        "The site is officially open.",
+        "The homepage, README.md, and main entries are readable.",
+        "Future public updates will continue to be recorded here."
+      ]
+    }
+  ]
 }

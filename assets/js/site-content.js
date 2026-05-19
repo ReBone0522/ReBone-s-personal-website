@@ -94,9 +94,10 @@ function renderHome(home, updates) {
   const updatesTitle = document.getElementById('updates-title');
   const updatesIntro = document.getElementById('updates-intro');
   const updatesList = document.getElementById('updates-list');
+  const updatesMore = document.getElementById('updates-more');
   const credits = document.getElementById('home-credits');
 
-  if (!heading || !introLabel || !introPoints || !links || !updatesIntro || !updatesList || !credits) return;
+  if (!heading || !introLabel || !introPoints || !links || !updatesList || !credits) return;
 
   heading.textContent = home.heading || '';
   introLabel.textContent = home.intro_label || '';
@@ -119,26 +120,35 @@ function renderHome(home, updates) {
     links.appendChild(anchor);
   }
 
-  if (updatesLabel) updatesLabel.textContent = home.updates_label || 'Updates';
+  if (updatesLabel) updatesLabel.textContent = home.updates_label || 'Notice Board';
   if (updatesTitle) updatesTitle.textContent = home.updates_title || '';
-  updatesIntro.textContent = home.updates_intro || '';
+  if (updatesIntro) updatesIntro.textContent = home.updates_intro || '';
   updatesList.innerHTML = '';
   for (const item of updates.items || []) {
-    const li = createElement('li', 'border-l-2 border-gray-300 pl-4');
-    li.appendChild(createElement('p', 'text-xs text-gray-400 mb-1', item.date || ''));
-    const p = createElement('p', 'text-sm text-gray-700');
-    const strong = document.createElement('strong');
-    if (item.href) {
-      const a = createElement('a', 'underline underline-offset-4', item.title || '');
-      a.href = item.href;
-      strong.appendChild(a);
+    const article = createElement('article', 'paper-note');
+    const time = createElement('time', 'note-date', item.date || '');
+    if (item.datetime) time.dateTime = item.datetime;
+    article.appendChild(time);
+
+    if (Array.isArray(item.points) && item.points.length) {
+      const list = createElement('ul', 'update-points');
+      for (const point of item.points) {
+        list.appendChild(createElement('li', '', point));
+      }
+      article.appendChild(list);
     } else {
-      strong.textContent = item.title || '';
+      const list = createElement('ul', 'update-points');
+      const fallback = [item.title, item.summary].filter(Boolean).join(' — ');
+      if (fallback) list.appendChild(createElement('li', '', fallback));
+      article.appendChild(list);
     }
-    p.appendChild(strong);
-    li.appendChild(p);
-    li.appendChild(createElement('p', 'text-sm text-gray-500 mt-1', item.summary || ''));
-    updatesList.appendChild(li);
+
+    updatesList.appendChild(article);
+  }
+
+  if (updatesMore) {
+    updatesMore.textContent = updates.more_label || (isEnglishLang() ? 'View all ↗' : '查看更多 ↗');
+    updatesMore.href = updates.more_href || '#';
   }
 
   credits.innerHTML = '';

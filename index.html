@@ -19,7 +19,116 @@
     <link rel="preload" as="image" href="assets/nav-bg.webp" />
     <link rel="stylesheet" href="assets/tailwind.css" />
     <script src="assets/js/i18n.js?v=20260424" defer></script>
-    <script src="assets/js/site-content.js?v=20260424" defer></script>
+    <script src="assets/js/site-content.js?v=20260519" defer></script>
+    <style>
+        .home-shell {
+            max-width: 64rem;
+            margin: 2.5rem auto 0;
+            padding: 0 1rem 5rem;
+            display: grid;
+            grid-template-columns: minmax(0, 32rem) 17.875rem;
+            column-gap: clamp(3.625rem, 7vw, 6.5rem);
+            align-items: start;
+        }
+
+        .notice-board {
+            margin-top: 6.5rem;
+            padding-left: 1.5rem;
+            border-left: 1px solid rgba(0, 0, 0, 0.10);
+            font-family: inherit;
+            color: #171717;
+        }
+
+        .notice-title {
+            margin: 0 0 1.0625rem;
+            color: rgba(23, 23, 23, 0.68);
+            font-size: 0.6875rem;
+            line-height: 1.4;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .notice-stack {
+            display: grid;
+            gap: 1.0625rem;
+        }
+
+        .paper-note {
+            position: relative;
+            width: 100%;
+            padding: 1.1875rem 1.125rem 1.0625rem;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.58), transparent 58%), #fffdf6;
+            border: 1px solid rgba(95, 82, 59, 0.10);
+            box-shadow: 0 7px 14px rgba(45, 38, 28, 0.12), 0 1px 0 rgba(255, 255, 255, 0.76) inset;
+            color: #333;
+        }
+
+        .paper-note::before {
+            content: "";
+            position: absolute;
+            top: -9px;
+            left: 50%;
+            width: 74px;
+            height: 18px;
+            transform: translateX(-50%) rotate(-1.2deg);
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.20), transparent 34% 70%, rgba(255, 255, 255, 0.14)), rgba(239, 224, 160, 0.66);
+            border: 1px solid rgba(151, 132, 70, 0.10);
+            box-shadow: 0 2px 4px rgba(65, 51, 30, 0.055);
+        }
+
+        .note-date {
+            display: block;
+            margin-bottom: 0.625rem;
+            color: rgba(23, 23, 23, 0.76);
+            font-size: 0.75rem;
+            line-height: 1.45;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .update-points {
+            margin: 0;
+            padding-left: 1.0625rem;
+            color: #333;
+            font-size: 0.8125rem;
+            line-height: 1.72;
+            list-style: disc outside;
+        }
+
+        .update-points li {
+            display: list-item;
+        }
+
+        .update-points li + li {
+            margin-top: 0.25rem;
+        }
+
+        .notice-link {
+            display: inline-block;
+            margin-top: 0.9375rem;
+            color: rgba(23, 23, 23, 0.64);
+            font-size: 0.75rem;
+            line-height: 1.5;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        @media (max-width: 860px) {
+            .home-shell {
+                display: block;
+                max-width: 35rem;
+                margin-top: 2.875rem;
+                padding-inline: 1.5rem;
+            }
+
+            .notice-board {
+                margin-top: 2.875rem;
+                padding-left: 0;
+                border-left: 0;
+            }
+        }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-mono leading-relaxed">
     <nav class="sticky top-0 z-50 bg-[length:113%_1000px] bg-center p-4 flex justify-between items-center" style="background-image: url('assets/nav-bg.webp');">
@@ -32,67 +141,73 @@
         </div>
     </nav>
 
-    <main id="home-content-root" class="max-w-4xl mx-auto mt-10 p-4">
-        <h2 id="home-heading" class="text-2xl font-semibold mb-4">欢迎:3</h2>
+    <main id="home-content-root" class="home-shell">
+        <section class="home-main">
+            <h2 id="home-heading" class="text-2xl font-semibold mb-4">欢迎:3</h2>
 
-        <section class="space-y-4 text-gray-700 leading-relaxed max-w-3xl">
-            <p id="home-intro-label" class="text-base">这个网站的意义是：</p>
-            <ol id="home-intro-points" class="list-decimal list-inside space-y-2 text-gray-700">
-                <li class="pl-1">系统性地整理并存档有关「我」的所有事</li>
-                <li class="pl-1">给不受限的观者潜在的启发与意义</li>
-            </ol>
+            <section class="space-y-4 text-gray-700 leading-relaxed max-w-3xl">
+                <p id="home-intro-label" class="text-base">这个网站的意义是：</p>
+                <ol id="home-intro-points" class="list-decimal list-inside space-y-2 text-gray-700">
+                    <li class="pl-1">系统性地整理并存档有关「我」的所有事</li>
+                    <li class="pl-1">给不受限的观者潜在的启发与意义</li>
+                </ol>
+            </section>
+
+            <div id="home-links" class="mt-10 space-y-6">
+            <a href="solutions.html" class="group block">
+                <div class="flex items-center space-x-2">
+                    <span class="text-lg text-black underline group-hover:text-gray-800 transition">Solutions</span>
+                    <span class="text-black text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
+                </div>
+                <p class="text-sm text-gray-500 mt-1">听见真实声音，改善客观困境。</p>
+            </a>
+            <a href="expressions.html" class="group block">
+                <div class="flex items-center space-x-2">
+                    <span class="text-lg text-black underline group-hover:text-gray-800 transition">Expressions</span>
+                    <span class="text-black text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
+                </div>
+                <p class="text-sm text-gray-500 mt-1">“为爱发电”的作品表达，包括视觉与听觉。</p>
+            </a>
+            <a href="reflections.html" class="group block">
+                <div class="flex items-center space-x-2">
+                    <span class="text-lg text-black underline group-hover:text-gray-800 transition">Reflections</span>
+                    <span class="text-black text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
+                </div>
+                <p class="text-sm text-gray-500 mt-1">输入、输出间，在大脑进行的迭代过程。</p>
+            </a>
+            <a href="readme.html" class="group block">
+                <div class="flex items-center space-x-2">
+                    <span class="text-lg text-black underline group-hover:text-gray-800 transition">README.md</span>
+                    <span class="text-black text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
+                </div>
+                <p class="text-sm text-gray-500 mt-1">如果社交有说明会让你更自在。</p>
+            </a>
+            </div>
+
+            <section id="home-credits" class="mt-10 text-sm text-gray-500 leading-relaxed space-y-1">
+                <p>文字：我</p>
+                <p>排版、交互灵感来自：我</p>
+                <p>网站制作：ChatGPT、DeepSeek、Open Claw：Little Blue Man（Claude 4.5 Opus）、Open Claw：Little Blue Man（ChatGPT 5.4）</p>
+                <p>感谢大家的帮助！</p>
+            </section>
         </section>
 
-        <div id="home-links" class="mt-10 space-y-6">
-        <a href="solutions.html" class="group block">
-            <div class="flex items-center space-x-2">
-                <span class="text-lg text-black underline group-hover:text-gray-800 transition">Solutions</span>
-                <span class="text-black text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
+        <aside class="notice-board" aria-label="Notice board">
+            <h3 id="updates-label" class="notice-title">Notice Board</h3>
+            <h4 id="updates-title" class="sr-only">小告示栏</h4>
+            <p id="updates-intro" class="sr-only">这里记录网站正式分享后的每一次公开更新。现在的整理、讨论和内部修改，不计入这里。</p>
+            <div id="updates-list" class="notice-stack">
+                <article class="paper-note">
+                    <time class="note-date" datetime="2026-05-22">05.22</time>
+                    <ul class="update-points">
+                        <li>网站正式开放。</li>
+                        <li>首页、README.md、主要入口已可阅读。</li>
+                        <li>后续公开更新会继续记录在这里。</li>
+                    </ul>
+                </article>
             </div>
-            <p class="text-sm text-gray-500 mt-1">听见真实声音，改善客观困境。</p>
-        </a>
-        <a href="expressions.html" class="group block">
-            <div class="flex items-center space-x-2">
-                <span class="text-lg text-black underline group-hover:text-gray-800 transition">Expressions</span>
-                <span class="text-black text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
-            </div>
-            <p class="text-sm text-gray-500 mt-1">“为爱发电”的作品表达，包括视觉与听觉。</p>
-        </a>
-        <a href="reflections.html" class="group block">
-            <div class="flex items-center space-x-2">
-                <span class="text-lg text-black underline group-hover:text-gray-800 transition">Reflections</span>
-                <span class="text-black text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
-            </div>
-            <p class="text-sm text-gray-500 mt-1">输入、输出间，在大脑进行的迭代过程。</p>
-        </a>
-        <a href="readme.html" class="group block">
-            <div class="flex items-center space-x-2">
-                <span class="text-lg text-black underline group-hover:text-gray-800 transition">README.md</span>
-                <span class="text-black text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
-            </div>
-            <p class="text-sm text-gray-500 mt-1">如果社交有说明会让你更自在。</p>
-        </a>
-        </div>
-
-        <section class="mt-14 rounded-2xl border border-gray-300 bg-white shadow-sm overflow-hidden">
-            <div class="px-5 py-3 border-b border-gray-200 bg-gray-100">
-                <p id="updates-label" class="text-xs uppercase tracking-[0.25em] text-gray-500">Updates</p>
-                <h3 id="updates-title" class="text-lg text-black">小告示栏</h3>
-            </div>
-            <div class="px-5 py-5">
-                <p id="updates-intro" class="text-sm text-gray-600 leading-relaxed">这里记录网站正式分享后的每一次公开更新。现在的整理、讨论和内部修改，不计入这里。</p>
-                <ul id="updates-list" class="mt-6 space-y-4">
-
-                </ul>
-            </div>
-        </section>
-
-        <section id="home-credits" class="mt-10 text-sm text-gray-500 leading-relaxed space-y-1">
-            <p>文字：我</p>
-            <p>排版、交互灵感来自：我</p>
-            <p>网站制作：ChatGPT、DeepSeek、Open Claw：Little Blue Man（Claude 4.5 Opus）、Open Claw：Little Blue Man（ChatGPT 5.4）</p>
-            <p>感谢大家的帮助！</p>
-        </section>
+            <a id="updates-more" class="notice-link" href="#">查看更多 ↗</a>
+        </aside>
     </main>
 
     <footer class="text-center text-sm text-gray-500 mt-10 mb-4">
