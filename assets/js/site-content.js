@@ -123,7 +123,7 @@ function renderHome(home, updates) {
     links.appendChild(anchor);
   }
 
-  if (updatesLabel) updatesLabel.textContent = home.updates_label || (isEnglishLang() ? 'Updates' : '更新');
+  if (updatesLabel) updatesLabel.textContent = home.updates_label || 'Updates';
   if (updatesTitle) updatesTitle.textContent = home.updates_title || '';
   if (updatesIntro) updatesIntro.textContent = home.updates_intro || '';
   updatesList.innerHTML = '';
@@ -149,7 +149,7 @@ function renderHome(home, updates) {
 
     const peek = createElement('div', 'more-peek');
     peek.setAttribute('aria-hidden', 'true');
-    peek.appendChild(createElement('span', '', updates.more_label || (isEnglishLang() ? 'View all.' : '查看更多。')));
+    peek.appendChild(createElement('span', '', updates.more_label || (isEnglishLang() ? 'View all' : '查看更多')));
     article.appendChild(peek);
 
     deck.appendChild(article);

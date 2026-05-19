@@ -42,14 +42,16 @@
         }
 
         .notice-title {
-            margin: 0 0 1.1rem;
-            color: rgba(23, 23, 23, 0.72);
+            margin: 0 0 0.85rem;
+            color: #000;
             font-family: inherit;
-            font-size: 0.875rem;
-            line-height: 1.5;
-            font-weight: 600;
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+            font-weight: 400;
             letter-spacing: 0;
             text-transform: none;
+            text-decoration: underline;
+            text-underline-offset: 2px;
         }
 
         .note-deck {
@@ -70,7 +72,7 @@
             box-shadow: 0 7px 14px rgba(45, 38, 28, 0.11), 0 1px 0 rgba(255, 255, 255, 0.76) inset;
             color: #222;
             font-family: inherit;
-            overflow: hidden;
+            overflow: visible;
         }
 
         .paper-note::before {
@@ -132,54 +134,60 @@
             position: absolute;
             right: 0;
             bottom: 0;
-            width: 3.4rem;
-            height: 3.4rem;
-            background: #f1e6bd;
+            width: 0;
+            height: 0;
+            background: #eee0ad;
             clip-path: polygon(100% 0, 0 100%, 100% 100%);
             color: rgba(23, 23, 23, 0);
             font-size: 0.68rem;
             line-height: 1.25;
-            transition: width 180ms ease, height 180ms ease, color 180ms ease, background 180ms ease;
+            opacity: 0;
+            pointer-events: none;
+            transition: width 180ms ease, height 180ms ease, color 180ms ease, opacity 180ms ease;
         }
 
         .more-peek span {
             position: absolute;
-            right: 0.28rem;
-            bottom: 0.32rem;
-            width: 3.8rem;
+            right: 0.38rem;
+            bottom: 0.42rem;
+            width: 4.2rem;
             text-align: right;
             transform: rotate(-45deg);
             transform-origin: right bottom;
+            white-space: nowrap;
         }
 
         .note-deck:hover .more-peek {
-            width: 5.25rem;
-            height: 5.25rem;
-            background: #eee0ad;
-            color: rgba(23, 23, 23, 0.72);
+            width: 5.35rem;
+            height: 5.35rem;
+            color: rgba(23, 23, 23, 0.76);
+            opacity: 1;
         }
 
         .letterbox-card {
-            margin-top: 1.9rem;
-            padding: 1rem 1rem 1.05rem;
-            border: 1px dashed rgba(0, 0, 0, 0.18);
-            background: rgba(255, 255, 255, 0.48);
+            margin-top: 2.5rem;
+            padding: 0;
+            border: 0;
+            background: transparent;
             font-family: inherit;
         }
 
         .letterbox-card h3 {
-            margin: 0 0 0.55rem;
-            color: #111;
+            margin: 0 0 0.85rem;
+            color: #000;
             font-family: inherit;
-            font-size: 0.95rem;
-            font-weight: 600;
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+            font-weight: 400;
+            text-decoration: underline;
+            text-underline-offset: 2px;
         }
 
         .letterbox-card p {
-            margin: 0 0 0.8rem;
-            color: #666;
+            margin: 0 0 0.85rem;
+            color: #6b7280;
             font-family: inherit;
-            font-size: 0.78rem;
+            font-size: 0.875rem;
             line-height: 1.7;
         }
 
@@ -192,7 +200,7 @@
             background: #fffdf8;
             color: #222;
             font: inherit;
-            font-size: 0.8rem;
+            font-size: 0.875rem;
             line-height: 1.6;
             outline: none;
         }
@@ -208,7 +216,7 @@
             background: transparent;
             color: rgba(23, 23, 23, 0.62);
             font: inherit;
-            font-size: 0.78rem;
+            font-size: 0.875rem;
             text-decoration: underline;
             text-underline-offset: 2px;
             cursor: not-allowed;
@@ -312,9 +320,7 @@
 
         <aside class="home-side" aria-label="Updates and anonymous letterbox">
             <section class="notice-board" aria-label="Updates">
-                <h3 id="updates-label" class="notice-title">更新</h3>
-                <h4 id="updates-title" class="sr-only">小告示栏</h4>
-                <p id="updates-intro" class="sr-only">这里记录网站正式分享后的每一次公开更新。现在的整理、讨论和内部修改，不计入这里。</p>
+                <h3 id="updates-label" class="notice-title">Updates</h3>
                 <div id="updates-list" class="notice-stack">
                     <div class="note-deck">
                         <article class="paper-note is-back" aria-hidden="true"></article>
@@ -324,7 +330,7 @@
                                 <p>我的生日！</p>
                                 <p>网站正式开放</p>
                             </div>
-                            <div class="more-peek" aria-hidden="true"><span>查看更多。</span></div>
+                            <div class="more-peek" aria-hidden="true"><span>查看更多</span></div>
                         </article>
                     </div>
                 </div>
