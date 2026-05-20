@@ -18,7 +18,7 @@
     <meta name="theme-color" content="#f9fafb" />
     <link rel="preload" as="image" href="assets/nav-bg.webp" />
     <link rel="stylesheet" href="assets/tailwind.css" />
-    <script src="assets/js/i18n.js?v=20260424" defer></script>
+    <script src="assets/js/i18n.js?v=20260520" defer></script>
     <script src="assets/js/site-content.js?v=20260519" defer></script>
     <style>
         .home-shell {
@@ -302,13 +302,13 @@
             </div>
         </section>
 
-        <aside class="home-side" aria-label="Updates and anonymous letterbox">
+        <aside class="home-side">
             <section class="notice-board" aria-label="Updates">
                 <h3 id="updates-label" class="notice-title">Updates</h3>
                 <div id="updates-list" class="notice-stack"></div>
             </section>
 
-            <section class="letterbox-card" aria-label="匿名投信箱">
+            <section class="letterbox-card" aria-labelledby="inbox-title">
                 <h3 id="inbox-title" class="notice-title">匿名投信箱</h3>
                 <p id="inbox-intro">如果你想留下些什么，可以先写在这里。正式提交入口之后再接上。</p>
                 <textarea id="inbox-draft" placeholder="写给 ReBone 的匿名信……"></textarea>

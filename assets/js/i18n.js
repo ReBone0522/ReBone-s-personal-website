@@ -117,7 +117,7 @@ const ReBoneI18n = (() => {
         reflections: 'Reflections',
         readme: 'README.md'
       },
-      footer: getCurrentLang() === 'en' ? '© 2025 ReBone. All rights reserved.' : '© 2025 ReBone. 保留所有权利。',
+      footer: getCurrentLang() === 'en' ? '© 2025–2026 ReBone. All rights reserved.' : '© 2025–2026 ReBone. 保留所有权利。',
       language_switch: {
         zh: '中文',
         en: 'EN'
