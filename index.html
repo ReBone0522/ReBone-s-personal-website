@@ -15,7 +15,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="ReBone" />
     <meta name="twitter:description" content="ReBone 的个人网站，整理收获、作品、思考与 README，也希望这些内容能给读者一些潜在的启发或意义。" />
-    <meta name="theme-color" content="#f6f6f2" />
+    <meta name="theme-color" content="#FAFAF8" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
         /* ── Base ── */
         body {
             margin: 0;
-            background-color: #F6F7F4;
+            background-color: #FAFAF8;
             color: #1a1a18;
             font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
             font-size: 1rem;
@@ -45,6 +45,7 @@
             background-color: rgba(110, 120, 110, 0.12);
             background-blend-mode: luminosity;
             box-shadow: inset 0 -1px rgba(110, 120, 110, 0.18);
+            filter: saturate(.55) brightness(1.08);
         }
         .nav-inner {
             max-width: 72rem;
@@ -108,7 +109,7 @@
             height: 96px;
             flex-shrink: 0;
             margin-top: 0.1rem;
-            opacity: 0.72;
+            opacity: 0.7;
         }
         .home-intro-label {
             font-family: 'ui-monospace', 'SFMono-Regular', monospace;
@@ -127,7 +128,7 @@
         }
         .home-intro-points li {
             font-size: 0.875rem;
-            color: #7D817A;
+            color: #666B64;
             line-height: 1.6;
             padding-left: 1rem;
             position: relative;
@@ -136,7 +137,7 @@
             content: '·';
             position: absolute;
             left: 0.125rem;
-            color: #AAB6A2;
+            color: #A7B49C;
         }
 
         /* ── Section cards 2×2 ── */
@@ -146,8 +147,8 @@
             gap: 0.875rem;
         }
         .section-card {
-            background: #F2F3EE;
-            border: none;
+            background: #FFFFFF;
+            border: 1px solid #ECEFE8;
             border-radius: 0;
             padding: 1.125rem 1.125rem 0.875rem;
             display: flex;
@@ -158,7 +159,7 @@
             transition: background 150ms ease, box-shadow 150ms ease;
         }
         .section-card:hover {
-            background: #E8ECE4;
+            background: #F7F9F4;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
         }
         .section-card-title {
@@ -171,7 +172,7 @@
         }
         .section-card-desc {
             font-size: 0.8125rem;
-            color: #7D817A;
+            color: #666B64;
             line-height: 1.6;
             flex: 1;
             margin: 0;
@@ -184,7 +185,7 @@
             gap: 1rem;
             margin-top: 0.75rem;
             padding-top: 0.65rem;
-            border-top: 1px solid #E1E5DE;
+            border-top: 1px solid #ECEFE8;
         }
         .section-card-latest {
             font-family: 'ui-monospace', 'SFMono-Regular', monospace;
@@ -195,25 +196,25 @@
         .section-card-arrow {
             font-family: 'ui-monospace', monospace;
             font-size: 0.75rem;
-            color: #AAB6A2;
+            color: #A7B49C;
             transition: color 150ms ease, transform 150ms ease;
         }
         .section-card:hover .section-card-arrow {
-            color: #7D817A;
+            color: #A7B49C;
             transform: translateX(2px);
         }
 
         /* ── Updates panel ── */
         .updates-panel {
-            background: #F2F3EE;
+            background: #F4F6F1;
             border: none;
             border-radius: 0;
             overflow: hidden;
         }
         .updates-panel-head {
             padding: 0.6rem 1rem;
-            border-bottom: 1px solid #E1E5DE;
-            background: #EBEEE7;
+            border-bottom: 1px solid #E3E8DE;
+            background: #EEF2EA;
         }
         .updates-panel-title {
             display: block;
@@ -229,7 +230,7 @@
         .timeline-item {
             padding: 0.6rem 1rem 0.6rem 2rem;
             position: relative;
-            border-bottom: 1px solid #E1E5DE;
+            border-bottom: 1px solid #E3E8DE;
         }
         .timeline-item:last-child { border-bottom: none; }
         .timeline-dot {
@@ -239,7 +240,7 @@
             width: 5px;
             height: 5px;
             border-radius: 50%;
-            background: #AAB6A2;
+            background: #A7B49C;
         }
         .timeline-date {
             display: block;
@@ -262,12 +263,12 @@
         }
         .timeline-lines p + p {
             margin-top: 0.1rem;
-            color: #7D817A;
+            color: #666B64;
             font-size: 0.775rem;
         }
         .updates-more {
             padding: 0.5rem 1rem;
-            border-top: 1px solid #E1E5DE;
+            border-top: 1px solid #E3E8DE;
             text-align: right;
         }
         .updates-more-link {
@@ -282,19 +283,19 @@
         /* ── Letterbox panel ── */
         .letterbox-panel {
             margin-top: 1.125rem;
-            background: #F2F3EE;
+            background: #F4F6F1;
             border: none;
             border-radius: 0;
             overflow: hidden;
         }
         .letterbox-strip-wrap {
-            background: #EBEEE7;
-            border-bottom: 1px solid #E1E5DE;
+            background: #EEF2EA;
+            border-bottom: 1px solid #E3E8DE;
             padding: 0.75rem 1rem;
         }
         .letterbox-strip {
             font-size: 0.775rem;
-            color: #7D817A;
+            color: #666B64;
             line-height: 1.6;
             margin: 0;
             font-style: italic;
@@ -315,8 +316,8 @@
             min-height: 4.5rem;
             resize: vertical;
             padding: 0.6rem 0.75rem;
-            border: 1px solid #D7DDD2;
-            background: #F6F7F4;
+            border: 1px solid #E3E8DE;
+            background: #FFFFFF;
             color: #3d3d36;
             font-size: 0.8125rem;
             font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
@@ -328,7 +329,7 @@
         .letterbox-input::placeholder {
             color: #8C9188;
         }
-        .letterbox-input:focus { border-color: #A9B59F; }
+        .letterbox-input:focus { border-color: #A7B49C; }
         .letterbox-button {
             margin-top: 0.5rem;
             font-family: 'ui-monospace', monospace;
@@ -401,15 +402,15 @@
                     <svg class="hero-diagram" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <defs>
                             <marker id="arr" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto">
-                                <path d="M0 0.5 L4.5 2.5 L0 4.5 Z" fill="#c8c4b8"/>
+                                <path d="M0 0.5 L4.5 2.5 L0 4.5 Z" fill="#BCC5B5"/>
                             </marker>
                         </defs>
-                        <circle cx="48" cy="16" r="7" fill="#deded7" opacity="0.85"/>
-                        <circle cx="78" cy="70" r="7" fill="#deded7" opacity="0.85"/>
-                        <circle cx="18" cy="70" r="7" fill="#deded7" opacity="0.85"/>
-                        <path d="M42 20 Q14 38 20 62" stroke="#AAB6A2" fill="none" stroke-width="1.2" marker-end="url(#arr)"/>
-                        <path d="M24 76 Q48 92 72 76" stroke="#AAB6A2" fill="none" stroke-width="1.2" marker-end="url(#arr)"/>
-                        <path d="M76 62 Q82 38 54 20" stroke="#AAB6A2" fill="none" stroke-width="1.2" marker-end="url(#arr)"/>
+                        <circle cx="48" cy="16" r="7" fill="#DCE2D8" opacity="0.85"/>
+                        <circle cx="78" cy="70" r="7" fill="#DCE2D8" opacity="0.85"/>
+                        <circle cx="18" cy="70" r="7" fill="#DCE2D8" opacity="0.85"/>
+                        <path d="M42 20 Q14 38 20 62" stroke="#BCC5B5" fill="none" stroke-width="1.2" marker-end="url(#arr)"/>
+                        <path d="M24 76 Q48 92 72 76" stroke="#BCC5B5" fill="none" stroke-width="1.2" marker-end="url(#arr)"/>
+                        <path d="M76 62 Q82 38 54 20" stroke="#BCC5B5" fill="none" stroke-width="1.2" marker-end="url(#arr)"/>
                     </svg>
                 </div>
                 <p id="home-intro-label" class="home-intro-label">这个网站的意义是：</p>
