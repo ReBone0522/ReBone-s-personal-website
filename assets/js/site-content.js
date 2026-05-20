@@ -104,52 +104,62 @@ function renderHome(home, updates) {
   introLabel.textContent = home.intro_label || '';
   introPoints.innerHTML = '';
   for (const point of home.intro_points || []) {
-    const li = createElement('li', 'pl-1', point);
-    introPoints.appendChild(li);
+    introPoints.appendChild(createElement('li', '', point));
   }
 
   links.innerHTML = '';
   for (const item of home.sections || []) {
-    const anchor = createElement('a', 'group block');
+    const anchor = createElement('a', 'section-card');
     anchor.href = item.href;
-
-    const row = createElement('div', 'flex items-center space-x-2');
-    row.appendChild(createElement('span', 'text-lg text-black underline group-hover:text-gray-800 transition', item.title));
-    row.appendChild(createElement('span', 'text-black text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform', '↗'));
-    anchor.appendChild(row);
-    anchor.appendChild(createElement('p', 'text-sm text-gray-500 mt-1', item.description));
+    anchor.appendChild(createElement('div', 'section-card-title', item.title));
+    anchor.appendChild(createElement('p', 'section-card-desc', item.description));
+    const footer = createElement('div', 'section-card-footer');
+    footer.appendChild(createElement('span', 'section-card-latest', home.latest_label || (isEnglishLang() ? 'Latest:' : '最近更新:')));
+    footer.appendChild(createElement('span', 'section-card-arrow', '↗'));
+    anchor.appendChild(footer);
     links.appendChild(anchor);
   }
 
   if (updatesLabel) updatesLabel.textContent = home.updates_label || 'Updates';
   updatesList.innerHTML = '';
   for (const item of updates.items || []) {
-    const deck = createElement('div', 'note-deck');
-    deck.appendChild(createElement('article', 'paper-note is-back'));
+    const li = createElement('div', 'timeline-item');
 
-    const article = createElement('article', 'paper-note is-front');
-    const time = createElement('time', 'note-date', item.date || '');
+    const dot = createElement('span', 'timeline-dot');
+    dot.setAttribute('aria-hidden', 'true');
+    li.appendChild(dot);
+
+    const time = createElement('time', 'timeline-date', item.date || '');
     if (item.datetime) time.dateTime = item.datetime;
-    article.appendChild(time);
+    li.appendChild(time);
 
     const lines = Array.isArray(item.lines) && item.lines.length
       ? item.lines
       : Array.isArray(item.points) && item.points.length
         ? item.points
         : [item.title, item.summary].filter(Boolean);
-    const lineWrap = createElement('div', 'update-lines');
+    const linesDiv = createElement('div', 'timeline-lines');
     for (const line of lines) {
-      lineWrap.appendChild(createElement('p', '', line));
+      linesDiv.appendChild(createElement('p', '', line));
     }
-    article.appendChild(lineWrap);
+    li.appendChild(linesDiv);
 
-    const peek = createElement('div', 'more-peek');
-    peek.setAttribute('aria-hidden', 'true');
-    peek.appendChild(createElement('span', '', updates.more_label || (isEnglishLang() ? 'View all' : '查看更多')));
-    article.appendChild(peek);
+    updatesList.appendChild(li);
+  }
 
-    deck.appendChild(article);
-    updatesList.appendChild(deck);
+  const updatesMoreEl = document.getElementById('updates-more');
+  if (updatesMoreEl) {
+    updatesMoreEl.innerHTML = '';
+    const href = updates.more_href;
+    if (href && href !== '#') {
+      const label = updates.more_label || (isEnglishLang() ? 'View all' : '查看更多');
+      const a = createElement('a', 'updates-more-link', label);
+      a.href = href;
+      updatesMoreEl.appendChild(a);
+      updatesMoreEl.style.display = '';
+    } else {
+      updatesMoreEl.style.display = 'none';
+    }
   }
 
   if (inboxTitle) inboxTitle.textContent = home.inbox_title || (isEnglishLang() ? 'Anonymous letterbox' : '匿名投信箱');

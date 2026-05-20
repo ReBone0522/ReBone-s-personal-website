@@ -15,313 +15,469 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="ReBone" />
     <meta name="twitter:description" content="ReBone 的个人网站，整理收获、作品、思考与 README，也希望这些内容能给读者一些潜在的启发或意义。" />
-    <meta name="theme-color" content="#f9fafb" />
+    <meta name="theme-color" content="#f6f6f2" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="assets/nav-bg.webp" />
     <link rel="stylesheet" href="assets/tailwind.css" />
     <script src="assets/js/i18n.js?v=20260520" defer></script>
-    <script src="assets/js/site-content.js?v=20260519" defer></script>
+    <script src="assets/js/site-content.js?v=20260520" defer></script>
     <style>
-        .home-shell {
-            max-width: 40rem;
-            margin: 2.5rem auto 0;
-            padding: 0 1rem 3.5rem;
-        }
-
-        .home-side {
-            font-family: inherit;
-            color: #171717;
-            margin-top: 2.875rem;
-        }
-
-        .notice-title {
-            margin: 0 0 0.85rem;
-            color: #000;
-            font-family: inherit;
-            font-size: 1.125rem;
-            line-height: 1.75rem;
-            font-weight: 400;
-            letter-spacing: 0;
-            text-transform: none;
-            text-decoration: underline;
-            text-underline-offset: 2px;
-        }
-
-        .note-deck {
-            position: relative;
-            min-height: 8.7rem;
-            margin-bottom: 1.6rem;
-            font-family: inherit;
-        }
-
-        .paper-note {
-            position: absolute;
-            inset: 0 auto auto 0;
-            width: 100%;
-            min-height: 8.2rem;
-            padding: 1.15rem 1.15rem 1.05rem;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.62), transparent 58%), #fffdf6;
-            border: 1px solid rgba(95, 82, 59, 0.10);
-            box-shadow: 0 7px 14px rgba(45, 38, 28, 0.11), 0 1px 0 rgba(255, 255, 255, 0.76) inset;
-            color: #222;
-            font-family: inherit;
-            overflow: visible;
-        }
-
-        .paper-note::before {
-            content: "";
-            position: absolute;
-            top: -9px;
-            left: 50%;
-            width: 74px;
-            height: 18px;
-            transform: translateX(-50%) rotate(-1.2deg);
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0.28), transparent 34% 70%, rgba(255, 255, 255, 0.18)), rgba(255, 239, 174, 0.62);
-            border: 1px solid rgba(220, 194, 92, 0.14);
-            box-shadow: 0 2px 4px rgba(65, 51, 30, 0.045);
-        }
-
-        .paper-note.is-back {
-            transform: translate(0.48rem, 0.48rem) rotate(1.4deg);
-            background: #fbf7ea;
-            box-shadow: 0 5px 10px rgba(45, 38, 28, 0.07);
-            z-index: 0;
-        }
-
-        .paper-note.is-front {
-            z-index: 1;
-            transition: transform 180ms ease, box-shadow 180ms ease;
-        }
-
-        .note-deck:hover .paper-note.is-front {
-            transform: translateY(-0.12rem) rotate(-0.25deg);
-            box-shadow: 0 10px 18px rgba(45, 38, 28, 0.13), 0 1px 0 rgba(255, 255, 255, 0.76) inset;
-        }
-
-        .note-date {
-            display: block;
-            margin-bottom: 0.62rem;
-            color: rgba(23, 23, 23, 0.78);
-            font-family: inherit;
-            font-size: 0.8rem;
-            line-height: 1.45;
-            font-weight: 600;
-            letter-spacing: 0;
-        }
-
-        .update-lines {
-            display: grid;
-            gap: 0.22rem;
-            color: #222;
-            font-family: inherit;
-            font-size: 0.875rem;
-            line-height: 1.65;
-        }
-
-        .update-lines p {
+        /* ── Base ── */
+        body {
             margin: 0;
-            font: inherit;
-        }
-
-        .more-peek {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            width: 0;
-            height: 0;
-            background: transparent;
-            color: rgba(23, 23, 23, 0);
-            font-size: 0.68rem;
-            line-height: 1.25;
-            opacity: 0;
-            pointer-events: none;
-            transition: width 180ms ease, height 180ms ease, color 180ms ease, opacity 180ms ease;
-        }
-
-        .more-peek::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: #fff0b7;
-            clip-path: polygon(100% 0, 0 100%, 100% 100%);
-        }
-
-        .more-peek span {
-            position: absolute;
-            right: 0.62rem;
-            bottom: 0.68rem;
-            width: 5.45rem;
-            text-align: right;
-            transform: rotate(-45deg);
-            transform-origin: right bottom;
-            white-space: nowrap;
-        }
-
-        .note-deck:hover .more-peek {
-            width: 6.45rem;
-            height: 6.45rem;
-            color: rgba(23, 23, 23, 0.76);
-            opacity: 1;
-        }
-
-        .letterbox-card {
-            margin-top: 2.5rem;
-            padding: 0;
-            border: 0;
-            background: transparent;
-            font-family: inherit;
-        }
-
-        .letterbox-card p {
-            margin: 0 0 0.85rem;
-            color: #6b7280;
-            font-family: inherit;
-            font-size: 0.875rem;
+            background-color: #f6f6f2;
+            color: #1a1a18;
+            font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+            font-size: 1rem;
             line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .letterbox-card textarea {
-            width: 100%;
-            min-height: 5.8rem;
-            resize: vertical;
-            padding: 0.75rem;
-            border: 1px solid rgba(95, 82, 59, 0.13);
-            background: #fffdf8;
-            color: #222;
-            font: inherit;
-            font-size: 0.875rem;
-            line-height: 1.6;
-            outline: none;
+        /* ── Nav ── */
+        .nav-bar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-size: 113% 1000px;
+            background-position: center;
+            background-color: rgba(246, 246, 242, 0.16);
+            background-blend-mode: luminosity;
+            box-shadow: inset 0 -1px rgba(246, 246, 242, 0.18);
+        }
+        .nav-inner {
+            max-width: 72rem;
+            margin: 0 auto;
+            padding: 0.875rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', monospace;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.25rem;
+        }
+        .nav-link {
+            font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', monospace;
+            font-size: 0.8125rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+        }
+        .nav-link:hover { text-decoration: underline; }
+
+        /* ── Shell / grid ── */
+        .home-shell {
+            max-width: 72rem;
+            margin: 0 auto;
+            padding: 2.75rem 1.5rem 5rem;
+            display: grid;
+            grid-template-columns: 1fr 21rem;
+            gap: 2.5rem;
+            align-items: start;
         }
 
-        .letterbox-card textarea:focus {
-            border-color: rgba(95, 82, 59, 0.30);
+        /* ── Hero ── */
+        .home-hero { margin-bottom: 2.25rem; }
+        .hero-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.75rem;
+            margin-bottom: 1.25rem;
         }
-
-        .letterbox-card button {
-            margin-top: 0.65rem;
+        .home-heading {
+            flex: 1;
+            font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+            font-size: 1.6rem;
+            line-height: 1.65;
+            color: #1a1a18;
+            font-weight: 500;
+            white-space: pre-line;
+            margin: 0;
+            letter-spacing: 0.01em;
+        }
+        .hero-diagram {
+            width: 96px;
+            height: 96px;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+            opacity: 0.72;
+        }
+        .home-intro-label {
+            font-family: 'ui-monospace', 'SFMono-Regular', monospace;
+            font-size: 0.775rem;
+            color: #9a9a90;
+            margin: 0 0 0.35rem;
+            letter-spacing: 0.03em;
+        }
+        .home-intro-points {
+            list-style: none;
+            margin: 0;
             padding: 0;
-            border: 0;
-            background: transparent;
-            color: rgba(23, 23, 23, 0.62);
-            font: inherit;
+            display: flex;
+            flex-direction: column;
+            gap: 0.18rem;
+        }
+        .home-intro-points li {
             font-size: 0.875rem;
+            color: #6b6b64;
+            line-height: 1.6;
+            padding-left: 1rem;
+            position: relative;
+        }
+        .home-intro-points li::before {
+            content: '·';
+            position: absolute;
+            left: 0.125rem;
+            color: #b5b2a8;
+        }
+
+        /* ── Section cards 2×2 ── */
+        .home-section-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.875rem;
+        }
+        .section-card {
+            background: #fbfbf8;
+            border: 1px solid #deded7;
+            border-radius: 8px;
+            padding: 1.125rem 1.125rem 0.875rem;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            min-height: 7rem;
+            transition: border-color 150ms ease, box-shadow 150ms ease;
+        }
+        .section-card:hover {
+            border-color: #c6c3ba;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .section-card-title {
+            font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', monospace;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: #1a1a18;
+            letter-spacing: 0.01em;
+            margin: 0 0 0.45rem;
+        }
+        .section-card-desc {
+            font-size: 0.8125rem;
+            color: #6b6b64;
+            line-height: 1.6;
+            flex: 1;
+            margin: 0;
+            font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+        }
+        .section-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 0.75rem;
+            padding-top: 0.65rem;
+            border-top: 1px solid #e7e6df;
+        }
+        .section-card-latest {
+            font-family: 'ui-monospace', 'SFMono-Regular', monospace;
+            font-size: 0.675rem;
+            color: #a4a199;
+            letter-spacing: 0.02em;
+        }
+        .section-card-arrow {
+            font-family: 'ui-monospace', monospace;
+            font-size: 0.75rem;
+            color: #b5b2a8;
+            transition: color 150ms ease, transform 150ms ease;
+        }
+        .section-card:hover .section-card-arrow {
+            color: #6b6b64;
+            transform: translateX(2px);
+        }
+
+        /* ── Updates panel ── */
+        .updates-panel {
+            background: #fbfbf8;
+            border: 1px solid #deded7;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .updates-panel-head {
+            padding: 0.6rem 1rem;
+            border-bottom: 1px solid #deded7;
+            background: #f7f7f3;
+        }
+        .updates-panel-title {
+            display: block;
+            font-family: 'ui-monospace', 'SFMono-Regular', monospace;
+            font-size: 0.675rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #9a9a90;
+            font-weight: 400;
+            margin: 0;
+        }
+        .timeline-list { padding: 0.25rem 0; }
+        .timeline-item {
+            padding: 0.6rem 1rem 0.6rem 2rem;
+            position: relative;
+            border-bottom: 1px solid #edede7;
+        }
+        .timeline-item:last-child { border-bottom: none; }
+        .timeline-dot {
+            position: absolute;
+            left: 0.9rem;
+            top: 0.95rem;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #ccc9be;
+        }
+        .timeline-date {
+            display: block;
+            font-family: 'ui-monospace', monospace;
+            font-size: 0.675rem;
+            color: #b0ada5;
+            margin-bottom: 0.18rem;
+            letter-spacing: 0.03em;
+        }
+        .timeline-lines {
+            font-size: 0.8125rem;
+            color: #3d3d36;
+            line-height: 1.65;
+            font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+        }
+        .timeline-lines p { margin: 0; }
+        .timeline-lines p:first-child {
+            color: #30312d;
+            font-weight: 500;
+        }
+        .timeline-lines p + p {
+            margin-top: 0.1rem;
+            color: #70726a;
+            font-size: 0.775rem;
+        }
+        .updates-more {
+            padding: 0.5rem 1rem;
+            border-top: 1px solid #deded7;
+            text-align: right;
+        }
+        .updates-more-link {
+            font-family: 'ui-monospace', monospace;
+            font-size: 0.675rem;
+            color: #b0ada5;
             text-decoration: underline;
             text-underline-offset: 2px;
+        }
+        .updates-more-link:hover { color: #6b6b64; }
+
+        /* ── Letterbox panel ── */
+        .letterbox-panel {
+            margin-top: 1.125rem;
+            background: #fbfbf8;
+            border: 1px solid #deded7;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .letterbox-strip-wrap {
+            background: #f0ebe0;
+            border-bottom: 1px solid #e3ddd3;
+            padding: 0.75rem 1rem;
+        }
+        .letterbox-strip {
+            font-size: 0.775rem;
+            color: #9a8c7a;
+            line-height: 1.6;
+            margin: 0;
+            font-style: italic;
+            font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+        }
+        .letterbox-body { padding: 0.875rem 1rem; }
+        .letterbox-label {
+            display: block;
+            font-family: 'ui-monospace', 'SFMono-Regular', monospace;
+            font-size: 0.675rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #9a9a90;
+            margin-bottom: 0.6rem;
+        }
+        .letterbox-input {
+            width: 100%;
+            min-height: 4.5rem;
+            resize: vertical;
+            padding: 0.6rem 0.75rem;
+            border: 1px solid #deded7;
+            background: #faf9f5;
+            color: #3d3d36;
+            font-size: 0.8125rem;
+            font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+            border-radius: 4px;
+            outline: none;
+            line-height: 1.6;
+            box-sizing: border-box;
+        }
+        .letterbox-input::placeholder {
+            color: #9c9a91;
+        }
+        .letterbox-input:focus { border-color: #c6c3ba; }
+        .letterbox-button {
+            margin-top: 0.5rem;
+            font-family: 'ui-monospace', monospace;
+            font-size: 0.675rem;
+            color: #8d8f87;
+            background: transparent;
+            border: 0;
             cursor: not-allowed;
+            padding: 0;
+            text-decoration: none;
+            letter-spacing: 0.03em;
+            opacity: 0.78;
         }
 
+        /* ── Footer / credits ── */
         .site-credits {
-            max-width: 44rem;
-            margin: 0 auto 1.4rem;
-            padding: 0 1rem;
-            color: #6b7280;
-            font-family: inherit;
-            font-size: 0.875rem;
+            max-width: 72rem;
+            margin: 0 auto 1rem;
+            padding: 0 1.5rem;
+            color: #9a9a90;
+            font-family: 'ui-monospace', monospace;
+            font-size: 0.75rem;
             line-height: 1.75;
         }
-
-        .site-credits p {
-            margin: 0.1rem 0;
+        .site-credits p { margin: 0.1rem 0; }
+        .site-credits:empty { display: none; }
+        .site-footer {
+            text-align: center;
+            font-family: 'ui-monospace', monospace;
+            font-size: 0.75rem;
+            color: #b0ada5;
+            padding: 0 1rem 1.5rem;
+            margin-top: 0.5rem;
         }
 
-        .site-credits:empty {
-            display: none;
-        }
-
+        /* ── Responsive ── */
         @media (max-width: 860px) {
             .home-shell {
-                padding-inline: 1.5rem;
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem 1.25rem 4rem;
             }
-
-            .paper-note {
-                position: relative;
-            }
-
-            .paper-note.is-back {
-                position: absolute;
-            }
-
-            .site-credits {
-                max-width: 32rem;
-                padding-inline: 1.5rem;
-            }
+            .hero-diagram { display: none; }
+            .home-section-grid { gap: 0.75rem; }
+        }
+        @media (max-width: 520px) {
+            .home-section-grid { grid-template-columns: 1fr; }
+            .home-heading { font-size: 1.375rem; }
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-mono leading-relaxed">
-    <nav class="sticky top-0 z-50 bg-[length:113%_1000px] bg-center p-4 flex justify-between items-center" style="background-image: url('assets/nav-bg.webp');">
-        <a href="index.html" class="text-xl font-bold text-white">ReBone</a>
-        <div class="space-x-4 text-white text-sm">
-            <a href="solutions.html" class="hover:underline">Solutions</a>
-            <a href="expressions.html" class="hover:underline">Expressions</a>
-            <a href="reflections.html" class="hover:underline">Reflections</a>
-            <a href="readme.html" class="hover:underline">README.md</a>
+<body>
+    <nav class="nav-bar" style="background-image: url('assets/nav-bg.webp');">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">ReBone</a>
+            <div class="nav-links">
+                <a href="solutions.html" class="nav-link">Solutions</a>
+                <a href="expressions.html" class="nav-link">Expressions</a>
+                <a href="reflections.html" class="nav-link">Reflections</a>
+                <a href="readme.html" class="nav-link">README.md</a>
+            </div>
         </div>
     </nav>
 
     <main id="home-content-root" class="home-shell">
         <section class="home-main">
-            <h2 id="home-heading" class="text-2xl font-semibold mb-4">欢迎:3</h2>
-
-            <section class="space-y-4 text-gray-700 leading-relaxed max-w-3xl">
-                <p id="home-intro-label" class="text-base">这个网站的意义是：</p>
-                <ol id="home-intro-points" class="list-decimal list-inside space-y-2 text-gray-700">
-                    <li class="pl-1">系统性地整理并存档有关「我」的所有事</li>
-                    <li class="pl-1">给不受限的观者潜在的启发与意义</li>
+            <div class="home-hero">
+                <div class="hero-row">
+                    <h2 id="home-heading" class="home-heading">系统整理我看见、思考、创造的一切，&#10;给未来某个陌生人的启发。</h2>
+                    <svg class="hero-diagram" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <defs>
+                            <marker id="arr" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto">
+                                <path d="M0 0.5 L4.5 2.5 L0 4.5 Z" fill="#c8c4b8"/>
+                            </marker>
+                        </defs>
+                        <circle cx="48" cy="16" r="7" fill="#deded7" opacity="0.85"/>
+                        <circle cx="78" cy="70" r="7" fill="#deded7" opacity="0.85"/>
+                        <circle cx="18" cy="70" r="7" fill="#deded7" opacity="0.85"/>
+                        <path d="M42 20 Q14 38 20 62" stroke="#ccc9be" fill="none" stroke-width="1.2" marker-end="url(#arr)"/>
+                        <path d="M24 76 Q48 92 72 76" stroke="#ccc9be" fill="none" stroke-width="1.2" marker-end="url(#arr)"/>
+                        <path d="M76 62 Q82 38 54 20" stroke="#ccc9be" fill="none" stroke-width="1.2" marker-end="url(#arr)"/>
+                    </svg>
+                </div>
+                <p id="home-intro-label" class="home-intro-label">这个网站的意义是：</p>
+                <ol id="home-intro-points" class="home-intro-points">
+                    <li>系统性地整理并存档有关「我」的所有事</li>
+                    <li>给不受限的观者潜在的启发与意义</li>
                 </ol>
-            </section>
+            </div>
 
-            <div id="home-links" class="mt-10 space-y-6">
-            <a href="solutions.html" class="group block">
-                <div class="flex items-center space-x-2">
-                    <span class="text-lg text-black underline group-hover:text-gray-800 transition">Solutions</span>
-                    <span class="text-black text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
-                </div>
-                <p class="text-sm text-gray-500 mt-1">听见真实声音，改善客观困境。</p>
-            </a>
-            <a href="expressions.html" class="group block">
-                <div class="flex items-center space-x-2">
-                    <span class="text-lg text-black underline group-hover:text-gray-800 transition">Expressions</span>
-                    <span class="text-black text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
-                </div>
-                <p class="text-sm text-gray-500 mt-1">“为爱发电”的作品表达，包括视觉与听觉。</p>
-            </a>
-            <a href="reflections.html" class="group block">
-                <div class="flex items-center space-x-2">
-                    <span class="text-lg text-black underline group-hover:text-gray-800 transition">Reflections</span>
-                    <span class="text-black text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
-                </div>
-                <p class="text-sm text-gray-500 mt-1">输入、输出间，在大脑进行的迭代过程。</p>
-            </a>
-            <a href="readme.html" class="group block">
-                <div class="flex items-center space-x-2">
-                    <span class="text-lg text-black underline group-hover:text-gray-800 transition">README.md</span>
-                    <span class="text-black text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
-                </div>
-                <p class="text-sm text-gray-500 mt-1">如果社交有说明会让你更自在。</p>
-            </a>
+            <div id="home-links" class="home-section-grid">
+                <a href="solutions.html" class="section-card">
+                    <div class="section-card-title">Solutions</div>
+                    <p class="section-card-desc">听见真实声音，改善客观困境。</p>
+                    <div class="section-card-footer"><span class="section-card-latest">最近更新:</span><span class="section-card-arrow">↗</span></div>
+                </a>
+                <a href="expressions.html" class="section-card">
+                    <div class="section-card-title">Expressions</div>
+                    <p class="section-card-desc">“为爱发电”的作品表达，包括视觉与听觉。</p>
+                    <div class="section-card-footer"><span class="section-card-latest">最近更新:</span><span class="section-card-arrow">↗</span></div>
+                </a>
+                <a href="reflections.html" class="section-card">
+                    <div class="section-card-title">Reflections</div>
+                    <p class="section-card-desc">输入、输出间，在大脑进行的迭代过程。</p>
+                    <div class="section-card-footer"><span class="section-card-latest">最近更新:</span><span class="section-card-arrow">↗</span></div>
+                </a>
+                <a href="readme.html" class="section-card">
+                    <div class="section-card-title">README.md</div>
+                    <p class="section-card-desc">如果社交有说明会让你更自在。</p>
+                    <div class="section-card-footer"><span class="section-card-latest">最近更新:</span><span class="section-card-arrow">↗</span></div>
+                </a>
             </div>
         </section>
 
-        <aside class="home-side">
-            <section class="notice-board" aria-label="Updates">
-                <h3 id="updates-label" class="notice-title">Updates</h3>
-                <div id="updates-list" class="notice-stack"></div>
-            </section>
+        <aside class="home-sidebar">
+            <div class="updates-panel" aria-label="Updates">
+                <div class="updates-panel-head">
+                    <h3 id="updates-label" class="updates-panel-title">Updates</h3>
+                </div>
+                <div id="updates-list" class="timeline-list">
+                    <div class="timeline-item">
+                        <span class="timeline-dot" aria-hidden="true"></span>
+                        <time class="timeline-date">2026.05.22</time>
+                        <div class="timeline-lines">
+                            <p>我的生日！</p>
+                            <p>网站正式开放</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="updates-more" class="updates-more" style="display:none"></div>
+            </div>
 
-            <section class="letterbox-card" aria-labelledby="inbox-title">
-                <h3 id="inbox-title" class="notice-title">匿名投信箱</h3>
-                <p id="inbox-intro">如果你想留下些什么，可以先写在这里。正式提交入口之后再接上。</p>
-                <textarea id="inbox-draft" placeholder="写给 ReBone 的匿名信……"></textarea>
-                <button id="inbox-button" type="button" disabled>投递（施工中）</button>
-            </section>
+            <div class="letterbox-panel" aria-labelledby="inbox-title">
+                <div class="letterbox-strip-wrap">
+                    <p id="inbox-intro" class="letterbox-strip">如果你想留下些什么，可以先写在这里。正式提交入口之后再接上。</p>
+                </div>
+                <div class="letterbox-body">
+                    <span id="inbox-title" class="letterbox-label">匿名投信箱</span>
+                    <textarea id="inbox-draft" class="letterbox-input" placeholder="写给 ReBone 的匿名信……"></textarea>
+                    <button id="inbox-button" type="button" disabled class="letterbox-button">投递（施工中）</button>
+                </div>
+            </div>
         </aside>
     </main>
 
     <div id="home-credits" class="site-credits"></div>
 
-    <footer class="text-center text-sm text-gray-500 mt-10 mb-4">
-       © 2025–2026 ReBone. 保留所有权利。
+    <footer class="site-footer">
+        © 2025–2026 ReBone. 保留所有权利。
     </footer>
 </body>
 </html>
