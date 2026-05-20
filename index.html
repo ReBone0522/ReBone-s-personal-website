@@ -139,27 +139,48 @@
             color: #b5b2a8;
         }
 
-        /* ── Section cards 2×2 ── */
+        /* ── Section cards: paper strips ── */
         .home-section-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.875rem;
-        }
-        .section-card {
-            background: #fbfbf8;
-            border: 1px solid #deded7;
-            border-radius: 8px;
-            padding: 1.125rem 1.125rem 0.875rem;
             display: flex;
             flex-direction: column;
+            gap: 1rem;
+            padding-top: 0.625rem;
+        }
+        .section-card {
+            position: relative;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 0 1.25rem;
+            background: #fbfaf4;
+            border: 1px solid #deded7;
+            border-left: 3px solid #efe4c4;
+            border-radius: 3px;
+            padding: 0.8rem 1rem 0.8rem 1.125rem;
+            min-height: 0;
             text-decoration: none;
             color: inherit;
-            min-height: 7rem;
-            transition: border-color 150ms ease, box-shadow 150ms ease;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+            transition: border-color 150ms ease, border-left-color 150ms ease, box-shadow 150ms ease;
+        }
+        /* small tape tab near the top-left corner */
+        .section-card::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 0.875rem;
+            width: 1.875rem;
+            height: 10px;
+            background: rgba(239, 228, 196, 0.94);
+            border-radius: 2px 2px 0 0;
+            border: 1px solid rgba(210, 198, 168, 0.55);
+            border-bottom: none;
+            pointer-events: none;
         }
         .section-card:hover {
             border-color: #c6c3ba;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-left-color: #d8c9a0;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
         }
         .section-card-title {
             font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', monospace;
@@ -167,75 +188,81 @@
             font-weight: 600;
             color: #1a1a18;
             letter-spacing: 0.01em;
-            margin: 0 0 0.45rem;
+            margin: 0;
+            white-space: nowrap;
         }
         .section-card-desc {
             font-size: 0.8125rem;
             color: #6b6b64;
             line-height: 1.6;
-            flex: 1;
             margin: 0;
             font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
         }
         .section-card-footer {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            margin-top: 0.75rem;
-            padding-top: 0.65rem;
-            border-top: 1px solid #e7e6df;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.2rem;
+            margin: 0;
+            padding: 0;
+            border: none;
+            white-space: nowrap;
         }
         .section-card-latest {
             font-family: 'ui-monospace', 'SFMono-Regular', monospace;
-            font-size: 0.675rem;
-            color: #a4a199;
+            font-size: 0.625rem;
+            color: #8a7f6a;
             letter-spacing: 0.02em;
+            transition: color 150ms ease;
         }
         .section-card-arrow {
             font-family: 'ui-monospace', monospace;
             font-size: 0.75rem;
-            color: #b5b2a8;
+            color: #9a8e7a;
             transition: color 150ms ease, transform 150ms ease;
         }
         .section-card:hover .section-card-arrow {
-            color: #6b6b64;
+            color: #3d3d36;
             transform: translateX(2px);
+        }
+        .section-card:hover .section-card-latest {
+            color: #6f6a5f;
         }
 
         /* ── Updates panel ── */
         .updates-panel {
-            background: #fbfbf8;
+            background: #fbfaf4;
             border: 1px solid #deded7;
-            border-radius: 8px;
+            border-radius: 3px;
             overflow: hidden;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
         }
         .updates-panel-head {
-            padding: 0.6rem 1rem;
-            border-bottom: 1px solid #deded7;
-            background: #f7f7f3;
+            padding: 0.45rem 0.875rem;
+            border-bottom: 1px solid #e0d6b4;
+            background: #f3e9ce;
         }
         .updates-panel-title {
             display: block;
             font-family: 'ui-monospace', 'SFMono-Regular', monospace;
-            font-size: 0.675rem;
-            letter-spacing: 0.12em;
+            font-size: 0.625rem;
+            letter-spacing: 0.14em;
             text-transform: uppercase;
-            color: #9a9a90;
+            color: #8a7f6a;
             font-weight: 400;
             margin: 0;
         }
-        .timeline-list { padding: 0.25rem 0; }
+        .timeline-list { padding: 0.15rem 0; }
         .timeline-item {
-            padding: 0.6rem 1rem 0.6rem 2rem;
+            padding: 0.55rem 0.875rem 0.55rem 1.875rem;
             position: relative;
-            border-bottom: 1px solid #edede7;
+            border-bottom: 1px solid #eeeae2;
         }
         .timeline-item:last-child { border-bottom: none; }
         .timeline-dot {
             position: absolute;
-            left: 0.9rem;
-            top: 0.95rem;
+            left: 0.75rem;
+            top: 0.9rem;
             width: 5px;
             height: 5px;
             border-radius: 50%;
@@ -266,8 +293,8 @@
             font-size: 0.775rem;
         }
         .updates-more {
-            padding: 0.5rem 1rem;
-            border-top: 1px solid #deded7;
+            padding: 0.4rem 0.875rem;
+            border-top: 1px solid #e8e6de;
             text-align: right;
         }
         .updates-more-link {
@@ -281,66 +308,69 @@
 
         /* ── Letterbox panel ── */
         .letterbox-panel {
-            margin-top: 1.125rem;
-            background: #fbfbf8;
+            margin-top: 0.875rem;
+            background: #fbfaf4;
             border: 1px solid #deded7;
-            border-radius: 8px;
+            border-radius: 3px;
             overflow: hidden;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
         }
         .letterbox-strip-wrap {
-            background: #f0ebe0;
-            border-bottom: 1px solid #e3ddd3;
-            padding: 0.75rem 1rem;
+            background: #f0e8ca;
+            border-bottom: 1px solid #ddd5b0;
+            padding: 0.6rem 0.875rem;
         }
         .letterbox-strip {
             font-size: 0.775rem;
-            color: #9a8c7a;
+            color: #8a7a62;
             line-height: 1.6;
             margin: 0;
             font-style: italic;
             font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
         }
-        .letterbox-body { padding: 0.875rem 1rem; }
+        .letterbox-body { padding: 0.75rem 0.875rem; }
         .letterbox-label {
             display: block;
             font-family: 'ui-monospace', 'SFMono-Regular', monospace;
-            font-size: 0.675rem;
+            font-size: 0.625rem;
             letter-spacing: 0.12em;
             text-transform: uppercase;
             color: #9a9a90;
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.5rem;
         }
         .letterbox-input {
             width: 100%;
             min-height: 4.5rem;
             resize: vertical;
             padding: 0.6rem 0.75rem;
-            border: 1px solid #deded7;
-            background: #faf9f5;
+            border: 1px solid #d8d1c3;
+            background: #fbf6ea;
             color: #3d3d36;
             font-size: 0.8125rem;
             font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-            border-radius: 4px;
+            border-radius: 2px;
             outline: none;
             line-height: 1.6;
             box-sizing: border-box;
+            transition: border-color 150ms ease, background 150ms ease;
         }
         .letterbox-input::placeholder {
             color: #9c9a91;
         }
-        .letterbox-input:focus { border-color: #c6c3ba; }
+        .letterbox-input:focus { border-color: #8a7f6a; background: #fdf8ee; }
         .letterbox-button {
+            display: inline-block;
             margin-top: 0.5rem;
             font-family: 'ui-monospace', monospace;
-            font-size: 0.675rem;
-            color: #8d8f87;
-            background: transparent;
-            border: 0;
+            font-size: 0.625rem;
+            color: #8a7f6a;
+            background: #fbfaf4;
+            border: 1px solid #d8d1c3;
+            border-radius: 2px;
             cursor: not-allowed;
-            padding: 0;
-            text-decoration: none;
-            letter-spacing: 0.03em;
-            opacity: 0.78;
+            padding: 0.2rem 0.625rem;
+            letter-spacing: 0.04em;
+            opacity: 0.72;
         }
 
         /* ── Footer / credits ── */
@@ -359,7 +389,7 @@
             text-align: center;
             font-family: 'ui-monospace', monospace;
             font-size: 0.75rem;
-            color: #b0ada5;
+            color: #9a9a90;
             padding: 0 1rem 1.5rem;
             margin-top: 0.5rem;
         }
@@ -375,8 +405,23 @@
             .home-section-grid { gap: 0.75rem; }
         }
         @media (max-width: 520px) {
-            .home-section-grid { grid-template-columns: 1fr; }
             .home-heading { font-size: 1.375rem; }
+            .section-card {
+                display: block;
+                padding: 0.75rem 0.875rem;
+            }
+            .section-card-title {
+                white-space: normal;
+                margin-bottom: 0.25rem;
+            }
+            .section-card-desc { margin-bottom: 0.4rem; }
+            .section-card-footer {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                border-top: 1px solid #eeeae2;
+                padding-top: 0.4rem;
+            }
         }
     </style>
 </head>
