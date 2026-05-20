@@ -91,8 +91,6 @@ function renderHome(home, updates) {
   const introPoints = document.getElementById('home-intro-points');
   const links = document.getElementById('home-links');
   const updatesLabel = document.getElementById('updates-label');
-  const updatesTitle = document.getElementById('updates-title');
-  const updatesIntro = document.getElementById('updates-intro');
   const updatesList = document.getElementById('updates-list');
   const credits = document.getElementById('home-credits');
   const inboxTitle = document.getElementById('inbox-title');
@@ -124,8 +122,6 @@ function renderHome(home, updates) {
   }
 
   if (updatesLabel) updatesLabel.textContent = home.updates_label || 'Updates';
-  if (updatesTitle) updatesTitle.textContent = home.updates_title || '';
-  if (updatesIntro) updatesIntro.textContent = home.updates_intro || '';
   updatesList.innerHTML = '';
   for (const item of updates.items || []) {
     const deck = createElement('div', 'note-deck');

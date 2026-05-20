@@ -36,11 +36,6 @@
             color: #171717;
         }
 
-        .notice-board {
-            font-family: inherit;
-            color: #171717;
-        }
-
         .notice-title {
             margin: 0 0 0.85rem;
             color: #000;
@@ -172,17 +167,6 @@
             font-family: inherit;
         }
 
-        .letterbox-card h3 {
-            margin: 0 0 0.85rem;
-            color: #000;
-            font-family: inherit;
-            font-size: 1.125rem;
-            line-height: 1.75rem;
-            font-weight: 400;
-            text-decoration: underline;
-            text-underline-offset: 2px;
-        }
-
         .letterbox-card p {
             margin: 0 0 0.85rem;
             color: #6b7280;
@@ -196,7 +180,7 @@
             min-height: 5.8rem;
             resize: vertical;
             padding: 0.75rem;
-            border: 1px solid rgba(0, 0, 0, 0.16);
+            border: 1px solid rgba(95, 82, 59, 0.13);
             background: #fffdf8;
             color: #222;
             font: inherit;
@@ -206,7 +190,7 @@
         }
 
         .letterbox-card textarea:focus {
-            border-color: rgba(0, 0, 0, 0.34);
+            border-color: rgba(95, 82, 59, 0.30);
         }
 
         .letterbox-card button {
@@ -223,7 +207,7 @@
         }
 
         .site-credits {
-            max-width: 64rem;
+            max-width: 44rem;
             margin: 0 auto 1.4rem;
             padding: 0 1rem;
             color: #6b7280;
@@ -257,7 +241,7 @@
             }
 
             .site-credits {
-                max-width: 35rem;
+                max-width: 32rem;
                 padding-inline: 1.5rem;
             }
         }
@@ -321,23 +305,11 @@
         <aside class="home-side" aria-label="Updates and anonymous letterbox">
             <section class="notice-board" aria-label="Updates">
                 <h3 id="updates-label" class="notice-title">Updates</h3>
-                <div id="updates-list" class="notice-stack">
-                    <div class="note-deck">
-                        <article class="paper-note is-back" aria-hidden="true"></article>
-                        <article class="paper-note is-front">
-                            <time class="note-date" datetime="2026-05-22">2026.05.22</time>
-                            <div class="update-lines">
-                                <p>我的生日！</p>
-                                <p>网站正式开放</p>
-                            </div>
-                            <div class="more-peek" aria-hidden="true"><span>查看更多</span></div>
-                        </article>
-                    </div>
-                </div>
+                <div id="updates-list" class="notice-stack"></div>
             </section>
 
             <section class="letterbox-card" aria-label="匿名投信箱">
-                <h3 id="inbox-title">匿名投信箱</h3>
+                <h3 id="inbox-title" class="notice-title">匿名投信箱</h3>
                 <p id="inbox-intro">如果你想留下些什么，可以先写在这里。正式提交入口之后再接上。</p>
                 <textarea id="inbox-draft" placeholder="写给 ReBone 的匿名信……"></textarea>
                 <button id="inbox-button" type="button" disabled>投递（施工中）</button>
@@ -345,12 +317,7 @@
         </aside>
     </main>
 
-    <section id="home-credits" class="site-credits">
-        <p>文字：我</p>
-        <p>排版、交互灵感来自：我</p>
-        <p>网站制作：ChatGPT、DeepSeek、OpenClaw：Little Blue Man（Claude 4.5 Opus）、OpenClaw：Little Blue Man（ChatGPT 5.4）、Hermes Agent：Little Blue Man (ChatGPT 5.4)</p>
-        <p>感谢大家的帮助！</p>
-    </section>
+    <div id="home-credits" class="site-credits"></div>
 
     <footer class="text-center text-sm text-gray-500 mt-10 mb-4">
        © 2025–2026 ReBone. 保留所有权利。
