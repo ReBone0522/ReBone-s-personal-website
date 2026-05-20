@@ -15,30 +15,52 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="README.md" />
     <meta name="twitter:description" content="ReBone 的使用说明、沟通方式与关系维护偏好。" />
-    <meta name="theme-color" content="#f9fafb" />
+    <meta name="theme-color" content="#FAFAF8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/tailwind.css?v=20260424e" />
+    <link rel="stylesheet" href="assets/css/site-frame.css?v=20260520" />
     <script src="assets/js/i18n.js?v=20260520" defer></script>
-    <script src="assets/js/site-content.js?v=20260424e" defer></script>
+    <script src="assets/js/site-content.js?v=20260520" defer></script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-mono leading-relaxed">
-    <nav class="sticky top-0 z-50 bg-[length:113%_1000px] bg-center p-4 flex justify-between items-center" style="background-image: url('assets/nav-bg.webp');">
-        <a href="index.html" class="text-xl font-bold text-white">ReBone</a>
-        <div class="space-x-4 text-white text-sm">
-            <a href="solutions.html" class="hover:underline">Solutions</a>
-            <a href="expressions.html" class="hover:underline">Expressions</a>
-            <a href="reflections.html" class="hover:underline">Reflections</a>
-            <a href="readme.html" class="underline font-semibold">README.md</a>
+<body>
+    <nav class="banner">
+        <div class="banner-inner">
+            <a href="index.html" class="brand">ReBone</a>
+            <div class="nav-links">
+                <a href="solutions.html" class="nav-link">Solutions</a>
+                <a href="expressions.html" class="nav-link">Expressions</a>
+                <a href="reflections.html" class="nav-link">Reflections</a>
+                <a href="readme.html" class="nav-link active">README.md</a>
+            </div>
         </div>
     </nav>
 
-    <main class="max-w-3xl mx-auto mt-10 p-6 bg-white shadow-sm rounded-xl border border-gray-200">
-        <article id="readme-article" class="prose prose-neutral max-w-none">
-            <p class="text-sm text-gray-500">README 正文加载中...</p>
-        </article>
+    <main class="shell">
+        <aside class="rail">
+            <p class="rail-label">Document</p>
+            <p class="rail-marker"><strong>README.md</strong></p>
+
+            <p class="rail-label">Kind</p>
+            <p class="rail-marker">protocol</p>
+
+            <p class="rail-label">Status</p>
+            <p class="rail-marker">draft · iterating</p>
+
+            <p class="rail-label">Vol.</p>
+            <p class="rail-marker">i · 2026</p>
+        </aside>
+
+        <div class="shell-gutter" aria-hidden="true"></div>
+
+        <div class="main">
+            <article id="readme-article" class="article-main">
+                <p class="rail-marker">README 正文加载中...</p>
+            </article>
+        </div>
     </main>
 
-    <footer class="text-center text-sm text-gray-500 mt-10 mb-4">
-       © 2025–2026 ReBone. 保留所有权利。
-    </footer>
+    <footer class="site-footer">© 2025–2026 ReBone. 保留所有权利。</footer>
 </body>
 </html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReBone</title>
+    <meta name="description" content="ReBone 的个人网站，整理收获、作品、思考与 README，也希望这些内容能给读者一些潜在的启发或意义。" />
+    <link rel="canonical" href="https://rebone0522.com/" />
+    <meta property="og:site_name" content="ReBone" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ReBone" />
+    <meta property="og:description" content="ReBone 的个人网站，整理收获、作品、思考与 README，也希望这些内容能给读者一些潜在的启发或意义。" />
+    <meta property="og:url" content="https://rebone0522.com/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="ReBone" />
+    <meta name="twitter:description" content="ReBone 的个人网站，整理收获、作品、思考与 README，也希望这些内容能给读者一些潜在的启发或意义。" />
+    <meta name="theme-color" content="#FAFAF8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="assets/nav-bg.webp" />
+    <link rel="stylesheet" href="assets/tailwind.css" />
+    <script src="assets/js/i18n.js?v=20260520" defer></script>
+    <script src="assets/js/site-content.js?v=20260520" defer></script>
+    <style>
+        /* ── Base ── */
+        body {
+            margin: 0;
+            background-color: #FAFAF8;
+            color: #1a1a18;
+            font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Nav ── */
+        .nav-bar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-size: 113% 1000px;
+            background-position: center;
+            background-color: rgba(110, 120, 110, 0.12);
+            background-blend-mode: luminosity;
+            box-shadow: inset 0 -1px rgba(110, 120, 110, 0.18);
+            filter: saturate(.55) brightness(1.08);
+        }
+        .nav-inner {
+            max-width: 72rem;
+            margin: 0 auto;
+            padding: 0.875rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', monospace;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.25rem;
+        }
+        .nav-link {
+            font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', monospace;
+            font-size: 0.8125rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+        }
+        .nav-link:hover { text-decoration: underline; }
+
+        /* ── Shell / grid ── */
+        .home-shell {
+            max-width: 72rem;
+            margin: 0 auto;
+            padding: 2.75rem 1.5rem 5rem;
+            display: grid;
+            grid-template-columns: 1fr 21rem;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        /* ── Hero ── */
+        .home-hero { margin-bottom: 2.25rem; }
+        .hero-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.75rem;
+            margin-bottom: 1.25rem;
+        }
+        .home-heading {
+            flex: 1;
+            font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+            font-size: 1.6rem;
+            line-height: 1.65;
+            color: #1a1a18;
+            font-weight: 500;
+            white-space: pre-line;
+            margin: 0;
+            letter-spacing: 0.01em;
+        }
+        .hero-diagram {
+            width: 96px;
+            height: 96px;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+            opacity: 0.7;
+        }
+        .home-intro-label {
+            font-family: 'ui-monospace', 'SFMono-Regular', monospace;
+            font-size: 0.775rem;
+            color: #7D817A;
+            margin: 0 0 0.35rem;
+            letter-spacing: 0.03em;
+        }
+        .home-intro-points {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.18rem;
+        }
+        .home-intro-points li {
+            font-size: 0.875rem;
+            color: #666B64;
+            line-height: 1.6;
+            padding-left: 1rem;
+            position: relative;
+        }
+        .home-intro-points li::before {
+            content: '·';
+            position: absolute;
+            left: 0.125rem;
+            color: #A7B49C;
+        }
+
+        /* ── Section cards 2×2 ── */
+        .home-section-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.875rem;
+        }
+        .section-card {
+            background: #FFFFFF;
+            border: 1px solid #ECEFE8;
+            border-radius: 0;
+            padding: 1.125rem 1.125rem 0.875rem;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            min-height: 7rem;
+            transition: background 150ms ease, box-shadow 150ms ease;
+        }
+        .section-card:hover {
+            background: #F7F9F4;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+        }
+        .section-card-title {
+            font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', monospace;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: #1a1a18;
+            letter-spacing: 0.01em;
+            margin: 0 0 0.45rem;
+        }
+        .section-card-desc {
+            font-size: 0.8125rem;
+            color: #666B64;
+            line-height: 1.6;
+            flex: 1;
+            margin: 0;
+            font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+        }
+        .section-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 0.75rem;
+            padding-top: 0.65rem;
+            border-top: 1px solid #ECEFE8;
+        }
+        .section-card-latest {
+            font-family: 'ui-monospace', 'SFMono-Regular', monospace;
+            font-size: 0.675rem;
+            color: #8C9188;
+            letter-spacing: 0.02em;
+        }
+        .section-card-arrow {
+            font-family: 'ui-monospace', monospace;
+            font-size: 0.75rem;
+            color: #A7B49C;
+            transition: color 150ms ease, transform 150ms ease;
+        }
+        .section-card:hover .section-card-arrow {
+            color: #A7B49C;
+            transform: translateX(2px);
+        }
+
+        /* ── Updates panel ── */
+        .updates-panel {
+            background: #F4F6F1;
+            border: none;
+            border-radius: 0;
+            overflow: hidden;
+        }
+        .updates-panel-head {
+            padding: 0.6rem 1rem;
+            border-bottom: 1px solid #E3E8DE;
+            background: #EEF2EA;
+        }
+        .updates-panel-title {
+            display: block;
+            font-family: 'ui-monospace', 'SFMono-Regular', monospace;
+            font-size: 0.675rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #7D817A;
+            font-weight: 400;
+            margin: 0;
+        }
+        .timeline-list { padding: 0.25rem 0; }
+        .timeline-item {
+            padding: 0.6rem 1rem 0.6rem 2rem;
+            position: relative;
+            border-bottom: 1px solid #E3E8DE;
+        }
+        .timeline-item:last-child { border-bottom: none; }
+        .timeline-dot {
+            position: absolute;
+            left: 0.9rem;
+            top: 0.95rem;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #A7B49C;
+        }
+        .timeline-date {
+            display: block;
+            font-family: 'ui-monospace', monospace;
+            font-size: 0.675rem;
+            color: #8C9188;
+            margin-bottom: 0.18rem;
+            letter-spacing: 0.03em;
+        }
+        .timeline-lines {
+            font-size: 0.8125rem;
+            color: #3d3d36;
+            line-height: 1.65;
+            font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+        }
+        .timeline-lines p { margin: 0; }
+        .timeline-lines p:first-child {
+            color: #30312d;
+            font-weight: 500;
+        }
+        .timeline-lines p + p {
+            margin-top: 0.1rem;
+            color: #666B64;
+            font-size: 0.775rem;
+        }
+        .updates-more {
+            padding: 0.5rem 1rem;
+            border-top: 1px solid #E3E8DE;
+            text-align: right;
+        }
+        .updates-more-link {
+            font-family: 'ui-monospace', monospace;
+            font-size: 0.675rem;
+            color: #8C9188;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+        .updates-more-link:hover { color: #7D817A; }
+
+        /* ── Letterbox panel ── */
+        .letterbox-panel {
+            margin-top: 1.125rem;
+            background: #F4F6F1;
+            border: none;
+            border-radius: 0;
+            overflow: hidden;
+        }
+        .letterbox-strip-wrap {
+            background: #EEF2EA;
+            border-bottom: 1px solid #E3E8DE;
+            padding: 0.75rem 1rem;
+        }
+        .letterbox-strip {
+            font-size: 0.775rem;
+            color: #666B64;
+            line-height: 1.6;
+            margin: 0;
+            font-style: italic;
+            font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+        }
+        .letterbox-body { padding: 0.875rem 1rem; }
+        .letterbox-label {
+            display: block;
+            font-family: 'ui-monospace', 'SFMono-Regular', monospace;
+            font-size: 0.675rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #7D817A;
+            margin-bottom: 0.6rem;
+        }
+        .letterbox-input {
+            width: 100%;
+            min-height: 4.5rem;
+            resize: vertical;
+            padding: 0.6rem 0.75rem;
+            border: 1px solid #E3E8DE;
+            background: #FFFFFF;
+            color: #3d3d36;
+            font-size: 0.8125rem;
+            font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+            border-radius: 0;
+            outline: none;
+            line-height: 1.6;
+            box-sizing: border-box;
+        }
+        .letterbox-input::placeholder {
+            color: #8C9188;
+        }
+        .letterbox-input:focus { border-color: #A7B49C; }
+        .letterbox-button {
+            margin-top: 0.5rem;
+            font-family: 'ui-monospace', monospace;
+            font-size: 0.675rem;
+            color: #7D817A;
+            background: transparent;
+            border: 0;
+            cursor: not-allowed;
+            padding: 0;
+            text-decoration: none;
+            letter-spacing: 0.03em;
+            opacity: 0.78;
+        }
+
+        /* ── Footer / credits ── */
+        .site-credits {
+            max-width: 72rem;
+            margin: 0 auto 1rem;
+            padding: 0 1.5rem;
+            color: #7D817A;
+            font-family: 'ui-monospace', monospace;
+            font-size: 0.75rem;
+            line-height: 1.75;
+        }
+        .site-credits p { margin: 0.1rem 0; }
+        .site-credits:empty { display: none; }
+        .site-footer {
+            text-align: center;
+            font-family: 'ui-monospace', monospace;
+            font-size: 0.75rem;
+            color: #8C9188;
+            padding: 0 1rem 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 860px) {
+            .home-shell {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem 1.25rem 4rem;
+            }
+            .hero-diagram { display: none; }
+            .home-section-grid { gap: 0.75rem; }
+        }
+        @media (max-width: 520px) {
+            .home-section-grid { grid-template-columns: 1fr; }
+            .home-heading { font-size: 1.375rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar" style="background-image: url('assets/nav-bg.webp');">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">ReBone</a>
+            <div class="nav-links">
+                <a href="solutions.html" class="nav-link">Solutions</a>
+                <a href="expressions.html" class="nav-link">Expressions</a>
+                <a href="reflections.html" class="nav-link">Reflections</a>
+                <a href="readme.html" class="nav-link">README.md</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="home-content-root" class="home-shell">
+        <section class="home-main">
+            <div class="home-hero">
+                <div class="hero-row">
+                    <h2 id="home-heading" class="home-heading">系统整理我看见、思考、创造的一切，&#10;给未来某个陌生人的启发。</h2>
+                    <svg class="hero-diagram" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <defs>
+                            <marker id="arr" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto">
+                                <path d="M0 0.5 L4.5 2.5 L0 4.5 Z" fill="#BCC5B5"/>
+                            </marker>
+                        </defs>
+                        <circle cx="48" cy="16" r="7" fill="#DCE2D8" opacity="0.85"/>
+                        <circle cx="78" cy="70" r="7" fill="#DCE2D8" opacity="0.85"/>
+                        <circle cx="18" cy="70" r="7" fill="#DCE2D8" opacity="0.85"/>
+                        <path d="M42 20 Q14 38 20 62" stroke="#BCC5B5" fill="none" stroke-width="1.2" marker-end="url(#arr)"/>
+                        <path d="M24 76 Q48 92 72 76" stroke="#BCC5B5" fill="none" stroke-width="1.2" marker-end="url(#arr)"/>
+                        <path d="M76 62 Q82 38 54 20" stroke="#BCC5B5" fill="none" stroke-width="1.2" marker-end="url(#arr)"/>
+                    </svg>
+                </div>
+                <p id="home-intro-label" class="home-intro-label">这个网站的意义是：</p>
+                <ol id="home-intro-points" class="home-intro-points">
+                    <li>系统性地整理并存档有关「我」的所有事</li>
+                    <li>给不受限的观者潜在的启发与意义</li>
+                </ol>
+            </div>
+
+            <div id="home-links" class="home-section-grid">
+                <a href="solutions.html" class="section-card">
+                    <div class="section-card-title">Solutions</div>
+                    <p class="section-card-desc">听见真实声音，改善客观困境。</p>
+                    <div class="section-card-footer"><span class="section-card-latest">最近更新:</span><span class="section-card-arrow">↗</span></div>
+                </a>
+                <a href="expressions.html" class="section-card">
+                    <div class="section-card-title">Expressions</div>
+                    <p class="section-card-desc">“为爱发电”的作品表达，包括视觉与听觉。</p>
+                    <div class="section-card-footer"><span class="section-card-latest">最近更新:</span><span class="section-card-arrow">↗</span></div>
+                </a>
+                <a href="reflections.html" class="section-card">
+                    <div class="section-card-title">Reflections</div>
+                    <p class="section-card-desc">输入、输出间，在大脑进行的迭代过程。</p>
+                    <div class="section-card-footer"><span class="section-card-latest">最近更新:</span><span class="section-card-arrow">↗</span></div>
+                </a>
+                <a href="readme.html" class="section-card">
+                    <div class="section-card-title">README.md</div>
+                    <p class="section-card-desc">如果社交有说明会让你更自在。</p>
+                    <div class="section-card-footer"><span class="section-card-latest">最近更新:</span><span class="section-card-arrow">↗</span></div>
+                </a>
+            </div>
+        </section>
+
+        <aside class="home-sidebar">
+            <div class="updates-panel" aria-label="Updates">
+                <div class="updates-panel-head">
+                    <h3 id="updates-label" class="updates-panel-title">Updates</h3>
+                </div>
+                <div id="updates-list" class="timeline-list">
+                    <div class="timeline-item">
+                        <span class="timeline-dot" aria-hidden="true"></span>
+                        <time class="timeline-date">2026.05.22</time>
+                        <div class="timeline-lines">
+                            <p>我的生日！</p>
+                            <p>网站正式开放</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="updates-more" class="updates-more" style="display:none"></div>
+            </div>
+
+            <div class="letterbox-panel" aria-labelledby="inbox-title">
+                <div class="letterbox-strip-wrap">
+                    <p id="inbox-intro" class="letterbox-strip">如果你想留下些什么，可以先写在这里。正式提交入口之后再接上。</p>
+                </div>
+                <div class="letterbox-body">
+                    <span id="inbox-title" class="letterbox-label">匿名投信箱</span>
+                    <textarea id="inbox-draft" class="letterbox-input" placeholder="写给 ReBone 的匿名信……"></textarea>
+                    <button id="inbox-button" type="button" disabled class="letterbox-button">投递（施工中）</button>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <div id="home-credits" class="site-credits"></div>
+
+    <footer class="site-footer">
+        © 2025–2026 ReBone. 保留所有权利。
+    </footer>
+</body>
+</html>

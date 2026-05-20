@@ -15,62 +15,80 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="杀戮天使 | 同人衍生 | ReBone" />
     <meta name="twitter:description" content="杀戮天使相关的同人衍生记录与作品整理。" />
-    <meta name="theme-color" content="#f9fafb" />
+    <meta name="theme-color" content="#FAFAF8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/tailwind.css" />
+    <link rel="stylesheet" href="assets/css/site-frame.css?v=20260520" />
+    <script src="assets/js/i18n.js?v=20260520" defer></script>
+    <script src="assets/js/site-content.js?v=20260520" defer></script>
     <style>
         html { scroll-behavior: smooth; }
-        .side-link.active { background:#f9fafb; border-color:#111827; color:#111827; font-weight:600; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-mono leading-relaxed">
-
-    <nav class="sticky top-0 z-50 bg-[length:113%_1000px] bg-center p-4 flex justify-between items-center" style="background-image: url('assets/nav-bg.webp');">
-        <a href="index.html" class="text-xl font-bold text-white">ReBone</a>
-        <div class="space-x-4 text-white text-sm">
-            <a href="solutions.html" class="hover:underline">Solutions</a>
-            <a href="expressions.html" class="underline font-semibold">Expressions</a>
-            <a href="reflections.html" class="hover:underline">Reflections</a>
-            <a href="readme.html" class="hover:underline">README.md</a>
+<body>
+    <nav class="banner">
+        <div class="banner-inner">
+            <a href="index.html" class="brand">ReBone</a>
+            <div class="nav-links">
+                <a href="solutions.html" class="nav-link">Solutions</a>
+                <a href="expressions.html" class="nav-link active">Expressions</a>
+                <a href="reflections.html" class="nav-link">Reflections</a>
+                <a href="readme.html" class="nav-link">README.md</a>
+            </div>
         </div>
     </nav>
 
-    <main class="max-w-[90rem] mx-auto mt-10 px-4 pb-16">
-        <div class="flex items-center gap-3 text-sm text-gray-500 mb-6">
-            <a href="expressions.html" class="hover:text-gray-700">Expressions</a>
-            <span>/</span>
-            <a href="expressions_fandom.html" class="hover:text-gray-700">为爱发电</a>
-            <span>/</span>
-            <span class="text-gray-700">杀戮天使</span>
-        </div>
+    <main class="shell">
+        <aside class="rail">
+            <p class="rail-label">Parent</p>
+            <p class="rail-marker"><a href="expressions_fandom.html" style="color:var(--ink-2);text-decoration:none;">For Love</a></p>
 
-        <div class="max-w-3xl mb-8">
-            <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-2">Fan Derivatives</p>
-            <h2 class="text-3xl font-semibold mb-3">杀戮天使</h2>
-            <p class="text-gray-700">同人衍生作品整理页：宅舞、Cosplay、绘画。</p>
-        </div>
+            <p class="rail-label">Work</p>
+            <p class="rail-marker"><strong>杀戮天使</strong></p>
 
-        <div class="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-8 items-start">
-            <aside class="bg-white border border-gray-200 rounded-2xl p-4 lg:sticky lg:top-24">
-                <p class="text-xs uppercase tracking-[0.2em] text-gray-400 mb-3">Sections</p>
-                <nav class="space-y-2 text-sm">
-                    <a href="#dance" data-side-link="dance" class="side-link block rounded-lg border border-gray-200 px-3 py-2 hover:bg-gray-50">宅舞</a>
-                    <a href="#cosplay" data-side-link="cosplay" class="side-link block rounded-lg border border-gray-200 px-3 py-2 hover:bg-gray-50">Cosplay</a>
-                    <a href="#drawing" data-side-link="drawing" class="side-link block rounded-lg border border-gray-200 px-3 py-2 hover:bg-gray-50">绘画</a>
-                </nav>
-            </aside>
+            <p class="rail-label">Kind</p>
+            <p class="rail-marker">Fan derivatives</p>
 
-            <div class="space-y-12">
-                <section id="dance" class="scroll-mt-24">
+            <p class="rail-label">Sections</p>
+            <nav class="rail-nav" aria-label="page sections">
+                <a href="#dance" data-side-link="dance" class="nav-item side-link">— 宅舞</a>
+                <a href="#cosplay" data-side-link="cosplay" class="nav-item side-link">— Cosplay</a>
+                <a href="#drawing" data-side-link="drawing" class="nav-item side-link">— 绘画</a>
+            </nav>
+
+            <p class="rail-label">Vol.</p>
+            <p class="rail-marker">i · 2026</p>
+        </aside>
+
+        <div class="shell-gutter" aria-hidden="true"></div>
+
+        <div class="main">
+            <div class="project-breadcrumb">
+                <a href="expressions.html">Expressions</a>
+                <span>/</span>
+                <a href="expressions_fandom.html">为爱发电</a>
+                <span>/</span>
+                <span>杀戮天使</span>
+            </div>
+
+            <section class="page-hero">
+                <h1 class="page-heading">杀戮天使</h1>
+                <p class="page-subhead">同人衍生作品整理页：宅舞、Cosplay、绘画。</p>
+            </section>
+
+            <div class="project-content">
+                <section id="dance" class="content-section">
                     <div class="grid grid-cols-1 xl:grid-cols-[1.65fr_0.8fr] gap-6 items-start">
                         <a href="https://www.bilibili.com/video/BV1e1LnzTEvn" target="_blank" rel="noopener noreferrer" class="block group">
-                            <div class="relative aspect-video rounded-2xl overflow-hidden border border-gray-300 transition-all duration-300 hover:shadow-lg">
-                                <img src="assets/images/fandom/satsuriku/dance-cover-1A6A0666.jpg" alt="宅舞封面 1A6A0666" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition"></div>
-                                <div class="absolute left-3 bottom-3 text-xs px-2 py-1 bg-black/70 text-white rounded">点击将打开 B站视频</div>
+                            <div class="relative aspect-video overflow-hidden border border-gray-300 transition-all duration-300">
+                                <img src="assets/images/fandom/satsuriku/dance-cover-1A6A0666.jpg" alt="宅舞封面 1A6A0666" class="w-full h-full object-cover" />
+                                <div class="absolute left-3 bottom-3 text-xs px-2 py-1 bg-black/70 text-white">点击将打开 B 站视频</div>
                             </div>
                         </a>
 
-                        <aside class="bg-white border border-gray-200 rounded-2xl p-5">
+                        <aside class="bg-white border border-gray-200 p-5">
                             <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-2">Dance</p>
                             <h3 class="text-xl font-semibold mb-3 leading-relaxed">
                                 <span class="block">【Rachel X Eddie】</span>
@@ -81,42 +99,38 @@
                                 <p>Rachel：再生骨头</p>
                                 <p>Eddie：阿罗拉</p>
                                 <p>振幅：みーたろぉ</p>
-                                <p class="pt-2 text-xs text-gray-500">B站：BV1e1LnzTEvn</p>
+                                <p class="pt-2 text-xs text-gray-500">B 站：BV1e1LnzTEvn</p>
                             </div>
                         </aside>
                     </div>
                 </section>
 
-                <section id="cosplay" class="scroll-mt-24 bg-white border border-gray-200 rounded-2xl p-5">
-                    <div class="flex items-center justify-between mb-3">
-                        <h3 class="text-2xl font-semibold">Cosplay</h3>
-                    </div>
+                <section id="cosplay" class="content-section bg-white border border-gray-200 p-5">
+                    <h3 class="text-2xl font-semibold mb-3">Cosplay</h3>
                     <div class="text-sm text-gray-700 space-y-1 mb-4">
                         <p>出镜：再生骨头、阿罗拉</p>
                         <p>摄影：卡西、还有几位摄影师先前未能被我记录下来；如果有知道是谁请务必联络我加上。</p>
                     </div>
-                    <div class="w-full bg-black rounded-xl border border-gray-300 p-2 flex items-center justify-center min-h-[320px]">
-                        <div class="text-gray-400 text-sm">Cos 图库已清空，等待你下一批图片（3张一组）。</div>
+                    <div class="w-full bg-black border border-gray-300 p-2 flex items-center justify-center min-h-[320px]">
+                        <div class="text-gray-400 text-sm">Cos 图库已清空，等待下一批图片（3 张一组）。</div>
                     </div>
                 </section>
 
-                <section id="drawing" class="scroll-mt-24 bg-white border border-gray-200 rounded-2xl p-5">
-                    <div class="flex items-center justify-between mb-3">
-                        <h3 class="text-2xl font-semibold">绘画</h3>
-                    </div>
-                    <div class="w-full bg-gray-100 rounded-xl border border-gray-300 p-2 flex items-center justify-center min-h-[320px]">
-                        <div class="text-gray-500 text-sm">绘画图库已清空，等待你下一批图片。</div>
+                <section id="drawing" class="content-section bg-white border border-gray-200 p-5">
+                    <h3 class="text-2xl font-semibold mb-3">绘画</h3>
+                    <div class="w-full bg-gray-100 border border-gray-300 p-2 flex items-center justify-center min-h-[320px]">
+                        <div class="text-gray-500 text-sm">绘画图库已清空，等待下一批图片。</div>
                     </div>
                     <div class="text-sm text-gray-700 mt-4">
                         <p>绘画作品：115965.PNG</p>
-                        <p class="text-gray-600">日期：2021年8月10日</p>
+                        <p class="text-gray-600">日期：2021 年 8 月 10 日</p>
                     </div>
                 </section>
             </div>
         </div>
     </main>
 
-    <footer class="text-center text-sm text-gray-500 mt-10 mb-4">© 2025 Rebone. 保留所有权利.</footer>
+    <footer class="site-footer">© 2025–2026 ReBone. 保留所有权利。</footer>
 
     <script>
         const sideLinks = Array.from(document.querySelectorAll('[data-side-link]'));

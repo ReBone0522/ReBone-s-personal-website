@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReBone · S6 · Grid</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFAF8;
+            --ink: #1A1A1A;
+            --ink-2: #555555;
+            --ink-3: #888888;
+            --ink-4: #B5B5B5;
+            --rule: #D8D8D8;
+        }
+        html, body { margin: 0; padding: 0; }
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+            font-size: 15px;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .banner {
+            background-color: #2c2c2c;
+            background-image: url('../assets/nav-bg.PNG');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: luminosity;
+            border-bottom: 1px solid var(--rule);
+        }
+        .banner-inner {
+            max-width: 72rem;
+            margin: 0 auto;
+            padding: 1.1rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            column-gap: 1.5rem;
+            align-items: center;
+        }
+        .brand {
+            grid-column: 1 / span 3;
+            font-family: ui-monospace, monospace;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            text-decoration: none;
+        }
+        .nav-links {
+            grid-column: 5 / span 6;
+            display: flex;
+            gap: 1.6rem;
+        }
+        .nav-links a {
+            font-family: ui-monospace, monospace;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+        }
+        .nav-links a:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+        .lang {
+            grid-column: 11 / span 2;
+            text-align: right;
+            font-family: ui-monospace, monospace;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.7);
+        }
+        .lang a { color: rgba(255,255,255,0.85); text-decoration: none; }
+        .lang a.active { color: #fff; }
+
+        /* Strict 12-column grid. The discipline is invisible but always there.
+           Hero spans 8/12. Intro spans 6/12 offset right. Cards are 6+6 within the page width. */
+        .shell {
+            max-width: 72rem;
+            margin: 0 auto;
+            padding: 4rem 2rem 4rem;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            column-gap: 1.5rem;
+            row-gap: 0;
+        }
+
+        /* tiny grid label in top corner — so the grid is visible only as a coordinate, not as lines */
+        .grid-tag {
+            grid-column: 1 / span 12;
+            display: flex;
+            justify-content: space-between;
+            font-family: ui-monospace, monospace;
+            font-size: 0.7rem;
+            color: var(--ink-3);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+            padding-bottom: 0.65rem;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .hero {
+            grid-column: 1 / span 8;
+            margin-bottom: 4rem;
+        }
+        .hero-heading {
+            font-size: 1.7rem;
+            font-weight: 400;
+            line-height: 1.65;
+            color: var(--ink);
+            margin: 0;
+            white-space: pre-line;
+            letter-spacing: 0.01em;
+        }
+        .intro {
+            grid-column: 9 / span 4;
+            margin-bottom: 4rem;
+        }
+        .intro-label {
+            font-family: ui-monospace, monospace;
+            font-size: 0.72rem;
+            color: var(--ink-3);
+            letter-spacing: 0.08em;
+            margin-bottom: 0.5rem;
+        }
+        .intro-points {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .intro-points li {
+            font-size: 0.92rem;
+            color: var(--ink-2);
+            padding: 0.1rem 0 0.1rem 1rem;
+            position: relative;
+            line-height: 1.7;
+        }
+        .intro-points li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--ink-4);
+        }
+
+        /* Section grid header */
+        .section-label {
+            grid-column: 1 / span 12;
+            display: flex;
+            justify-content: space-between;
+            font-family: ui-monospace, monospace;
+            font-size: 0.72rem;
+            color: var(--ink-3);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid var(--rule);
+            margin-bottom: 1.5rem;
+        }
+
+        .chapters {
+            grid-column: 1 / span 12;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            column-gap: 1.5rem;
+            row-gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+        .chapter {
+            grid-column: span 6;
+            display: grid;
+            grid-template-columns: 2rem 1fr auto;
+            column-gap: 1rem;
+            padding: 1.4rem 0 1.3rem;
+            border-top: 1px solid var(--rule);
+            text-decoration: none;
+            color: inherit;
+            align-items: baseline;
+            transition: padding 200ms ease;
+        }
+        .chapter:hover { padding-left: 0.5rem; }
+        .chapter-num {
+            font-family: ui-monospace, monospace;
+            font-size: 0.78rem;
+            color: var(--ink-3);
+            letter-spacing: 0.04em;
+        }
+        .chapter h4 {
+            font-family: ui-monospace, monospace;
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0 0 0.35rem;
+            color: var(--ink);
+        }
+        .chapter p {
+            margin: 0;
+            font-size: 0.92rem;
+            color: var(--ink-2);
+            line-height: 1.7;
+        }
+        .chapter-meta {
+            font-family: ui-monospace, monospace;
+            font-size: 0.72rem;
+            color: var(--ink-3);
+            letter-spacing: 0.02em;
+        }
+
+        /* Lower panels — Updates 7/12, Inbox 5/12 */
+        .lower-label {
+            grid-column: 1 / span 12;
+            display: flex;
+            justify-content: space-between;
+            font-family: ui-monospace, monospace;
+            font-size: 0.72rem;
+            color: var(--ink-3);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid var(--rule);
+            margin-bottom: 1.5rem;
+        }
+
+        .updates {
+            grid-column: 1 / span 7;
+        }
+        .inbox {
+            grid-column: 8 / span 5;
+        }
+        .panel-title {
+            font-family: ui-monospace, monospace;
+            font-size: 0.78rem;
+            color: var(--ink);
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            margin: 0 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .panel-title a { color: var(--ink-3); text-decoration: none; font-weight: 400; }
+        .panel-title a:hover { color: var(--ink); }
+
+        .log-row {
+            display: grid;
+            grid-template-columns: 6rem 1fr;
+            gap: 1.5rem;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid var(--rule);
+            align-items: baseline;
+        }
+        .log-date { font-family: ui-monospace, monospace; font-size: 0.78rem; color: var(--ink-3); }
+        .log-body p { margin: 0; font-size: 0.92rem; color: var(--ink-2); line-height: 1.7; }
+        .log-body p:first-child { color: var(--ink); }
+        .log-body p + p { font-size: 0.85rem; color: var(--ink-3); margin-top: 0.1rem; }
+
+        .inbox-strip { font-size: 0.88rem; color: var(--ink-3); margin: 0 0 0.7rem; line-height: 1.7; }
+        .inbox-input {
+            width: 100%;
+            min-height: 4rem;
+            background: transparent;
+            border: 0;
+            border-bottom: 1px solid var(--rule);
+            padding: 0.5rem 0;
+            color: var(--ink);
+            font-family: inherit;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            outline: none;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+        .inbox-input::placeholder { color: var(--ink-4); }
+        .inbox-input:focus { border-bottom-color: var(--ink-2); }
+        .inbox-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem; }
+        .inbox-button { font-family: ui-monospace, monospace; font-size: 0.72rem; color: var(--ink-3); background: transparent; border: 0; padding: 0; cursor: not-allowed; }
+        .inbox-count { font-family: ui-monospace, monospace; font-size: 0.7rem; color: var(--ink-4); }
+
+        .footer {
+            max-width: 72rem;
+            margin: 0 auto;
+            padding: 1.5rem 2rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            column-gap: 1.5rem;
+            border-top: 1px solid var(--rule);
+            font-family: ui-monospace, monospace;
+            font-size: 0.72rem;
+            color: var(--ink-3);
+        }
+        .footer-l { grid-column: 1 / span 6; }
+        .footer-r { grid-column: 7 / span 6; text-align: right; }
+
+        @media (max-width: 820px) {
+            .banner-inner { display: flex; padding: 0.95rem 1.25rem; flex-wrap: wrap; gap: 0.8rem; }
+            .lang { text-align: left; }
+            .shell { grid-template-columns: 1fr; padding: 2.5rem 1.25rem 3rem; }
+            .hero, .intro, .chapters, .section-label, .lower-label, .updates, .inbox { grid-column: 1 / -1; }
+            .chapters { grid-template-columns: 1fr; }
+            .chapter { grid-column: 1 / -1; }
+            .hero { margin-bottom: 2rem; }
+            .intro { margin-bottom: 3rem; }
+            .updates, .inbox { margin-bottom: 2.5rem; }
+            .footer { display: flex; flex-direction: column; gap: 0.4rem; padding: 1.5rem 1.25rem 2rem; }
+            .footer-l, .footer-r { text-align: left; }
+            .hero-heading { font-size: 1.35rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="banner">
+        <div class="banner-inner">
+            <a href="#" class="brand">ReBone</a>
+            <nav class="nav-links">
+                <a href="#">Solutions</a>
+                <a href="#">Expressions</a>
+                <a href="#">Reflections</a>
+                <a href="#">README.md</a>
+            </nav>
+            <div class="lang"><a href="#" class="active">中文</a> / <a href="#">EN</a></div>
+        </div>
+    </header>
+
+    <main class="shell">
+        <div class="grid-tag">
+            <span>ReBone · vol. i</span>
+            <span>12 · grid</span>
+            <span>2026.05</span>
+        </div>
+
+        <section class="hero">
+            <h1 class="hero-heading">系统整理我看见、思考、创造的一切，
+给未来某个陌生人的启发。</h1>
+        </section>
+
+        <section class="intro">
+            <div class="intro-label">这个网站的意义</div>
+            <ul class="intro-points">
+                <li>系统性地整理并存档有关「我」的所有事</li>
+                <li>给不受限的观者潜在的启发与意义</li>
+            </ul>
+        </section>
+
+        <div class="section-label">
+            <span>Sections</span>
+            <span>4 entries</span>
+        </div>
+
+        <div class="chapters">
+            <a class="chapter" href="#">
+                <span class="chapter-num">01.</span>
+                <div>
+                    <h4>Solutions</h4>
+                    <p>听见真实声音，改善客观困境。</p>
+                </div>
+                <span class="chapter-meta">2026.05 →</span>
+            </a>
+            <a class="chapter" href="#">
+                <span class="chapter-num">02.</span>
+                <div>
+                    <h4>Expressions</h4>
+                    <p>"为爱发电"的作品表达，包括视觉与听觉。</p>
+                </div>
+                <span class="chapter-meta">2026.05 →</span>
+            </a>
+            <a class="chapter" href="#">
+                <span class="chapter-num">03.</span>
+                <div>
+                    <h4>Reflections</h4>
+                    <p>输入、输出间，在大脑进行的迭代过程。</p>
+                </div>
+                <span class="chapter-meta">2025.11 →</span>
+            </a>
+            <a class="chapter" href="#">
+                <span class="chapter-num">04.</span>
+                <div>
+                    <h4>README.md</h4>
+                    <p>如果社交有说明会让你更自在。</p>
+                </div>
+                <span class="chapter-meta">protocol →</span>
+            </a>
+        </div>
+
+        <div class="lower-label">
+            <span>Appendix</span>
+            <span>Updates · Inbox</span>
+        </div>
+
+        <section class="updates">
+            <h3 class="panel-title"><span>Updates</span><a href="#">查看全部 →</a></h3>
+            <div class="log-row">
+                <span class="log-date">2026.05.22</span>
+                <div class="log-body">
+                    <p>我的生日！</p>
+                    <p>网站正式开放</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="inbox">
+            <h3 class="panel-title"><span>匿名信箱</span></h3>
+            <p class="inbox-strip">如果你想留下些什么，可以先写在这里。正式提交入口之后再接上。</p>
+            <textarea class="inbox-input" placeholder="写给 ReBone 的匿名信……"></textarea>
+            <div class="inbox-foot">
+                <button class="inbox-button" disabled>投递（施工中）</button>
+                <span class="inbox-count">0 / 200</span>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <span class="footer-l">© 2025–2026 ReBone</span>
+        <span class="footer-r">保留所有权利</span>
+    </footer>
+</body>
+</html>

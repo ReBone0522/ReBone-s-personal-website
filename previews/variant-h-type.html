@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReBone · H · 纯排版</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #F5F2E7;
+            --ink: #2A2620;
+            --ink-2: #5A5446;
+            --ink-3: #8A8372;
+            --ink-4: #B6AD97;
+            --rule: #DAD2BD;
+            --nav-soft: rgba(120, 124, 114, 0.10);
+        }
+
+        html, body { margin: 0; padding: 0; }
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+            font-size: 15px;
+            line-height: 1.8;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .nav {
+            background: var(--nav-soft);
+            border-bottom: 1px solid var(--rule);
+        }
+        .nav-inner {
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 0.95rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+        .brand {
+            font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--ink);
+            text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 1.6rem; }
+        .nav-links a {
+            font-family: ui-monospace, monospace;
+            font-size: 0.78rem;
+            color: var(--ink-2);
+            text-decoration: none;
+        }
+        .nav-links a:hover { color: var(--ink); }
+        .lang {
+            font-family: ui-monospace, monospace;
+            font-size: 0.78rem;
+            color: var(--ink-3);
+        }
+        .lang a { color: var(--ink-2); text-decoration: none; }
+        .lang a.active { color: var(--ink); }
+
+        .shell {
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 4rem 2rem 4rem;
+            display: grid;
+            grid-template-columns: 1fr 20rem;
+            gap: 3.5rem;
+            align-items: start;
+        }
+
+        .hero-heading {
+            font-size: 1.75rem;
+            font-weight: 400;
+            line-height: 1.65;
+            color: var(--ink);
+            margin: 0 0 1.6rem;
+            white-space: pre-line;
+            letter-spacing: 0.01em;
+        }
+        .intro-label {
+            font-size: 0.86rem;
+            color: var(--ink-3);
+            margin: 0 0 0.4rem;
+        }
+        .intro-points {
+            list-style: none;
+            margin: 0 0 3.5rem;
+            padding: 0;
+        }
+        .intro-points li {
+            font-size: 0.92rem;
+            color: var(--ink-2);
+            padding: 0.1rem 0 0.1rem 1rem;
+            position: relative;
+        }
+        .intro-points li::before {
+            content: '·';
+            position: absolute;
+            left: 0.15rem;
+            color: var(--ink-4);
+        }
+
+        .toc {
+            border-top: 1px solid var(--rule);
+        }
+        .toc-row {
+            display: grid;
+            grid-template-columns: 11rem 1fr 8rem;
+            gap: 1.5rem;
+            padding: 1.6rem 0.25rem;
+            border-bottom: 1px solid var(--rule);
+            text-decoration: none;
+            color: inherit;
+            align-items: baseline;
+            transition: padding 220ms ease;
+        }
+        .toc-row:hover {
+            padding-left: 0.9rem;
+        }
+        .toc-row h4 {
+            font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin: 0;
+            letter-spacing: 0.005em;
+        }
+        .toc-row p {
+            margin: 0;
+            font-size: 0.92rem;
+            color: var(--ink-2);
+            line-height: 1.7;
+        }
+        .toc-row .meta {
+            font-family: ui-monospace, monospace;
+            font-size: 0.72rem;
+            color: var(--ink-3);
+            text-align: right;
+            letter-spacing: 0.02em;
+        }
+        .toc-row .meta .arrow {
+            display: inline-block;
+            margin-left: 0.5rem;
+            transition: transform 220ms ease;
+            color: var(--ink-4);
+        }
+        .toc-row:hover .arrow { transform: translateX(4px); color: var(--ink-2); }
+
+        .sidebar { display: flex; flex-direction: column; gap: 2rem; }
+        .panel-title {
+            font-family: ui-monospace, monospace;
+            font-size: 0.72rem;
+            color: var(--ink-3);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin: 0 0 1rem;
+            padding-bottom: 0.55rem;
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .panel-title a {
+            color: var(--ink-3);
+            text-decoration: none;
+            font-weight: 400;
+        }
+        .panel-title a:hover { color: var(--ink); }
+
+        .timeline-item {
+            padding: 0.2rem 0 0.6rem 1.4rem;
+            position: relative;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 0.35rem;
+            top: 0.55rem;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--ink-3);
+        }
+        .timeline-date {
+            font-family: ui-monospace, monospace;
+            font-size: 0.72rem;
+            color: var(--ink-3);
+            display: block;
+            margin-bottom: 0.15rem;
+        }
+        .timeline-lines p { margin: 0; font-size: 0.88rem; color: var(--ink-2); line-height: 1.65; }
+        .timeline-lines p:first-child { color: var(--ink); }
+        .timeline-lines p + p { font-size: 0.8rem; color: var(--ink-3); margin-top: 0.1rem; }
+
+        .inbox-strip {
+            font-size: 0.85rem;
+            color: var(--ink-3);
+            margin: 0 0 0.7rem;
+            line-height: 1.7;
+        }
+        .inbox-input {
+            width: 100%;
+            min-height: 4rem;
+            background: transparent;
+            border: 0;
+            border-bottom: 1px solid var(--rule);
+            padding: 0.45rem 0;
+            color: var(--ink);
+            font-family: inherit;
+            font-size: 0.92rem;
+            line-height: 1.7;
+            outline: none;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+        .inbox-input::placeholder { color: var(--ink-4); }
+        .inbox-input:focus { border-bottom-color: var(--ink-3); }
+        .inbox-foot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+        .inbox-button {
+            font-family: ui-monospace, monospace;
+            font-size: 0.72rem;
+            color: var(--ink-3);
+            background: transparent;
+            border: 0;
+            padding: 0;
+            cursor: not-allowed;
+        }
+        .inbox-count {
+            font-family: ui-monospace, monospace;
+            font-size: 0.7rem;
+            color: var(--ink-4);
+        }
+
+        .footer {
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 0 2rem 2rem;
+            text-align: center;
+            font-family: ui-monospace, monospace;
+            font-size: 0.72rem;
+            color: var(--ink-3);
+        }
+
+        @media (max-width: 820px) {
+            .shell { grid-template-columns: 1fr; padding: 2.5rem 1.25rem 3rem; gap: 2.5rem; }
+            .nav-inner { padding: 0.85rem 1.25rem; }
+            .hero-heading { font-size: 1.4rem; }
+            .toc-row { grid-template-columns: 1fr; gap: 0.3rem; }
+            .toc-row .meta { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#" class="brand">ReBone</a>
+            <div class="nav-links">
+                <a href="#">Solutions</a>
+                <a href="#">Expressions</a>
+                <a href="#">Reflections</a>
+                <a href="#">README.md</a>
+            </div>
+            <div class="lang"><a href="#" class="active">中文</a> / <a href="#">EN</a></div>
+        </div>
+    </nav>
+
+    <main class="shell">
+        <section>
+            <h1 class="hero-heading">系统整理我看见、思考、创造的一切，
+给未来某个陌生人的启发。</h1>
+            <div class="intro-label">这个网站的意义是：</div>
+            <ul class="intro-points">
+                <li>系统性地整理并存档有关「我」的所有事</li>
+                <li>给不受限的观者潜在的启发与意义</li>
+            </ul>
+
+            <div class="toc">
+                <a class="toc-row" href="#">
+                    <h4>Solutions</h4>
+                    <p>听见真实声音，改善客观困境。</p>
+                    <div class="meta">2026.05<span class="arrow">→</span></div>
+                </a>
+                <a class="toc-row" href="#">
+                    <h4>Expressions</h4>
+                    <p>"为爱发电"的作品表达，包括视觉与听觉。</p>
+                    <div class="meta">2026.05<span class="arrow">→</span></div>
+                </a>
+                <a class="toc-row" href="#">
+                    <h4>Reflections</h4>
+                    <p>输入、输出间，在大脑进行的迭代过程。</p>
+                    <div class="meta">2025.11<span class="arrow">→</span></div>
+                </a>
+                <a class="toc-row" href="#">
+                    <h4>README.md</h4>
+                    <p>如果社交有说明会让你更自在。</p>
+                    <div class="meta">protocol<span class="arrow">→</span></div>
+                </a>
+            </div>
+        </section>
+
+        <aside class="sidebar">
+            <div>
+                <h3 class="panel-title"><span>Updates</span><a href="#">查看全部 →</a></h3>
+                <div class="timeline-item">
+                    <span class="timeline-dot"></span>
+                    <span class="timeline-date">2026.05.22</span>
+                    <div class="timeline-lines">
+                        <p>我的生日！</p>
+                        <p>网站正式开放</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="panel-title"><span>匿名信箱</span></h3>
+                <p class="inbox-strip">如果你想留下些什么，可以先写在这里。正式提交入口之后再接上。</p>
+                <textarea class="inbox-input" placeholder="写给 ReBone 的匿名信……"></textarea>
+                <div class="inbox-foot">
+                    <button class="inbox-button" disabled>投递（施工中）</button>
+                    <span class="inbox-count">0 / 200</span>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <footer class="footer">
+        © 2025–2026 ReBone. 保留所有权利。
+    </footer>
+</body>
+</html>

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReBone · B · 未染之布</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --linen: #E6DDCC;
+            --linen-light: #EFE7D6;
+            --linen-dark: #D7CBB3;
+            --thread: #C2B496;
+            --ink: #38332B;
+            --ink-soft: #5F5546;
+            --ink-faint: #8C7F69;
+            --tag: #6A5F4A;
+            --warm: #B08F5A;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        html, body { margin: 0; padding: 0; }
+        body {
+            /* fabric-weave texture */
+            background-color: var(--linen);
+            background-image:
+                repeating-linear-gradient(90deg, rgba(56, 51, 43, 0.035) 0px, rgba(56, 51, 43, 0.035) 1px, transparent 1px, transparent 3px),
+                repeating-linear-gradient(0deg, rgba(56, 51, 43, 0.04) 0px, rgba(56, 51, 43, 0.04) 1px, transparent 1px, transparent 3px),
+                radial-gradient(circle at 30% 20%, rgba(176, 143, 90, 0.10), transparent 50%);
+            color: var(--ink);
+            font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+            font-size: 16px;
+            line-height: 1.75;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .top-band {
+            padding: 1.5rem 0;
+            border-bottom: 1px dashed var(--thread);
+        }
+        .top-inner {
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            text-decoration: none;
+            color: var(--ink);
+        }
+        .brand-stitch {
+            width: 30px;
+            height: 30px;
+            border: 1px dashed var(--thread);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--warm);
+            background: var(--linen-light);
+        }
+        .brand-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+        .brand-tag {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.92rem;
+            color: var(--ink-faint);
+        }
+        .nav-list {
+            display: flex;
+            gap: 1.75rem;
+        }
+        .nav-list a {
+            color: var(--ink-soft);
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding-bottom: 2px;
+            border-bottom: 1px dashed transparent;
+        }
+        .nav-list a:hover {
+            color: var(--warm);
+            border-bottom-color: var(--warm);
+        }
+
+        .shell {
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 3.5rem 2rem 5rem;
+            animation: fadeIn 0.55s ease;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 13rem;
+            gap: 2.5rem;
+            margin-bottom: 3.5rem;
+            align-items: start;
+        }
+        .hero-main {
+            position: relative;
+        }
+        .hero-eyebrow {
+            display: inline-block;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: var(--warm);
+            background: var(--linen-light);
+            padding: 0.2rem 0.7rem;
+            border: 1px dashed var(--thread);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.04em;
+        }
+        .hero-heading {
+            font-size: 2.05rem;
+            font-weight: 500;
+            line-height: 1.6;
+            color: var(--ink);
+            margin: 0;
+            white-space: pre-line;
+            letter-spacing: 0.015em;
+        }
+        .hero-intro {
+            margin-top: 2rem;
+            padding-top: 1.3rem;
+            border-top: 1px dashed var(--thread);
+        }
+        .hero-intro-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: var(--ink-faint);
+            margin-bottom: 0.6rem;
+        }
+        .hero-intro-points {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .hero-intro-points li {
+            font-size: 1rem;
+            color: var(--ink-soft);
+            padding: 0.15rem 0 0.15rem 1.6rem;
+            position: relative;
+        }
+        .hero-intro-points li::before {
+            content: '◦';
+            position: absolute;
+            left: 0.2rem;
+            color: var(--warm);
+            font-size: 1rem;
+        }
+
+        /* fabric tag / label hanging in upper right */
+        .hero-tag {
+            background: var(--linen-light);
+            border: 1px dashed var(--thread);
+            padding: 1rem 1rem 1.2rem;
+            position: relative;
+            margin-top: 0.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            text-align: center;
+        }
+        .hero-tag::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            width: 14px;
+            height: 14px;
+            background: var(--linen);
+            border-radius: 50%;
+            border: 1px dashed var(--thread);
+            transform: translate(-50%, -55%);
+        }
+        .hero-tag-title {
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--warm);
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.04em;
+        }
+        .hero-tag-body {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 0.82rem;
+            color: var(--ink-soft);
+            line-height: 1.6;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3.5rem;
+        }
+        .card {
+            background: var(--linen-light);
+            border: 1px dashed var(--thread);
+            padding: 1.4rem 1.4rem 1.2rem;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            min-height: 9rem;
+            position: relative;
+            transition: background 250ms ease, border-color 250ms ease;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -1px; left: -1px; right: -1px; bottom: -1px;
+            border: 1px solid transparent;
+            pointer-events: none;
+            transition: border-color 250ms ease;
+        }
+        .card:hover {
+            background: #F5EDDC;
+        }
+        .card:hover::before {
+            border-color: var(--warm);
+        }
+        .card-tag {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.85rem;
+            color: var(--warm);
+            background: var(--linen);
+            padding: 0.1rem 0.5rem;
+            border: 1px dashed var(--thread);
+            align-self: flex-start;
+            margin-bottom: 0.85rem;
+            letter-spacing: 0.04em;
+        }
+        .card h4 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin: 0 0 0.5rem;
+            color: var(--ink);
+            letter-spacing: 0.01em;
+        }
+        .card-desc {
+            font-size: 0.95rem;
+            color: var(--ink-soft);
+            line-height: 1.7;
+            margin: 0;
+            flex: 1;
+        }
+        .card-foot {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1rem;
+            padding-top: 0.7rem;
+            border-top: 1px dashed var(--thread);
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.85rem;
+            color: var(--ink-faint);
+        }
+        .card-foot .arrow {
+            color: var(--warm);
+            transition: transform 250ms ease;
+        }
+        .card:hover .arrow {
+            transform: translateX(3px);
+        }
+
+        .lower {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        .panel {
+            background: var(--linen-light);
+            border: 1px dashed var(--thread);
+            padding: 1.4rem;
+        }
+        .panel-head {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.7rem;
+            border-bottom: 1px dashed var(--thread);
+        }
+        .panel-pin {
+            width: 8px;
+            height: 8px;
+            background: var(--warm);
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px var(--linen-light), 0 0 0 4px var(--thread);
+        }
+        .panel-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.05rem;
+            color: var(--tag);
+            letter-spacing: 0.05em;
+            margin: 0;
+        }
+        .updates-date {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.92rem;
+            color: var(--warm);
+            margin-bottom: 0.25rem;
+        }
+        .updates-lines p {
+            margin: 0;
+            font-size: 0.96rem;
+            color: var(--ink-soft);
+            line-height: 1.7;
+        }
+        .updates-lines p:first-child {
+            color: var(--ink);
+            font-weight: 500;
+        }
+        .letterbox-strip {
+            font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+            font-style: italic;
+            font-size: 0.93rem;
+            color: var(--ink-faint);
+            margin: 0 0 0.85rem;
+            line-height: 1.65;
+        }
+        .letterbox-input {
+            width: 100%;
+            min-height: 4rem;
+            background: var(--linen);
+            border: 1px dashed var(--thread);
+            color: var(--ink);
+            font-family: inherit;
+            font-size: 0.95rem;
+            padding: 0.6rem 0.75rem;
+            outline: none;
+            resize: vertical;
+            box-sizing: border-box;
+            line-height: 1.7;
+        }
+        .letterbox-input::placeholder {
+            color: var(--ink-faint);
+            font-style: italic;
+        }
+        .letterbox-input:focus {
+            border-color: var(--warm);
+        }
+        .letterbox-button {
+            margin-top: 0.65rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: var(--ink-faint);
+            background: transparent;
+            border: 0;
+            padding: 0;
+            cursor: not-allowed;
+            opacity: 0.75;
+        }
+
+        .footer-band {
+            border-top: 1px dashed var(--thread);
+            padding: 1.5rem 0;
+            margin-top: 1rem;
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: var(--ink-faint);
+            letter-spacing: 0.04em;
+        }
+
+        @media (max-width: 760px) {
+            .hero { grid-template-columns: 1fr; }
+            .hero-heading { font-size: 1.55rem; }
+            .cards { grid-template-columns: 1fr; }
+            .lower { grid-template-columns: 1fr; }
+            .top-inner { flex-direction: column; align-items: flex-start; gap: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="top-band">
+        <div class="top-inner">
+            <a href="#" class="brand">
+                <span class="brand-stitch">R</span>
+                <span class="brand-name">ReBone</span>
+                <span class="brand-tag">— raw linen draft</span>
+            </a>
+            <nav class="nav-list">
+                <a href="#">Solutions</a>
+                <a href="#">Expressions</a>
+                <a href="#">Reflections</a>
+                <a href="#">README.md</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="shell">
+        <section class="hero">
+            <div class="hero-main">
+                <span class="hero-eyebrow">— Front page</span>
+                <h1 class="hero-heading">系统整理我看见、思考、创造的一切，
+给未来某个陌生人的启发。</h1>
+                <div class="hero-intro">
+                    <div class="hero-intro-label">这个网站的意义是：</div>
+                    <ul class="hero-intro-points">
+                        <li>系统性地整理并存档有关「我」的所有事</li>
+                        <li>给不受限的观者潜在的启发与意义</li>
+                    </ul>
+                </div>
+            </div>
+            <aside class="hero-tag">
+                <div class="hero-tag-title">No. 0522</div>
+                <div class="hero-tag-body">
+                    a small archive,<br>
+                    kept by ReBone.<br>
+                    handle gently.
+                </div>
+            </aside>
+        </section>
+
+        <div class="cards">
+            <a href="#" class="card">
+                <span class="card-tag">Solutions</span>
+                <h4>听见真实声音</h4>
+                <p class="card-desc">改善客观困境。失能老人约束手套，以及之后的项目。</p>
+                <div class="card-foot"><span>latest · 2026.05</span><span class="arrow">→</span></div>
+            </a>
+            <a href="#" class="card">
+                <span class="card-tag">Expressions</span>
+                <h4>为爱发电</h4>
+                <p class="card-desc">作品表达，包括视觉、声音、为爱发电的影像记录。</p>
+                <div class="card-foot"><span>latest · 2026.05</span><span class="arrow">→</span></div>
+            </a>
+            <a href="#" class="card">
+                <span class="card-tag">Reflections</span>
+                <h4>大脑里的迭代</h4>
+                <p class="card-desc">输入、输出间，在大脑进行的迭代过程。会持续更新。</p>
+                <div class="card-foot"><span>latest · 2025.11</span><span class="arrow">→</span></div>
+            </a>
+            <a href="#" class="card">
+                <span class="card-tag">README.md</span>
+                <h4>齿轮说明书</h4>
+                <p class="card-desc">如果社交有说明会让你更自在。低频率，高密度。</p>
+                <div class="card-foot"><span>protocol</span><span class="arrow">→</span></div>
+            </a>
+        </div>
+
+        <section class="lower">
+            <div class="panel">
+                <div class="panel-head">
+                    <span class="panel-pin"></span>
+                    <h3 class="panel-title">Updates</h3>
+                </div>
+                <div class="updates-date">2026.05.22</div>
+                <div class="updates-lines">
+                    <p>我的生日！</p>
+                    <p>网站正式开放</p>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-head">
+                    <span class="panel-pin"></span>
+                    <h3 class="panel-title">匿名信箱</h3>
+                </div>
+                <p class="letterbox-strip">如果你想留下些什么，可以先写在这里。正式提交入口之后再接上。</p>
+                <textarea class="letterbox-input" placeholder="写给 ReBone 的匿名信……"></textarea>
+                <button class="letterbox-button" disabled>— 投递（施工中）</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-band">
+        © 2025–2026 ReBone &nbsp;·&nbsp; handmade page, kept slowly.
+    </footer>
+</body>
+</html>

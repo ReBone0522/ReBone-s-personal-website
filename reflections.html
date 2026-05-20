@@ -3,182 +3,69 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Reflections - ReBone</title>
-    <meta name="description" content="输入、输出间的思考产物。" />
+    <title>Reflections | ReBone</title>
+    <meta name="description" content="人类、动物、我、生命的思考日志，按时间迭代。" />
     <link rel="canonical" href="https://rebone0522.com/reflections.html" />
     <meta property="og:site_name" content="ReBone" />
     <meta property="og:locale" content="zh_CN" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Reflections - ReBone" />
-    <meta property="og:description" content="输入、输出间的思考产物。" />
+    <meta property="og:title" content="Reflections | ReBone" />
+    <meta property="og:description" content="人类、动物、我、生命的思考日志，按时间迭代。" />
     <meta property="og:url" content="https://rebone0522.com/reflections.html" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Reflections - ReBone" />
-    <meta name="twitter:description" content="输入、输出间的思考产物。" />
-    <meta name="theme-color" content="#f9fafb" />
+    <meta name="twitter:title" content="Reflections | ReBone" />
+    <meta name="twitter:description" content="人类、动物、我、生命的思考日志，按时间迭代。" />
+    <meta name="theme-color" content="#FAFAF8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/tailwind.css" />
+    <link rel="stylesheet" href="assets/css/site-frame.css?v=20260520" />
     <script src="assets/js/i18n.js?v=20260520" defer></script>
-    <script src="assets/js/site-content.js?v=20260424" defer></script>
-    <style>
-        .venn-container {
-            position: relative;
-            width: 400px;
-            height: 400px;
-            margin: 0 auto;
-        }
-        .venn-circle {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 1.5px solid #374151;
-            background: transparent;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .venn-circle:hover { background: rgba(55, 65, 81, 0.06); }
-        .circle-human { top: 20px; left: 100px; }
-        .circle-me { top: 160px; left: 30px; }
-        .circle-animal { top: 160px; right: 30px; }
-        .circle-label {
-            position: absolute;
-            font-size: 14px;
-            color: #374151;
-            cursor: pointer;
-        }
-        .label-human { top: 70px; left: 185px; }
-        .label-me { top: 250px; left: 85px; }
-        .label-animal { top: 250px; right: 85px; }
-        .intersection {
-            position: absolute;
-            cursor: pointer;
-            font-size: 11px;
-            color: #6b7280;
-            transition: all 0.2s ease;
-            padding: 6px 10px;
-            border-radius: 4px;
-            z-index: 10;
-        }
-        .intersection:hover {
-            color: #111827;
-            background: rgba(55, 65, 81, 0.1);
-        }
-        .int-me-human { top: 175px; left: 130px; }
-        .int-me-animal { top: 270px; left: 175px; }
-        .int-human-animal { top: 175px; right: 130px; }
-        .int-all {
-            top: 192px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-weight: 500;
-            color: #374151;
-        }
-        .tooltip {
-            position: absolute;
-            background: #fafafa;
-            border: 1px solid #e5e7eb;
-            padding: 8px 12px;
-            font-size: 12px;
-            z-index: 100;
-            max-width: 200px;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.15s;
-        }
-        .tooltip.show { opacity: 1; }
-        .content-panel {
-            display: none;
-            margin-top: 32px;
-            padding: 20px;
-            border-top: 1px solid #e5e7eb;
-        }
-        .content-panel.show { display: block; }
-        .content-panel h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 16px;
-            color: #111827;
-        }
-        .content-item {
-            margin-bottom: 20px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid #f3f4f6;
-        }
-        .content-item:last-child { border-bottom: none; }
-        .content-item h4 {
-            font-size: 13px;
-            font-weight: 600;
-            color: #374151;
-            margin-bottom: 6px;
-        }
-        .content-item p {
-            color: #4b5563;
-            line-height: 1.7;
-        }
-        .date-tag {
-            font-size: 11px;
-            color: #9ca3af;
-            margin-top: 6px;
-        }
-        .close-btn {
-            float: right;
-            cursor: pointer;
-            color: #9ca3af;
-            font-size: 18px;
-        }
-        .close-btn:hover { color: #374151; }
-        .hint-text {
-            text-align: center;
-            font-size: 11px;
-            color: #9ca3af;
-            margin-top: 16px;
-        }
-    </style>
+    <script src="assets/js/site-content.js?v=20260520" defer></script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-mono leading-relaxed">
-    <nav class="sticky top-0 z-50 bg-[length:113%_1000px] bg-center p-4 flex justify-between items-center" style="background-image: url('assets/nav-bg.webp');">
-        <a href="index.html" class="text-xl font-bold text-white">ReBone</a>
-        <div class="space-x-4 text-white text-sm">
-            <a href="solutions.html" class="hover:underline">Solutions</a>
-            <a href="expressions.html" class="hover:underline">Expressions</a>
-            <a href="reflections.html" class="underline font-semibold">Reflections</a>
-            <a href="readme.html" class="hover:underline">README.md</a>
+<body>
+    <nav class="banner">
+        <div class="banner-inner">
+            <a href="index.html" class="brand">ReBone</a>
+            <div class="nav-links">
+                <a href="solutions.html" class="nav-link">Solutions</a>
+                <a href="expressions.html" class="nav-link">Expressions</a>
+                <a href="reflections.html" class="nav-link active">Reflections</a>
+                <a href="readme.html" class="nav-link">README.md</a>
+            </div>
         </div>
     </nav>
 
-    <main id="reflections-page-root" class="max-w-3xl mx-auto mt-10 p-4">
-        <h2 id="reflections-title" class="text-xl font-semibold mb-2">Reflections</h2>
-        <p id="reflections-subtitle" class="text-gray-500 text-sm mb-6">输入、输出间的思考产物。</p>
+    <main id="reflections-page-root" class="shell">
+        <aside class="rail">
+            <p class="rail-label">Section</p>
+            <p class="rail-marker"><strong>Reflections</strong></p>
 
-        <div id="reflections-intro" class="mb-8 text-sm text-gray-600 leading-relaxed"></div>
-        <p id="reflections-footnote" class="text-gray-400 text-xs mt-4"></p>
+            <p class="rail-label">Regions</p>
+            <nav class="rail-nav" id="reflections-rail-nav" aria-label="reflection regions">
+                <!-- populated by renderReflections -->
+            </nav>
 
-        <div class="venn-container" id="vennDiagram">
-            <div class="venn-circle circle-human" data-section="human"></div>
-            <div class="venn-circle circle-me" data-section="me"></div>
-            <div class="venn-circle circle-animal" data-section="animal"></div>
+            <p class="rail-label">Vol.</p>
+            <p class="rail-marker">i · 2026</p>
+        </aside>
 
-            <span class="circle-label label-human" data-section="human">人类</span>
-            <span class="circle-label label-me" data-section="me">我</span>
-            <span class="circle-label label-animal" data-section="animal">动物</span>
+        <div class="shell-gutter" aria-hidden="true"></div>
 
-            <div class="intersection int-me-human" data-section="social">社交</div>
-            <div class="intersection int-me-animal" data-section="interact">交互</div>
-            <div class="intersection int-human-animal" data-section="human-animal">人类×动物</div>
-            <div class="intersection int-all" data-section="life">生命</div>
+        <div class="main">
+            <section class="page-hero">
+                <p class="page-eyebrow">— Section · reflections.md</p>
+                <h1 id="reflections-title" class="page-heading">Reflections</h1>
+                <p id="reflections-subtitle" class="page-subhead"></p>
+                <div id="reflections-intro" class="expressions-intro"></div>
+                <p id="reflections-footnote" class="rail-marker" style="margin-top:1.25rem;"></p>
+            </section>
 
-            <div class="tooltip" id="tooltip"></div>
-        </div>
-
-        <p id="reflections-hint" class="hint-text">点击任意区域查看内容</p>
-
-        <div class="content-panel" id="contentPanel">
-            <span class="close-btn" id="closePanelBtn">×</span>
-            <h3 id="panelTitle"></h3>
-            <div id="panelContent"></div>
+            <div id="reflections-log"></div>
         </div>
     </main>
 
-    <footer class="text-center text-xs text-gray-400 mt-16 mb-6">© 2025 Rebone</footer>
+    <footer class="site-footer">© 2025–2026 ReBone. 保留所有权利。</footer>
 </body>
 </html>

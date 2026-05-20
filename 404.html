@@ -16,29 +16,51 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="404 | ReBone" />
     <meta name="twitter:description" content="这个页面不存在，返回 ReBone 首页继续浏览。" />
-    <meta name="theme-color" content="#f9fafb" />
+    <meta name="theme-color" content="#FAFAF8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/tailwind.css" />
+    <link rel="stylesheet" href="assets/css/site-frame.css?v=20260520" />
+    <script src="assets/js/i18n.js?v=20260520" defer></script>
+    <script src="assets/js/site-content.js?v=20260520" defer></script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-mono leading-relaxed min-h-screen flex flex-col">
-    <nav class="sticky top-0 z-50 bg-[length:113%_1000px] bg-center p-4 flex justify-between items-center" style="background-image: url('assets/nav-bg.webp');">
-        <a href="index.html" class="text-xl font-bold text-white">ReBone</a>
-        <div class="space-x-4 text-white text-sm">
-            <a href="solutions.html" class="hover:underline">Solutions</a>
-            <a href="expressions.html" class="hover:underline">Expressions</a>
-            <a href="reflections.html" class="hover:underline">Reflections</a>
-            <a href="readme.html" class="hover:underline">README.md</a>
+<body>
+    <nav class="banner">
+        <div class="banner-inner">
+            <a href="index.html" class="brand">ReBone</a>
+            <div class="nav-links">
+                <a href="solutions.html" class="nav-link">Solutions</a>
+                <a href="expressions.html" class="nav-link">Expressions</a>
+                <a href="reflections.html" class="nav-link">Reflections</a>
+                <a href="readme.html" class="nav-link">README.md</a>
+            </div>
         </div>
     </nav>
 
-    <main class="flex-1 max-w-3xl mx-auto w-full px-6 py-20">
-        <p class="text-sm text-gray-500 mb-3">404</p>
-        <h1 class="text-3xl font-semibold mb-4">这个页面不存在。</h1>
-        <p class="text-gray-700 leading-relaxed mb-8">可能是链接已经变动，也可能是这个页面还没有被公开整理出来。</p>
-        <a href="index.html" class="inline-flex items-center gap-2 text-black underline underline-offset-4">返回首页 <span>↗</span></a>
+    <main class="shell">
+        <aside class="rail">
+            <p class="rail-label">Status</p>
+            <p class="rail-marker"><strong>404</strong></p>
+
+            <p class="rail-label">Type</p>
+            <p class="rail-marker">page not found</p>
+
+            <p class="rail-label">Action</p>
+            <p class="rail-text"><a href="index.html" style="color:var(--ink);text-decoration:underline;text-underline-offset:4px;">返回首页 ↗</a></p>
+        </aside>
+
+        <div class="shell-gutter" aria-hidden="true"></div>
+
+        <div class="main">
+            <section class="page-hero">
+                <p class="page-eyebrow">— 404</p>
+                <h1 class="page-heading">这个页面不存在。</h1>
+                <p class="page-subhead">可能是链接已经变动，也可能是这个页面还没有被公开整理出来。</p>
+            </section>
+        </div>
     </main>
 
-    <footer class="text-center text-sm text-gray-500 mt-10 mb-4">
-       © 2025 Rebone. 保留所有权利.
-    </footer>
+    <footer class="site-footer">© 2025–2026 ReBone. 保留所有权利。</footer>
 </body>
 </html>

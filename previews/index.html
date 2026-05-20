@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReBone · 排版骨架预览</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFAF8;
+            --ink: #1A1A1A;
+            --ink-2: #555555;
+            --ink-3: #888888;
+            --ink-4: #B5B5B5;
+            --rule: #D8D8D8;
+        }
+        html, body { margin: 0; padding: 0; }
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+            line-height: 1.8;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            font-size: 15px;
+        }
+
+        .banner {
+            background-color: #2c2c2c;
+            background-image: url('../assets/nav-bg.PNG');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: luminosity;
+            border-bottom: 1px solid var(--rule);
+        }
+        .banner-inner {
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 1.1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .brand {
+            font-family: ui-monospace, monospace;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            text-decoration: none;
+        }
+        .brand .sub {
+            font-weight: 400;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.7);
+            margin-left: 0.6rem;
+        }
+        .nav-date {
+            font-family: ui-monospace, monospace;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 0.04em;
+        }
+
+        .wrap {
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 3.5rem 2rem 4rem;
+        }
+        .intro {
+            font-size: 1rem;
+            color: var(--ink-2);
+            max-width: 44rem;
+            margin: 0 0 1rem;
+        }
+        .intro-meta {
+            font-family: ui-monospace, monospace;
+            font-size: 0.78rem;
+            color: var(--ink-3);
+            letter-spacing: 0.06em;
+            margin: 0 0 3rem;
+        }
+
+        .section-label {
+            font-family: ui-monospace, monospace;
+            font-size: 0.72rem;
+            color: var(--ink-3);
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 3rem;
+        }
+        .card {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            border-top: 1px solid var(--rule);
+            padding: 1.5rem 0 1.4rem;
+            transition: padding 200ms ease;
+        }
+        .card:hover {
+            padding-left: 0.6rem;
+        }
+        .card-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+        }
+        .card-id {
+            font-family: ui-monospace, monospace;
+            font-size: 0.78rem;
+            color: var(--ink-3);
+            letter-spacing: 0.04em;
+        }
+        .card-id .letter { color: var(--ink); font-weight: 600; }
+        .card-arrow {
+            font-family: ui-monospace, monospace;
+            font-size: 0.78rem;
+            color: var(--ink-3);
+        }
+        .card h2 {
+            font-family: ui-monospace, monospace;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin: 0 0 0.45rem;
+        }
+        .card-zh {
+            font-size: 0.92rem;
+            color: var(--ink-3);
+            margin: 0 0 0.85rem;
+        }
+        .card-why {
+            font-size: 0.88rem;
+            color: var(--ink-2);
+            line-height: 1.75;
+            margin: 0 0 0.85rem;
+        }
+        .card-why strong {
+            font-weight: 500;
+            color: var(--ink);
+        }
+        .card-moves {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-size: 0.82rem;
+            color: var(--ink-3);
+            line-height: 1.7;
+        }
+        .card-moves li {
+            padding-left: 1rem;
+            position: relative;
+        }
+        .card-moves li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--ink-4);
+        }
+
+        .legacy-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+            opacity: 0.55;
+        }
+        .legacy-card {
+            text-decoration: none;
+            color: var(--ink-3);
+            padding: 0.7rem 0;
+            border-top: 1px solid var(--rule);
+            font-family: ui-monospace, monospace;
+            font-size: 0.78rem;
+        }
+        .legacy-card strong { color: var(--ink-2); }
+
+        .footer {
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 2rem 2rem 2.5rem;
+            font-family: ui-monospace, monospace;
+            font-size: 0.72rem;
+            color: var(--ink-3);
+            border-top: 1px solid var(--rule);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        @media (max-width: 720px) {
+            .grid { grid-template-columns: 1fr; }
+            .legacy-grid { grid-template-columns: 1fr 1fr; }
+            .wrap { padding: 2.5rem 1.25rem 3rem; }
+            .banner-inner { padding: 0.95rem 1.25rem; flex-wrap: wrap; gap: 0.6rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="banner">
+        <div class="banner-inner">
+            <a href="#" class="brand">ReBone <span class="sub">// homepage frames · vol. iii</span></a>
+            <span class="nav-date">2026.05.20</span>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <p class="intro">
+            第三轮：先确立<strong style="color:var(--ink);">排版骨架与线条的逻辑</strong>，色调暂置。每个版本对应你哲学里的一个具体锚点；每一根线、每个留白都有它要承担的意义，不靠装饰和符号堆砌。
+        </p>
+        <p class="intro-meta">6 frames · black & white · using assets/nav-bg.PNG</p>
+
+        <div class="section-label">
+            <span>Six frames</span>
+            <span>each = one philosophical anchor</span>
+        </div>
+
+        <div class="grid">
+            <a class="card" href="s1-manual.html">
+                <div class="card-head">
+                    <span class="card-id"><span class="letter">S1</span> · Manual · 协议</span>
+                    <span class="card-arrow">→</span>
+                </div>
+                <h2>The Manual</h2>
+                <p class="card-zh">齿轮说明书</p>
+                <p class="card-why">把整个首页当成一份<strong>被认真记录的自我</strong>。README.md 的元素延展到全站气质。</p>
+                <ul class="card-moves">
+                    <li>左侧 4.5rem 是装订线，唯一的竖线</li>
+                    <li>§00–§07 章号挂在边距里</li>
+                    <li>没有卡片框：说明书的章节不放盒子里</li>
+                </ul>
+            </a>
+
+            <a class="card" href="s2-density.html">
+                <div class="card-head">
+                    <span class="card-id"><span class="letter">S2</span> · Density · 高密度</span>
+                    <span class="card-arrow">→</span>
+                </div>
+                <h2>Low frequency, high density</h2>
+                <p class="card-zh">沉默不是缺席，是听</p>
+                <p class="card-why">段间巨大留白，每段内部很重。<strong>线少了，才贵</strong>——只有一根细线分段。强迫慢读。</p>
+                <ul class="card-moves">
+                    <li>单列窄测度（36rem），强制行宽节奏</li>
+                    <li>6rem 段间距，是社交节奏的视觉化</li>
+                    <li>无侧栏，全部纵向流入</li>
+                </ul>
+            </a>
+
+            <a class="card" href="s3-crack.html">
+                <div class="card-head">
+                    <span class="card-id"><span class="letter">S3</span> · Crack · 缝隙</span>
+                    <span class="card-arrow">→</span>
+                </div>
+                <h2>Find a crack</h2>
+                <p class="card-zh">找一道缝隙，做一点小事</p>
+                <p class="card-why">整页一根竖线偏左 1/3，内容只在右 2/3 那条"缝"里。<strong>空白是世界的大，内容是缝</strong>。</p>
+                <ul class="card-moves">
+                    <li>不对称：左列稀疏方向标签，右列承重</li>
+                    <li>那根竖线就是"缝隙"本身</li>
+                    <li>左侧固定 sticky，作为阅读时的方向感</li>
+                </ul>
+            </a>
+
+            <a class="card" href="s4-log.html">
+                <div class="card-head">
+                    <span class="card-id"><span class="letter">S4</span> · Log · 日志</span>
+                    <span class="card-arrow">→</span>
+                </div>
+                <h2>A captain's log</h2>
+                <p class="card-zh">输入、输出间的迭代</p>
+                <p class="card-why">每一行都被<strong>日期锚定</strong>。Sections、Updates、Inbox 共享同一种行格式——它们都是同一本日志里的条目。</p>
+                <ul class="card-moves">
+                    <li>最左 6.5rem 固定日期列</li>
+                    <li>章节卡用"last touched"日期作行键</li>
+                    <li>整页读起来像 git log</li>
+                </ul>
+            </a>
+
+            <a class="card" href="s5-frontispiece.html">
+                <div class="card-head">
+                    <span class="card-id"><span class="letter">S5</span> · Frontispiece · 扉页</span>
+                    <span class="card-arrow">→</span>
+                </div>
+                <h2>For a future stranger</h2>
+                <p class="card-zh">给未来某个陌生人的启发</p>
+                <p class="card-why">居中、窄列（32rem）、像翻开一本书的扉页。<strong>用排版的礼仪</strong>让初到者先慢下来。</p>
+                <ul class="card-moves">
+                    <li>imprint · 标题 · 短分隔线 · abstract · 目录</li>
+                    <li>测度窄到强迫一行不超过 28 个汉字</li>
+                    <li>Updates / Inbox 退到下方双列页脚</li>
+                </ul>
+            </a>
+
+            <a class="card" href="s6-grid.html">
+                <div class="card-head">
+                    <span class="card-id"><span class="letter">S6</span> · Grid · 模数</span>
+                    <span class="card-arrow">→</span>
+                </div>
+                <h2>Discipline as care</h2>
+                <p class="card-zh">在不规则世界里建一个圆</p>
+                <p class="card-why">12 栏不可见纪律——hero 占 8 栏，intro 占 4 栏靠右，cards 6+6，下方 7+5。<strong>结构本身就是声明</strong>。</p>
+                <ul class="card-moves">
+                    <li>没有可见网格线，但每个元素都掐在栏位上</li>
+                    <li>呼应约束手套项目里"结构性的关怀"</li>
+                    <li>最适合长期扩展——新内容直接落进栏位</li>
+                </ul>
+            </a>
+        </div>
+
+        <div class="section-label">
+            <span>Earlier — kept for comparison</span>
+            <span>已被否</span>
+        </div>
+
+        <div class="legacy-grid">
+            <a class="legacy-card" href="variant-e-skeleton.html"><strong>E ·</strong> Skeleton</a>
+            <a class="legacy-card" href="variant-f-onemark.html"><strong>F ·</strong> One mark</a>
+            <a class="legacy-card" href="variant-g-icons.html"><strong>G ·</strong> Icons</a>
+            <a class="legacy-card" href="variant-h-type.html"><strong>H ·</strong> Type only</a>
+            <a class="legacy-card" href="variant-a-vellum.html"><strong>A ·</strong> Vellum</a>
+            <a class="legacy-card" href="variant-b-linen.html"><strong>B ·</strong> Linen</a>
+            <a class="legacy-card" href="variant-c-mineral.html"><strong>C ·</strong> Mineral</a>
+            <a class="legacy-card" href="variant-d-protocol.html"><strong>D ·</strong> Protocol</a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <span>选定一个骨架之后，再谈色调和长期扩展</span>
+        <span>© 2026 ReBone</span>
+    </footer>
+</body>
+</html>

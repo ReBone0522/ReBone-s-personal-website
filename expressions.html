@@ -15,66 +15,67 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Expressions | ReBone" />
     <meta name="twitter:description" content="视觉、声音、为爱发电与交叉表达的作品入口。" />
-    <meta name="theme-color" content="#f9fafb" />
+    <meta name="theme-color" content="#FAFAF8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/tailwind.css" />
+    <link rel="stylesheet" href="assets/css/site-frame.css?v=20260520" />
     <script src="assets/js/i18n.js?v=20260520" defer></script>
-    <script src="assets/js/site-content.js?v=20260424" defer></script>
-    <style>
-        .category-card {
-            transition: all 0.2s ease;
-        }
-        .category-card:hover,
-        .category-card.active {
-            border-color: #111827;
-            background: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(17, 24, 39, 0.08);
-        }
-        .preview-pill {
-            display: inline-flex;
-            align-items: center;
-            padding: 4px 10px;
-            border: 1px solid #e5e7eb;
-            border-radius: 999px;
-            font-size: 12px;
-            color: #4b5563;
-            background: #fff;
-        }
-    </style>
+    <script src="assets/js/site-content.js?v=20260520" defer></script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-mono leading-relaxed">
-    <nav class="sticky top-0 z-50 bg-[length:113%_1000px] bg-center p-4 flex justify-between items-center" style="background-image: url('assets/nav-bg.webp');">
-        <a href="index.html" class="text-xl font-bold text-white">ReBone</a>
-        <div class="space-x-4 text-white text-sm">
-            <a href="solutions.html" class="hover:underline">Solutions</a>
-            <a href="expressions.html" class="underline font-semibold">Expressions</a>
-            <a href="reflections.html" class="hover:underline">Reflections</a>
-            <a href="readme.html" class="hover:underline">README.md</a>
+<body>
+    <nav class="banner">
+        <div class="banner-inner">
+            <a href="index.html" class="brand">ReBone</a>
+            <div class="nav-links">
+                <a href="solutions.html" class="nav-link">Solutions</a>
+                <a href="expressions.html" class="nav-link active">Expressions</a>
+                <a href="reflections.html" class="nav-link">Reflections</a>
+                <a href="readme.html" class="nav-link">README.md</a>
+            </div>
         </div>
     </nav>
 
-    <main id="expressions-page-root" class="max-w-6xl mx-auto mt-10 px-4 pb-16">
-        <div class="mb-10 max-w-3xl">
-            <h2 id="expressions-title" class="text-2xl font-semibold mb-3">Expressions</h2>
-            <div id="expressions-intro" class="space-y-3"></div>
-        </div>
+    <main id="expressions-page-root" class="shell">
+        <aside class="rail">
+            <p class="rail-label">Section</p>
+            <p class="rail-marker"><strong>Expressions</strong></p>
 
-        <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-8 items-start">
-            <section id="expressions-categories" class="space-y-4"></section>
+            <p class="rail-label">Categories</p>
+            <nav class="rail-nav" id="expressions-rail-nav" aria-label="categories">
+                <!-- populated by renderExpressions -->
+            </nav>
 
-            <aside class="rounded-2xl border border-gray-200 bg-white p-6 lg:sticky lg:top-24">
-                <p id="expressions-preview-label" class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-3">Preview</p>
-                <h3 class="text-2xl font-semibold mb-2" id="previewTitle"></h3>
-                <p class="text-gray-600 mb-6" id="previewText"></p>
-                <div class="space-y-3 mb-6" id="previewItems"></div>
-                <div class="flex flex-wrap gap-2 mb-6" id="previewTags"></div>
-                <a id="previewLink" href="#" class="inline-flex items-center gap-2 text-sm text-black underline underline-offset-4"><span id="expressions-preview-link-label">进入这个分类</span> <span>↗</span></a>
-            </aside>
+            <p class="rail-label">Vol.</p>
+            <p class="rail-marker">i · 2026</p>
+        </aside>
+
+        <div class="shell-gutter" aria-hidden="true"></div>
+
+        <div class="main">
+            <section class="page-hero">
+                <p class="page-eyebrow">— Section · expressions.md</p>
+                <h1 id="expressions-title" class="page-heading">Expressions</h1>
+                <div id="expressions-intro" class="expressions-intro"></div>
+            </section>
+
+            <div id="expressions-categories" class="archive-list"></div>
+
+            <!-- legacy preview pane kept hidden; renderer no longer populates it.
+                 Hidden IDs preserved so any external link / older script doesn't error. -->
+            <div style="display:none">
+                <p id="expressions-preview-label"></p>
+                <span id="expressions-preview-link-label"></span>
+                <h3 id="previewTitle"></h3>
+                <p id="previewText"></p>
+                <div id="previewItems"></div>
+                <div id="previewTags"></div>
+                <a id="previewLink" href="#"></a>
+            </div>
         </div>
     </main>
 
-    <footer class="text-center text-sm text-gray-500 mt-10 mb-4">
-       © 2025 Rebone. 保留所有权利.
-    </footer>
+    <footer class="site-footer">© 2025–2026 ReBone. 保留所有权利。</footer>
 </body>
 </html>

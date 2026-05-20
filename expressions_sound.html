@@ -15,61 +15,70 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Sound | Expressions | ReBone" />
     <meta name="twitter:description" content="八音盒 cover、自创曲目与声音相关表达。" />
-    <meta name="theme-color" content="#f9fafb" />
+    <meta name="theme-color" content="#FAFAF8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/tailwind.css" />
+    <link rel="stylesheet" href="assets/css/site-frame.css?v=20260520" />
     <script src="assets/js/i18n.js?v=20260520" defer></script>
-    <script src="assets/js/site-content.js?v=20260424" defer></script>
+    <script src="assets/js/site-content.js?v=20260520" defer></script>
     <style>
         html { scroll-behavior: smooth; }
-        .side-link.active {
-            background: #f9fafb;
-            border-color: #111827;
-            color: #111827;
-            font-weight: 600;
-        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-mono leading-relaxed">
-
-    <nav class="sticky top-0 z-50 bg-[length:113%_1000px] bg-center p-4 flex justify-between items-center" style="background-image: url('assets/nav-bg.webp');">
-        <a href="index.html" class="text-xl font-bold text-white">ReBone</a>
-        <div class="space-x-4 text-white text-sm">
-            <a href="solutions.html" class="hover:underline">Solutions</a>
-            <a href="expressions.html" class="underline font-semibold">Expressions</a>
-            <a href="reflections.html" class="hover:underline">Reflections</a>
-            <a href="readme.html" class="hover:underline">README.md</a>
+<body>
+    <nav class="banner">
+        <div class="banner-inner">
+            <a href="index.html" class="brand">ReBone</a>
+            <div class="nav-links">
+                <a href="solutions.html" class="nav-link">Solutions</a>
+                <a href="expressions.html" class="nav-link active">Expressions</a>
+                <a href="reflections.html" class="nav-link">Reflections</a>
+                <a href="readme.html" class="nav-link">README.md</a>
+            </div>
         </div>
     </nav>
 
-    <main id="sound-page-root" class="max-w-6xl mx-auto mt-10 px-4 pb-16">
-        <div class="flex items-center gap-3 text-sm text-gray-500 mb-6">
-            <a href="expressions.html" id="sound-breadcrumb-parent" class="hover:text-gray-700">Expressions</a>
-            <span>/</span>
-            <span id="sound-breadcrumb-current" class="text-gray-700">音乐</span>
-        </div>
+    <main id="sound-page-root" class="shell">
+        <aside class="rail">
+            <p class="rail-label">Parent</p>
+            <p id="sound-eyebrow" class="rail-marker"><a href="expressions.html" id="sound-breadcrumb-parent" style="color:var(--ink-2);text-decoration:none;">Expressions</a></p>
 
-        <div class="max-w-4xl mb-8">
-            <p id="sound-eyebrow" class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-3">Sound</p>
-            <h2 id="sound-title" class="text-3xl font-semibold mb-4">音乐</h2>
-            <div id="sound-intro" class="space-y-4 text-gray-700"></div>
-        </div>
+            <p class="rail-label">Category</p>
+            <p class="rail-marker"><strong>Sound</strong></p>
 
-        <div class="max-w-4xl mb-6 rounded-2xl border border-gray-200 bg-white px-5 py-4 text-sm text-gray-700">
-            <p id="sound-notice-title" class="font-semibold mb-2">下载与使用说明</p>
-            <div id="sound-notice-body" class="space-y-2"></div>
-            <p id="sound-notice-footnote" class="mt-2 text-xs text-gray-500"></p>
-        </div>
+            <p class="rail-label">Sections</p>
+            <nav id="sound-side-nav" class="rail-nav" aria-label="page sections"></nav>
 
-        <div class="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-8 items-start">
-            <aside class="bg-white border border-gray-200 rounded-2xl p-4 lg:sticky lg:top-24">
-                <p class="text-xs uppercase tracking-[0.2em] text-gray-400 mb-3">Sections</p>
-                <nav id="sound-side-nav" class="space-y-2 text-sm"></nav>
-            </aside>
+            <p class="rail-label">Vol.</p>
+            <p class="rail-marker">i · 2026</p>
+        </aside>
 
-            <div id="sound-sections" class="space-y-12"></div>
+        <div class="shell-gutter" aria-hidden="true"></div>
+
+        <div class="main">
+            <div class="project-breadcrumb">
+                <a href="expressions.html">Expressions</a>
+                <span>/</span>
+                <span id="sound-breadcrumb-current">音乐</span>
+            </div>
+
+            <section class="page-hero">
+                <h1 id="sound-title" class="page-heading">音乐</h1>
+                <div id="sound-intro" class="expressions-intro"></div>
+            </section>
+
+            <div class="project-card" style="margin-bottom:2rem;">
+                <p id="sound-notice-title" class="project-card-title">下载与使用说明</p>
+                <div id="sound-notice-body"></div>
+                <p id="sound-notice-footnote" style="font-size:0.78rem;color:var(--ink-3);margin-top:0.6rem;"></p>
+            </div>
+
+            <div id="sound-sections" class="project-content"></div>
         </div>
     </main>
 
-    <footer class="text-center text-sm text-gray-500 mt-10 mb-4">© 2025 Rebone. 保留所有权利.</footer>
+    <footer class="site-footer">© 2025–2026 ReBone. 保留所有权利。</footer>
 </body>
 </html>

@@ -1,0 +1,1137 @@
+/* ─────────────────────────────────────────────────────────────
+   ReBone · site-frame.css
+   Universal B&W design system. Applied to every page.
+   See DESIGN_SYSTEM.md for the rationale behind each token.
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+    --bg:        #FAFAF8;
+    --card:      #FFFFFF;
+    --ink:       #1A1A1A;
+    --ink-2:     #555555;
+    --ink-3:     #888888;
+    --ink-4:     #B5B5B5;
+    --rule:      #D8D8D8;
+    --rule-2:    #ECECEC;
+    --banner-bg: #2c2c2c;
+
+    --shell-max:    72rem;
+    --shell-pad:    2rem;
+    --rail-width:   8rem;   /* narrower than S3 draft */
+    --gutter-gap:   2.25rem;
+
+    --font-serif:  'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    --font-mono:   ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-serif);
+    font-size: 15px;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+/* ───── Banner (top nav) ──────────────────────────────────── */
+
+.banner {
+    background-color: var(--banner-bg);
+    background-image: url('../nav-bg.PNG');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: luminosity;
+    border-bottom: 1px solid var(--rule);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+.banner-inner {
+    max-width: var(--shell-max);
+    margin: 0 auto;
+    padding: 1.05rem var(--shell-pad);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+}
+.brand {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    flex-shrink: 0;
+}
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.nav-link {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    padding-bottom: 1px;
+    border-bottom: 1px solid transparent;
+}
+.nav-link:hover { color: #fff; border-bottom-color: rgba(255,255,255,0.5); }
+.nav-link.active { color: #fff; border-bottom-color: #fff; }
+
+/* i18n.js mounts the language switch into the first <div> inside <nav>.
+   Style it to match. */
+[data-language-switch="true"] {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    margin-left: 0.6rem;
+    color: rgba(255,255,255,0.7);
+}
+[data-language-switch="true"] button {
+    color: rgba(255,255,255,0.85);
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: 0 0.15rem;
+    font-family: inherit;
+    font-size: inherit;
+}
+[data-language-switch="true"] button:hover { color: #fff; }
+[data-language-switch="true"] button.underline { color: #fff; }
+
+/* ───── Page shell (rail + gutter + main) ─────────────────── */
+
+.shell {
+    max-width: var(--shell-max);
+    margin: 0 auto;
+    padding: 3.25rem var(--shell-pad) 4rem;
+    display: grid;
+    grid-template-columns: var(--rail-width) 1px minmax(0, 1fr);
+    column-gap: var(--gutter-gap);
+    align-items: start;
+}
+.shell-gutter {
+    background: var(--rule);
+    align-self: stretch;
+    min-height: 100%;
+}
+
+/* ───── Left rail (universal across all pages) ────────────── */
+
+.rail {
+    position: sticky;
+    top: 5rem;
+    padding-top: 0.5rem;
+}
+.rail-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--ink-3);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin: 0 0 0.35rem;
+    font-weight: 400;
+}
+.rail-label + .rail-label { margin-top: 1.6rem; }
+.rail-text {
+    font-size: 0.85rem;
+    color: var(--ink-3);
+    line-height: 1.65;
+    margin: 0 0 0.4rem;
+}
+.rail-marker {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-3);
+    letter-spacing: 0.02em;
+    margin: 0 0 0.25rem;
+    line-height: 1.6;
+}
+.rail-marker strong {
+    color: var(--ink-2);
+    font-weight: 500;
+}
+.rail-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.rail-nav a {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-3);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    line-height: 1.6;
+    padding: 0.05rem 0;
+}
+.rail-nav a:hover,
+.rail-nav a.active { color: var(--ink); }
+
+/* ───── Main column ───────────────────────────────────────── */
+
+.main { min-width: 0; }
+
+/* Hero on any page */
+.page-hero { margin-bottom: 3rem; }
+.page-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-3);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+}
+.page-heading {
+    font-size: 1.7rem;
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--ink);
+    margin: 0 0 1.5rem;
+    white-space: pre-line;
+    letter-spacing: 0.01em;
+}
+.page-subhead {
+    font-size: 1.05rem;
+    color: var(--ink-2);
+    line-height: 1.75;
+    margin: 0 0 1.5rem;
+    max-width: 36em;
+}
+
+/* Intro label + bullet points (used by homepage and some landings) */
+.intro-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-3);
+    letter-spacing: 0.08em;
+    margin: 0 0 0.45rem;
+}
+.intro-points {
+    list-style: none;
+    margin: 0 0 3rem;
+    padding: 0;
+}
+.intro-points li {
+    font-size: 0.95rem;
+    color: var(--ink-2);
+    padding: 0.1rem 0 0.1rem 1.1rem;
+    position: relative;
+    line-height: 1.7;
+}
+.intro-points li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--ink-4);
+}
+
+/* ───── Chapter/section row pattern (used by homepage cards, project navs) ── */
+/* renderHome() emits .section-card / .section-card-title / .section-card-desc /
+   .section-card-footer / .section-card-latest / .section-card-arrow — these
+   are styled below to render as chapter rows, not boxed cards. */
+
+#home-links {
+    border-top: 1px solid var(--rule);
+    margin-bottom: 4rem;
+}
+.section-card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--rule);
+    text-decoration: none;
+    color: inherit;
+    align-items: baseline;
+    transition: padding 200ms ease;
+}
+.section-card:hover { padding-left: 0.6rem; }
+.section-card-title {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 0.35rem;
+    letter-spacing: 0.005em;
+}
+.section-card-desc {
+    font-size: 0.92rem;
+    color: var(--ink-2);
+    line-height: 1.7;
+    margin: 0;
+    grid-column: 1;
+}
+.section-card-footer {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 0.3rem;
+    text-align: right;
+}
+.section-card-latest {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-3);
+    letter-spacing: 0.02em;
+}
+.section-card-arrow {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--ink-3);
+    transition: transform 200ms ease, color 200ms ease;
+}
+.section-card:hover .section-card-arrow {
+    color: var(--ink);
+    transform: translateX(3px);
+}
+
+/* ───── Panel pattern (Updates, Inbox, etc.) ──────────────── */
+
+.panel { margin-bottom: 2.5rem; }
+.panel-head {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink);
+    letter-spacing: 0.08em;
+    margin: 0 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-weight: 500;
+}
+.panel-head a {
+    color: var(--ink-3);
+    font-weight: 400;
+    text-decoration: none;
+}
+.panel-head a:hover { color: var(--ink); }
+
+/* Updates timeline (emitted by renderHome). Class names preserved. */
+#updates-list { padding: 0; }
+.timeline-item {
+    display: grid;
+    grid-template-columns: 6rem 1fr;
+    gap: 1.25rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+    padding-left: 1rem;
+    align-items: start;
+}
+.timeline-item:last-child { border-bottom: 0; }
+.timeline-dot {
+    position: absolute;
+    left: 0;
+    top: 1.1rem;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--ink-3);
+}
+.timeline-date {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-3);
+    letter-spacing: 0.02em;
+    padding-top: 0.15rem;
+}
+.timeline-lines p {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--ink-2);
+    line-height: 1.7;
+}
+.timeline-lines p:first-child {
+    color: var(--ink);
+    font-weight: 500;
+}
+.timeline-lines p + p {
+    margin-top: 0.1rem;
+    font-size: 0.84rem;
+    color: var(--ink-3);
+}
+.updates-more {
+    margin-top: 0.6rem;
+    text-align: right;
+}
+.updates-more-link {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-3);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+}
+.updates-more-link:hover { color: var(--ink); }
+
+/* Inbox letterbox */
+.letterbox-panel { margin-bottom: 2rem; }
+.letterbox-strip {
+    font-size: 0.9rem;
+    color: var(--ink-3);
+    margin: 0 0 0.7rem;
+    line-height: 1.7;
+}
+.letterbox-input {
+    width: 100%;
+    min-height: 4rem;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--rule);
+    padding: 0.5rem 0;
+    color: var(--ink);
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    outline: none;
+    resize: vertical;
+}
+.letterbox-input::placeholder { color: var(--ink-4); }
+.letterbox-input:focus { border-bottom-color: var(--ink-2); }
+.letterbox-button {
+    margin-top: 0.55rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-3);
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: not-allowed;
+    letter-spacing: 0.02em;
+}
+
+/* ───── Rail filters (e.g., Solutions filter buttons in rail) ─ */
+
+.rail-filters {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    margin: 0;
+    padding: 0;
+}
+.rail-filters .filter-button {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-3);
+    background: transparent;
+    border: 0;
+    text-align: left;
+    padding: 0.1rem 0;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    line-height: 1.65;
+}
+.rail-filters .filter-button:hover { color: var(--ink); }
+.rail-filters .filter-button.active {
+    color: var(--ink);
+    font-weight: 500;
+}
+.rail-filters .filter-button.active::before {
+    content: '— ';
+    color: var(--ink-3);
+}
+
+/* ───── Archive grid / cards (Solutions, Expressions list items) ── */
+
+.archive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 1.5rem;
+}
+.archive-list {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--rule);
+}
+
+.archive-card {
+    display: block;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 200ms ease, transform 200ms ease;
+    overflow: hidden;
+}
+.archive-card:hover {
+    border-color: var(--ink-3);
+}
+.archive-card-image {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-bottom: 1px solid var(--rule);
+    background: var(--bg);
+}
+.archive-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(0.15);
+    transition: filter 250ms ease, transform 400ms ease;
+}
+.archive-card:hover .archive-card-image img {
+    filter: grayscale(0);
+    transform: scale(1.02);
+}
+.archive-card-body {
+    padding: 1.2rem 1.3rem 1.1rem;
+}
+.archive-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.85rem;
+    margin: 0 0 0.4rem;
+}
+.archive-card-title {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0;
+    letter-spacing: 0.005em;
+}
+.archive-card-date {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-3);
+    margin: 0 0 0.6rem;
+    letter-spacing: 0.02em;
+}
+.archive-card-summary {
+    font-size: 0.92rem;
+    color: var(--ink-2);
+    line-height: 1.75;
+    margin: 0 0 0.7rem;
+}
+.archive-card-quote {
+    border-left: 2px solid var(--ink-3);
+    padding-left: 0.85rem;
+    margin: 0.7rem 0 0;
+    font-size: 0.88rem;
+    color: var(--ink-2);
+    line-height: 1.7;
+}
+.archive-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.85rem;
+}
+.archive-card-tag {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--ink-3);
+    border: 1px solid var(--rule);
+    padding: 0.1rem 0.5rem;
+    letter-spacing: 0.04em;
+}
+.archive-card-items {
+    margin: 0.7rem 0 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--rule);
+}
+.archive-card-items li {
+    font-size: 0.86rem;
+    color: var(--ink-2);
+    padding: 0.4rem 0;
+    border-bottom: 1px dashed var(--rule-2);
+    line-height: 1.6;
+}
+.archive-card-items li:last-child { border-bottom: 0; }
+.archive-card-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--ink-3);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 0 0 0.4rem;
+}
+.archive-card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.85rem;
+    padding-top: 0.65rem;
+    border-top: 1px solid var(--rule);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-2);
+    letter-spacing: 0.02em;
+}
+.archive-card:hover .archive-card-cta { color: var(--ink); }
+
+/* Expressions intro (multiple paragraphs) */
+.expressions-intro p {
+    margin: 0 0 0.6rem;
+    font-size: 0.96rem;
+    color: var(--ink-2);
+    line-height: 1.8;
+    max-width: 36em;
+}
+.expressions-intro p:last-child { color: var(--ink-3); font-size: 0.88rem; }
+
+/* ───── Reflections log layout (S4) ───────────────────────── */
+
+.reflections-region {
+    margin-bottom: 3rem;
+}
+.reflections-region-head {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+    gap: 1.5rem;
+    padding: 0 0 0.55rem;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 0;
+    align-items: baseline;
+}
+.reflections-region-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-3);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+.reflections-region-title {
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+}
+.reflections-region-keywords {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--ink-3);
+    letter-spacing: 0.04em;
+    font-weight: 400;
+}
+.reflections-row {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+    gap: 1.5rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+}
+.reflections-row:last-child { border-bottom: 0; }
+.reflections-row-date {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--ink-3);
+    letter-spacing: 0.02em;
+}
+.reflections-row-body { min-width: 0; }
+.reflections-row-subtitle {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 0.4rem;
+    letter-spacing: 0.005em;
+}
+.reflections-row-text {
+    font-size: 0.95rem;
+    color: var(--ink-2);
+    line-height: 1.78;
+    margin: 0;
+    white-space: pre-line;
+}
+
+/* ───── Project frame (used in main column of project-detail pages) ──── */
+/* Visual rhythm of the original homepage: hero + bordered structured cards. */
+
+.project-hero {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 2.5rem;
+}
+.project-hero h1 {
+    font-size: 1.95rem;
+    font-weight: 500;
+    line-height: 1.45;
+    color: var(--ink);
+    margin: 0.4rem 0 0.6rem;
+    letter-spacing: 0.005em;
+}
+.project-hero-meta {
+    display: flex;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-3);
+    letter-spacing: 0.02em;
+    margin-bottom: 0.5rem;
+}
+.project-hero-meta span + span::before {
+    content: '·';
+    margin-right: 0.85rem;
+    color: var(--ink-4);
+}
+.project-hero-summary {
+    font-size: 1.02rem;
+    color: var(--ink-2);
+    line-height: 1.8;
+    margin: 0.5rem 0 0;
+    max-width: 38em;
+}
+.project-hero-quote {
+    border-left: 2px solid var(--ink-3);
+    padding-left: 1rem;
+    margin: 1.5rem 0 0;
+    font-size: 0.95rem;
+    color: var(--ink-2);
+    font-style: normal;
+    line-height: 1.75;
+}
+
+.project-card {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    padding: 1.5rem 1.6rem;
+    margin-bottom: 1rem;
+}
+.project-card-title {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--ink);
+    font-weight: 600;
+    margin: 0 0 0.85rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--rule);
+    letter-spacing: 0.02em;
+}
+.project-card p {
+    margin: 0 0 0.5rem;
+    font-size: 0.92rem;
+    color: var(--ink-2);
+    line-height: 1.75;
+}
+.project-card p:last-child { margin-bottom: 0; }
+.project-card ul, .project-card ol {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.92rem;
+    color: var(--ink-2);
+    line-height: 1.78;
+}
+.project-card li + li { margin-top: 0.25rem; }
+
+.project-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.project-section {
+    margin: 3rem 0;
+    scroll-margin-top: 5.5rem;
+}
+.project-section h2 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0 0 1rem;
+    padding-bottom: 0.55rem;
+    border-bottom: 1px solid var(--rule);
+    letter-spacing: 0.01em;
+}
+.project-section h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 1.5rem 0 0.6rem;
+}
+.project-section p {
+    margin: 0 0 1rem;
+    font-size: 0.95rem;
+    color: var(--ink-2);
+    line-height: 1.85;
+}
+.project-section figure { margin: 1.5rem 0; }
+.project-section figure img {
+    width: 100%;
+    border: 1px solid var(--rule);
+    display: block;
+}
+.project-section figcaption {
+    font-size: 0.82rem;
+    color: var(--ink-3);
+    margin-top: 0.45rem;
+    line-height: 1.7;
+}
+.project-section blockquote {
+    border-left: 2px solid var(--ink-3);
+    padding-left: 1rem;
+    margin: 1.25rem 0;
+    font-size: 0.95rem;
+    color: var(--ink-2);
+    line-height: 1.78;
+}
+
+/* ───── Project content overrides ─────────────────────────── */
+/* Several project-page renderers in site-content.js emit Tailwind utility
+   classes inline (bg-white, border-gray-200, rounded-2xl, text-gray-*).
+   To keep the B&W aesthetic without rewriting every renderer, we neutralize
+   those utilities inside `.project-content`. */
+
+.project-content {
+    color: var(--ink-2);
+    font-size: 0.95rem;
+    line-height: 1.85;
+}
+.project-content .content-section,
+.project-content .project-section {
+    margin: 0 0 3rem;
+    scroll-margin-top: 5.5rem;
+}
+.project-content h1,
+.project-content h2,
+.project-content h3,
+.project-content h4 {
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+.project-content h2 { font-size: 1.3rem; margin-bottom: 1rem; }
+.project-content h3 { font-size: 1.05rem; font-weight: 600; }
+.project-content h4 { font-size: 0.95rem; font-weight: 600; }
+.project-content p,
+.project-content li {
+    color: var(--ink-2);
+    line-height: 1.85;
+}
+
+/* Tame Tailwind background utilities */
+.project-content .bg-white { background: var(--card); }
+.project-content .bg-gray-50 { background: var(--bg); }
+.project-content .bg-gray-900,
+.project-content .bg-black {
+    background: #2a2a2a;
+    color: #fff;
+}
+.project-content .bg-gray-900 *,
+.project-content .bg-black * { color: inherit; }
+
+/* Tame Tailwind border utilities */
+.project-content .border,
+.project-content [class*="border-"] {
+    border-color: var(--rule);
+}
+.project-content .border-gray-400,
+.project-content .border-l-4 {
+    border-color: var(--ink-3);
+}
+.project-content .border-dashed { border-style: dashed; }
+
+/* Soften rounded utilities to fit the square geometry */
+.project-content .rounded-2xl,
+.project-content .rounded-xl,
+.project-content .rounded-lg,
+.project-content .rounded {
+    border-radius: 2px;
+}
+.project-content .rounded-full { border-radius: 999px; }
+
+/* Drop drop-shadows */
+.project-content .shadow,
+.project-content .shadow-sm,
+.project-content .shadow-md,
+.project-content .shadow-lg,
+.project-content .shadow-xl { box-shadow: none; }
+
+/* Normalize text colors to ink scale */
+.project-content .text-gray-900 { color: var(--ink); }
+.project-content .text-gray-800 { color: var(--ink); }
+.project-content .text-gray-700 { color: var(--ink-2); }
+.project-content .text-gray-600 { color: var(--ink-2); }
+.project-content .text-gray-500 { color: var(--ink-3); }
+.project-content .text-gray-400 { color: var(--ink-4); }
+.project-content .text-gray-300 { color: var(--ink-4); }
+.project-content .text-white { color: #fff; }
+
+/* Italic is reserved for the original (B&W aesthetic prefers upright);
+   blockquotes keep the left border treatment but lose italic. */
+.project-content .italic { font-style: normal; }
+.project-content blockquote,
+.project-content .border-l-4 {
+    font-style: normal;
+}
+
+/* Drop link underlines except where explicit */
+.project-content a:not(.underline) {
+    color: var(--ink-2);
+}
+.project-content a.underline {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* Side nav items in the rail (renderer outputs class 'nav-item') */
+.rail .nav-item {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-3);
+    text-decoration: none;
+    padding: 0.15rem 0;
+    letter-spacing: 0.02em;
+    line-height: 1.6;
+    background: transparent !important;
+    border-radius: 0;
+}
+.rail .nav-item:hover,
+.rail .nav-item.active {
+    color: var(--ink);
+}
+.rail .nav-item.active::before {
+    content: '— ';
+    color: var(--ink-3);
+}
+
+/* Breadcrumb pattern used by project pages */
+.project-breadcrumb {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-3);
+    letter-spacing: 0.04em;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+.project-breadcrumb a {
+    color: var(--ink-3);
+    text-decoration: none;
+}
+.project-breadcrumb a:hover { color: var(--ink); }
+.project-breadcrumb span { color: var(--ink-2); }
+
+/* ───── Article (readme) ──────────────────────────────────── */
+
+.article-main {
+    max-width: 36em;
+}
+.article-main h1, .article-main h2, .article-main h3, .article-main h4 {
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+}
+.article-main h1 {
+    font-size: 1.85rem;
+    margin: 0 0 1.2rem;
+    padding-bottom: 0.65rem;
+    border-bottom: 1px solid var(--rule);
+}
+.article-main h2 {
+    font-size: 1.2rem;
+    margin: 2.5rem 0 0.8rem;
+    padding-bottom: 0.45rem;
+    border-bottom: 1px solid var(--rule);
+}
+.article-main h3 {
+    font-size: 1rem;
+    margin: 1.6rem 0 0.6rem;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    letter-spacing: 0.02em;
+}
+.article-main h4 {
+    font-size: 0.95rem;
+    margin: 1.2rem 0 0.5rem;
+    font-weight: 600;
+}
+.article-main p, .article-main li {
+    font-size: 0.96rem;
+    color: var(--ink-2);
+    line-height: 1.85;
+}
+.article-main p { margin: 0 0 0.95rem; }
+.article-main ul, .article-main ol {
+    margin: 0 0 1rem;
+    padding-left: 1.3rem;
+}
+.article-main li { margin-bottom: 0.35rem; }
+.article-main blockquote {
+    border-left: 2px solid var(--ink-3);
+    padding-left: 1rem;
+    margin: 1rem 0;
+    color: var(--ink-2);
+    font-size: 0.94rem;
+    line-height: 1.8;
+}
+.article-main code {
+    font-family: var(--font-mono);
+    font-size: 0.86em;
+    background: #F0EFEA;
+    padding: 0 0.3em;
+    border-radius: 2px;
+}
+.article-main strong { color: var(--ink); font-weight: 600; }
+
+/* ───── Footer ────────────────────────────────────────────── */
+
+.site-footer {
+    max-width: var(--shell-max);
+    margin: 0 auto;
+    padding: 1.5rem var(--shell-pad) 2.5rem;
+    border-top: 1px solid var(--rule);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-3);
+    text-align: center;
+    letter-spacing: 0.02em;
+}
+
+/* ───── Mobile (≤ 768px): S5 frontispiece collapse ───────── */
+/* Left rail folds into a compact top strip; main column narrows
+   and the hero centers — book-frontispiece feel for phones. */
+
+@media (max-width: 768px) {
+    .banner-inner {
+        padding: 0.9rem 1.25rem;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+    }
+    .nav-links {
+        gap: 1.1rem;
+        font-size: 0.74rem;
+    }
+
+    .shell {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+        padding: 2rem 1.25rem 3rem;
+        max-width: 32rem;
+    }
+    .shell-gutter { display: none; }
+
+    /* Rail collapses to a horizontal meta strip atop the main column */
+    .rail {
+        position: static;
+        padding: 0 0 1.5rem;
+        margin: 0 0 1.5rem;
+        border-bottom: 1px solid var(--rule);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem 1rem;
+        align-items: baseline;
+        text-align: left;
+    }
+    .rail-label {
+        margin: 0;
+        font-size: 0.66rem;
+    }
+    .rail-label + .rail-label { margin-top: 0; }
+    .rail-text {
+        margin: 0;
+        font-size: 0.8rem;
+        width: 100%;
+    }
+    .rail-marker { margin: 0; font-size: 0.68rem; }
+    .rail-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem 0.9rem;
+        width: 100%;
+    }
+    .rail-nav a { font-size: 0.7rem; }
+
+    /* Frontispiece treatment for the hero on phones */
+    .page-hero {
+        text-align: center;
+        margin-bottom: 2.5rem;
+        padding-bottom: 1.8rem;
+        border-bottom: 1px solid var(--rule);
+    }
+    .page-heading {
+        font-size: 1.4rem;
+        line-height: 1.7;
+        text-align: center;
+    }
+    .page-eyebrow { text-align: center; }
+    .intro-label { text-align: center; }
+    .intro-points li {
+        text-align: center;
+        padding-left: 0;
+    }
+    .intro-points li::before { display: none; }
+    .intro-points {
+        margin-bottom: 2.5rem;
+    }
+
+    /* Section cards collapse to single column rows */
+    .section-card {
+        grid-template-columns: 1fr;
+        gap: 0.35rem;
+    }
+    .section-card-footer {
+        grid-column: 1;
+        grid-row: auto;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+        margin-top: 0.4rem;
+    }
+
+    /* Reflections rows collapse */
+    .reflections-region-head,
+    .reflections-row {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+    }
+    .reflections-row { padding: 1rem 0; }
+
+    /* Project hero centers like a frontispiece */
+    .project-hero {
+        text-align: center;
+        border-bottom: 1px solid var(--rule);
+    }
+    .project-hero-meta { justify-content: center; }
+    .project-hero h1 {
+        font-size: 1.55rem;
+        line-height: 1.55;
+    }
+    .project-hero-summary, .project-hero-quote { text-align: left; }
+
+    .project-cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .article-main {
+        max-width: 100%;
+    }
+}
+
+/* ───── Smaller phones ────────────────────────────────────── */
+
+@media (max-width: 420px) {
+    .nav-links { gap: 0.85rem; font-size: 0.7rem; }
+    .page-heading { font-size: 1.25rem; }
+}
