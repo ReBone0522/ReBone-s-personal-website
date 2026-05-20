@@ -28,12 +28,7 @@
     }
   ],
   "updates_label": "Updates",
-  "credits": [
-    "文字：我",
-    "排版、交互灵感来自：我",
-    "网站制作：ChatGPT、DeepSeek、OpenClaw：Little Blue Man（Claude 4.5 Opus）、OpenClaw：Little Blue Man（ChatGPT 5.4）、Hermes Agent：Little Blue Man (ChatGPT 5.4)",
-    "感谢大家的帮助！"
-  ],
+  "credits": [],
   "inbox_title": "匿名投信箱",
   "inbox_intro": "如果你想留下些什么，可以先写在这里。正式提交入口之后再接上。",
   "inbox_placeholder": "写给 ReBone 的匿名信……",

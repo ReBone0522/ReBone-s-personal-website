@@ -22,18 +22,15 @@
     <script src="assets/js/site-content.js?v=20260519" defer></script>
     <style>
         .home-shell {
-            max-width: 64rem;
+            max-width: 40rem;
             margin: 2.5rem auto 0;
             padding: 0 1rem 3.5rem;
-            display: grid;
-            grid-template-columns: minmax(0, 32rem) 18rem;
-            column-gap: clamp(3.5rem, 7vw, 6.5rem);
-            align-items: start;
         }
 
         .home-side {
             font-family: inherit;
             color: #171717;
+            margin-top: 2.875rem;
         }
 
         .notice-title {
@@ -227,16 +224,13 @@
             margin: 0.1rem 0;
         }
 
+        .site-credits:empty {
+            display: none;
+        }
+
         @media (max-width: 860px) {
             .home-shell {
-                display: block;
-                max-width: 35rem;
-                margin-top: 2.875rem;
                 padding-inline: 1.5rem;
-            }
-
-            .home-side {
-                margin-top: 2.875rem;
             }
 
             .paper-note {

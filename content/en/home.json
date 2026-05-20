@@ -28,12 +28,7 @@
     }
   ],
   "updates_label": "Updates",
-  "credits": [
-    "Writing: me",
-    "Layout and interaction inspiration: me",
-    "Site production: ChatGPT, DeepSeek, OpenClaw: Little Blue Man (Claude 4.5 Opus), OpenClaw: Little Blue Man (ChatGPT 5.4), Hermes Agent: Little Blue Man (ChatGPT 5.4)",
-    "Thank you all for the help!"
-  ],
+  "credits": [],
   "inbox_title": "Anonymous letterbox",
   "inbox_intro": "If there is something you want to leave here, you can draft it first. A real submission entry can be connected later.",
   "inbox_placeholder": "Write an anonymous letter to ReBone…",
